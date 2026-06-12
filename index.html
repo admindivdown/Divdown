@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+
+<title>Facebook Video Downloader - Download FB Videos & Reels | Divdown</title>
+
+<meta name="description" content="Download FB videos, Facebook Reels, and Facebook Watch videos in HD. Free Facebook Video Downloader with no login, unlimited downloads, fast processing, and support for mobile, tablet, and desktop.">
+
+<meta name="keywords" content="download video fb, download video facebook, save video facebook, facebook video downloader, fb video downloader, facebook reels downloader, download facebook reels, facebook watch downloader, fb downloader, facebook downloader, free facebook video downloader, online facebook video downloader, hd facebook video downloader, download fb video, save fb video, facebook reel downloader, divdown">
+
+<meta name="author" content="Divdown.net">
+<meta property="og:title"
+content="Facebook Video Downloader - Download Video FB HD | Divdown">
+<meta property="og:description"
+content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. Fast processing, no login required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://divdown.net">
+<meta property="og:site_name" content="Divdown">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://divdown.net/og-image.jpg">
+<meta name="robots" content="index, follow">
+
+<!-- GOOGLE SEARCH CONSOLE -->
+<meta name="google-site-verification" content="TEMPAT_KODE_GOOGLE">
+
+<link rel="canonical" href="https://divdown.net/">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tampilan_bahasa.css">
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="bahasa-wrapper">
+
+      <button
+        class="bahasa-btn"
+        id="bahasaBtn"
+        aria-label="Change Language">
+        🇺🇸 English
+      </button>
+
+      <div class="bahasa-dropdown" id="bahasaDropdown">
+
+        <div class="bahasa-item" data-lang="english">
+          <span class="bahasa-bendera">🇺🇸</span>
+          <span class="bahasa-lokal">English</span>
+        </div>
+
+        <div class="bahasa-item" data-lang="indonesia">
+          <span class="bahasa-bendera">🇮🇩</span>
+          <span class="bahasa-lokal">Indonesia</span>
+        </div>
+
+        <div class="bahasa-item" data-lang="brazil">
+          <span class="bahasa-bendera">🇧🇷</span>
+          <span class="bahasa-lokal">Português</span>
+          <span class="bahasa-global">(Brazil)</span>
+        </div>
+
+        <div class="bahasa-item" data-lang="india">
+          <span class="bahasa-bendera">🇮🇳</span>
+          <span class="bahasa-lokal">हिन्दी</span>
+          <span class="bahasa-global">(India)</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="box download-box">
+    <div class="brand-row">
+      <img
+        src="assets/logo.webp"
+        alt="Divdown"
+        class="brand-logo"
+        onerror="this.style.display='none';"> 
+      <div class="brand-name">
+        Divdown<span class="brand-net">.net</span>
+      </div>
+    </div>
+
+<div class="subtitle">
+  Facebook Video Downloader
+</div>
+
+<div class="subtitle-mini">
+Download FB Videos & Reels Free
+</div>
+
+    <div class="download-row">
+      <input
+        id="urlInput"
+        type="text"
+        class="input"
+        placeholder="Paste Facebook link here..."
+        aria-label="Paste Facebook video URL here">
+
+      <button
+        id="downloadBtn"
+        class="download-btn"
+        onclick="downloadVideo()">
+        Download
+      </button>
+    </div>
+
+    <div class="trust">
+      <span id="freeText">✓ 100% Free</span>
+      <span id="fastText">✓ Fast</span>
+      <span id="loginText">✓ No Login</span>
+    </div>
+  </div>
+
+  <div class="ad-box">
+  <div class="ad-header">
+    Sponsored
+  </div>
+
+  <div class="ad-slot" id="bannerSlot"></div>
+</div>
+
+  <div class="security-box">
+    <div class="security-top">
+      ✔ Secure • Fast • Trusted
+    </div>
+    <div class="security-bottom">
+      Powered by TD G.T.M
+    </div>
+  </div>
+
+  <div id="faq"></div>
+  <div id="about"></div>
+  <div id="kontak"></div>
+  <div id="privacy"></div>
+  <div id="terms"></div>
+  <div id="footer"></div>
+</div>
+
+<script src="admin.js"></script>
+<script src="bahasa.js"></script>
+<script src="app.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const bBtn = document.getElementById('bahasaBtn');
+  const bDropdown = document.getElementById('bahasaDropdown');
+
+  if (bBtn && bDropdown) {
+    bBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      bDropdown.classList.toggle('show-bahasa');
+    });
+
+    document.querySelectorAll('.bahasa-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const pilihanLang = this.getAttribute('data-lang');
+        
+        if (pilihanLang && typeof gantiBahasa === 'function') {
+          // Parameter 'true' ditambahkan di sini agar spinner muncul saat klik manual
+          gantiBahasa(pilihanLang, true);
+        }
+        
+        bDropdown.classList.remove('show-bahasa');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!bBtn.contains(e.target) && !bDropdown.contains(e.target)) {
+        bDropdown.classList.remove('show-bahasa');
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>
+
