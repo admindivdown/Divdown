@@ -1,8 +1,8 @@
 // ======================================
-// APP.JS RUMAH 1 - FINAL SINKRONISASI FONDASI UTAMA
+// APP.JS RUMAH 1 - FINAL SINKRONISASI BACKEND DIVDOWN
 // ======================================
 
-/* ---------- 1. FUNGSI LOAD HTML DENGAN PROMISE ASLI ---------- */
+/* ---------- 1. LOAD HTML COMPONENT ---------- */
 function loadFile(id, file, error) {
   return fetch(file)
     .then(r => {
@@ -13,14 +13,12 @@ function loadFile(id, file, error) {
       const el = document.getElementById(id);
       if (el) el.innerHTML = data;
     })
-    .catch(err => {
-      console.error(error, err);
-    });
+    .catch(err => console.error(error, err));
 }
 
-/* ---------- 2. PROSES MEMUAT KOMPONEN & INITIALISASI BAHASA ---------- */
+/* ---------- 2. INIT PAGE ---------- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Mengunci browser agar menyelesaikan load semua file HTML luar terlebih dahulu
+
   Promise.all([
     loadFile('faq', './faq.html', 'FAQ failed'),
     loadFile('about', './about.html', 'About failed'),
@@ -29,36 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFile('terms', './terms.html', 'Terms failed'),
     loadFile('footer', './footer.html', 'Footer failed')
   ]).then(() => {
-    // SETELAH SEMUA HTML SELESAI MENEMPEL TOTAL, BARULAH FUNGSI BAHASA DIEKSEKUSI
+
     let savedLang = localStorage.getItem('userLanguage');
-    
-    // DETEKSI OTOMATIS AWAL: Bersih, murni untuk 4 negara pilihan
+
     if (!savedLang) {
-      const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-      if (browserLang.includes('id')) {
-        savedLang = 'indonesia';
-      } else if (browserLang.includes('pt') || browserLang.includes('br')) {
-        savedLang = 'brazil';
-      } else if (browserLang.includes('hi') || browserLang.includes('in')) {
-        savedLang = 'india';
-      } else {
-        savedLang = 'english';
-      }
+      const browserLang = (navigator.language || '').toLowerCase();
+      if (browserLang.includes('id')) savedLang = 'indonesia';
+      else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil';
+      else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india';
+      else savedLang = 'english';
     } else {
       savedLang = savedLang.toLowerCase().trim();
     }
 
-    // Memberikan jeda mikro agar browser mendaftarkan ID HTML baru secara stabil di HP
     setTimeout(() => {
       if (typeof gantiBahasa === 'function') {
         gantiBahasa(savedLang);
-      } else {
-        console.error("Fungsi gantiBahasa belum siap di memori global.");
       }
     }, 50);
+
   });
 
-  // Listener input enter untuk download
   const input = document.getElementById('urlInput');
   if (input) {
     input.addEventListener('keypress', function(e) {
@@ -67,10 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------- 3. FUNGSI UTAMA DOWNLOAD ---------- */
+/* ---------- 3. MAIN DOWNLOAD FUNCTION (FINAL FIX) ---------- */
 function downloadVideo() {
-  const btnSpam = document.getElementById('downloadBtn');
-  if (btnSpam && btnSpam.disabled) return;
+  const btn = document.getElementById('downloadBtn');
+  if (btn && btn.disabled) return;
 
   const input = document.getElementById('urlInput');
   if (!input) return;
@@ -89,52 +78,61 @@ function downloadVideo() {
     'fb.watch'
   ];
 
-  if (
-    url.includes('javascript:') ||
-    url.includes('data:') ||
-    url.includes('<') ||
-    url.includes('>')
-  ) {
-    alert('Invalid link');
+  const isValid = validDomains.some(d => url.includes(d));
+
+  if (!isValid) {
+    alert('Use valid Facebook link');
     return;
   }
 
-  const isValid = validDomains.some(domain =>
-    url.includes(domain)
-  );
+btn.classList.add('loading');
+btn.innerHTML = '<span class="spinner"></span>Loading...';
+btn.disabled = true;  
 
-  if (!isValid && url !== 'T') {
-    alert('Use a valid Facebook link');
-    return;
-  }
+  // 🔥 CONNECT KE BACKEND
+  fetch('http://localhost:3000/api/facebook?url=' + encodeURIComponent(url))
+    .then(res => res.json())
+    .then(data => {
 
-  if (url !== 'T' && url.length < 20) {
-    alert('Link is too short');
-    return;
-  }
+      if (!data || !data.success) {
+        throw new Error('API failed');
+      }
 
-  btnSpam.classList.add('loading');
-  btnSpam.innerHTML = '<span class="spinner"></span> Loading...';
-  btnSpam.disabled = true;
+      // 🔥 KIRIM KE RUMAH 2
+const hd720 = data.formats?.find(f => f.format_id === 'hd');
+const hd1080 = data.formats?.find(f =>
+  String(f.format_id).includes('1080')
+);
 
-  const videoData = {
-    link: url
-  };
+const videoData = {
+  img: data.thumbnail,
+  hd720: hd720?.url || null,
+  hd1080: hd1080?.url || hd720?.url || null
+};
 
-  localStorage.setItem('videoData', JSON.stringify(videoData));
+      localStorage.setItem('videoData', JSON.stringify(videoData));
 
-  const isAdmin =
-    new URLSearchParams(location.search).get('tes') === '@analisa';
+      const isAdmin =
+        new URLSearchParams(location.search).get('tes') === '@analisa';
 
-  window.location.href =
-    'rumah_index2/index.html?url=' +
-    encodeURIComponent(url) +
-    (isAdmin ? '&tes=@analisa' : '');
+      window.location.href =
+        'rumah_index2/index.html?url=' +
+        encodeURIComponent(url) +
+        (isAdmin ? '&tes=@analisa' : '');
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Server error / backend tidak jalan');
+
+      btn.classList.remove('loading');
+      btn.innerHTML = 'Download';
+      btn.disabled = false;
+    });
 }
 
-/* ---------- 4. RESET TOMBOL SAAT USER KEMBALI ---------- */
-window.addEventListener('pageshow', function(event) {
-  if (event.persisted) {
+/* ---------- 4. RESET BUTTON ---------- */
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) {
     const btn = document.getElementById('downloadBtn');
     if (btn) {
       btn.classList.remove('loading');

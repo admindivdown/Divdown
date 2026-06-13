@@ -17,73 +17,79 @@ document.addEventListener('DOMContentLoaded', () => {
   if (thumb) { thumb.style.setProperty('display', 'none', 'important'); thumb.removeAttribute('src'); }
   if (btnWrap) { btnWrap.style.setProperty('display', 'none', 'important'); }
 
-  const savedVideoData = localStorage.getItem('videoData');
+const savedVideoData = localStorage.getItem('videoData');
 
-  if (savedVideoData) {
-    try {
-      const videoData = JSON.parse(savedVideoData);
-      const videoUrl = videoData.link;
+if (savedVideoData) {
+try {
+const videoData = JSON.parse(savedVideoData);
 
-      if (videoUrl) {
-        
-        // --- TIMING 1: Perubahan Teks Status Dinamis (Detik ke-2) ---
-        setTimeout(() => {
-          if (statusText) {
-            statusText.textContent = "Optimizing server...";
-          }
-        }, 2000);
+if (videoData.hd720 || videoData.hd1080) {
 
-        // --- TIMING 2: Tunda Pemuatan Gambar Asli Video (Detik ke-3) ---
-        setTimeout(() => {
-          if (videoData.img && videoData.img.trim() !== "") {
-            if (thumb) {
-              // Hanya muncul ketika browser sukses memuat gambar asli dari API
-              thumb.onload = () => {
-                if (spinner) spinner.style.setProperty('display', 'none', 'important');
-                if (statusText) statusText.style.setProperty('display', 'none', 'important');
-                thumb.style.setProperty('display', 'block', 'important'); 
-              };
-              
-              // Jika tautan gambar rusak, biarkan spinner dan status tetap mengunci manis
-              thumb.onerror = () => { JagaSpinnerTetapMuter(); };
-              
-              // Suntikkan gambar asli video dari API di sini
-              thumb.src = videoData.img;
-            }
-          } else {
-            JagaSpinnerTetapMuter();
-          }
-        }, 3000);
+  // --- TIMING 1: Perubahan Teks Status Dinamis (Detik ke-2) ---
+  setTimeout(() => {
+    if (statusText) {
+      statusText.textContent = "Optimizing server...";
+    }
+  }, 2000);
 
-        // --- TIMING 3: Tunda Munculnya Boks Tombol Download (Detik ke-4) ---
-        setTimeout(() => {
-          if (btnWrap) {
-            btnWrap.style.setProperty('display', 'flex', 'important');
-          }
-        }, 4000);
-
-        // AKSI TOMBOL DOWNLOAD SAAT DIKLIK USER
-        const handleDownloadAction = () => {
-          if (videoData.downloadUrl) {
-            window.open(videoData.downloadUrl, '_blank');
-          } else {
-            window.open(videoUrl, '_blank');
-          }
+  // --- TIMING 2: Tunda Pemuatan Gambar Asli Video (Detik ke-3) ---
+  setTimeout(() => {
+    if (videoData.img && videoData.img.trim() !== "") {
+      if (thumb) {
+        thumb.onload = () => {
+          if (spinner) spinner.style.setProperty('display', 'none', 'important');
+          if (statusText) statusText.style.setProperty('display', 'none', 'important');
+          thumb.style.setProperty('display', 'block', 'important');
         };
 
-        if (btnHD) btnHD.onclick = handleDownloadAction;
-        if (btnHQ) btnHQ.onclick = handleDownloadAction;
+        thumb.onerror = () => {
+          JagaSpinnerTetapMuter();
+        };
 
-      } else {
-        JagaSpinnerTetapMuter();
+        thumb.src = videoData.img;
       }
-    } catch (e) {
-      console.error('Gagal memproses data video dari Rumah 1', e);
+    } else {
       JagaSpinnerTetapMuter();
     }
-  } else {
-    JagaSpinnerTetapMuter();
+  }, 3000);
+
+  // --- TIMING 3: Tunda Munculnya Boks Tombol Download (Detik ke-4) ---
+  setTimeout(() => {
+    if (btnWrap) {
+      btnWrap.style.setProperty('display', 'flex', 'important');
+    }
+  }, 4000);
+
+  // AKSI TOMBOL DOWNLOAD SAAT DIKLIK USER
+  if (btnHD) {
+    btnHD.onclick = () => {
+      if (videoData.hd720) {
+        window.open(videoData.hd720, '_blank');
+      }
+    };
   }
+
+  if (btnHQ) {
+    btnHQ.onclick = () => {
+      if (videoData.hd1080) {
+        window.open(videoData.hd1080, '_blank');
+      } else if (videoData.hd720) {
+        window.open(videoData.hd720, '_blank');
+      }
+    };
+  }
+
+} else {
+  JagaSpinnerTetapMuter();
+}
+
+} catch (e) {
+console.error('Gagal memproses data video dari Rumah 1', e);
+JagaSpinnerTetapMuter();
+}
+} else {
+JagaSpinnerTetapMuter();
+}
 
   /* ==========================================
      2. LOAD FAQ + DETEKSI BAHASA PREMIUM SINKRON
