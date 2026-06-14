@@ -2,8 +2,12 @@
   "name": "divdown-backend",
   "version": "1.0.0",
   "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "python3 -m pip install -U yt-dlp"
   },
   "dependencies": {
     "express": "^4.21.2",
