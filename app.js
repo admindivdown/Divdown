@@ -89,45 +89,13 @@ btn.classList.add('loading');
 btn.innerHTML = '<span class="spinner"></span>Loading...';
 btn.disabled = true;  
 
-  // 🔥 CONNECT KE BACKEND
-  fetch('http://localhost:3000/api/facebook?url=' + encodeURIComponent(url))
-    .then(res => res.json())
-    .then(data => {
+const isAdmin =
+  new URLSearchParams(location.search).get('tes') === '@analisa';
 
-      if (!data || !data.success) {
-        throw new Error('API failed');
-      }
-
-      // 🔥 KIRIM KE RUMAH 2
-const hd720 = data.formats?.find(f => f.format_id === 'hd');
-const hd1080 = data.formats?.find(f =>
-  String(f.format_id).includes('1080')
-);
-
-const videoData = {
-  img: data.thumbnail,
-  hd720: hd720?.url || null,
-  hd1080: hd1080?.url || hd720?.url || null
-};
-
-      localStorage.setItem('videoData', JSON.stringify(videoData));
-
-      const isAdmin =
-        new URLSearchParams(location.search).get('tes') === '@analisa';
-
-      window.location.href =
-        'rumah_index2/index.html?url=' +
-        encodeURIComponent(url) +
-        (isAdmin ? '&tes=@analisa' : '');
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Server error / backend tidak jalan');
-
-      btn.classList.remove('loading');
-      btn.innerHTML = 'Download';
-      btn.disabled = false;
-    });
+window.location.href =
+  'rumah_index2/index.html?url=' +
+  encodeURIComponent(url) +
+  (isAdmin ? '&tes=@analisa' : '');
 }
 
 /* ---------- 4. RESET BUTTON ---------- */

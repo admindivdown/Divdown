@@ -17,78 +17,170 @@ document.addEventListener('DOMContentLoaded', () => {
   if (thumb) { thumb.style.setProperty('display', 'none', 'important'); thumb.removeAttribute('src'); }
   if (btnWrap) { btnWrap.style.setProperty('display', 'none', 'important'); }
 
-const savedVideoData = localStorage.getItem('videoData');
+const params = new URLSearchParams(window.location.search);
+const fbUrl = params.get('url');
 
-if (savedVideoData) {
-try {
-const videoData = JSON.parse(savedVideoData);
+if (!fbUrl) {
 
-if (videoData.hd720 || videoData.hd1080) {
-
-  // --- TIMING 1: Perubahan Teks Status Dinamis (Detik ke-2) ---
-  setTimeout(() => {
-    if (statusText) {
-      statusText.textContent = "Optimizing server...";
-    }
-  }, 2000);
-
-  // --- TIMING 2: Tunda Pemuatan Gambar Asli Video (Detik ke-3) ---
-  setTimeout(() => {
-    if (videoData.img && videoData.img.trim() !== "") {
-      if (thumb) {
-        thumb.onload = () => {
-          if (spinner) spinner.style.setProperty('display', 'none', 'important');
-          if (statusText) statusText.style.setProperty('display', 'none', 'important');
-          thumb.style.setProperty('display', 'block', 'important');
-        };
-
-        thumb.onerror = () => {
-          JagaSpinnerTetapMuter();
-        };
-
-        thumb.src = videoData.img;
-      }
-    } else {
-      JagaSpinnerTetapMuter();
-    }
-  }, 3000);
-
-  // --- TIMING 3: Tunda Munculnya Boks Tombol Download (Detik ke-4) ---
-  setTimeout(() => {
-    if (btnWrap) {
-      btnWrap.style.setProperty('display', 'flex', 'important');
-    }
-  }, 4000);
-
-  // AKSI TOMBOL DOWNLOAD SAAT DIKLIK USER
-  if (btnHD) {
-    btnHD.onclick = () => {
-      if (videoData.hd720) {
-        window.open(videoData.hd720, '_blank');
-      }
-    };
-  }
-
-  if (btnHQ) {
-    btnHQ.onclick = () => {
-      if (videoData.hd1080) {
-        window.open(videoData.hd1080, '_blank');
-      } else if (videoData.hd720) {
-        window.open(videoData.hd720, '_blank');
-      }
-    };
-  }
-
-} else {
   JagaSpinnerTetapMuter();
-}
 
-} catch (e) {
-console.error('Gagal memproses data video dari Rumah 1', e);
-JagaSpinnerTetapMuter();
-}
 } else {
-JagaSpinnerTetapMuter();
+
+  fetch(
+    'http://localhost:3000/api/facebook?url=' +
+    encodeURIComponent(fbUrl)
+  )
+
+  .then(res => res.json())
+
+  .then(data => {
+
+    if (!data.success) {
+      throw new Error('Backend gagal');
+    }
+
+    const hd720 = data.formats?.find(
+      f => f.format_id === 'hd'
+    );
+
+    const hd1080 = data.formats?.find(
+      f => String(f.format_id).includes('1080')
+    );
+
+    const videoData = {
+  img: data.thumbnail,
+  hd720: data.hd720
+};
+
+    // --- TIMING 1: Status ---
+    setTimeout(() => {
+
+      if (statusText) {
+        statusText.textContent =
+          "Optimizing server...";
+      }
+
+    }, 200);
+
+    // --- TIMING 2: Thumbnail ---
+    setTimeout(() => {
+
+      if (
+        videoData.img &&
+        videoData.img.trim() !== ""
+      ) {
+
+        if (thumb) {
+
+          thumb.onload = () => {
+
+            if (spinner) {
+              spinner.style.setProperty(
+                'display',
+                'none',
+                'important'
+              );
+            }
+
+            if (statusText) {
+              statusText.style.setProperty(
+                'display',
+                'none',
+                'important'
+              );
+            }
+
+            thumb.style.setProperty(
+              'display',
+              'block',
+              'important'
+            );
+          };
+
+          thumb.onerror = () => {
+            JagaSpinnerTetapMuter();
+          };
+
+          thumb.src = videoData.img;
+        }
+
+      } else {
+
+        JagaSpinnerTetapMuter();
+
+      }
+
+    }, 300);
+
+    // --- TIMING 3: Tombol Download ---
+    setTimeout(() => {
+
+      if (btnWrap) {
+        btnWrap.style.setProperty(
+          'display',
+          'flex',
+          'important'
+        );
+      }
+
+    }, 400);
+
+    // --- Tombol 720 ---
+    if (btnHD) {
+
+      btnHD.onclick = () => {
+
+        if (videoData.hd720) {
+
+          window.open(
+            videoData.hd720,
+            '_blank'
+          );
+
+        }
+
+      };
+
+    }
+
+    // --- Tombol 1080 ---
+    if (btnHQ) {
+
+      btnHQ.onclick = () => {
+
+        if (videoData.hd1080) {
+
+          window.open(
+            videoData.hd1080,
+            '_blank'
+          );
+
+        } else if (videoData.hd720) {
+
+          window.open(
+            videoData.hd720,
+            '_blank'
+          );
+
+        }
+
+      };
+
+    }
+
+  })
+
+  .catch(err => {
+
+    console.error(
+      'Gagal memproses data dari backend',
+      err
+    );
+
+    JagaSpinnerTetapMuter();
+
+  });
+
 }
 
   /* ==========================================

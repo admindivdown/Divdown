@@ -19,7 +19,7 @@ app.get('/api/facebook', (req, res) => {
   const videoUrl = req.query.url;
   if (!videoUrl) return res.status(400).json({ success: false, message: 'URL Facebook tidak ditemukan' });
 
-  const cmd = `python3 -m yt_dlp --dump-single-json --no-warnings --prefer-free-formats --skip-download "${videoUrl}"`;
+  const cmd = `python3 -m yt_dlp --dump-single-json --no-warnings --skip-download "${videoUrl}"`;
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout, stderr) => {
     if (error) {
@@ -27,16 +27,17 @@ app.get('/api/facebook', (req, res) => {
       return res.status(500).json({ success: false, message: stderr || error.message });
     }
     try {
-      const data = JSON.parse(stdout);
-      res.json({
-        success: true,
-        title: data.title,
-        thumbnail: data.thumbnail,
-        duration: data.duration,
-        uploader: data.uploader,
-        webpage_url: data.webpage_url,
-        formats: data.formats
-      });
+const data = JSON.parse(stdout);
+
+const hd720 = data.formats?.find(
+  f => f.format_id === 'hd'
+);
+
+res.json({
+  success: true,
+  thumbnail: data.thumbnail,
+  hd720: hd720?.url || null
+});
     } catch (parseError) {
       console.error(parseError);
       res.status(500).json({ success: false, message: parseError.message });
