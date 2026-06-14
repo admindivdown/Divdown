@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.21.2",
     "cors": "^2.8.5"
+  },
+  "railway": {
+    "startCommand": "node server.js"
   }
 }
