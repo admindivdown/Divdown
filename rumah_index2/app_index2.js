@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const fbUrl = params.get('url');
 
-  if (!fbUrl) {
+    if (!fbUrl) {
     JagaSpinnerTetapMuter();
   } else {
     fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl))
@@ -36,27 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (spinner) spinner.style.setProperty('display', 'none', 'important');
         if (statusText) statusText.style.setProperty('display', 'none', 'important');
 
-        // 4. Aksi Download 720p (Metode Blob Paksa Unduh)
-        if (btnHD) {
-          btnHD.onclick = async () => {
-            if (videoData.hd720) {
-              btnHD.textContent = "Processing...";
-              try {
-                const res = await fetch(videoData.hd720);
-                const blob = await res.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Divdown_Video_720p.mp4';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
-              } catch (err) { window.location.href = videoData.hd720; }
-              finally { btnHD.textContent = "720p Download HD"; }
-            }
-          };
-        }
+// 4. Aksi Download 720p (Metode Blob Paksa Unduh)
+if (btnHD) {
+  btnHD.onclick = async () => {
+    if (videoData.hd720) {
+      btnHD.textContent = "Processing...";
+      
+      // Sinyal pemicu popunder untuk file iklan
+      window.postMessage('triggerPopunder', '*');
+      
+      try {
+        const res = await fetch(videoData.hd720);
+        const blob = await res.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Divdown_Video_720p.mp4';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      } catch (err) { window.location.href = videoData.hd720; }
+      finally { btnHD.textContent = "720p Download HD"; }
+    }
+  };
+}
 
         // 5. Aksi Download 1080p (Metode Blob Paksa Unduh)
         if (btnHQ) {
@@ -64,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const urlToDownload = videoData.hd1080 || videoData.hd720;
             if (urlToDownload) {
               btnHQ.textContent = "Processing...";
+              
+              // Sinyal pemicu popunder untuk file iklan
+              window.postMessage('triggerPopunder', '*');
+              
               try {
                 const res = await fetch(urlToDownload);
                 const blob = await res.blob();
@@ -80,12 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           };
         }
-      })
+      }) // <--- INI PENUTUPNYA
       .catch(err => {
         console.error('Gagal:', err);
         JagaSpinnerTetapMuter();
       });
   }
+
   /* ==========================================
      2. LOAD FAQ + DETEKSI BAHASA PREMIUM SINKRON
      ========================================== */
