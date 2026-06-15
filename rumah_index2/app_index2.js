@@ -61,42 +61,21 @@ if (!fbUrl) {
         if (btnWrap) btnWrap.style.setProperty('display', 'flex', 'important');
       }, 400);
 
-      // 4. Aksi Download 720p
+      // 4. Aksi Download 720p (Direct Link - Instan)
       if (btnHD) {
-        btnHD.onclick = async () => {
+        btnHD.onclick = () => {
           if (videoData.hd720) {
-            const res = await fetch(videoData.hd720);
-            const blob = await res.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Divdown_Video.mp4';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
+            window.location.href = videoData.hd720;
           }
         };
       }
 
-      // 5. Aksi Download 1080p (POSISI DI SINI, DI DALAM BLOK THEN)
+      // 5. Aksi Download 1080p (Direct Link - Instan)
       if (btnHQ) {
-        btnHQ.onclick = async () => {
+        btnHQ.onclick = () => {
           const urlToDownload = videoData.hd1080 || videoData.hd720;
           if (urlToDownload) {
-            try {
-              const res = await fetch(urlToDownload);
-              const blob = await res.blob();
-              const url = window.URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = url;
-              a.download = 'Divdown_Video_HQ.mp4';
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-              window.URL.revokeObjectURL(url);
-            } catch (err) {
-              window.open(urlToDownload, '_blank');
-            }
+            window.location.href = urlToDownload;
           }
         };
       }
