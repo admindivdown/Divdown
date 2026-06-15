@@ -17,171 +17,94 @@ document.addEventListener('DOMContentLoaded', () => {
   if (thumb) { thumb.style.setProperty('display', 'none', 'important'); thumb.removeAttribute('src'); }
   if (btnWrap) { btnWrap.style.setProperty('display', 'none', 'important'); }
 
+// === INISIALISASI DATA ===
 const params = new URLSearchParams(window.location.search);
 const fbUrl = params.get('url');
 
 if (!fbUrl) {
-
   JagaSpinnerTetapMuter();
-
 } else {
+  fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl))
+    .then(res => res.json())
+    .then(data => {
+      if (!data.success) throw new Error('Backend gagal');
 
-  fetch(
-    'https://divdown-production-33fd.up.railway.app/api/facebook?url=' +
-    encodeURIComponent(fbUrl)
-  )
-
-
-  .then(res => res.json())
-
-  .then(data => {
-
-    if (!data.success) {
-      throw new Error('Backend gagal');
-    }
-
-    const hd720 = data.formats?.find(
-      f => f.format_id === 'hd'
-    );
-
-    const hd1080 = data.formats?.find(
-      f => String(f.format_id).includes('1080')
-    );
-
-    const videoData = {
-  img: data.thumbnail,
-  hd720: data.hd720
-};
-
-    // --- TIMING 1: Status ---
-    setTimeout(() => {
-
-      if (statusText) {
-        statusText.textContent =
-          "Optimizing server...";
-      }
-
-    }, 200);
-
-    // --- TIMING 2: Thumbnail ---
-    setTimeout(() => {
-
-      if (
-        videoData.img &&
-        videoData.img.trim() !== ""
-      ) {
-
-        if (thumb) {
-
-          thumb.onload = () => {
-
-            if (spinner) {
-              spinner.style.setProperty(
-                'display',
-                'none',
-                'important'
-              );
-            }
-
-            if (statusText) {
-              statusText.style.setProperty(
-                'display',
-                'none',
-                'important'
-              );
-            }
-
-            thumb.style.setProperty(
-              'display',
-              'block',
-              'important'
-            );
-          };
-
-          thumb.onerror = () => {
-            JagaSpinnerTetapMuter();
-          };
-
-          thumb.src = videoData.img;
-        }
-
-      } else {
-
-        JagaSpinnerTetapMuter();
-
-      }
-
-    }, 300);
-
-    // --- TIMING 3: Tombol Download ---
-    setTimeout(() => {
-
-      if (btnWrap) {
-        btnWrap.style.setProperty(
-          'display',
-          'flex',
-          'important'
-        );
-      }
-
-    }, 400);
-
-    // --- Tombol 720 ---
-    if (btnHD) {
-
-      btnHD.onclick = () => {
-
-        if (videoData.hd720) {
-
-          window.open(
-            videoData.hd720,
-            '_blank'
-          );
-
-        }
-
+      // Pastikan hd1080 juga didefinisikan di sini
+      const videoData = { 
+        img: data.thumbnail, 
+        hd720: data.hd720,
+        hd1080: data.hd1080 // Pastikan ini sesuai dengan respon backendmu
       };
 
-    }
+      // 1. Update Status
+      setTimeout(() => { if (statusText) statusText.textContent = "Optimizing server..."; }, 200);
 
-    // --- Tombol 1080 ---
-    if (btnHQ) {
-
-      btnHQ.onclick = () => {
-
-        if (videoData.hd1080) {
-
-          window.open(
-            videoData.hd1080,
-            '_blank'
-          );
-
-        } else if (videoData.hd720) {
-
-          window.open(
-            videoData.hd720,
-            '_blank'
-          );
-
+      // 2. Load Thumbnail
+      setTimeout(() => {
+        if (videoData.img?.trim()) {
+          if (thumb) {
+            thumb.onload = () => {
+              spinner?.style.setProperty('display', 'none', 'important');
+              statusText?.style.setProperty('display', 'none', 'important');
+              thumb.style.setProperty('display', 'block', 'important');
+            };
+            thumb.onerror = JagaSpinnerTetapMuter;
+            thumb.src = videoData.img;
+          }
+        } else {
+          JagaSpinnerTetapMuter();
         }
+      }, 300);
 
-      };
+      // 3. Tampilkan Tombol
+      setTimeout(() => {
+        if (btnWrap) btnWrap.style.setProperty('display', 'flex', 'important');
+      }, 400);
 
-    }
+      // 4. Aksi Download 720p
+      if (btnHD) {
+        btnHD.onclick = async () => {
+          if (videoData.hd720) {
+            const res = await fetch(videoData.hd720);
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Divdown_Video.mp4';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          }
+        };
+      }
 
-  })
-
-  .catch(err => {
-
-    console.error(
-      'Gagal memproses data dari backend',
-      err
-    );
-
-    JagaSpinnerTetapMuter();
-
-  });
-
+      // 5. Aksi Download 1080p (POSISI DI SINI, DI DALAM BLOK THEN)
+      if (btnHQ) {
+        btnHQ.onclick = async () => {
+          const urlToDownload = videoData.hd1080 || videoData.hd720;
+          if (urlToDownload) {
+            try {
+              const res = await fetch(urlToDownload);
+              const blob = await res.blob();
+              const url = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'Divdown_Video_HQ.mp4';
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              window.URL.revokeObjectURL(url);
+            } catch (err) {
+              window.open(urlToDownload, '_blank');
+            }
+          }
+        };
+      }
+    })
+    .catch(err => {
+      console.error('Gagal:', err);
+      JagaSpinnerTetapMuter();
+    });
 }
 
   /* ==========================================
