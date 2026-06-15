@@ -27,9 +27,10 @@ if (!fbUrl) {
 } else {
 
   fetch(
-    'http://localhost:3000/api/facebook?url=' +
+    'https://divdown-production-33fd.up.railway.app/api/facebook?url=' +
     encodeURIComponent(fbUrl)
   )
+
 
   .then(res => res.json())
 
