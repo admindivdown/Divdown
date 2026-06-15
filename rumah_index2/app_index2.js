@@ -36,59 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
         if (spinner) spinner.style.setProperty('display', 'none', 'important');
         if (statusText) statusText.style.setProperty('display', 'none', 'important');
 
-// 4. Aksi Download 720p (Metode Blob Paksa Unduh)
-if (btnHD) {
-  btnHD.onclick = async () => {
-    if (videoData.hd720) {
-      btnHD.textContent = "Processing...";
-      
-      // Sinyal pemicu popunder untuk file iklan
-      window.postMessage('triggerPopunder', '*');
-      
-      try {
-        const res = await fetch(videoData.hd720);
-        const blob = await res.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Divdown_Video_720p.mp4';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-      } catch (err) { window.location.href = videoData.hd720; }
-      finally { btnHD.textContent = "720p Download HD"; }
-    }
-  };
-}
-
-        // 5. Aksi Download 1080p (Metode Blob Paksa Unduh)
-        if (btnHQ) {
-          btnHQ.onclick = async () => {
-            const urlToDownload = videoData.hd1080 || videoData.hd720;
-            if (urlToDownload) {
-              btnHQ.textContent = "Processing...";
-              
-              // Sinyal pemicu popunder untuk file iklan
+        // 4. Aksi Download 720p (Metode Instan Redirect)
+        if (btnHD) {
+          btnHD.onclick = () => {
+            if (videoData.hd720) {
               window.postMessage('triggerPopunder', '*');
-              
-              try {
-                const res = await fetch(urlToDownload);
-                const blob = await res.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Divdown_Video_1080p.mp4';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
-              } catch (err) { window.location.href = urlToDownload; }
-              finally { btnHQ.textContent = "1080p High Quality"; }
+              const a = document.createElement('a');
+              a.href = videoData.hd720;
+              a.setAttribute('download', 'Divdown_Video_720p.mp4');
+              a.setAttribute('target', '_blank');
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
             }
           };
         }
-      }) // <--- INI PENUTUPNYA
+
+        // 5. Aksi Download 1080p (Metode Instan Redirect)
+        if (btnHQ) {
+          btnHQ.onclick = () => {
+            const urlToDownload = videoData.hd1080 || videoData.hd720;
+            if (urlToDownload) {
+              window.postMessage('triggerPopunder', '*');
+              const a = document.createElement('a');
+              a.href = urlToDownload;
+              a.setAttribute('download', 'Divdown_Video_1080p.mp4');
+              a.setAttribute('target', '_blank');
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+            }
+          };
+        }
+      })
       .catch(err => {
         console.error('Gagal:', err);
         JagaSpinnerTetapMuter();
