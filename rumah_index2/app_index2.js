@@ -1,9 +1,6 @@
 // ===== APP_INDEX2.JS RUMAH 2 FINAL - SINKRON BAHASA & DINAMIS API =====
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* ====================================
-     1. AMBIL DATA VIDEO DARI MEMORI RUMAH 1 & API (TAKTIK TUNDA CUAN)
-     ==================================== */
   const thumb = document.getElementById('videoThumb');
   const spinner = document.getElementById('thumbSpinner');
   const statusText = document.getElementById('statusText');
@@ -11,81 +8,84 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
 
-  // Kunci status awal: Bersihkan src gambar asli, sembunyikan kotak gambar dan boks tombol
   if (spinner) spinner.style.setProperty('display', 'block', 'important');
   if (statusText) statusText.style.setProperty('display', 'block', 'important');
   if (thumb) { thumb.style.setProperty('display', 'none', 'important'); thumb.removeAttribute('src'); }
   if (btnWrap) { btnWrap.style.setProperty('display', 'none', 'important'); }
 
-// === INISIALISASI DATA ===
-const params = new URLSearchParams(window.location.search);
-const fbUrl = params.get('url');
+  const params = new URLSearchParams(window.location.search);
+  const fbUrl = params.get('url');
 
-if (!fbUrl) {
-  JagaSpinnerTetapMuter();
-} else {
-  fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl))
-    .then(res => res.json())
-    .then(data => {
-      if (!data.success) throw new Error('Backend gagal');
+  if (!fbUrl) {
+    JagaSpinnerTetapMuter();
+  } else {
+    fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl))
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) throw new Error('Backend gagal');
 
-      // Pastikan hd1080 juga didefinisikan di sini
-      const videoData = { 
-        img: data.thumbnail, 
-        hd720: data.hd720,
-        hd1080: data.hd1080 // Pastikan ini sesuai dengan respon backendmu
-      };
+        const videoData = { 
+          img: data.thumbnail, 
+          hd720: data.hd720,
+          hd1080: data.hd1080 
+        };
 
-      // 1. Update Status
-      setTimeout(() => { if (statusText) statusText.textContent = "Optimizing server..."; }, 200);
-
-      // 2. Load Thumbnail
-      setTimeout(() => {
-        if (videoData.img?.trim()) {
-          if (thumb) {
-            thumb.onload = () => {
-              spinner?.style.setProperty('display', 'none', 'important');
-              statusText?.style.setProperty('display', 'none', 'important');
-              thumb.style.setProperty('display', 'block', 'important');
-            };
-            thumb.onerror = JagaSpinnerTetapMuter;
-            thumb.src = videoData.img;
-          }
-        } else {
-          JagaSpinnerTetapMuter();
-        }
-      }, 300);
-
-      // 3. Tampilkan Tombol
-      setTimeout(() => {
+        // Update UI setelah data diterima
         if (btnWrap) btnWrap.style.setProperty('display', 'flex', 'important');
-      }, 400);
+        if (thumb) { thumb.src = videoData.img; thumb.style.setProperty('display', 'block', 'important'); }
+        if (spinner) spinner.style.setProperty('display', 'none', 'important');
+        if (statusText) statusText.style.setProperty('display', 'none', 'important');
 
-      // 4. Aksi Download 720p (Direct Link - Instan)
-      if (btnHD) {
-        btnHD.onclick = () => {
-          if (videoData.hd720) {
-            window.location.href = videoData.hd720;
-          }
-        };
-      }
+        // 4. Aksi Download 720p (Metode Blob Paksa Unduh)
+        if (btnHD) {
+          btnHD.onclick = async () => {
+            if (videoData.hd720) {
+              btnHD.textContent = "Processing...";
+              try {
+                const res = await fetch(videoData.hd720);
+                const blob = await res.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Divdown_Video_720p.mp4';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+              } catch (err) { window.location.href = videoData.hd720; }
+              finally { btnHD.textContent = "720p Download HD"; }
+            }
+          };
+        }
 
-      // 5. Aksi Download 1080p (Direct Link - Instan)
-      if (btnHQ) {
-        btnHQ.onclick = () => {
-          const urlToDownload = videoData.hd1080 || videoData.hd720;
-          if (urlToDownload) {
-            window.location.href = urlToDownload;
-          }
-        };
-      }
-    })
-    .catch(err => {
-      console.error('Gagal:', err);
-      JagaSpinnerTetapMuter();
-    });
-}
-
+        // 5. Aksi Download 1080p (Metode Blob Paksa Unduh)
+        if (btnHQ) {
+          btnHQ.onclick = async () => {
+            const urlToDownload = videoData.hd1080 || videoData.hd720;
+            if (urlToDownload) {
+              btnHQ.textContent = "Processing...";
+              try {
+                const res = await fetch(urlToDownload);
+                const blob = await res.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Divdown_Video_1080p.mp4';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+              } catch (err) { window.location.href = urlToDownload; }
+              finally { btnHQ.textContent = "1080p High Quality"; }
+            }
+          };
+        }
+      })
+      .catch(err => {
+        console.error('Gagal:', err);
+        JagaSpinnerTetapMuter();
+      });
+  }
   /* ==========================================
      2. LOAD FAQ + DETEKSI BAHASA PREMIUM SINKRON
      ========================================== */
