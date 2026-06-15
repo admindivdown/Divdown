@@ -6,14 +6,10 @@
     "node": ">=18"
   },
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "python3 -m pip install -U yt-dlp"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.21.2",
     "cors": "^2.8.5"
-  },
-  "railway": {
-    "startCommand": "node server.js"
   }
 }
