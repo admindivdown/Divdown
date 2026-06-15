@@ -41,13 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
           btnHD.onclick = () => {
             if (videoData.hd720) {
               window.postMessage('triggerPopunder', '*');
-              const a = document.createElement('a');
-              a.href = videoData.hd720;
-              a.setAttribute('download', 'Divdown_Video_720p.mp4');
-              a.setAttribute('target', '_blank');
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
+              window.open(videoData.hd720, '_blank');
             }
           };
         }
@@ -58,13 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const urlToDownload = videoData.hd1080 || videoData.hd720;
             if (urlToDownload) {
               window.postMessage('triggerPopunder', '*');
-              const a = document.createElement('a');
-              a.href = urlToDownload;
-              a.setAttribute('download', 'Divdown_Video_1080p.mp4');
-              a.setAttribute('target', '_blank');
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
+              window.open(urlToDownload, '_blank');
             }
           };
         }
