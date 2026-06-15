@@ -6,7 +6,8 @@
     "node": "20.x"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "apt-get update && apt-get install -y python3 python3-pip && pip3 install yt-dlp"
   },
   "dependencies": {
     "express": "^4.21.2",
