@@ -85,17 +85,17 @@ function downloadVideo() {
     return;
   }
 
-btn.classList.add('loading');
-btn.innerHTML = '<span class="spinner"></span>Loading...';
-btn.disabled = true;  
+  btn.classList.add('loading');
+  btn.innerHTML = '<span class="spinner"></span>Loading...';
+  btn.disabled = true;  
 
-const isAdmin =
-  new URLSearchParams(location.search).get('tes') === '@analisa';
+  const isAdmin =
+    new URLSearchParams(location.search).get('tes') === '@analisa';
 
-window.location.href =
-  'rumah_index2/index.html?url=' +
-  encodeURIComponent(url) +
-  (isAdmin ? '&tes=@analisa' : '');
+  window.location.href =
+    'rumah_index2/index.html?url=' +
+    encodeURIComponent(url) +
+    (isAdmin ? '&tes=@analisa' : '');
 }
 
 /* ---------- 4. RESET BUTTON ---------- */
@@ -109,3 +109,46 @@ window.addEventListener('pageshow', function(e) {
     }
   }
 });
+// ======================================
+// MENU JARINGAN - MUAT SAAT DIKLIK
+// ======================================
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const menuDropdown = document.getElementById('menuDropdown');
+  const menuTempatIsi = document.getElementById('menuTempatIsi');
+  let sudahDimuat = false;
+
+  if (!menuBtn || !menuDropdown || !menuTempatIsi) return;
+
+  menuBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+
+    if (!sudahDimuat) {
+      const linkCSS = document.createElement('link');
+      linkCSS.rel = 'stylesheet';
+      linkCSS.href = 'jaringan/menu_jaringan.css';
+      document.head.appendChild(linkCSS);
+
+      fetch('jaringan/menu_jaringan.html')
+        .then(res => res.ok ? res.text() : '<div style="padding:10px;text-align:center;">Menu tidak tersedia</div>')
+        .then(html => {
+          menuTempatIsi.innerHTML = html;
+          sudahDimuat = true;
+          menuDropdown.classList.toggle('show-menu');
+        })
+        .catch(() => {
+          menuTempatIsi.innerHTML = '<div style="padding:10px;text-align:center;">Gagal memuat menu</div>';
+          menuDropdown.classList.toggle('show-menu');
+        });
+    } else {
+      menuDropdown.classList.toggle('show-menu');
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+      menuDropdown.classList.remove('show-menu');
+    }
+  });
+});
+// ======================================
