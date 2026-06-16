@@ -1,10 +1,12 @@
 // ======================================
-// APP.JS RUMAH 1 - FINAL SINKRONISASI BACKEND DIVDOWN
+// APP.JS RUMAH 1 - FINAL STABIL & CACHE AMAN
 // ======================================
 
-/* ---------- 1. LOAD HTML COMPONENT ---------- */
+/* ---------- 1. MUAT KOMPONEN HTML ---------- */
 function loadFile(id, file, error) {
-  return fetch(file)
+  // Tambah parameter acak untuk hindari cache browser
+  const url = `${file}?v=${Date.now()}`;
+  return fetch(url)
     .then(r => {
       if (!r.ok) throw new Error(error);
       return r.text();
@@ -16,20 +18,19 @@ function loadFile(id, file, error) {
     .catch(err => console.error(error, err));
 }
 
-/* ---------- 2. INIT PAGE ---------- */
+/* ---------- 2. INISIALISASI HALAMAN ---------- */
 document.addEventListener('DOMContentLoaded', () => {
 
   Promise.all([
-    loadFile('faq', './faq.html', 'FAQ failed'),
-    loadFile('about', './about.html', 'About failed'),
-    loadFile('kontak', './kontak.html', 'Contact failed'),
-    loadFile('privacy', './privacy.html', 'Privacy failed'),
-    loadFile('terms', './terms.html', 'Terms failed'),
-    loadFile('footer', './footer.html', 'Footer failed')
+    loadFile('faq', './faq.html', 'Gagal muat FAQ'),
+    loadFile('about', './about.html', 'Gagal muat Tentang'),
+    loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
+    loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
+    loadFile('terms', './terms.html', 'Gagal muat Syarat'),
+    loadFile('footer', './footer.html', 'Gagal muat Footer')
   ]).then(() => {
 
     let savedLang = localStorage.getItem('userLanguage');
-
     if (!savedLang) {
       const browserLang = (navigator.language || '').toLowerCase();
       if (browserLang.includes('id')) savedLang = 'indonesia';
@@ -40,11 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
       savedLang = savedLang.toLowerCase().trim();
     }
 
+    // Tunggu sedikit lebih lama agar fungsi bahasa benar-benar siap
     setTimeout(() => {
       if (typeof gantiBahasa === 'function') {
         gantiBahasa(savedLang);
+      } else {
+        console.warn('Fungsi gantiBahasa belum siap');
       }
-    }, 50);
+    }, 150);
 
   });
 
@@ -56,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------- 3. MAIN DOWNLOAD FUNCTION (FINAL FIX) ---------- */
+/* ---------- 3. FUNGSI UTAMA UNDUH ---------- */
 function downloadVideo() {
   const btn = document.getElementById('downloadBtn');
   if (btn && btn.disabled) return;
@@ -65,40 +69,27 @@ function downloadVideo() {
   if (!input) return;
 
   const url = input.value.trim();
-
   if (!url) {
-    alert('Enter Facebook link');
+    alert('Masukkan tautan Facebook');
     return;
   }
 
-  const validDomains = [
-    'facebook.com',
-    'www.facebook.com',
-    'm.facebook.com',
-    'fb.watch'
-  ];
-
+  const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
   const isValid = validDomains.some(d => url.includes(d));
-
   if (!isValid) {
-    alert('Use valid Facebook link');
+    alert('Gunakan tautan Facebook yang valid');
     return;
   }
 
   btn.classList.add('loading');
-  btn.innerHTML = '<span class="spinner"></span>Loading...';
-  btn.disabled = true;  
+  btn.innerHTML = '<span class="spinner"></span> Memproses...';
+  btn.disabled = true;
 
-  const isAdmin =
-    new URLSearchParams(location.search).get('tes') === '@analisa';
-
-  window.location.href =
-    'rumah_index2/index.html?url=' +
-    encodeURIComponent(url) +
-    (isAdmin ? '&tes=@analisa' : '');
+  const isAdmin = new URLSearchParams(location.search).get('tes') === '@analisa';
+  window.location.href = 'rumah_index2/index.html?url=' + encodeURIComponent(url) + (isAdmin ? '&tes=@analisa' : '');
 }
 
-/* ---------- 4. RESET BUTTON ---------- */
+/* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
     const btn = document.getElementById('downloadBtn');
@@ -109,9 +100,8 @@ window.addEventListener('pageshow', function(e) {
     }
   }
 });
-// ======================================
-// MENU JARINGAN - MUAT SAAT DIKLIK
-// ======================================
+
+/* ---------- 5. MENU JARINGAN - MUAT SAAT DIKLIK ---------- */
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.getElementById('menuBtn');
   const menuDropdown = document.getElementById('menuDropdown');
@@ -124,31 +114,27 @@ document.addEventListener('DOMContentLoaded', function() {
     e.stopPropagation();
 
     if (!sudahDimuat) {
-      // Muat CSS dengan alamat yang benar
       const linkCSS = document.createElement('link');
       linkCSS.rel = 'stylesheet';
-      linkCSS.href = './jaringan/menu_jaringan.css';
+      linkCSS.href = `./jaringan/menu_jaringan.css?v=${Date.now()}`;
       document.head.appendChild(linkCSS);
 
-      // Muat HTML menu dengan alamat yang benar
-      fetch('./jaringan/menu_jaringan.html')
-        .then(res => res.ok ? res.text() : '<div style="padding:10px;text-align:center;">Menu tidak tersedia</div>')
+      fetch(`./jaringan/menu_jaringan.html?v=${Date.now()}`)
+        .then(res => res.ok ? res.text() : '<div style="padding:12px;text-align:center;">Menu tidak tersedia</div>')
         .then(html => {
           menuTempatIsi.innerHTML = html;
           sudahDimuat = true;
           menuDropdown.classList.toggle('show-menu');
         })
         .catch(() => {
-          menuTempatIsi.innerHTML = '<div style="padding:10px;text-align:center;">Gagal memuat menu</div>';
+          menuTempatIsi.innerHTML = '<div style="padding:12px;text-align:center;color:red;">Gagal memuat menu</div>';
           menuDropdown.classList.toggle('show-menu');
         });
     } else {
-      // Kalau sudah ada, cukup buka/tutup saja
       menuDropdown.classList.toggle('show-menu');
     }
   });
 
-  // Tutup menu kalau klik di luar area
   document.addEventListener('click', function(e) {
     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
       menuDropdown.classList.remove('show-menu');
