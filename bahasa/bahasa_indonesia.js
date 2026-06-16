@@ -1,8 +1,8 @@
 window.indonesia = {
 
   /* ===== DATA UTAMA ===== */
-  title: "Divdown.net - Pengunduh Video Facebook Cepat | Gratis & Tanpa Login",
-  placeholder: "Tempel URL Facebook di sini...",
+  title: "Divdown.net - Pengunduh Video Cepat | Gratis & Tanpa Login",
+  placeholder: "Tempel URL video di sini...",
   free: "✓ 100% Gratis",
   fast: "✓ Cepat",
   noLogin: "✓ Tanpa Login",
@@ -11,51 +11,51 @@ window.indonesia = {
 
   /* ===== PERTANYAAN UMUM (FAQ) ===== */
   faqTitle: "Pertanyaan Umum",
-  faqQ1: "Apakah Divdown gratis digunakan?",
-  faqA1: "Ya. Divdown 100% gratis digunakan. Anda dapat menyimpan video dan Reels Facebook dalam kualitas HD tanpa biaya tersembunyi, langganan, atau batas unduhan.",
-  faqQ2: "Apakah saya perlu login ke akun Facebook?",
-  faqA2: "Tidak perlu login. Cukup tempel tautan video Facebook publik ke Divdown dan simpan dengan aman ke perangkat Anda. Kami tidak pernah meminta kata sandi atau data pribadi Anda.",
-  faqQ3: "Bisakah saya menyimpan Reels dan video Facebook dalam kualitas HD?",
-  faqA3: "Ya. Divdown mendukung penyimpanan video dan Reels Facebook dalam resolusi tinggi, termasuk 1080p jika tersedia. Berfungsi di semua perangkat: ponsel, tablet, dan desktop.",
-  faqQ4: "Mengapa video saya gagal diproses?",
-  faqA4: "Pastikan tautan video sudah benar dan konten disetel ke publik. Koneksi internet yang stabil juga diperlukan. Divdown hanya memproses video yang tersedia untuk publik untuk penayangan pribadi offline.",
-  faqQ5: "Apakah Divdown aman dan privat digunakan?",
-  faqA5: "Ya. Divdown aman dan menghormati privasi Anda. Kami menggunakan enkripsi SSL, tidak memerlukan login akun, dan tidak mengumpulkan, menyimpan, atau membagikan data pribadi atau konten yang diunduh. Semua pemrosesan terjadi di browser Anda.",
+  faqQ1: "Apakah Divdown aman dan privat?",
+  faqA1: "Ya. Divdown aman dan privat. Kami menggunakan SSL, tanpa perlu login, dan tidak pernah menyimpan data atau berkas Anda di server kami. Semua proses dilakukan langsung melalui browser Anda.",
+  faqQ2: "Apakah Divdown gratis digunakan?",
+  faqA2: "Ya. Divdown 100% gratis tanpa biaya tersembunyi, tanpa langganan, dan unduh tanpa batas.",
+  faqQ3: "Bisakah saya mengunduh dalam kualitas HD?",
+  faqA3: "Bisa. Divdown mendukung kualitas HD hingga 1080p, 2K, dan 4K jika tersedia pada berkas asli. Berfungsi di ponsel, tablet, dan komputer.",
+  faqQ4: "Apakah perlu login akun?",
+  faqA4: "Tidak perlu login. Cukup tempel tautan video atau Reels publik, lalu simpan langsung ke perangkat Anda. Kami tidak pernah meminta kata sandi atau informasi akun.",
+  faqQ5: "Mengapa video saya gagal diproses?",
+  faqA5: "Pastikan tautan sudah benar, video bersifat publik, dan koneksi internet Anda stabil. Divdown hanya dapat memproses video yang tersedia untuk diakses publik.",
 
   /* ===== TENTANG (ABOUT) ===== */
   aboutTitle: "Tentang Divdown",
-  aboutText1: "Divdown adalah sebuah platform online aman yang membantu Anda menyimpan video dan Reels Facebook dalam HD untuk ditonton secara offline. Layanan kami 100% gratis, cepat, dan tidak memerlukan login atau instalasi software.",
-  aboutText2: "Dibangun dengan antarmuka yang ringan, bersih, dan ramah seluler, Divdown memastikan pengalaman pengguna yang lancar dan privat. Kami menghormati privasi pengguna: tidak ada data pribadi yang dikumpulkan dan semua unduhan diproses dengan aman melalui browser Anda.",
+  aboutText1: "Divdown adalah platform daring yang aman dan membantu Anda menyimpan video dalam kualitas HD untuk ditonton secara luring. Layanan kami 100% gratis, cepat, dan tidak memerlukan masuk akun atau pemasangan perangkat lunak apa pun.",
+  aboutText2: "Dibangun dengan tampilan yang ringan, bersih, dan nyaman digunakan di ponsel, Divdown menjamin pengalaman yang lancar dan menjaga privasi Anda. Kami tidak mengumpulkan data pribadi apa pun dan semua proses unduhan dikerjakan dengan aman melalui peramban Anda.",
 
   /* ===== HUBUNGI KAMI (CONTACT) ===== */
   contactTitle: "Hubungi Kami",
-  contactText1: "Jika Anda memiliki pertanyaan, laporan error, atau penawaran bisnis, silakan hubungi kami melalui:",
+  contactText1: "Jika Anda memiliki pertanyaan, melaporkan gangguan, atau mengajukan kerja sama, silakan hubungi kami melalui:",
 
   /* ===== KEBIJAKAN PRIVASI (PRIVACY POLICY) ===== */
   privacyTitle: "Kebijakan Privasi",
-  privacyText1: "Di Divdown, kami berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan cara kami menangani informasi saat Anda menggunakan layanan kami untuk menyimpan video dan Reels Facebook yang tersedia untuk publik untuk penayangan pribadi offline.",
+  privacyText1: "Di Divdown, kami berkomitmen melindungi privasi Anda. Kebijakan ini menjelaskan cara kami menangani informasi saat Anda menggunakan layanan kami untuk menyimpan video yang dapat diakses publik untuk keperluan menonton secara luring dan pribadi.",
   privacySub1: "Informasi yang Tidak Kami Kumpulkan",
-  privacyText2: "Kami tidak mewajibkan Anda membuat akun atau login dengan Facebook. Divdown tidak mengumpulkan, menyimpan, atau membagikan informasi identitas pribadi, kata sandi, atau alamat email apa pun.",
-  privacySub2: "Tautan Video & Pemrosesan",
-  privacyText3: "URL video yang dikirimkan pengguna hanya digunakan untuk memproses permintaan unduhan. Semua pemrosesan terjadi dengan aman di browser Anda. Kami tidak menyimpan, men-cache, atau menyimpan salinan video atau URL apa pun di server kami.",
+  privacyText2: "Anda tidak wajib membuat akun atau masuk akun apa pun. Divdown tidak mengumpulkan, menyimpan, atau membagikan data pribadi, kata sandi, maupun alamat email Anda.",
+  privacySub2: "Tautan Video dan Proses Pengolahan",
+  privacyText3: "Tautan video yang dimasukkan hanya digunakan untuk memproses permintaan unduhan. Semua proses berlangsung secara aman di peramban Anda. Kami tidak menyimpan, menyimpan sementara, atau merekam salinan tautan maupun berkas video apa pun di server kami.",
   privacySub3: "Cookie",
-  privacyText4: "Divdown dapat menggunakan cookie penting untuk memastikan website berfungsi dengan benar dan untuk menganalisis lalu lintas anonim guna meningkatkan kinerja. Cookie ini tidak berisi informasi pribadi dan dapat dinonaktifkan di pengaturan browser Anda.",
+  privacyText4: "Divdown dapat menggunakan cookie yang diperlukan agar situs berjalan dengan baik dan untuk menganalisis lalu lintas secara anonim guna meningkatkan kinerja. Cookie ini tidak berisi data pribadi dan dapat dimatikan melalui pengaturan peramban Anda.",
   privacySub4: "Iklan Pendukung Layanan",
-  privacyText5: "Untuk menjaga Divdown tetap gratis dan terus berkembang, kami menampilkan beberapa iklan dari mitra tepercaya. Iklan ini membantu menutupi biaya server agar Anda tetap bisa mengunduh tanpa batas. Kami tidak menampilkan iklan yang mengganggu.",
+  privacyText5: "Agar Divdown tetap gratis dan terus berkembang, kami menampilkan iklan dari mitra yang dapat dipercaya. Iklan ini membantu menutupi biaya operasional server sehingga Anda dapat terus mengunduh tanpa batas. Kami hanya menayangkan iklan yang tidak mengganggu kenyamanan Anda.",
   privacySub5: "Pembaruan Kebijakan",
-  privacyText6: "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan perubahan dalam praktik kami atau karena alasan hukum. Setiap pembaruan akan diposting di halaman ini dengan tanggal revisi. Kami mendorong Anda untuk meninjau halaman ini secara berkala.",
+  privacyText6: "Kami dapat memperbarui kebijakan ini sewaktu-waktu seiring dengan perubahan layanan atau ketentuan hukum. Setiap perubahan akan ditampilkan di halaman ini beserta tanggal revisinya. Kami menyarankan Anda untuk meninjau halaman ini secara berkala.",
 
   /* ===== KETENTUAN LAYANAN (TERMS OF SERVICE) ===== */
   termsTitle: "Ketentuan Layanan",
-  termsText1: "Selamat datang di Divdown. Dengan mengakses atau menggunakan website ini, Anda setuju untuk menggunakan layanan kami secara bertanggung jawab hanya untuk tujuan pribadi dan legal.",
-  termsSub1: "Deskripsi Layanan",
-  termsText2: "Divdown adalah alat online yang dirancang untuk membantu pengguna menyimpan video dan Reels Facebook yang tersedia untuk publik untuk penayangan pribadi offline. Layanan ini disediakan secara gratis melalui antarmuka yang cepat, ringan, dan ramah seluler.",
-  termsSub2: "Penggunaan yang Dapat Diterima",
-  termsText3: "Anda setuju untuk menggunakan Divdown hanya untuk tujuan pribadi dan non-komersial. Anda bertanggung jawab untuk memastikan bahwa Anda memiliki hak untuk menyimpan dan melihat konten yang Anda proses. Divdown tidak menghosting konten video apa pun dan hanya memproses URL yang dapat diakses publik yang disediakan oleh pengguna.",
-  termsSub3: "Modifikasi Layanan",
-  termsText4: "Kami berhak untuk memodifikasi, menangguhkan, atau menghentikan bagian mana pun dari layanan kapan saja untuk menjaga kualitas, keamanan, dan pengalaman pengguna. Fitur dapat diperbarui tanpa pemberitahuan sebelumnya.",
-  termsSub4: "Penafian",
-  termsSub5: "Penafian", /* Dibuat seimbang agar engine membaca struktur dengan benar */
-  termsText5: "Divdown terus kami kembangkan agar tetap cepat, ringan, dan nyaman digunakan. Dengan menggunakan layanan ini, Anda setuju untuk menggunakannya secara bertanggung jawab hanya untuk keperluan pribadi. Kami tidak mengizinkan penggunaan Divdown untuk aktivitas yang melanggar hak cipta."
+  termsText1: "Selamat datang di Divdown. Dengan mengakses dan menggunakan situs ini, Anda menyetujui untuk memanfaatkan layanan kami secara bertanggung jawab hanya untuk keperluan pribadi dan sesuai aturan hukum.",
+  termsSub1: "Tentang Layanan",
+  termsText2: "Divdown adalah alat daring yang membantu pengguna menyimpan video yang dapat diakses publik untuk ditonton secara luring dan pribadi. Layanan ini tersedia secara gratis dengan tampilan yang cepat, ringan, dan nyaman di perangkat apa pun.",
+  termsSub2: "Penggunaan yang Diperbolehkan",
+  termsText3: "Anda hanya boleh menggunakan Divdown untuk keperluan pribadi dan non-komersial. Anda bertanggung jawab memastikan memiliki hak untuk menyimpan dan melihat konten yang diproses. Divdown tidak menyimpan konten video apa pun dan hanya mengolah tautan yang disediakan oleh pengguna.",
+  termsSub3: "Perubahan Layanan",
+  termsText4: "Kami berhak mengubah, menunda, atau menghentikan sebagian layanan kapan saja untuk menjaga kualitas, keamanan, dan kenyamanan pengguna. Pembaruan fitur dapat dilakukan tanpa pemberitahuan terlebih dahulu.",
+  termsSub4: "Penyangkalan",
+  termsSub5: "Penyangkalan",
+  termsText5: "Divdown terus kami kembangkan agar tetap cepat, ringan, dan nyaman digunakan. Dengan menggunakan layanan ini, Anda setuju untuk menggunakannya secara bertanggung jawab dan hanya untuk keperluan pribadi. Kami tidak mengizinkan penggunaan untuk aktivitas yang melanggar hak cipta atau peraturan yang berlaku."
 
 };
