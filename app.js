@@ -124,12 +124,14 @@ document.addEventListener('DOMContentLoaded', function() {
     e.stopPropagation();
 
     if (!sudahDimuat) {
+      // Muat CSS dengan alamat yang benar
       const linkCSS = document.createElement('link');
       linkCSS.rel = 'stylesheet';
-      linkCSS.href = 'jaringan/menu_jaringan.css';
+      linkCSS.href = './jaringan/menu_jaringan.css';
       document.head.appendChild(linkCSS);
 
-      fetch('jaringan/menu_jaringan.html')
+      // Muat HTML menu dengan alamat yang benar
+      fetch('./jaringan/menu_jaringan.html')
         .then(res => res.ok ? res.text() : '<div style="padding:10px;text-align:center;">Menu tidak tersedia</div>')
         .then(html => {
           menuTempatIsi.innerHTML = html;
@@ -141,10 +143,12 @@ document.addEventListener('DOMContentLoaded', function() {
           menuDropdown.classList.toggle('show-menu');
         });
     } else {
+      // Kalau sudah ada, cukup buka/tutup saja
       menuDropdown.classList.toggle('show-menu');
     }
   });
 
+  // Tutup menu kalau klik di luar area
   document.addEventListener('click', function(e) {
     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
       menuDropdown.classList.remove('show-menu');
