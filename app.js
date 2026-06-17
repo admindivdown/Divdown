@@ -2,9 +2,16 @@
 // APP.JS RUMAH 1 - FINAL STABIL & CACHE AMAN
 // ======================================
 
+/* --- FUNGSI KOORDINATOR MENU --- */
+function tutupSemuaMenu() {
+  const menuDropdown = document.getElementById('menuDropdown');
+  if (menuDropdown) menuDropdown.classList.remove('show-menu');
+  const bahasaDropdown = document.querySelector('.bahasa-dropdown');
+  if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
+}
+
 /* ---------- 1. MUAT KOMPONEN HTML ---------- */
 function loadFile(id, file, error) {
-  // Tambah parameter acak untuk hindari cache browser
   const url = `${file}?v=${Date.now()}`;
   return fetch(url)
     .then(r => {
@@ -41,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       savedLang = savedLang.toLowerCase().trim();
     }
 
-    // Tunggu sedikit lebih lama agar fungsi bahasa benar-benar siap
     setTimeout(() => {
       if (typeof gantiBahasa === 'function') {
         gantiBahasa(savedLang);
@@ -88,7 +94,6 @@ function downloadVideo() {
   const isAdmin = new URLSearchParams(location.search).get('tes') === '@analisa';
   window.location.href = 'rumah_index2/index.html?url=' + encodeURIComponent(url) + (isAdmin ? '&tes=@analisa' : '');
 }
-
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
@@ -112,6 +117,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   menuBtn.addEventListener('click', function(e) {
     e.stopPropagation();
+    
+    // Panggil koordinator agar bahasa tertutup jika menu dibuka
+    const bahasaDropdown = document.querySelector('.bahasa-dropdown');
+    if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
 
     if (!sudahDimuat) {
       const linkCSS = document.createElement('link');
