@@ -52,6 +52,15 @@ button{border:none;outline:none;font-family:inherit;}
 .faq-question{font-size:15.5px;font-weight:700;color:#313639;margin-bottom:6px;letter-spacing:-.01em;}
 .faq-answer{font-size:14px;line-height:1.65;color:#4e545a;}
 
+/* === PROGRESS DOWNLOAD === */
+.download-progress{width:100%;max-width:230px;height:4px;margin:6px auto 10px;background:#e5e7eb;border-radius:999px;overflow:hidden;display:none}
+.download-progress-bar{width:0;height:100%;background:#22c55e;border-radius:999px}
+.download-progress-bar.jalan{animation:downloadJalan 10s linear forwards}
+@keyframes downloadJalan{
+from{width:0}
+to{width:100%}
+}
+
 /* === RESPONSIVE === */
 @media (max-width:320px){
 .thumb-box{max-width:190px;}
