@@ -1,133 +1,92 @@
 /* === RESET & BASE === */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:#204f54; /* Warna latar teduh */
-  padding:4px 4px 20px;
-  color:#313639; /* Warna teks utama yang sangat ramah di mata (bukan hitam pekat) */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Font sistem premium */
-  font-size:16px;
-  line-height:1.6;
+* { margin: 0; padding: 0; box-sizing: border-box }
+body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 100%; margin: 0; padding-bottom: 20px }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 5px 6px 5px;
+  position: relative;
+  z-index: 99999;
 }
-.wrap{max-width:390px;margin:auto;padding-bottom:20px}
-.topbar{display:flex;justify-content:space-between;align-items:flex-start;margin:0 0 1px;position:relative;z-index:99999;padding-bottom:2px;}
+
+/* MENU BUTTON SAJA */
+.menu-wrapper{position:relative;margin-left:10px}
+.menu-btn{width:38px;height:32px;padding:0;margin:0;border:none;background:transparent;display:flex;flex-direction:column;justify-content:center;gap:3px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+
+.menu-btn span{display:block;width:34px;height:3.5px;background:#3d4246;border-radius:3px}
+
+.menu-btn:active{transform:scale(.96)}
 
 /* === BOX UMUM === */
-.box{position:relative;z-index:1;background:#fdfdfd;border:1px solid #eef2f5;border-radius:0;padding:12px 15px;margin-bottom:5px;box-shadow:none}
+.box { position: relative; z-index: 1; background: #fdfdfd; border-top: 1px solid #eef2f5; border-bottom: none; border-radius: 0; padding: 12px 15px; margin-bottom: 0; box-shadow: none }
 
 /* === DOWNLOAD BOX RUMAH 1 === */
-.download-box{padding:12px;margin:-3px -7px 0 -7px}
-
-/* --- LOGO & BRAND (TIDAK DIUBAH / TETAP SESUAI ASLINYA) --- */
-.brand-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
-.brand-logo{width:70px;height:70px;object-fit:contain}
-.brand-name{font-size:39px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:.5px;color:#2f3438;transform:scaleY(1.7)}
-.brand-net{font-size:10px;font-weight:700}
-/* ------------------------------------*/
-
-.download-row{display:flex;justify-content:center;align-items:center;gap:0;margin:13px 0}
-.download-row .input{width:205px;flex:none;margin-bottom:0;border-right:none}
-
-.download-btn{width:138px;height:58px;border:1px solid #cfd6de;background:linear-gradient(90deg,#cfd5dc 0%,#e8edf2 18%,#ffffff 50%,#e8edf2 82%,#cfd5dc 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#313639;letter-spacing:-0.01em}
-.download-btn:active{transform:translateY(1px)}
-
-.subtitle{text-align:center;font-size:20px;font-weight:600;color:#4c5156;line-height:1.35;margin-bottom:2px;letter-spacing:-0.02em}
-.subtitle-mini{text-align:center;font-size:14px;color:#808991;letter-spacing:0.01em;margin-bottom:25px}
-
-/* === INPUT === */
-.input{
-  width:100%;
-  height:50px;
-  font-size:16.5px;
-  background:#f3f6f9;
-  border:3px solid #4c6a2e; /* Hijau teduh */
-  padding:0 16px;
-  margin-bottom:12px;
-  color:#313639;
-  letter-spacing:-0.01em;
-}
-.input::placeholder{color:#88929d}
-.input:focus{border-color:#5c8138}
-
-/* === LOADING === */
-.loading{opacity:.82;pointer-events:none}
-.spinner{width:16px;height:16px;border:2px solid #c9d1d9;border-top-color:#587f30;border-radius:50%;display:inline-block;margin-right:8px;animation:spin .7s linear infinite}
-@keyframes spin{100%{transform:rotate(360deg)}}
-
-/* === TRUST === */
-.trust{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:#616a75;letter-spacing:-0.01em}
-
-/* === SECTION === */
-.section-title{font-size:24px;font-weight:650;margin-bottom:6px;color:#222527;text-align:center;letter-spacing:-0.02em}
-.section-subtitle{font-size:18px;font-weight:650;margin:18px 0 10px;color:#222527;text-align:center;letter-spacing:-0.015em}
-.section-text{font-size:15.5px;color:#3d4246;line-height:1.75;margin-bottom:5px;letter-spacing:-0.005em}
-.section-footer{margin-top:8px;font-size:13.5px;color:#6c757d;margin-bottom:5px;text-align:center}
-
-/* FAQ CLEAN RINGAN & SANGAT NYAMAN */
-.faq-title{
-  font-weight:650;
-  font-size:24px;
-  margin-bottom:12px;
-  color:#222527;
-  text-align:center;
-  letter-spacing:-0.02em;
-}
-.faq-item{
-  background:#f8f9fa;
-  border:1.5px solid #a4b98f; /* Hijau tua elegan */
-  padding:14px 12px;
-  margin-bottom:7px;
-}
-.faq-question{
-  font-weight:600;
-  font-size:16px;
-  color:#222527;
-  margin-bottom:6px;
-  letter-spacing:-0.01em;
-  line-height:1.4;
-}
-.faq-answer{
-  font-size:14px;
-  line-height:1.65;
-  color:#4e545a; /* Lebih lembut dibanding warna pertanyaan untuk kontras yang dinamis */
-  letter-spacing:-0.005em;
+.download-box{
+padding:2px 12px 12px;
+margin:0;
+background:linear-gradient(90deg,#d100ff 0.15%,#8a2be2 45%,#0d47a1 100%) !important;
 }
 
-/* === AD BOX RUMAH 1 - IKLAN === */
-.ad-box{margin:1px 0;padding:8px;background:#fdfdfd;border:1px solid #eef2f5}
+/* --- LOGO & BRAND --- */
+.brand-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top:13px; margin-bottom: 10px }
+.brand-logo { width: 70px; height: 70px; object-fit: contain }
+.brand-name { font-size: 39px; font-weight: 900; font-family: Impact, 'Arial Black', sans-serif; letter-spacing: .5px; color: #eef1f5; transform: scaleY(1.7) }
+.brand-net { font-size: 10px; font-weight: 700 }
 
-.ad-slot{
-  width:100%;
-  max-width:336px;
-  min-height:180px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:min-height .25s ease;
+.download-row{display:flex;align-items:stretch;justify-content:center;gap:0;margin:13px 0}
+.download-row .input { width: 100%; flex: 1; margin-bottom: 0; border-right: none }
+
+.download-btn{width:138px;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#5b5fff 0%,#a22fff 60%,#d100ff 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:0 8px 8px 0}
+.download-btn:active { transform: translateY(1px)}
+
+.subtitle { text-align: center; font-size: 20px; font-weight: 600; color: #eef1f5; line-height: 1.35; margin-bottom: 2px; letter-spacing: -0.02em }
+.subtitle-mini { text-align: center; font-size: 14px; color: #eef1f5; letter-spacing: 0.01em; margin-bottom: 25px }
+
+.input{width:100%;height:58px;font-size:16.5px;background:#eef2f4;border:1px solid #6b8f4b;border-radius:8px 0 0 8px;padding:0 16px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em;outline:none;box-shadow:none}
+
+/* === LOADING & TRUST === */
+.loading { opacity: .82; pointer-events: none }
+.spinner { width: 16px; height: 16px; border: 2px solid #c9d1d9; border-top-color: #587f30; border-radius: 50%; display: inline-block; margin-right: 8px; animation: spin .7s linear infinite }
+@keyframes spin { 100% { transform: rotate(360deg) } }
+.trust { display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; margin-top: 12px; font-size: 12.5px; color: #616a75; letter-spacing: -0.01em }
+
+/* === SECTION & FAQ (TANPA GARIS ATAS) === */
+.section-title { font-size: 24px; font-weight: 650; margin: 10px 0 6px; color: #222527; text-align: center; letter-spacing: -0.02em }
+.section-subtitle { font-size: 18px; font-weight: 650; margin: 18px 0 10px; color: #222527; text-align: center; letter-spacing: -0.015em }
+.section-text { font-size: 15.5px; color: #3d4246; line-height: 1.75; margin-bottom: 5px; letter-spacing: -0.005em }
+.section-footer { margin-top: 8px; font-size: 13.5px; color: #6c757d; margin-bottom: 5px; text-align: center }
+
+.faq-title { font-weight: 650; font-size: 24px; margin: 10px 0 12px; color: #222527; text-align: center; letter-spacing: -0.02em }
+.faq-item { background: #f8f9fa; border: 1.5px solid #a4b98f; padding: 14px 12px; margin-bottom: 7px }
+.faq-question { font-weight: 600; font-size: 16px; color: #222527; margin-bottom: 6px; letter-spacing: -0.01em; line-height: 1.4 }
+.faq-answer { font-size: 14px; line-height: 1.65; color: #4e545a; letter-spacing: -0.005em }
+
+/* === AD BOX & SECURITY === */
+.ad-box{
+margin:0;
+padding:8px;
+background:linear-gradient(90deg,#d100ff 0.15%,#8a2be2 45%,#0d47a1 100%);
+border:none
 }
 
-.ad-header{height:24px;display:flex;align-items:center;justify-content:center;font-style:italic;font-size:10px;font-weight:600;color:#868e96;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid #eef2f5;margin:-8px -8px 8px -8px;background:#fafafa}
+.ad-slot { width: 100%; max-width: 336px; min-height: 290px; margin: auto; display: flex; align-items: center; justify-content: center }
+
+.ad-header{
+display:none;
+}
+
+.security-box { background: #f1f3f5; padding: 8px 12px; margin: 1px 0; text-align: center }
+.security-top { font-size: 12.5px; font-weight: 600; color: #57626d; letter-spacing: .3px }
+.security-bottom { margin-top: 3px; font-size: 11px; font-style: italic; color: #868e96; letter-spacing: .8px }
 
 /* === UI RESET === */
-.box,.faq-item{transition:border-color .15s ease,background .15s ease}
-.box:hover,.faq-item:hover{border-color:#d0d7de}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-thumb{background:#dfe5eb}
-::-webkit-scrollbar-track{background:#f8fafb}
-html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}
-img{display:block;max-width:100%}
-button,input{font-family:inherit;appearance:none;-webkit-appearance:none;border-radius:0;outline:none}
-
-/* === SECURITY BOX === */
-.security-box{background:#f1f3f5;border:1px solid #2342;padding:8px 12px;margin:1px 0;text-align:center}
-.security-top{font-size:12.5px;font-weight:600;color:#57626d;letter-spacing:.3px}
-.security-bottom{margin-top:3px;font-size:11px;font-style:italic;color:#868e96;letter-spacing:.8px}
-
-/* === SABUK PENGAMAN RUMAH 1 === */
-html,body{overflow-x:hidden}
-.wrap,.box{overflow-x:hidden}
-img{max-width:100%;height:auto}
-.ad-slot iframe{max-width:100%!important;height:auto!important}
-
-/* === ADMIN MODE === */
-.admin-mode .ad-box{display:none!important}
+.box, .faq-item { transition: border-color .15s ease }
+::-webkit-scrollbar { width: 5px }
+::-webkit-scrollbar-thumb { background: #dfe5eb }
+html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth }
+img { display: block; max-width: 100% }
+button, input { font-family: inherit; appearance: none; -webkit-appearance: none; border-radius: 0; outline: none }
+.admin-mode .ad-box { display: none !important }

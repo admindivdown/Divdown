@@ -29,7 +29,6 @@ function loadFile(id, file, error) {
 document.addEventListener('DOMContentLoaded', () => {
 
   Promise.all([
-    loadFile('faq', './faq.html', 'Gagal muat FAQ'),
     loadFile('about', './about.html', 'Gagal muat Tentang'),
     loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
     loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
