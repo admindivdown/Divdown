@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
 
-const downloadProgress = document.getElementById('downloadProgress');
-const downloadProgressBar = document.getElementById('downloadProgressBar');
-
   if (spinner) spinner.style.setProperty('display', 'block', 'important');
   if (statusText) statusText.style.setProperty('display', 'block', 'important');
   if (thumb) { thumb.style.setProperty('display', 'none', 'important'); thumb.removeAttribute('src'); }
@@ -44,7 +41,6 @@ if (btnHD) {
   btnHD.onclick = async () => {
     if (videoData.hd720) {
       btnHD.textContent = "Processing...";
-      mulaiProgressDownload();
       
       // Sinyal pemicu popunder untuk file iklan
       window.postMessage('triggerPopunder', '*');
@@ -60,13 +56,8 @@ if (btnHD) {
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);
-      } catch (err) {
-  window.location.href = videoData.hd720;
-}
-finally {
-  btnHD.textContent = "720p Download HD";
-  resetProgressDownload();
-}
+      } catch (err) { window.location.href = videoData.hd720; }
+      finally { btnHD.textContent = "720p Download HD"; }
     }
   };
 }
@@ -119,23 +110,6 @@ function JagaSpinnerTetapMuter() {
   if (spinner) spinner.style.setProperty('display', 'block', 'important');
   if (statusText) { statusText.style.setProperty('display', 'block', 'important'); statusText.textContent = "Processing video..."; }
   if (thumb) { thumb.removeAttribute('src'); thumb.style.setProperty('display', 'none', 'important'); }
-}
-
-function mulaiProgressDownload(){
-  const progress=document.getElementById('downloadProgress');
-  const bar=document.getElementById('downloadProgressBar');
-  if(!progress||!bar)return;
-  progress.style.display='block';
-  bar.classList.remove('jalan');
-  void bar.offsetWidth;
-  bar.classList.add('jalan');
-}
-function resetProgressDownload(){
-  const progress=document.getElementById('downloadProgress');
-  const bar=document.getElementById('downloadProgressBar');
-  if(!progress||!bar)return;
-  bar.classList.remove('jalan');
-  progress.style.display='none';
 }
 
 async function loadFAQ() {
