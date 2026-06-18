@@ -60,9 +60,10 @@ if (btnHD) {
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);
-      } catch (err) { window.location.href = videoData.hd720; }
-      finally {
-  finally {
+      } catch (err) {
+  window.location.href = videoData.hd720;
+}
+finally {
   btnHD.textContent = "720p Download HD";
   resetProgressDownload();
 }
