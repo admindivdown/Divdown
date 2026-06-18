@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (btnHD) {
   btnHD.onclick = async () => {
     if (videoData.hd720) {
-      btnHD.textContent = "Processing...";
+      btnHD.textContent = "Processing...";mulaiProgressDownload();
       
       // Sinyal pemicu popunder untuk file iklan
       window.postMessage('triggerPopunder', '*');
@@ -57,7 +57,10 @@ if (btnHD) {
         a.remove();
         window.URL.revokeObjectURL(url);
       } catch (err) { window.location.href = videoData.hd720; }
-      finally { btnHD.textContent = "720p Download HD"; }
+      finally {
+     btnHD.textContent = "720p Download HD";
+       resetProgressDownload();
+     }
     }
   };
 }
@@ -68,7 +71,8 @@ if (btnHD) {
             const urlToDownload = videoData.hd1080 || videoData.hd720;
             if (urlToDownload) {
               btnHQ.textContent = "Processing...";
-              
+              // === DAMMY PROGRES BERJALAN ===
+              mulaiProgressDownload();
               // Sinyal pemicu popunder untuk file iklan
               window.postMessage('triggerPopunder', '*');
               
@@ -84,7 +88,10 @@ if (btnHD) {
                 a.remove();
                 window.URL.revokeObjectURL(url);
               } catch (err) { window.location.href = urlToDownload; }
-              finally { btnHQ.textContent = "1080p High Quality"; }
+              finally {
+            btnHQ.textContent = "1080p High Quality";
+              resetProgressDownload();
+             }
             }
           };
         }
@@ -154,3 +161,9 @@ async function loadFooter() {
     console.error('Footer gagal dimuat', e);
   }
 }
+
+// === DAMMY PROGRES BERJALAN ===
+function mulaiProgressDownload(){const progress=document.getElementById('downloadProgress');const bar=document.getElementById('downloadProgressBar');if(!progress||!bar)return;progress.style.display='block';bar.classList.remove('jalan');void bar.offsetWidth;bar.classList.add('jalan');}
+
+function resetProgressDownload(){const progress=document.getElementById('downloadProgress');const bar=document.getElementById('downloadProgressBar');if(!progress||!bar)return;bar.classList.remove('jalan');progress.style.display='none';}
+// === END DAMMY PROGRES BERJALAN ===
