@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------- 3. FUNGSI UTAMA UNDUH (DENGAN PRE-FETCHING) ---------- */
+/* ---------- 3. FUNGSI UTAMA UNDUH (DENGAN URL PARAMETER) ---------- */
 async function downloadVideo() {
   const btn = document.getElementById('downloadBtn');
   if (btn && btn.disabled) return;
@@ -84,10 +84,10 @@ async function downloadVideo() {
     const data = await res.json();
     
     if (data.success) {
-      // Menambahkan originalUrl agar Rumah 2 bisa melakukan fetch 1080p
-      const dataToSave = { ...data, originalUrl: url };
-      localStorage.setItem('videoData', JSON.stringify(dataToSave));
-      window.location.href = 'rumah_index2/index.html';
+      // Simpan data di local storage untuk thumbnail
+      localStorage.setItem('videoData', JSON.stringify(data));
+      // Pindah ke Rumah 2 dengan membawa URL di alamat browser
+      window.location.href = `rumah_index2/index.html?url=${encodeURIComponent(url)}`;
     } else {
       throw new Error('Gagal ambil data');
     }
@@ -98,7 +98,6 @@ async function downloadVideo() {
     btn.disabled = false;
   }
 }
-
 
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {

@@ -1,13 +1,24 @@
-/* === APP_INDEX2.JS FINAL - VERSI SINKRON SERVER & LOCALSTORAGE === */
-document.addEventListener('DOMContentLoaded', () => {
+/* === APP_INDEX2.JS - VERSI SINKRON URL PARAMETER === */
+document.addEventListener('DOMContentLoaded', async () => {
   const thumb = document.getElementById('videoThumb');
   const btnWrap = document.getElementById('downloadWrap');
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
 
-  // Ambil data dari Rumah 1
+  // 1. Ambil URL dari parameter browser (?url=...)
+  const params = new URLSearchParams(window.location.search);
+  const fbUrl = params.get('url');
+
+  // 2. Ambil data cadangan dari LocalStorage
   const data = JSON.parse(localStorage.getItem('videoData'));
 
+  // Jika tidak ada URL dan tidak ada data, kembali ke Home
+  if (!fbUrl && !data) {
+    window.location.href = '../index.html';
+    return;
+  }
+
+  // Tampilkan data (thumbnail) jika tersedia
   if (data) {
     if (thumb) { 
         thumb.src = data.thumbnail; 
@@ -15,11 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (btnWrap) btnWrap.style.display = 'flex';
 
-    // Tombol 720p: Pakai data yang sudah ada
+    // Tombol 720p: Pakai data 720p yang sudah ada
     if (btnHD) btnHD.onclick = () => unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
     
-    // Tombol 1080p: Fetch ulang ke server menggunakan URL asli
-    if (btnHQ) btnHQ.onclick = () => ambil1080pDanUnduh(btnHQ, data.originalUrl);
+    // Tombol 1080p: Fetch ulang ke server menggunakan fbUrl (dari parameter) atau originalUrl (dari storage)
+    const targetUrl = fbUrl || data.originalUrl;
+    if (btnHQ) btnHQ.onclick = () => ambil1080pDanUnduh(btnHQ, targetUrl);
   }
 
   loadFAQ();
