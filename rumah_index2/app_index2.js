@@ -1,8 +1,6 @@
-/* === BAGIAN 1: LOGIKA INSTAN DARI LOCALSTORAGE === */
+/* === APP_INDEX2.JS FINAL - CLEAN VERSION === */
 document.addEventListener('DOMContentLoaded', () => {
   const thumb = document.getElementById('videoThumb');
-  const spinner = document.getElementById('thumbSpinner');
-  const statusText = document.getElementById('statusText');
   const btnWrap = document.getElementById('downloadWrap');
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
@@ -11,34 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const data = JSON.parse(localStorage.getItem('videoData'));
 
   if (data) {
-    // Tampilkan thumbnail langsung secara instan
+    // Langsung tampilkan thumbnail tanpa spinner
     if (thumb) { 
         thumb.src = data.thumbnail; 
-        thumb.style.setProperty('display', 'block', 'important'); 
+        thumb.style.display = 'block'; 
     }
-    // Sembunyikan spinner & status karena data sudah siap
-    if (spinner) spinner.style.setProperty('display', 'none', 'important');
-    if (statusText) statusText.style.setProperty('display', 'none', 'important');
-    if (btnWrap) btnWrap.style.setProperty('display', 'flex', 'important');
+    
+    // Langsung tampilkan tombol download
+    if (btnWrap) btnWrap.style.display = 'flex';
 
     // Konfigurasi tombol download
     if (btnHD) btnHD.onclick = () => unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
-    if (btnHQ) btnHQ.onclick = () => unduhVideo(data.hd1080, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
-  } else {
-    // Jika data tidak ada (user akses langsung), tampilkan loading
-    JagaSpinnerTetapMuter();
+    if (btnHQ) btnHQ.onclick = () => unduhVideo(data.hd1080 || data.hd720, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
   }
 
   loadFAQ();
   loadFooter();
 });
-
-function JagaSpinnerTetapMuter() {
-  const spinner = document.getElementById('thumbSpinner');
-  const statusText = document.getElementById('statusText');
-  if (spinner) spinner.style.setProperty('display', 'block', 'important');
-  if (statusText) { statusText.style.setProperty('display', 'block', 'important'); statusText.textContent = "Processing..."; }
-}
 
 async function unduhVideo(url, namaFile, btn, teksAsli) {
   if (!url) return;
