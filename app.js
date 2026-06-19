@@ -96,7 +96,7 @@ async function downloadVideo() {
     btn.disabled = false;
   }
 }
-/* ---------- 2. RESET TOMBOL KEMBALI ---------- */
+/* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
     const btn = document.getElementById('downloadBtn');
@@ -108,7 +108,7 @@ window.addEventListener('pageshow', function(e) {
   }
 });
 
-/* ---------- 3. MENU JARINGAN - MUAT SAAT DIKLIK ---------- */
+/* ---------- 5. MENU JARINGAN - MUAT SAAT DIKLIK ---------- */
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.getElementById('menuBtn');
   const menuDropdown = document.getElementById('menuDropdown');

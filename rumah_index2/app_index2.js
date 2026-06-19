@@ -1,36 +1,59 @@
-/* === APP_INDEX2.JS FINAL - CLEAN VERSION === */
+/* === APP_INDEX2.JS FINAL - VERSI SINKRON SERVER === */
+
 document.addEventListener('DOMContentLoaded', () => {
   const thumb = document.getElementById('videoThumb');
   const btnWrap = document.getElementById('downloadWrap');
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
 
-  // Ambil data yang sudah disiapkan oleh Rumah 1
+  // Ambil data yang sudah disiapkan oleh Rumah 1 (Hanya Thumbnail & 720p)
   const data = JSON.parse(localStorage.getItem('videoData'));
 
   if (data) {
-    // Langsung tampilkan thumbnail tanpa spinner
     if (thumb) { 
         thumb.src = data.thumbnail; 
         thumb.style.display = 'block'; 
     }
-    
-    // Langsung tampilkan tombol download
     if (btnWrap) btnWrap.style.display = 'flex';
 
-    // Konfigurasi tombol download
+    // Tombol 720p: Pakai data yang sudah ada
     if (btnHD) btnHD.onclick = () => unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
-    if (btnHQ) btnHQ.onclick = () => unduhVideo(data.hd1080 || data.hd720, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
+    
+    // Tombol 1080p: Ambil data baru dari server saat diklik
+    if (btnHQ) btnHQ.onclick = () => ambil1080pDanUnduh(btnHQ);
   }
 
   loadFAQ();
   loadFooter();
 });
 
+// Fungsi khusus tombol 1080p: Fetch ulang ke server
+async function ambil1080pDanUnduh(btn) {
+  const params = new URLSearchParams(window.location.search);
+  const fbUrl = params.get('url');
+  if (!fbUrl) return;
+
+  btn.textContent = "Processing 1080p...";
+  window.postMessage('triggerPopunder', '*');
+
+  try {
+    // Memanggil API kembali untuk mendapatkan semua format termasuk 1080p
+    const res = await fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl));
+    const data = await res.json();
+    
+    // Asumsi: Server kamu akan tetap mengirimkan list format atau logic 1080p di sini
+    const url1080 = data.hd1080 || data.hd720; 
+    
+    await unduhVideo(url1080, 'Divdown_Video_1080p.mp4', btn, '1080p High Quality');
+  } catch (err) { 
+    console.error("Gagal ambil 1080p", err);
+    btn.textContent = '1080p High Quality';
+  }
+}
+
 async function unduhVideo(url, namaFile, btn, teksAsli) {
   if (!url) return;
   btn.textContent = "Processing...";
-  window.postMessage('triggerPopunder', '*');
   try {
     const res = await fetch(url);
     const blob = await res.blob();
@@ -45,7 +68,8 @@ async function unduhVideo(url, namaFile, btn, teksAsli) {
     btn.textContent = teksAsli;
   }
 }
-/* === BAGIAN 2: PROGRESS, BAHASA, & KOMPONEN === */
+/* === BAGIAN 2: BAHASA & KOMPONEN === */
+
 async function loadFAQ() {
   try {
     const res = await fetch('faq_rumah2.html');
