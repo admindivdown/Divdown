@@ -1,5 +1,4 @@
-// ===== APP_INDEX2.JS RUMAH 2 FINAL - SINKRON BAHASA & DINAMIS API =====
-
+/* === BAGIAN 1: LOGIKA INSTAN DARI LOCALSTORAGE === */
 document.addEventListener('DOMContentLoaded', () => {
   const thumb = document.getElementById('videoThumb');
   const spinner = document.getElementById('thumbSpinner');
@@ -8,116 +7,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
 
-  if (spinner) spinner.style.setProperty('display', 'block', 'important');
-  if (statusText) statusText.style.setProperty('display', 'block', 'important');
-  if (thumb) { thumb.style.setProperty('display', 'none', 'important'); thumb.removeAttribute('src'); }
-  if (btnWrap) { btnWrap.style.setProperty('display', 'none', 'important'); }
+  // Ambil data yang sudah disiapkan oleh Rumah 1
+  const data = JSON.parse(localStorage.getItem('videoData'));
 
-  const params = new URLSearchParams(window.location.search);
-  const fbUrl = params.get('url');
-
-    if (!fbUrl) {
-    JagaSpinnerTetapMuter();
-  } else {
-    fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl))
-      .then(res => res.json())
-      .then(data => {
-        if (!data.success) throw new Error('Backend gagal');
-
-        const videoData = { 
-          img: data.thumbnail, 
-          hd720: data.hd720,
-          hd1080: data.hd1080 
-        };
-
-        // Update UI setelah data diterima
-        if (btnWrap) btnWrap.style.setProperty('display', 'flex', 'important');
-        if (thumb) { thumb.src = videoData.img; thumb.style.setProperty('display', 'block', 'important'); }
-        if (spinner) spinner.style.setProperty('display', 'none', 'important');
-        if (statusText) statusText.style.setProperty('display', 'none', 'important');
-
-// 4. Aksi Download 720p (Metode Blob Paksa Unduh)
-if (btnHD) {
-  btnHD.onclick = async () => {
-    if (videoData.hd720) {
-      btnHD.textContent = "Processing...";mulaiProgressDownload();
-      
-      // Sinyal pemicu popunder untuk file iklan
-      window.postMessage('triggerPopunder', '*');
-      
-      try {
-        const res = await fetch(videoData.hd720);
-        const blob = await res.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Divdown_Video_720p.mp4';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-      } catch (err) { window.location.href = videoData.hd720; }
-      finally {
-     btnHD.textContent = "720p Download HD";
-       resetProgressDownload();
-     }
+  if (data) {
+    // Tampilkan thumbnail langsung secara instan
+    if (thumb) { 
+        thumb.src = data.thumbnail; 
+        thumb.style.setProperty('display', 'block', 'important'); 
     }
-  };
-}
+    // Sembunyikan spinner & status karena data sudah siap
+    if (spinner) spinner.style.setProperty('display', 'none', 'important');
+    if (statusText) statusText.style.setProperty('display', 'none', 'important');
+    if (btnWrap) btnWrap.style.setProperty('display', 'flex', 'important');
 
-        // 5. Aksi Download 1080p (Metode Blob Paksa Unduh)
-        if (btnHQ) {
-          btnHQ.onclick = async () => {
-            const urlToDownload = videoData.hd1080 || videoData.hd720;
-            if (urlToDownload) {
-              btnHQ.textContent = "Processing...";
-              // === DAMMY PROGRES BERJALAN ===
-              mulaiProgressDownload();
-              // Sinyal pemicu popunder untuk file iklan
-              window.postMessage('triggerPopunder', '*');
-              
-              try {
-                const res = await fetch(urlToDownload);
-                const blob = await res.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Divdown_Video_1080p.mp4';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
-              } catch (err) { window.location.href = urlToDownload; }
-              finally {
-            btnHQ.textContent = "1080p High Quality";
-              resetProgressDownload();
-             }
-            }
-          };
-        }
-      }) // <--- INI PENUTUPNYA
-      .catch(err => {
-        console.error('Gagal:', err);
-        JagaSpinnerTetapMuter();
-      });
+    // Konfigurasi tombol download
+    if (btnHD) btnHD.onclick = () => unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
+    if (btnHQ) btnHQ.onclick = () => unduhVideo(data.hd1080, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
+  } else {
+    // Jika data tidak ada (user akses langsung), tampilkan loading
+    JagaSpinnerTetapMuter();
   }
 
-  /* ==========================================
-     2. LOAD FAQ + DETEKSI BAHASA PREMIUM SINKRON
-     ========================================== */
   loadFAQ();
   loadFooter();
 });
 
-// Fungsi pengunci: Memaksa spinner tetap aktif berputar tanpa memunculkan gambar dummy pecah
 function JagaSpinnerTetapMuter() {
   const spinner = document.getElementById('thumbSpinner');
   const statusText = document.getElementById('statusText');
-  const thumb = document.getElementById('videoThumb');
   if (spinner) spinner.style.setProperty('display', 'block', 'important');
-  if (statusText) { statusText.style.setProperty('display', 'block', 'important'); statusText.textContent = "Processing video..."; }
-  if (thumb) { thumb.removeAttribute('src'); thumb.style.setProperty('display', 'none', 'important'); }
+  if (statusText) { statusText.style.setProperty('display', 'block', 'important'); statusText.textContent = "Processing..."; }
 }
+
+async function unduhVideo(url, namaFile, btn, teksAsli) {
+  if (!url) return;
+  btn.textContent = "Processing...";
+  mulaiProgressDownload();
+  window.postMessage('triggerPopunder', '*');
+  try {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = window.URL.createObjectURL(blob);
+    a.download = namaFile;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  } catch (err) { window.location.href = url; }
+  finally {
+    btn.textContent = teksAsli;
+    resetProgressDownload();
+  }
+}
+/* === BAGIAN 2: PROGRESS, BAHASA, & KOMPONEN === */
+function mulaiProgressDownload(){const p=document.getElementById('downloadProgress');const b=document.getElementById('downloadProgressBar');if(p&&b){p.style.display='block';b.classList.add('jalan');}}
+function resetProgressDownload(){const p=document.getElementById('downloadProgress');const b=document.getElementById('downloadProgressBar');if(p&&b){b.classList.remove('jalan');p.style.display='none';}}
 
 async function loadFAQ() {
   try {
@@ -129,25 +74,21 @@ async function loadFAQ() {
     
     let savedLangRumah2 = localStorage.getItem('kunciBahasaRumah2');
     if (!savedLangRumah2) {
-      const browserLang = navigator.language || navigator.userLanguage;
-      if (browserLang.startsWith('id')) { savedLangRumah2 = 'indonesia'; }
-      else if (browserLang.startsWith('pt')) { savedLangRumah2 = 'brazil'; }
-      else if (browserLang.startsWith('hi')) { savedLangRumah2 = 'india'; }
-      else { savedLangRumah2 = 'english'; }
+      const browserLang = navigator.language || navigator.userLanguage || '';
+      if (browserLang.startsWith('id')) savedLangRumah2 = 'indonesia';
+      else if (browserLang.startsWith('pt')) savedLangRumah2 = 'brazil';
+      else if (browserLang.startsWith('hi')) savedLangRumah2 = 'india';
+      else savedLangRumah2 = 'english';
       localStorage.setItem('kunciBahasaRumah2', savedLangRumah2);
     }
-
     let langCode = 'en'; 
-    if (savedLangRumah2 === 'indonesia') { langCode = 'id'; }
-    else if (savedLangRumah2 === 'brazil') { langCode = 'br'; }
-    else if (savedLangRumah2 === 'india') { langCode = 'in'; }
-
+    if (savedLangRumah2 === 'indonesia') langCode = 'id';
+    else if (savedLangRumah2 === 'brazil') langCode = 'br';
+    else if (savedLangRumah2 === 'india') langCode = 'in';
     document.querySelectorAll('[data-en]').forEach(el => {
       el.textContent = el.getAttribute(`data-${langCode}`) || el.getAttribute('data-en');
     });
-  } catch (e) {
-    console.log('FAQ gagal dimuat', e);
-  }
+  } catch (e) { console.log('FAQ tidak ditemukan'); }
 }
 
 async function loadFooter() {
@@ -157,13 +98,5 @@ async function loadFooter() {
     const html = await res.text();
     const target = document.getElementById('footer');
     if (target) target.innerHTML = html;
-  } catch (e) {
-    console.error('Footer gagal dimuat', e);
-  }
+  } catch (e) { console.log('Footer tidak ditemukan'); }
 }
-
-// === DAMMY PROGRES BERJALAN ===
-function mulaiProgressDownload(){const progress=document.getElementById('downloadProgress');const bar=document.getElementById('downloadProgressBar');if(!progress||!bar)return;progress.style.display='block';bar.classList.remove('jalan');void bar.offsetWidth;bar.classList.add('jalan');}
-
-function resetProgressDownload(){const progress=document.getElementById('downloadProgress');const bar=document.getElementById('downloadProgressBar');if(!progress||!bar)return;bar.classList.remove('jalan');progress.style.display='none';}
-// === END DAMMY PROGRES BERJALAN ===

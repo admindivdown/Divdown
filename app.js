@@ -27,7 +27,6 @@ function loadFile(id, file, error) {
 
 /* ---------- 2. INISIALISASI HALAMAN ---------- */
 document.addEventListener('DOMContentLoaded', () => {
-
   Promise.all([
     loadFile('about', './about.html', 'Gagal muat Tentang'),
     loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFile('terms', './terms.html', 'Gagal muat Syarat'),
     loadFile('footer', './footer.html', 'Gagal muat Footer')
   ]).then(() => {
-
     let savedLang = localStorage.getItem('userLanguage');
     if (!savedLang) {
       const browserLang = (navigator.language || '').toLowerCase();
@@ -46,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       savedLang = savedLang.toLowerCase().trim();
     }
-
     setTimeout(() => {
       if (typeof gantiBahasa === 'function') {
         gantiBahasa(savedLang);
@@ -54,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Fungsi gantiBahasa belum siap');
       }
     }, 150);
-
   });
 
   const input = document.getElementById('urlInput');
@@ -65,35 +61,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------- 3. FUNGSI UTAMA UNDUH ---------- */
-function downloadVideo() {
+/* ---------- 3. FUNGSI UTAMA UNDUH (DENGAN PRE-FETCHING) ---------- */
+async function downloadVideo() {
   const btn = document.getElementById('downloadBtn');
   if (btn && btn.disabled) return;
 
   const input = document.getElementById('urlInput');
   if (!input) return;
-
   const url = input.value.trim();
-  if (!url) {
-    alert('Masukkan tautan Facebook');
-    return;
-  }
+  if (!url) { alert('Masukkan tautan Facebook'); return; }
 
   const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
   const isValid = validDomains.some(d => url.includes(d));
-  if (!isValid) {
-    alert('Gunakan tautan Facebook yang valid');
-    return;
-  }
+  if (!isValid) { alert('Gunakan tautan Facebook yang valid'); return; }
 
   btn.classList.add('loading');
   btn.innerHTML = '<span class="spinner"></span> Memproses...';
   btn.disabled = true;
 
-  const isAdmin = new URLSearchParams(location.search).get('tes') === '@analisa';
-  window.location.href = 'rumah_index2/index.html?url=' + encodeURIComponent(url) + (isAdmin ? '&tes=@analisa' : '');
+  try {
+    const res = await fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(url));
+    const data = await res.json();
+    
+    if (data.success) {
+      localStorage.setItem('videoData', JSON.stringify(data));
+      window.location.href = 'rumah_index2/index.html';
+    } else {
+      throw new Error('Gagal ambil data');
+    }
+  } catch (err) {
+    alert('Gagal memproses video, silakan coba lagi');
+    btn.classList.remove('loading');
+    btn.innerHTML = 'Download';
+    btn.disabled = false;
+  }
 }
-/* ---------- 4. RESET TOMBOL KEMBALI ---------- */
+/* ---------- 2. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
     const btn = document.getElementById('downloadBtn');
@@ -105,7 +108,7 @@ window.addEventListener('pageshow', function(e) {
   }
 });
 
-/* ---------- 5. MENU JARINGAN - MUAT SAAT DIKLIK ---------- */
+/* ---------- 3. MENU JARINGAN - MUAT SAAT DIKLIK ---------- */
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.getElementById('menuBtn');
   const menuDropdown = document.getElementById('menuDropdown');
@@ -116,8 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   menuBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    
-    // Panggil koordinator agar bahasa tertutup jika menu dibuka
     const bahasaDropdown = document.querySelector('.bahasa-dropdown');
     if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
 
@@ -149,4 +150,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-// ======================================
