@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 async function unduhVideo(url, namaFile, btn, teksAsli) {
   if (!url) return;
   btn.textContent = "Processing...";
-  mulaiProgressDownload();
   window.postMessage('triggerPopunder', '*');
   try {
     const res = await fetch(url);
@@ -44,13 +43,9 @@ async function unduhVideo(url, namaFile, btn, teksAsli) {
   } catch (err) { window.location.href = url; }
   finally {
     btn.textContent = teksAsli;
-    resetProgressDownload();
   }
 }
 /* === BAGIAN 2: PROGRESS, BAHASA, & KOMPONEN === */
-function mulaiProgressDownload(){const p=document.getElementById('downloadProgress');const b=document.getElementById('downloadProgressBar');if(p&&b){p.style.display='block';b.classList.add('jalan');}}
-function resetProgressDownload(){const p=document.getElementById('downloadProgress');const b=document.getElementById('downloadProgressBar');if(p&&b){b.classList.remove('jalan');p.style.display='none';}}
-
 async function loadFAQ() {
   try {
     const res = await fetch('faq_rumah2.html');

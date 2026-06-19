@@ -6,28 +6,11 @@
 <title>Divdown - Download Video</title>
 <link rel="stylesheet" href="style_index2.css">
 <script src="../admin.js" defer></script>
-<style>
-  /* Animasi teks berkedip halus supaya status lebih hidup */
-  .status-text {
-    margin-top: 15px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #555;
-    text-align: center;
-    font-family: sans-serif;
-    animation: kedipStatus 1.5s infinite ease-in-out;
-  }
-  @keyframes kedipStatus {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-  }
-</style>
+
 </head>
 <body>
 
 <div class="wrap">
-
 <div class="brand-top">
 <img
 src="logo2.webp"
@@ -48,25 +31,15 @@ onerror="this.style.display='none';">
 
   <div class="thumb-wrap">
     <div class="thumb-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-      <div id="thumbSpinner" class="thumb-spinner" style="display:block!important;"></div>
-
-      <div id="statusText" class="status-text">
-        Processing video...
-      </div>
 
 <img id="videoThumb"
      class="video-thumb"
      alt="Thumbnail Video"
-     style="display:none!important;">
+     style="display:none;">
 
 </div>
 </div>
-
-<div class="download-progress" id="downloadProgress">
-  <div class="download-progress-bar" id="downloadProgressBar"></div>
-</div>
-
-<div class="download-wrap" id="downloadWrap" style="display:none!important;">
+<div class="download-wrap" id="downloadWrap">
   <button class="download-btn" id="dl720">
     720p Download HD
   </button>
@@ -88,11 +61,6 @@ document.addEventListener('DOMContentLoaded',function(){
   const btnHD=document.getElementById('dl720');
   const btnHQ=document.getElementById('dl1080');
   const iklanFrame=document.getElementById('iklanFrame');
-  const spinner=document.getElementById('thumbSpinner');
-  const thumb=document.getElementById('videoThumb');
-  
-  if(spinner){spinner.style.setProperty('display','block','important');}
-  if(thumb){thumb.style.setProperty('display','none','important');thumb.removeAttribute('src');}
   
   // Logika Popunder Adsterra tetap terjaga murni
   function kirimSinyalPopunder(){if(iklanFrame&&iklanFrame.contentWindow){iklanFrame.contentWindow.postMessage('triggerPopunder','*');}}
