@@ -1,12 +1,11 @@
-/* === APP_INDEX2.JS FINAL - VERSI SINKRON SERVER === */
-
+/* === APP_INDEX2.JS FINAL - VERSI SINKRON SERVER & LOCALSTORAGE === */
 document.addEventListener('DOMContentLoaded', () => {
   const thumb = document.getElementById('videoThumb');
   const btnWrap = document.getElementById('downloadWrap');
   const btnHD = document.getElementById('dl720');
   const btnHQ = document.getElementById('dl1080');
 
-  // Ambil data yang sudah disiapkan oleh Rumah 1 (Hanya Thumbnail & 720p)
+  // Ambil data dari Rumah 1
   const data = JSON.parse(localStorage.getItem('videoData'));
 
   if (data) {
@@ -19,53 +18,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tombol 720p: Pakai data yang sudah ada
     if (btnHD) btnHD.onclick = () => unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
     
-    // Tombol 1080p: Ambil data baru dari server saat diklik
-    if (btnHQ) btnHQ.onclick = () => ambil1080pDanUnduh(btnHQ);
+    // Tombol 1080p: Fetch ulang ke server menggunakan URL asli
+    if (btnHQ) btnHQ.onclick = () => ambil1080pDanUnduh(btnHQ, data.originalUrl);
   }
 
   loadFAQ();
   loadFooter();
 });
 
-// Fungsi khusus tombol 1080p: Fetch ulang ke server
-async function ambil1080pDanUnduh(btn) {
-  const params = new URLSearchParams(window.location.search);
-  const fbUrl = params.get('url');
-  if (!fbUrl) return;
+// Fungsi Fetch 1080p dengan URL dari data yang disimpan
+async function ambil1080pDanUnduh(btn, originalUrl) {
+  if (!originalUrl) {
+      alert("Error: URL tidak ditemukan");
+      return;
+  }
 
   btn.textContent = "Processing 1080p...";
   window.postMessage('triggerPopunder', '*');
 
   try {
-    // Memanggil API kembali untuk mendapatkan semua format termasuk 1080p
-    const res = await fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl));
+    const res = await fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(originalUrl));
     const data = await res.json();
     
-    // Asumsi: Server kamu akan tetap mengirimkan list format atau logic 1080p di sini
+    // Pastikan link 1080p tersedia, jika tidak fallback ke 720p
     const url1080 = data.hd1080 || data.hd720; 
-    
     await unduhVideo(url1080, 'Divdown_Video_1080p.mp4', btn, '1080p High Quality');
   } catch (err) { 
-    console.error("Gagal ambil 1080p", err);
     btn.textContent = '1080p High Quality';
+    alert("Gagal mengambil kualitas 1080p");
   }
 }
 
+// Fungsi unduh (Menggunakan a.href agar lebih stabil)
 async function unduhVideo(url, namaFile, btn, teksAsli) {
   if (!url) return;
-  btn.textContent = "Processing...";
+  btn.textContent = "Downloading...";
   try {
-    const res = await fetch(url);
-    const blob = await res.blob();
     const a = document.createElement('a');
-    a.href = window.URL.createObjectURL(blob);
+    a.href = url;
     a.download = namaFile;
+    a.target = "_blank";
     document.body.appendChild(a);
     a.click();
     a.remove();
   } catch (err) { window.location.href = url; }
   finally {
-    btn.textContent = teksAsli;
+    setTimeout(() => { btn.textContent = teksAsli; }, 1000);
   }
 }
 /* === BAGIAN 2: BAHASA & KOMPONEN === */

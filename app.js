@@ -84,7 +84,9 @@ async function downloadVideo() {
     const data = await res.json();
     
     if (data.success) {
-      localStorage.setItem('videoData', JSON.stringify(data));
+      // Menambahkan originalUrl agar Rumah 2 bisa melakukan fetch 1080p
+      const dataToSave = { ...data, originalUrl: url };
+      localStorage.setItem('videoData', JSON.stringify(dataToSave));
       window.location.href = 'rumah_index2/index.html';
     } else {
       throw new Error('Gagal ambil data');
@@ -96,6 +98,8 @@ async function downloadVideo() {
     btn.disabled = false;
   }
 }
+
+
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
