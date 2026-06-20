@@ -16,7 +16,8 @@ app.get('/api/facebook', (req, res) => {
     return res.status(400).json({ success: false, message: 'URL tidak ada' });
   }
 
-  const cmd = `python3 -m yt_dlp --dump-single-json --no-warnings --skip-download "${videoUrl}"`;
+  // Menambahkan --user-agent agar Facebook tidak memblokir request
+  const cmd = `python3 -m yt_dlp --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" "${videoUrl}"`;
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout) => {
     if (error) {

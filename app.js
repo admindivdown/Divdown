@@ -84,8 +84,6 @@ async function downloadVideo() {
     const data = await res.json();
     
     if (data.success) {
-      // Simpan data di local storage untuk thumbnail
-      localStorage.setItem('videoData', JSON.stringify(data));
       // Pindah ke Rumah 2 dengan membawa URL di alamat browser
       window.location.href = `rumah_index2/index.html?url=${encodeURIComponent(url)}`;
     } else {
@@ -98,6 +96,7 @@ async function downloadVideo() {
     btn.disabled = false;
   }
 }
+
 
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
