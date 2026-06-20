@@ -16,7 +16,7 @@ app.get('/api/facebook', (req, res) => {
     return res.status(400).json({ success: false, message: 'URL tidak ada' });
   }
 
-  // Menambahkan --user-agent agar Facebook tidak memblokir request
+  // Menggunakan user-agent agar request dianggap sebagai browser asli
   const cmd = `python3 -m yt_dlp --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" "${videoUrl}"`;
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout) => {
@@ -28,14 +28,14 @@ app.get('/api/facebook', (req, res) => {
       const data = JSON.parse(stdout);
       const formats = data.formats || [];
 
-      // Filter untuk 720p
+      // Filter untuk 720p: Longgar tanpa pengecekan codec agar link tidak null
       const hd720 = formats
-        .filter(f => f.height === 720 && f.url && f.vcodec !== 'none' && f.acodec !== 'none')
+        .filter(f => f.height === 720 && f.url)
         .sort((a, b) => (b.tbr || 0) - (a.tbr || 0))[0];
 
-      // Filter untuk 1080p
+      // Filter untuk 1080p: Longgar tanpa pengecekan codec agar link tidak null
       const hd1080 = formats
-        .filter(f => f.height === 1080 && f.url && f.vcodec !== 'none' && f.acodec !== 'none')
+        .filter(f => f.height === 1080 && f.url)
         .sort((a, b) => (b.tbr || 0) - (a.tbr || 0))[0];
 
       res.json({
