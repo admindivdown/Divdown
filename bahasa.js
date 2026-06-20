@@ -67,10 +67,14 @@ function loadFileBahasa(namaBahasa) {
 /* ---------- 2. FUNGSI SUNTIK TEKS AMAN ---------- */
 function setText(id, value) {
   const el = document.getElementById(id);
-  if (el && value !== undefined && value !== null) {
-    el.innerHTML = value;
+  // Pastikan elemen ada di DOM sebelum menyuntikkan data
+  if (el) {
+    if (value !== undefined && value !== null) {
+      el.innerHTML = value;
+    }
   }
 }
+
 
 /* ---------- 3. PROSES PENEMPELAN TEKS KE ELEMEN HTML ---------- */
 function applyBahasa(data) {

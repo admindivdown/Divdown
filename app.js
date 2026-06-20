@@ -32,9 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
     loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
     loadFile('terms', './terms.html', 'Gagal muat Syarat'),
-    loadFile('footer', './footer.html', 'Gagal muat Footer')
+    loadFile('footer', './footer.html', 'Gagal muat Footer'),
+    // 🔥 TAMBAHAN PENTING
   ]).then(() => {
+
     let savedLang = localStorage.getItem('userLanguage');
+
     if (!savedLang) {
       const browserLang = (navigator.language || '').toLowerCase();
       if (browserLang.includes('id')) savedLang = 'indonesia';
@@ -44,13 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       savedLang = savedLang.toLowerCase().trim();
     }
-    setTimeout(() => {
-      if (typeof gantiBahasa === 'function') {
-        gantiBahasa(savedLang);
-      } else {
-        console.warn('Fungsi gantiBahasa belum siap');
-      }
-    }, 150);
+
+// 🔥 WAJIB ADA INI BIAR FAQ KEISI
+if (typeof gantiBahasa === 'function') {
+  gantiBahasa(savedLang, false);
+}
   });
 
   const input = document.getElementById('urlInput');
