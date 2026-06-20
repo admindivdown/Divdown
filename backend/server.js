@@ -28,15 +28,9 @@ app.get('/api/facebook', (req, res) => {
       const data = JSON.parse(stdout);
       const formats = data.formats || [];
 
-      // Filter untuk 720p: Longgar tanpa pengecekan codec agar link tidak null
-      const hd720 = formats
-        .filter(f => f.height === 720 && f.url)
-        .sort((a, b) => (b.tbr || 0) - (a.tbr || 0))[0];
-
-      // Filter untuk 1080p: Longgar tanpa pengecekan codec agar link tidak null
-      const hd1080 = formats
-        .filter(f => f.height === 1080 && f.url)
-        .sort((a, b) => (b.tbr || 0) - (a.tbr || 0))[0];
+      // Logic Hybrid: Mencari berdasarkan ID 'hd' (stabil lama) ATAU filter resolusi (kebutuhan baru)
+      const hd720 = formats.find(f => f.format_id === 'hd' || f.height === 720);
+      const hd1080 = formats.find(f => f.height === 1080);
 
       res.json({
         success: true,
