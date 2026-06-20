@@ -29,10 +29,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         thumb.style.display = 'block'; 
       }
       if (btnWrap) btnWrap.style.display = 'flex';
-
       // 3. Pasang fungsi unduh ke tombol
-      if (btnHD) btnHD.onclick = () => unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
-      if (btnHQ) btnHQ.onclick = () => unduhVideo(data.hd1080 || data.hd720, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
+      if (btnHD) {
+        btnHD.onclick = () => {
+          if (data.hd720) {
+            unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
+          } else {
+            alert("Maaf, link 720p tidak tersedia.");
+          }
+        };
+      }
+
+      if (btnHQ) {
+        btnHQ.onclick = () => {
+          if (data.hd1080) {
+            unduhVideo(data.hd1080, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
+          } else {
+            alert("Maaf, video ini tidak tersedia dalam kualitas 1080p.");
+          }
+        };
+      }
     } else {
       alert("Video tidak ditemukan, silakan coba link lain.");
       window.location.href = '../index.html';
@@ -41,10 +57,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     alert("Gagal memproses ke server, silakan coba lagi.");
   }
 
-  // Muat komponen pelengkap (FAQ & Footer)
   loadFAQ();
   loadFooter();
 });
+
 /* ==========================================================
    APP_INDEX2.JS - BAGIAN 2: EKSEKUSI UNDUH & KOMPONEN (FINAL)
    ========================================================== */
