@@ -17,7 +17,8 @@ app.get('/api/facebook', (req, res) => {
   }
 
   // Menggunakan user-agent agar request dianggap sebagai browser asli
-  const cmd = `python3 -m yt_dlp --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" "${videoUrl}"`;
+    const cmd = `python3 -m yt_dlp --format "bestvideo[height<=1080]+bestaudio/best" --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" "${videoUrl}"`;
+
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout) => {
     if (error) {
