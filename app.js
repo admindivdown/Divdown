@@ -97,8 +97,6 @@ async function downloadVideo() {
     btn.disabled = false;
   }
 }
-
-
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
@@ -111,45 +109,36 @@ window.addEventListener('pageshow', function(e) {
   }
 });
 
-/* ---------- 5. MENU JARINGAN - MUAT SAAT DIKLIK ---------- */
-document.addEventListener('DOMContentLoaded', function() {
+/* --- KENDALI MENU BARU --- */
+document.addEventListener('DOMContentLoaded', () => {
   const menuBtn = document.getElementById('menuBtn');
   const menuDropdown = document.getElementById('menuDropdown');
-  const menuTempatIsi = document.getElementById('menuTempatIsi');
-  let sudahDimuat = false;
+  if (!menuBtn || !menuDropdown) return;
 
-  if (!menuBtn || !menuDropdown || !menuTempatIsi) return;
-
-  menuBtn.addEventListener('click', function(e) {
+  menuBtn.addEventListener('click', e => {
     e.stopPropagation();
-    const bahasaDropdown = document.querySelector('.bahasa-dropdown');
-    if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
-
-    if (!sudahDimuat) {
-      const linkCSS = document.createElement('link');
-      linkCSS.rel = 'stylesheet';
-      linkCSS.href = `./jaringan/menu_jaringan.css?v=${Date.now()}`;
-      document.head.appendChild(linkCSS);
-
-      fetch(`./jaringan/menu_jaringan.html?v=${Date.now()}`)
-        .then(res => res.ok ? res.text() : '<div style="padding:12px;text-align:center;">Menu tidak tersedia</div>')
-        .then(html => {
-          menuTempatIsi.innerHTML = html;
-          sudahDimuat = true;
-          menuDropdown.classList.toggle('show-menu');
-        })
-        .catch(() => {
-          menuTempatIsi.innerHTML = '<div style="padding:12px;text-align:center;color:red;">Gagal memuat menu</div>';
-          menuDropdown.classList.toggle('show-menu');
-        });
-    } else {
-      menuDropdown.classList.toggle('show-menu');
-    }
+    menuDropdown.classList.toggle('show-menu');
   });
 
-  document.addEventListener('click', function(e) {
+  document.addEventListener('click', e => {
     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
       menuDropdown.classList.remove('show-menu');
     }
   });
 });
+// === ATURAN IKLAN MENU: MUNCUL TIAP 2 JAM SEKALI ===
+document.addEventListener('DOMContentLoaded', () => {
+  const menuBtn = document.getElementById('menuBtn');
+  const KUNCI = 'iklanTerakhir';
+  const JEDA = 2 * 60 * 60 * 1000;
+
+  menuBtn.addEventListener('click', () => {
+    const terakhir = localStorage.getItem(KUNCI) || 0;
+    const sekarang = Date.now();
+    if (sekarang - terakhir > JEDA) {
+      // TEMPEL KODE IKLAN ADSTERRA DI SINI
+      localStorage.setItem(KUNCI, sekarang);
+    }
+  });
+});
+// === AKHIR ATURAN IKLAN ===

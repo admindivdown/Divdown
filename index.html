@@ -33,6 +33,7 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="tampilan_bahasa.css">
+<link rel="stylesheet" href="menu.css">
 
 </head>
 <body>
@@ -47,47 +48,37 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
       </button>
 
       <div class="menu-dropdown" id="menuDropdown">
-        <div id="menuTempatIsi"></div>
-      </div>
-    </div>
+<!-- === AWAL MENU JARINGAN === -->
+<div class="menu-grid">
+  <a href="https://snapinsta.app/" target="_blank" rel="noopener noreferrer" class="menu-box">
+    <div class="icon-ig"></div>
+    <strong>Instagram</strong>
+    Downloader
+  </a>
+  <a href="https://ssstik.io/" target="_blank" rel="noopener noreferrer" class="menu-box">
+    <div class="icon-tt"></div>
+    <strong>TikTok</strong>
+    Downloader
+  </a>
+  <a href="https://y2mate.is/" target="_blank" rel="noopener noreferrer" class="menu-box">
+    <div class="icon-yt"></div>
+    <strong>YouTube</strong>
+    Downloader
+  </a>
+</div>
+<div class="iklan-menu"><!-- Tempat iklan Adsterra --></div>
+<!-- === AKHIR MENU JARINGAN === -->
+</div>
+</div>
 
-  <div class="bahasa-wrapper">
 
-      <button
-        class="bahasa-btn"
-        id="bahasaBtn"
-        aria-label="Change Language">
-        🇺🇸 English
-      </button>
-
-      <div class="bahasa-dropdown" id="bahasaDropdown">
-
-        <div class="bahasa-item" data-lang="english">
-          <span class="bahasa-bendera">🇺🇸</span>
-          <span class="bahasa-lokal">English</span>
-        </div>
-
-        <div class="bahasa-item" data-lang="indonesia">
-          <span class="bahasa-bendera">🇮🇩</span>
-          <span class="bahasa-lokal">Indonesia</span>
-        </div>
-
-        <div class="bahasa-item" data-lang="brazil">
-          <span class="bahasa-bendera">🇧🇷</span>
-          <span class="bahasa-lokal">Português</span>
-          <span class="bahasa-global">(Brazil)</span>
-        </div>
-
-        <div class="bahasa-item" data-lang="india">
-          <span class="bahasa-bendera">🇮🇳</span>
-          <span class="bahasa-lokal">हिन्दी</span>
-          <span class="bahasa-global">(India)</span>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+<div class="bahasa-wrapper">
+<button class="lang-btn" data-lang="english">🇺🇸 EN</button>
+<button class="lang-btn" data-lang="indonesia">🇮🇩 ID</button>
+<button class="lang-btn" data-lang="brazil">🇧🇷 BR</button>
+<button class="lang-btn" data-lang="india">🇮🇳 IN</button>
+</div>
+</div>
   <div class="box download-box">
     <div class="brand-row">
       <img
@@ -137,7 +128,7 @@ Download FB Videos & Reels Free
 </div>
 <div class="security-box">
  <div class="security-top" id="menuInfo">
-  🪩 Download Video IG, TikTok Dan YouTube 🪩<br>
+  🌐 Download Video IG, TikTok Dan YouTube 🌿<br>
   Silahkan klik tombol ☰ Menu
 </div>
     <div class="security-bottom">
@@ -184,39 +175,16 @@ document.addEventListener('DOMContentLoaded',()=>{const m=document.getElementByI
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const bBtn = document.getElementById('bahasaBtn');
-  const bDropdown = document.getElementById('bahasaDropdown');
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const lang=btn.dataset.lang;
+if(typeof gantiBahasa==='function'){
+gantiBahasa(lang,true);
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
 
-  if (bBtn && bDropdown) {
-    bBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      bDropdown.classList.toggle('show-bahasa');
-    });
-
-    document.querySelectorAll('.bahasa-item').forEach(item => {
-      item.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const pilihanLang = this.getAttribute('data-lang');
-        
-        if (pilihanLang && typeof gantiBahasa === 'function') {
-          // Parameter 'true' ditambahkan di sini agar spinner muncul saat klik manual
-          gantiBahasa(pilihanLang, true);
-        }
-        
-        bDropdown.classList.remove('show-bahasa');
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!bBtn.contains(e.target) && !bDropdown.contains(e.target)) {
-        bDropdown.classList.remove('show-bahasa');
-      }
-    });
-  }
+});
 });
 </script>
 

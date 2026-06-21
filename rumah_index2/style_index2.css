@@ -3,7 +3,7 @@
 html{scroll-behavior:smooth;}
 
 /* === BODY === */
-body{background:linear-gradient(90deg,#d100ff 0.15%,#8a2be2 45%,#0d47a1 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#2d3135;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#eef1f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
 
 /* === GLOBAL === */
 img,iframe{max-width:100%;display:block;}
@@ -17,7 +17,7 @@ button{border:none;outline:none;font-family:inherit;}
 /* === BRAND === */
 .brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:10px 0 6px;}
 .brand-logo2{width:30px;height:30px;object-fit:contain;margin-top:0;}
-.brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#2d3135;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
+.brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
 
 /* === BANNER === */
 .banner-slot{width:100%;min-height:260px;margin:6px 0;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden;}
