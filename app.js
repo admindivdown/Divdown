@@ -141,4 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-// === AKHIR ATURAN IKLAN ===
+// === UBAH GARIS MENU JADI X ===
+document.addEventListener('DOMContentLoaded', () => {
+  const menuBtn = document.querySelector('.menu-btn');
+  if (!menuBtn) return;
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+  });
+});
+
