@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // 2. Fetch langsung ke server Railway
+  // 2. Fetch langsung ke server vps
   try {
-    const response = await fetch('https://divdown-production-33fd.up.railway.app/api/facebook?url=' + encodeURIComponent(fbUrl));
+    const response = await fetch('/api/facebook?url=' + encodeURIComponent(fbUrl));
     const data = await response.json();
 
     if (data.success) {
