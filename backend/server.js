@@ -16,9 +16,7 @@ app.get('/api/facebook', (req, res) => {
     return res.status(400).json({ success: false, message: 'URL tidak ada' });
   }
 
-  // Menggunakan user-agent agar request dianggap sebagai browser asli
-    const cmd = `python3 -m yt_dlp --format "bestvideo[height<=1080]+bestaudio/best" --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" "${videoUrl}"`;
-
+  const cmd = `yt-dlp --format "bestvideo[height<=1080]+bestaudio/best" --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" --force-generic-extractor "${videoUrl}"`;
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout) => {
     if (error) {
@@ -29,7 +27,6 @@ app.get('/api/facebook', (req, res) => {
       const data = JSON.parse(stdout);
       const formats = data.formats || [];
 
-      // Logic Hybrid: Mencari berdasarkan ID 'hd' (stabil lama) ATAU filter resolusi (kebutuhan baru)
       const hd720 = formats.find(f => f.format_id === 'hd' || f.height === 720);
       const hd1080 = formats.find(f => f.height === 1080);
 
