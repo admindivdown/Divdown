@@ -65,28 +65,40 @@ document.addEventListener('DOMContentLoaded', async () => {
    APP_INDEX2.JS - BAGIAN 2: EKSEKUSI UNDUH & KOMPONEN (FINAL)
    ========================================================== */
 
-// Fungsi Unduh (Versi "Paksa" - Paling stabil untuk Mobile)
+// Fungsi Unduh: Langsung simpan, tidak nonton di browser
 async function unduhVideo(url, namaFile, btn, teksAsli) {
   if (!url) { alert("Link tidak tersedia!"); return; }
-  
+
   btn.textContent = "Downloading...";
   btn.disabled = true;
 
   try {
-    const response = await fetch(url);
-    const blob = await response.blob();
-    const objectUrl = window.URL.createObjectURL(blob);
-    
+    const res = await fetch(url, { credentials: 'omit', mode: 'cors' });
+    if (!res.ok) throw new Error("Gagal ambil file");
+
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+
     const a = document.createElement('a');
-    a.href = objectUrl;
+    a.href = blobUrl;
     a.download = namaFile;
+    a.style.display = "none";
     document.body.appendChild(a);
     a.click();
-    a.remove();
-    window.URL.revokeObjectURL(objectUrl);
-  } catch (err) { 
-    // Fallback: Jika fetch gagal, arahkan langsung ke link
-    window.location.href = url; 
+
+    setTimeout(() => {
+      URL.revokeObjectURL(blobUrl);
+      document.body.removeChild(a);
+    }, 300);
+
+  } catch (err) {
+    // Cara cadangan jika gagal
+    const a = document.createElement('a');
+    a.href = url + "?dl=1";
+    a.download = namaFile;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.click();
   } finally {
     btn.textContent = teksAsli;
     btn.disabled = false;

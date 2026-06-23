@@ -1,3 +1,8 @@
+// CEK OTOMATIS - 24 Juni 2026
+const express = require('express');
+const cors = require('cors');
+...
+
 const express = require('express');
 const cors = require('cors');
 const { exec } = require('child_process');

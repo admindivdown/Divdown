@@ -109,23 +109,26 @@ window.addEventListener('pageshow', function(e) {
   }
 });
 
-/* --- KENDALI MENU BARU --- */
+// --- KENDALI MENU TERPADU (AMAN & TIDAK TERTUKAR) ---
 document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.getElementById('menuBtn');
+  const menuBtn = document.querySelector('#menuBtn.menu-btn'); // satu penanda saja
   const menuDropdown = document.getElementById('menuDropdown');
   if (!menuBtn || !menuDropdown) return;
 
   menuBtn.addEventListener('click', e => {
     e.stopPropagation();
-    menuDropdown.classList.toggle('show-menu');
+    const isOpen = menuDropdown.classList.toggle('show-menu');
+    menuBtn.classList.toggle('open', isOpen); // ikon selalu ikut kondisi menu
   });
 
   document.addEventListener('click', e => {
     if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
       menuDropdown.classList.remove('show-menu');
+      menuBtn.classList.remove('open'); // pas tutup otomatis balikin ke garis
     }
   });
 });
+
 // === ATURAN IKLAN MENU: MUNCUL TIAP 2 JAM SEKALI ===
 document.addEventListener('DOMContentLoaded', () => {
   const menuBtn = document.getElementById('menuBtn');
@@ -141,12 +144,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-// === UBAH GARIS MENU JADI X ===
-document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.querySelector('.menu-btn');
-  if (!menuBtn) return;
-  menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('open');
-  });
-});
-
