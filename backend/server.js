@@ -16,7 +16,8 @@ app.get('/api/facebook', (req, res) => {
     return res.status(400).json({ success: false, message: 'URL tidak ada' });
   }
 
-  const cmd = `yt-dlp -f "bv*[height<=1080]+ba/best[height<=1080]/best" --merge-output-format mp4 --dump-single-json --no-warnings --no-check-certificate --impersonate "chrome-130" "${videoUrl}"`;
+  // Sudah diperbaiki: hapus --impersonate, ganti pakai user-agent biasa
+  const cmd = `yt-dlp -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best" --merge-output-format mp4 --dump-single-json --no-warnings --no-check-certificate --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36" "${videoUrl}"`;
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout) => {
     if (error) {
