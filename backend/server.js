@@ -16,10 +16,11 @@ app.get('/api/facebook', (req, res) => {
     return res.status(400).json({ success: false, message: 'URL tidak ada' });
   }
 
-  const cmd = `yt-dlp --format "bestvideo[height<=1080]+bestaudio/best" --dump-single-json --no-warnings --skip-download --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" --force-generic-extractor "${videoUrl}"`;
+  const cmd = `yt-dlp -f "bv*[height<=1080]+ba/best[height<=1080]/best" --merge-output-format mp4 --dump-single-json --no-warnings --no-check-certificate --impersonate "chrome-130" "${videoUrl}"`;
 
   exec(cmd, { maxBuffer: 1024 * 5000 }, (error, stdout) => {
     if (error) {
+      console.error('Error yt-dlp:', error.message);
       return res.status(500).json({ success: false, message: 'Gagal memproses' });
     }
 
@@ -27,17 +28,24 @@ app.get('/api/facebook', (req, res) => {
       const data = JSON.parse(stdout);
       const formats = data.formats || [];
 
-      const hd720 = formats.find(f => f.format_id === 'hd' || f.height === 720);
-      const hd1080 = formats.find(f => f.height === 1080);
+      const hd1080 = formats.find(f => f.height === 1080 && f.url && f.acodec !== 'none') || 
+                      formats.find(f => f.height === 1080 && f.url) || 
+                      null;
+
+      const hd720 = formats.find(f => (f.format_id === 'hd' || f.height === 720) && f.url && f.acodec !== 'none') || 
+                    formats.find(f => (f.format_id === 'hd' || f.height === 720) && f.url) || 
+                    formats.find(f => f.height < 720 && f.url) || 
+                    data.url || null;
 
       res.json({
         success: true,
-        thumbnail: data.thumbnail,
-        hd720: hd720?.url || null,
-        hd1080: hd1080?.url || null
+        thumbnail: data.thumbnail || null,
+        hd720: hd720?.url || hd720 || null,
+        hd1080: hd1080?.url || hd1080 || null
       });
 
     } catch (e) {
+      console.error('Error parse:', e.message);
       return res.status(500).json({ success: false, message: 'Error parsing data' });
     }
   });
