@@ -81,7 +81,7 @@ async function downloadVideo() {
   btn.disabled = true;
 
   try {
-    const res = await fetch('/api/facebook?url=' + encodeURIComponent(url));
+    const res = await fetch('https://divdown.net/api/facebook?url=' + encodeURIComponent(url));
     const data = await res.json();
     
     if (data.success) {
