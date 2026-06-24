@@ -55,6 +55,25 @@ app.get('/api/facebook', (req, res) => {
   });
 });
 
+app.get('/api/download', async (req, res) => {
+  const fileUrl = req.query.url;
+  if (!fileUrl) {
+    return res.status(400).send('URL tidak ada');
+  }
+
+  try {
+    const response = await fetch(fileUrl);
+
+    res.setHeader('Content-Disposition', 'attachment; filename="video.mp4"');
+    res.setHeader('Content-Type', 'video/mp4');
+
+    response.body.pipe(res);
+
+  } catch (err) {
+    res.status(500).send('Gagal download');
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server jalan di port ${PORT}`);

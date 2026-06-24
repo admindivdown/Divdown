@@ -33,23 +33,24 @@ const btnHQ = document.getElementById('dl1080');
       // 3. Pasang fungsi unduh ke tombol
   if (btnStandard) {
     btnStandard.onclick = () => {
-      if (data.standard) {
-        unduhVideo(
-          data.standard,
-          'Divdown_Video_Standard.mp4',
-          btnStandard,
-          'Standard Quality'
-        );
+  if (data.standard) {
+    window.open(
+      'https://divdown.net/api/download?url=' + encodeURIComponent(data.standard),
+      '_blank'
+    );
       } else {
         alert("Maaf, link Standard tidak tersedia.");
       }
     };
   }
 
-  if (btnHD) {
-    btnHD.onclick = () => {
-      if (data.hd720) {
-        unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
+ if (btnHD) {
+  btnHD.onclick = () => {
+    if (data.hd720) {
+      window.open(
+        'https://divdown.net/api/download?url=' + encodeURIComponent(data.hd720),
+        '_blank'
+      );
       } else {
         alert("Maaf, link 720p tidak tersedia.");
       }
