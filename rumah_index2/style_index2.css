@@ -16,7 +16,6 @@ button{border:none;outline:none;font-family:inherit;}
 
 /* === BRAND === */
 .brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:10px 0 6px;}
-.brand-logo2{width:30px;height:30px;object-fit:contain;margin-top:0;}
 .brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
 
 /* === BANNER === */
@@ -30,9 +29,38 @@ button{border:none;outline:none;font-family:inherit;}
 .thumb-box{width:100%;max-width:230px;height:85px;border-radius:8px;overflow:hidden;background:#f3f6f9;display:flex;align-items:center;justify-content:center;position:relative;}
 .video-thumb{width:100%;height:100%;object-fit:cover;display:none;}
 
+/* === DOWNLOAD CARD (LAYOUT BARU) === */
+.download-card{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  background:#ffffff;
+  border-radius:12px;
+  padding:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+/* thumbnail kiri */
+.download-card .thumb-wrap{
+  flex:1;
+  margin:0;
+}
+.download-card .thumb-box{
+  width:100%;
+  height:220px;
+}
+/* tombol kanan */
+.download-card .download-wrap{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+/* tombol lebih rapat */
+.download-card .download-btn{
+  font-size:13px;
+  min-height:40px;
+}
 /* === BUTTON === */
-.download-wrap{width:100%;max-width:230px;margin:auto;display:none;flex-direction:column;gap:12px;}
-
 .download-btn{width:100%;min-height:44px;border:1px solid #cfd6de;background:linear-gradient(90deg,#cfd5dc,#ffffff,#cfd5dc);font-size:14px;font-weight:600;color:#313639;cursor:pointer;letter-spacing:-.01em;}
 .download-btn:active{transform:translateY(1px);}
 

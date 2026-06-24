@@ -3,6 +3,8 @@
    ========================================================== */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  loadFAQ();
+  loadFooter();
   const thumb = document.getElementById('videoThumb');
   const btnWrap = document.getElementById('downloadWrap');
   const btnStandard = document.getElementById('dlStandard');
@@ -70,8 +72,6 @@ const btnHQ = document.getElementById('dl1080');
     alert("Gagal memproses ke server, silakan coba lagi.");
   }
 
-  loadFAQ();
-  loadFooter();
 });
 
 /* ==========================================================
