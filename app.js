@@ -66,12 +66,19 @@ if (typeof gantiBahasa === 'function') {
 async function downloadVideo() {
   const btn = document.getElementById('downloadBtn');
   if (btn && btn.disabled) return;
-
   const input = document.getElementById('urlInput');
   if (!input) return;
   const url = input.value.trim();
   if (!url) { alert('Masukkan tautan Facebook'); return; }
-
+  
+/* === PROGRESS RUMAH 1 === */
+const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
+if(pb&&pf&&pt){
+pb.style.display='block';pf.style.width='0%';pt.textContent='0%';
+let p=0;const i=setInterval(()=>{p++;if(p<70)p+=2;else if(p<90)p+=1;if(p>100)p=100;pf.style.width=p+'%';pt.textContent=p+'%';if(p>=100)clearInterval(i)},80);
+}
+/* === END === */
+  
   const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
   const isValid = validDomains.some(d => url.includes(d));
   if (!isValid) { alert('Gunakan tautan Facebook yang valid'); return; }

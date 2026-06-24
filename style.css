@@ -37,7 +37,7 @@ body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSys
 .brand-name {font-size:45px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:0;color:#eef1f5;transform:scaleY(1.5);line-height:1;display:flex;align-items:baseline;}
 .brand-net {font-size:10px;font-weight:700;margin-left:2px;opacity:.9;}
 
-.download-row{display:flex;align-items:stretch;justify-content:center;gap:0;margin:13px 0}
+.download-row{display:flex;align-items:stretch;justify-content:center;gap:0;margin:6px 0}
 .download-row .input { width: 100%; flex: 1; margin-bottom: 0; border-right: none }
 
 .download-btn{width:138px;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#155d 0%,#6b8f 50%,#155d78 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:0 8px 8px 0}
@@ -86,3 +86,14 @@ html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth }
 img { display: block; max-width: 100% }
 button, input { font-family: inherit; appearance: none; -webkit-appearance: none; border-radius: 0; outline: none }
 .admin-mode .ad-box { display: none !important }
+
+.trust{
+  display:none !important;
+}
+
+/* === PROGRESS CLEAN === */
+.progress-box{width:100%;margin-top:0px;display:block}
+.progress-bar{width:100%;height:7px;background:#dfe5eb;border-radius:10px;overflow:hidden}
+.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f30);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;transition:width .3s ease}
+.progress-text{font-size:10px;color:#fff;font-weight:600}
+/* === END === */
