@@ -39,10 +39,12 @@ onerror="this.style.display='none';">
 </div>
 </div>
 <div class="download-wrap" id="downloadWrap">
+  <button class="download-btn" id="dlStandard">
+    Standard Quality
+  </button>
   <button class="download-btn" id="dl720">
     720p Download HD
   </button>
-
   <button class="download-btn" id="dl1080">
     1080p High Quality
   </button>
@@ -57,16 +59,17 @@ onerror="this.style.display='none';">
 <script src="app_index2.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  const btnHD=document.getElementById('dl720');
-  const btnHQ=document.getElementById('dl1080');
+  const btnStandard=document.getElementById('dlStandard');
+const btnHD=document.getElementById('dl720');
+const btnHQ=document.getElementById('dl1080');
   const iklanFrame=document.getElementById('iklanFrame');
   
   // Logika Popunder Adsterra tetap terjaga murni
   function kirimSinyalPopunder(){if(iklanFrame&&iklanFrame.contentWindow){iklanFrame.contentWindow.postMessage('triggerPopunder','*');}}
   function handleKlik(){kirimSinyalPopunder();}
   
-  if(btnHD)btnHD.addEventListener('click',handleKlik);
-  if(btnHQ)btnHQ.addEventListener('click',handleKlik);
+  if(btnStandard)btnStandard.addEventListener('click',handleKlik);
+if(btnHD)btnHD.addEventListener('click',handleKlik);
 });
 </script>
 </body>

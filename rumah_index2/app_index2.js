@@ -5,8 +5,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const thumb = document.getElementById('videoThumb');
   const btnWrap = document.getElementById('downloadWrap');
-  const btnHD = document.getElementById('dl720');
-  const btnHQ = document.getElementById('dl1080');
+  const btnStandard = document.getElementById('dlStandard');
+const btnHD = document.getElementById('dl720');
+const btnHQ = document.getElementById('dl1080');
 
   // 1. Ambil URL langsung dari parameter browser (Tanpa LocalStorage)
   const params = new URLSearchParams(window.location.search);
@@ -30,26 +31,37 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       if (btnWrap) btnWrap.style.display = 'flex';
       // 3. Pasang fungsi unduh ke tombol
-      if (btnHD) {
-        btnHD.onclick = () => {
-          if (data.hd720) {
-            unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
-          } else {
-            alert("Maaf, link 720p tidak tersedia.");
-          }
-        };
+  if (btnStandard) {
+    btnStandard.onclick = () => {
+      if (data.standard) {
+        unduhVideo(
+          data.standard,
+          'Divdown_Video_Standard.mp4',
+          btnStandard,
+          'Standard Quality'
+        );
+      } else {
+        alert("Maaf, link Standard tidak tersedia.");
       }
+    };
+  }
 
-      if (btnHQ) {
-        btnHQ.onclick = () => {
-          if (data.hd1080) {
-            unduhVideo(data.hd1080, 'Divdown_Video_1080p.mp4', btnHQ, '1080p High Quality');
-          } else {
-            alert("Maaf, video ini tidak tersedia dalam kualitas 1080p.");
-          }
-        };
+  if (btnHD) {
+    btnHD.onclick = () => {
+      if (data.hd720) {
+        unduhVideo(data.hd720, 'Divdown_Video_720p.mp4', btnHD, '720p Download HD');
+      } else {
+        alert("Maaf, link 720p tidak tersedia.");
       }
-    } else {
+    };
+  }
+
+  if (btnHQ) {
+    btnHQ.onclick = () => {
+      alert("Maaf, video ini tidak tersedia dalam kualitas 1080p.");
+    };
+  }   
+  } else {
       alert("Video tidak ditemukan, silakan coba link lain.");
       window.location.href = '../index.html';
     }

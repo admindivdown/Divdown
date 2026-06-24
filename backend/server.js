@@ -29,9 +29,11 @@ app.get('/api/facebook', (req, res) => {
       const data = JSON.parse(stdout);
       const formats = data.formats || [];
 
-      const hd1080 = formats.find(f => f.height === 1080 && f.url && f.acodec !== 'none') || 
-                      formats.find(f => f.height === 1080 && f.url) || 
-                      null;
+ const standard = formats.find(f =>
+  f.height &&
+  f.height <= 480 &&
+  f.url
+) || formats.find(f => f.url) || data.url || null;
 
       const hd720 = formats.find(f => (f.format_id === 'hd' || f.height === 720) && f.url && f.acodec !== 'none') || 
                     formats.find(f => (f.format_id === 'hd' || f.height === 720) && f.url) || 
@@ -39,11 +41,11 @@ app.get('/api/facebook', (req, res) => {
                     data.url || null;
 
       res.json({
-        success: true,
-        thumbnail: data.thumbnail || null,
-        hd720: hd720?.url || hd720 || null,
-        hd1080: hd1080?.url || hd1080 || null
-      });
+  success: true,
+  thumbnail: data.thumbnail || null,
+  standard: standard?.url || standard || null,
+  hd720: hd720?.url || hd720 || null
+});
 
     } catch (e) {
       console.error('Error parse:', e.message);
