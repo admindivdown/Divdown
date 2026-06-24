@@ -7,15 +7,34 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+/* === LIMIT USER === */
+const rl=new Map();
+function limitRequest(req,res,next){
+const ip=req.ip,now=Date.now();
+if(!rl.has(ip)){rl.set(ip,{c:1,t:now});return next();}
+const d=rl.get(ip);
+if(now-d.t>60000){rl.set(ip,{c:1,t:now});return next();}
+if(d.c>=15){
+return res.status(429).json({
+message:"Server is limiting requests to prevent abuse. Please wait 60 seconds.\n\nServer membatasi dari serangan bot.\nSilahkan tunggu 60 detik"
+});
+}
+d.c++;next();
+}
+/* === END === */
+
 app.get('/', (req, res) => {
   res.send('Backend Divdown aktif ✅');
 });
 
-app.get('/api/facebook', (req, res) => {
+app.get('/api/facebook',limitRequest,(req,res)=>{
   const videoUrl = req.query.url;
-  if (!videoUrl) {
-    return res.status(400).json({ success: false, message: 'URL tidak ada' });
-  }
+  if(!videoUrl){
+return res.status(400).json({
+success:false,
+message:"URL is missing.\n\nURL tidak ditemukan"
+});
+}
 
   // Sudah diperbaiki: hapus --impersonate, ganti pakai user-agent biasa
   const cmd = `yt-dlp -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best" --merge-output-format mp4 --dump-single-json --no-warnings --no-check-certificate --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36" "${videoUrl}"`;
@@ -56,7 +75,7 @@ app.get('/api/facebook', (req, res) => {
   });
 });
 
-app.get('/api/download', async (req, res) => {
+app.get('/api/download', limitRequest, async (req, res) => {
   const fileUrl = req.query.url;
   if (!fileUrl) {
     return res.status(400).send('URL tidak ada');
@@ -71,7 +90,7 @@ app.get('/api/download', async (req, res) => {
     response.body.pipe(res);
 
   } catch (err) {
-    res.status(500).send('Gagal download');
+    res.status(500).send("Download failed.\n\nGagal mengunduh video");
   }
 });
 
