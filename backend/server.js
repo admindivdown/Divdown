@@ -29,11 +29,12 @@ app.get('/api/facebook', (req, res) => {
       const data = JSON.parse(stdout);
       const formats = data.formats || [];
 
- const standard = formats.find(f =>
-  f.height &&
-  f.height <= 480 &&
-  f.url
-) || formats.find(f => f.url) || data.url || null;
+ const standard =
+  formats.find(f =>
+    f.height &&
+    f.height < 720 &&
+    f.url
+  ) || data.url || null;
 
       const hd720 = formats.find(f => (f.format_id === 'hd' || f.height === 720) && f.url && f.acodec !== 'none') || 
                     formats.find(f => (f.format_id === 'hd' || f.height === 720) && f.url) || 
