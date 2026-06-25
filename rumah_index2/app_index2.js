@@ -132,7 +132,7 @@ async function loadFAQ() {
   } catch (e) { console.log('FAQ tidak dimuat'); }
 }
 
-// Fungsi Load Footer
+// Fungsi Load Footer OK
 async function loadFooter() {
   try {
     const res = await fetch('footer_rumah2.html');
