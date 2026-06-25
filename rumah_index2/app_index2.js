@@ -67,7 +67,7 @@ if (btnHQ) {
 }
 });
 
-/* === BAGIAN 2: DOWNLOAD & KOMPONEN === */
+/* === BAGIAN 2: KOMPONEN === */
 // Fungsi Unduh: Langsung simpan, tidak nonton di browser
 async function unduhVideo(url, namaFile, btn, teksAsli) {
   if (!url) { alert("Link tidak tersedia!"); return; }
