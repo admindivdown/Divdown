@@ -135,22 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-// === ATURAN IKLAN MENU: MUNCUL TIAP 2 JAM SEKALI ===
-document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.getElementById('menuBtn');
-  const KUNCI = 'iklanTerakhir';
-  const JEDA = 2 * 60 * 60 * 1000;
-
-  menuBtn.addEventListener('click', () => {
-    const terakhir = localStorage.getItem(KUNCI) || 0;
-    const sekarang = Date.now();
-    if (sekarang - terakhir > JEDA) {
-      // TEMPEL KODE IKLAN ADSTERRA DI SINI
-      localStorage.setItem(KUNCI, sekarang);
-    }
-  });
+// ===== SOCIAL BAR ADSTERRA MENU =====
+document.addEventListener('DOMContentLoaded',()=>{
+const menuBtn=document.getElementById('menuBtn');
+const KUNCI='socialbarTerakhir';
+const JEDA=60601000;
+menuBtn.addEventListener('click',()=>{
+const terakhir=+localStorage.getItem(KUNCI)||0;
+const sekarang=Date.now();
+if(sekarang-terakhir<JEDA)return;
+localStorage.setItem(KUNCI,sekarang);
+const s=document.createElement('script');
+s.src='https://pl29906335.effectivecpmnetwork.com/a2/08/20/a208209753529aeee294bb011e03c014.js';
+document.body.appendChild(s);
 });
+});
+// ===== END IKLAN SOCIAL BAR =====
+
 // ===== BANNER1 ADSTERRA 300x250 =====
-document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const s=document.getElementById('banner300');if(!s)return;const o=document.createElement('script');o.innerHTML="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";s.appendChild(o);const j=document.createElement('script');j.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';s.appendChild(j);},300);});
-// ===== END BANNER ADSTERRA =====
+document.addEventListener('DOMContentLoaded',()=>{requestAnimationFrame(()=>{const s=document.getElementById('banner300');if(!s)return;const o=document.createElement('script');o.innerHTML="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";s.appendChild(o);const j=document.createElement('script');j.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';s.appendChild(j);});});
+// ===== END IKLAN BANNER ADSTERRA =====
