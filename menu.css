@@ -17,8 +17,9 @@
 .menu-box div{font-size:22px;margin-bottom:2px;line-height:1}
 .menu-box strong{font-size:11.5px;display:block}
 
-/* === TEMPAT IKLAN === */
-.iklan-menu{width:100%;min-height:50px;background:#f9f9f9;border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+/* === TEMPAT IKLAN BANNER KECIL === */
+.iklan-menu{width:100%;min-height:50px;background:#f9f9f9;border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:10px}
+.iklan-menu iframe{width:320px!important;height:50px!important;border:none!important}
 
 /* === IKON BUATAN SENDIRI === */
 .icon-ig{display:block;width:24px;height:24px;margin:0 auto 3px;position:relative;border-radius:6px;background:radial-gradient(circle at 30% 30%,#feda75 0,#fa7e1e 30%,#d62976 60%,#962fbf 80%,#4f5bd5 100%)}
