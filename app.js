@@ -151,3 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// ===== BANNER1 ADSTERRA 300x250 =====
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const s=document.getElementById('banner300');if(!s)return;const o=document.createElement('script');o.innerHTML="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";s.appendChild(o);const j=document.createElement('script');j.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';s.appendChild(j);},300);});
+// ===== END BANNER ADSTERRA =====

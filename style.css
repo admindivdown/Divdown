@@ -63,18 +63,17 @@ body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSys
 .faq-question { font-weight: 600; font-size: 16px; color: #222527; margin-bottom: 6px; letter-spacing: -0.01em; line-height: 1.4 }
 .faq-answer { font-size: 14px; line-height: 1.65; color: #4e545a; letter-spacing: -0.005em }
 
-/* === IKLAN BANNER & SECURITY === */
+/* ===== ADSTERRA BANNER 300x250 ===== */
 .ad-box{margin:0;padding:8px;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
+.ad-slot{width:100%;max-width:336px;min-height:290px;margin:auto;display:flex;align-items:center;justify-content:center}
+.ad-header{display:none}
+/* ===== END ADSTERRA BANNER ===== */
 
-.ad-slot{width:100%;max-width:100%;min-height:290px;margin:auto;display:flex;align-items:center;justify-content:center;background:transparent}
-
-.ad-header{
-display:none;
-}
-
-.security-box { background: #f1f3f5; padding: 4px 12px; margin: 1px 0; text-align: center }
-.security-top { font-size: 12.5px; font-weight: 600; color: #57626d; letter-spacing: .3px }
-.security-bottom { margin-top: 3px; font-size: 11px; font-style: italic; color: #868e96; letter-spacing: .8px }
+/* ===== SECURITY BOX ===== */
+.security-box{background:#f1f3f5;padding:8px 12px;margin:1px 0;text-align:center}
+.security-top{font-size:12.5px;font-weight:600;color:#57626d;letter-spacing:.3px}
+.security-bottom{margin-top:3px;font-size:11px;font-style:italic;color:#868e96;letter-spacing:.8px}
+/* ===== END SECURITY BOX ===== */
 
 /* === UI RESET === */
 .box, .faq-item { transition: border-color .15s ease }
