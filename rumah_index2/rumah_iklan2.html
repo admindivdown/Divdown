@@ -4,87 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <style>
-*{margin:0;padding:0}
-body{background:transparent;overflow:hidden}
-
-.banner-wrap{
-width:100%;
-max-width:300px;
-height:250px;
-margin:0 auto;
-display:flex;
-align-items:center;
-justify-content:center;
-background:transparent;
-}
-
-.banner-wrap>div,.banner-wrap iframe{max-width:100%!important;height:auto!important}
+*{margin:0;padding:0;box-sizing:border-box}body{background:transparent;overflow:hidden}.banner-wrap{width:100%;max-width:300px;height:250px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:transparent}.banner-wrap iframe{border:0!important}
 </style>
 </head>
 <body>
 
-<!-- 1. BANNER 300x250 -->
+<!-- ===== BANNER ADSTERRA 300x250 ===== -->
 <div class="banner-wrap">
-  <script type="text/javascript">
-    atOptions={
-      'key':'KODE_BANNER_BERSIH_KAMU',
-      'format':'iframe',
-      'height':250,
-      'width':300,
-      'params':{}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/KODE_BANNER_BERSIH_KAMU/invoke.js"></script>
+<script>atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};</script>
+<script src="https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js"></script>
 </div>
-
-<script>
-/* =========================
-   2. POPUNDER 50/50 + GEO + 1X/3JAM
-========================= */
-const STORAGE_KEY='divdown_pop_3jam';
-const TIGA_JAM=3*60*60*1000;
-
-function bolehNampilinPopunder(){
-  const last=localStorage.getItem(STORAGE_KEY);
-  if(!last)return true;
-  return Date.now()-parseInt(last)>TIGA_JAM;
-}
-
-function setUdahNampil(){
-  localStorage.setItem(STORAGE_KEY,Date.now().toString());
-}
-
-function loadPopunder(){
-  if(!bolehNampilinPopunder())return;
-  
-  const isID=Intl.DateTimeFormat().resolvedOptions().timeZone.includes('Jakarta');
-  let popunderScript=document.createElement('script');
-  popunderScript.type='text/javascript';
-  
-  if(isID){
-    // INDO = 100% BERSIH
-    popunderScript.src='//plxxxxxx.highperformanceformat.com/xx/xx/xx/invoke.js'; // GANTI KODE POPUNDER BERSIH
-  }else{
-    // LUAR = 50% JUDI 50% BIASA
-    const hoki=Math.random()<0.5;
-    if(hoki){
-      popunderScript.src='//plxxxxxx.highperformanceformat.com/xx/xx/xx/invoke.js'; // GANTI KODE POPUNDER JUDI
-    }else{
-      popunderScript.src='//plxxxxxx.highperformanceformat.com/xx/xx/xx/invoke.js'; // GANTI KODE POPUNDER BERSIH
-    }
-  }
-  
-  document.body.appendChild(popunderScript);
-  setUdahNampil();
-}
-
-// DENGERIN SINYAL DARI RUMAH 2
-window.addEventListener('message',function(e){
-  if(e.data==='triggerPopunder'){
-    loadPopunder();
-  }
-});
-</script>
+<!-- ===== END BANNER ADSTERRA ===== -->
 
 </body>
 </html>

@@ -152,6 +152,6 @@ document.body.appendChild(s);
 });
 // ===== END IKLAN SOCIAL BAR =====
 
-// ===== BANNER1 ADSTERRA 300x250 =====
-document.addEventListener('DOMContentLoaded',()=>{requestAnimationFrame(()=>{const s=document.getElementById('banner300');if(!s)return;const o=document.createElement('script');o.innerHTML="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";s.appendChild(o);const j=document.createElement('script');j.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';s.appendChild(j);});});
-// ===== END IKLAN BANNER ADSTERRA =====
+// ===== PRELOAD BANNER MENU 320x50 =====
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const b=document.getElementById('menuBanner320');if(!b)return;const o=document.createElement('script');o.innerHTML="atOptions={'key':'a9e26a5898162babbd39410bf67794d2','format':'iframe','height':50,'width':320,'params':{}};";b.appendChild(o);const s=document.createElement('script');s.src='https://www.highperformanceformat.com/a9e26a5898162babbd39410bf67794d2/invoke.js';b.appendChild(s);},1500);});
+// ===== END PRELOAD BANNER MENU =====

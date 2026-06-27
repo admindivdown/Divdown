@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadFAQ();
   loadFooter();
   const thumb = document.getElementById('videoThumb');
+  
   const btnWrap = document.getElementById('downloadWrap');
   const btnStandard = document.getElementById('dlStandard');
 const btnHD = document.getElementById('dl720');
@@ -23,10 +24,12 @@ const btnHQ = document.getElementById('dl1080');
     const data = await response.json();
 
     if (data.success) {
-      // Tampilkan UI
-      if (thumb) { 
-        thumb.src = data.thumbnail; 
-        thumb.style.display = 'block'; 
+// Tampilkan UI
+      if (thumb) {
+        const loader=document.getElementById('thumbLoading');
+        thumb.onload=()=>{if(loader)loader.style.display='none';};
+        thumb.src=data.thumbnail;
+        thumb.style.display='block';
       }
       if (btnWrap) btnWrap.style.display = 'flex';
       
