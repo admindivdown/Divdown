@@ -63,11 +63,12 @@ body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSys
 .faq-question { font-weight: 600; font-size: 16px; color: #222527; margin-bottom: 6px; letter-spacing: -0.01em; line-height: 1.4 }
 .faq-answer { font-size: 14px; line-height: 1.65; color: #4e545a; letter-spacing: -0.005em }
 
-/* ===== ADSTERRA BANNER 300x250 ===== */
+/* ===== BANNER HALAMAN UTAMA ===== */
 .ad-box{margin:0;padding:8px;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
 .ad-slot{width:100%;max-width:336px;min-height:290px;margin:auto;display:flex;align-items:center;justify-content:center}
+.promo-banner{display:none;width:100%;height:auto}
 .ad-header{display:none}
-/* ===== END ADSTERRA BANNER ===== */
+/* ===== END BANNER ===== */
 
 /* ===== SECURITY BOX ===== */
 .security-box{background:#f1f3f5;padding:8px 12px;margin:1px 0;text-align:center}
