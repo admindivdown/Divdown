@@ -68,8 +68,7 @@ async function downloadVideo() {
   if (btn && btn.disabled) return;
   const input = document.getElementById('urlInput');
   if (!input) return;
-  const url = input.value.trim();
-  if (!url) { alert('Masukkan tautan Facebook'); return; }
+  const url=input.value.trim();const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
   
 /* === PROGRESS RUMAH 1 === */
 const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
@@ -81,8 +80,7 @@ let p=0;const i=setInterval(()=>{if(p<30)p+=3;else if(p<70)p+=2;else if(p<90)p+=
   
   const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
   const isValid = validDomains.some(d => url.includes(d));
-  if (!isValid) { alert('Gunakan tautan Facebook yang valid'); return; }
-
+  if(!isValid){alert(isID?'Silakan gunakan tautan Facebook yang valid.':'Please use a valid Facebook link.');return;}
   btn.classList.add('loading');
 btn.innerHTML = 'Memproses...';
 btn.disabled = true;
@@ -97,12 +95,17 @@ btn.disabled = true;
     } else {
       throw new Error('Gagal ambil data');
     }
-  } catch (err) {
-    alert('Gagal memproses video, silakan coba lagi');
-    btn.classList.remove('loading');
-    btn.innerHTML = 'Download';
-    btn.disabled = false;
-  }
+} catch (err) {
+  const isID = (localStorage.getItem('userLanguage') || '').toLowerCase() === 'indonesia';
+  alert(
+    isID
+      ? 'Gagal memproses video.\n\nSilakan klik tombol Download sekali lagi.'
+      : 'Failed to process the video.\n\nPlease click the Download button one more time.'
+  );
+  btn.classList.remove('loading');
+  btn.innerHTML = 'Download';
+  btn.disabled = false;
+}
 }
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
