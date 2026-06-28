@@ -61,8 +61,9 @@ button{border:none;outline:none;font-family:inherit;}
   min-height:40px;
 }
 /* === BUTTON === */
-.download-btn{width:100%;min-height:44px;border:1px solid #cfd6de;background:linear-gradient(90deg,#cfd5dc,#ffffff,#cfd5dc);font-size:14px;font-weight:600;color:#313639;cursor:pointer;letter-spacing:-.01em;}
-.download-btn:active{transform:translateY(1px);}
+.download-btn{width:100%;min-height:44px;background:#2f343a;color:#fff;border:1px solid #111;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:-.01em;transition:.18s;}
+.download-btn:hover{background:#222;}
+.download-btn:active{background:#000;transform:translateY(1px);}
 
 /* === FAQ RUMAH 2 === */
 .box{background:#fff;padding:16px 4px;margin:12px -6px;}

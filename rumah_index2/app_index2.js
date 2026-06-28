@@ -1,5 +1,7 @@
 /* === APP_INDEX2.JS BAGIAN 1 === */
 document.addEventListener('DOMContentLoaded', async () => {
+  const browserLang = (navigator.language || '').toLowerCase();
+const isID = browserLang.includes('id');
   loadFAQ();
   loadFooter();
   const thumb = document.getElementById('videoThumb');
@@ -39,7 +41,7 @@ if (btnStandard) {
     if (data.standard) {
       window.open('https://divdown.net/api/download?url=' + encodeURIComponent(data.standard), '_blank');
     } else {
-      alert("Standard Quality is not available for this video.\n\nMaaf, Video Standard tidak tersedia di dalam file asli.");
+      alert(isID?"Video Standard tidak tersedia di dalam file asli.":"Standard Quality is not available for this video.");
     }
   };
 }
@@ -49,24 +51,26 @@ if (btnHD) {
     if (data.hd720) {
       window.open('https://divdown.net/api/download?url=' + encodeURIComponent(data.hd720), '_blank');
     } else {
-      alert("This video is not available in 720p quality.\n\nMaaf, Video 720p tidak tersedia.");
+      alert(isID?"Video 720p tidak tersedia.":"This video is not available in 720p quality.");
     }
   };
 }
 
 if (btnHQ) {
   btnHQ.onclick = () => {
-    alert("1080p High Quality is currently unavailable for this video.\n\nKualitas 1080p saat ini belum tersedia untuk video ini.");
+    alert(isID
+?"Facebook tidak menyediakan kualitas Full HD.\n\nSilakan gunakan 720p."
+:"Facebook does not provide Full HD quality.\n\nPlease use 720p.");
   };
 }
 
 } else {
-  alert("Video not found. Please try another link.\n\nVideo tidak ditemukan, silakan coba link lain.");
+  alert(isID?"Video tidak ditemukan. Silakan coba link lain.":"Video not found. Please try another link.");
   window.location.href = '../index.html';
 }
 
 } catch (err) {
-  alert("Failed to load file.\nPlease refresh the page once and wait until the video appears.\n\nGagal mengambil file.\nSilakan refresh halaman 1 kali dan tunggu sampai video muncul.");
+  alert(isID?"Gagal mengambil file.\nSilakan refresh halaman 1 kali lalu tunggu sampai video muncul.":"Failed to load file.\nPlease refresh the page once and wait until the video appears.");
 }
 });
 
