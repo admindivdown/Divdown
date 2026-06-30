@@ -22,7 +22,6 @@ message:"Server is limiting requests to prevent abuse. Please wait 60 seconds.\n
 d.c++;next();
 }
 /* === END === */
-
 app.get('/', (req, res) => {
   res.send('Backend Divdown aktif ✅');
 });
