@@ -85,6 +85,21 @@ return res.status(500).json({success:false,message:"Gagal memproses"});
 }
 })();
 });
+/* === DOWNLOAD FILE === */
+app.get('/api/download',limitRequest,async(req,res)=>{
+const fileUrl=req.query.url;
+if(!fileUrl)return res.status(400).send("URL tidak ada");
+try{
+const response=await fetch(fileUrl);
+res.setHeader("Content-Disposition",'attachment; filename="video.mp4"');
+res.setHeader("Content-Type","video/mp4");
+response.body.pipe(res);
+}catch(err){
+console.error("Download Error:",err.message);
+res.status(500).send("Download failed.\n\nGagal mengunduh video");
+}
+});
+/* === END DOWNLOAD === */
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
