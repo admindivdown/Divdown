@@ -1,17 +1,5 @@
 /* === RESET & BASE === */
-* { margin: 0; padding: 0; box-sizing: border-box }
-html { -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
-body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; }
-.wrap { max-width: 100%; margin: 0; padding-bottom: 20px }
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 6px 8px 5px;
-  position: relative;
-  z-index: 99999;
-}
+*,.wrap{margin:0}*{padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}body{background:#fff;color:#313639;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}.wrap{max-width:100%;padding-bottom:20px}.topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 6px 8px 5px;position:relative;z-index:99999}
 
 /* MENU BUTTON SAJA */
 .menu-wrapper{position:relative;margin-left:10px}
@@ -19,11 +7,7 @@ body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSys
 .menu-btn span{display:block;width:34px;height:3.5px;background:#3d4246;border-radius:3px;transition:all .25s ease;transform-origin:center}
 
 /* === EFEK X SAAT MENU TERBUKA === */
-.menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.menu-btn.open span:nth-child(2){opacity:0}
-.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-
-.menu-btn:active{transform:scale(.96)}
+.menu-btn.open span:first-child{transform:translateY(6.5px) rotate(45deg)}.menu-btn.open span:nth-child(2){opacity:0}.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.menu-btn:active{transform:scale(.96)}
 
 /* === BOX UMUM === */
 .box { position: relative; z-index: 1; background: #fdfdfd; border-top: 1px solid #eef2f5; border-bottom: none; border-radius: 0; padding: 12px 15px; margin-bottom: 0; box-shadow: none }
@@ -53,15 +37,7 @@ body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSys
 .trust { display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; margin-top: 12px; font-size: 12.5px; color: #616a75; letter-spacing: -0.01em }
 
 /* === SECTION & FAQ (TANPA GARIS ATAS) === */
-.section-title { font-size: 24px; font-weight: 650; margin: 10px 0 6px; color: #222527; text-align: center; letter-spacing: -0.02em }
-.section-subtitle { font-size: 18px; font-weight: 650; margin: 18px 0 10px; color: #222527; text-align: center; letter-spacing: -0.015em }
-.section-text { font-size: 15.5px; color: #3d4246; line-height: 1.75; margin-bottom: 5px; letter-spacing: -0.005em }
-.section-footer { margin-top: 8px; font-size: 13.5px; color: #6c757d; margin-bottom: 5px; text-align: center }
-
-.faq-title { font-weight: 650; font-size: 24px; margin: 10px 0 12px; color: #222527; text-align: center; letter-spacing: -0.02em }
-.faq-item { background: #f8f9fa; border: 1.5px solid #a4b98f; padding: 14px 12px; margin-bottom: 7px }
-.faq-question { font-weight: 600; font-size: 16px; color: #222527; margin-bottom: 6px; letter-spacing: -0.01em; line-height: 1.4 }
-.faq-answer { font-size: 14px; line-height: 1.65; color: #4e545a; letter-spacing: -0.005em }
+.faq-title,.section-subtitle,.section-title{font-weight:650;text-align:center}.section-title{font-size:24px;margin:10px 0 6px;color:#222527;letter-spacing:-.02em}.section-subtitle{font-size:18px;margin:18px 0 10px;color:#222527;letter-spacing:-.015em}.section-text{font-size:15.5px;color:#3d4246;line-height:1.75;margin-bottom:5px;letter-spacing:-.005em}.section-footer{margin-top:8px;font-size:13.5px;color:#6c757d;margin-bottom:5px;text-align:center}.faq-title{font-size:24px;margin:10px 0 12px;color:#222527;letter-spacing:-.02em}.faq-item{background:#f8f9fa;border:1.5px solid #a4b98f;padding:14px 12px;margin-bottom:7px}.faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
 /* ===== BANNER HALAMAN UTAMA ===== */
 .ad-box{margin:0;padding:8px;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
@@ -77,17 +53,7 @@ body { background: #fff; color: #313639; font-family: -apple-system, BlinkMacSys
 /* ===== END SECURITY BOX ===== */
 
 /* === UI RESET === */
-.box, .faq-item { transition: border-color .15s ease }
-::-webkit-scrollbar { width: 5px }
-::-webkit-scrollbar-thumb { background: #dfe5eb }
-html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth }
-img { display: block; max-width: 100% }
-button, input { font-family: inherit; appearance: none; -webkit-appearance: none; border-radius: 0; outline: none }
-.admin-mode .ad-box { display: none !important }
-
-.trust{
-  display:none !important;
-}
+.box,.faq-item{transition:border-color .15s}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#dfe5eb}html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}img{display:block;max-width:100%}button,input{font-family:inherit;appearance:none;-webkit-appearance:none;border-radius:0;outline:0}.admin-mode .ad-box,.trust{display:none!important}
 
 /* === PROGRESS CLEAN === */
 .progress-box{width:100%;margin-top:0px;display:block}

@@ -6,75 +6,13 @@ const cacheBahasa = {};
 let bahasaAktif = 'english';
 
 /* --- FUNGSI TAMBAHAN: SPINNER ELEGAN --- */
-function tampilkanLoading() {
-  let spinner = document.getElementById('loadingSpinner');
-  if (!spinner) {
-    spinner = document.createElement('div');
-    spinner.id = 'loadingSpinner';
-    spinner.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #587f30; border-radius:50%; animation: spin 1s linear infinite; z-index:99999; display:none;';
-    
-    const style = document.createElement('style');
-    style.innerHTML = '@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }';
-    document.head.appendChild(style);
-    
-    document.body.appendChild(spinner);
-  }
-  spinner.style.display = 'block';
-}
-
-function sembunyikanLoading() {
-  const spinner = document.getElementById('loadingSpinner');
-  if (spinner) spinner.style.display = 'none';
-}
+function tampilkanLoading(){let e=document.getElementById("loadingSpinner");if(!e){(e=document.createElement("div")).id="loadingSpinner",e.style.cssText="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #587f30; border-radius:50%; animation: spin 1s linear infinite; z-index:99999; display:none;";let n=document.createElement("style");n.innerHTML="@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }",document.head.appendChild(n),document.body.appendChild(e)}e.style.display="block"}function sembunyikanLoading(){let e=document.getElementById("loadingSpinner");e&&(e.style.display="none")}
 
 /* ---------- 1. FUNGSI MEMUAT FILE SCRIPT BAHASA EXTERNAL ---------- */
-function loadFileBahasa(namaBahasa) {
-  return new Promise((resolve) => {
-    if (!namaBahasa) {
-      resolve({});
-      return;
-    }
-
-    let namaMurni = namaBahasa.replace('bahasa_', '').toLowerCase().trim();
-
-    if (cacheBahasa[namaMurni]) {
-      resolve(cacheBahasa[namaMurni]);
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = `bahasa/bahasa_${namaMurni}.js`;
-    
-    script.onload = () => {
-      const dataObjek = window[namaMurni] || 
-                        window[namaMurni.charAt(0).toUpperCase() + namaMurni.slice(1)] ||
-                        (typeof Window !== 'undefined' && Window[namaMurni]) ||
-                        window[`bahasa_${namaMurni}`];
-                        
-      cacheBahasa[namaMurni] = dataObjek || {};
-      resolve(cacheBahasa[namaMurni]);
-    };
-    
-    script.onerror = () => {
-      console.error(`File bahasa/bahasa_${namaMurni}.js gagal dimuat!`);
-      resolve({});
-    };
-    
-    document.head.appendChild(script);
-  });
-}
+function loadFileBahasa(a){return new Promise(e=>{if(!a){e({});return}let r=a.replace("bahasa_","").toLowerCase().trim();if(cacheBahasa[r]){e(cacheBahasa[r]);return}let t=document.createElement("script");t.src=`bahasa/bahasa_${r}.js`,t.onload=()=>{let a=window[r]||window[r.charAt(0).toUpperCase()+r.slice(1)]||"undefined"!=typeof Window&&Window[r]||window[`bahasa_${r}`];cacheBahasa[r]=a||{},e(cacheBahasa[r])},t.onerror=()=>{console.error(`File bahasa/bahasa_${r}.js gagal dimuat!`),e({})},document.head.appendChild(t)})}
 
 /* ---------- 2. FUNGSI SUNTIK TEKS AMAN ---------- */
-function setText(id, value) {
-  const el = document.getElementById(id);
-  // Pastikan elemen ada di DOM sebelum menyuntikkan data
-  if (el) {
-    if (value !== undefined && value !== null) {
-      el.innerHTML = value;
-    }
-  }
-}
-
+function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=n)}
 
 /* ---------- 3. PROSES PENEMPELAN TEKS KE ELEMEN HTML ---------- */
 function applyBahasa(data) {

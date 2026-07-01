@@ -11,19 +11,7 @@ function tutupSemuaMenu() {
 }
 
 /* ---------- 1. MUAT KOMPONEN HTML ---------- */
-function loadFile(id, file, error) {
-  const url = `${file}?v=${Date.now()}`;
-  return fetch(url)
-    .then(r => {
-      if (!r.ok) throw new Error(error);
-      return r.text();
-    })
-    .then(data => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = data;
-    })
-    .catch(err => console.error(error, err));
-}
+function loadFile(e,t,n){let r=`${t}?v=${Date.now()}`;return fetch(r).then(e=>{if(!e.ok)throw Error(n);return e.text()}).then(t=>{let n=document.getElementById(e);n&&(n.innerHTML=t)}).catch(e=>console.error(n,e))}
 
 /* ---------- 2. INISIALISASI HALAMAN ---------- */
 document.addEventListener('DOMContentLoaded', () => {
