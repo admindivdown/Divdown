@@ -46,7 +46,7 @@ message:"URL is missing.\n\nURL tidak ditemukan"
 }
 
   // Sudah diperbaiki: hapus --impersonate, ganti pakai user-agent biasa
-  const cmd=`yt-dlp -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best" --merge-output-format mp4 --dump-single-json --no-warnings --no-check-certificate --socket-timeout 10 --retries 3 --fragment-retries 3 --retry-sleep 1 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36" "${videoUrl}"`;
+  const cmd = `yt-dlp -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best" --merge-output-format mp4 --dump-single-json --no-warnings --no-check-certificate --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36" "${videoUrl}"`;
 
 /* === JALANKAN YT-DLP + RETRY 1X === */
 (async()=>{
