@@ -33,10 +33,14 @@ const btnHQ = document.getElementById('dl1080');
     return;
   }
 
-  // Fetch langsung ke server vps
-  try {
-    const response = await fetch('https://divdown.net/api/facebook?url=' + encodeURIComponent(fbUrl));
-    const data = await response.json();
+/* === AMBIL DATA DARI SESSION / SERVER === */
+try{
+let data=JSON.parse(sessionStorage.getItem('fbData')||'null');
+if(!data){
+const response=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(fbUrl));
+data=await response.json();
+}
+sessionStorage.removeItem('fbData');
 
     if (data.success) {
 // Tampilkan UI

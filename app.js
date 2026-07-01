@@ -76,11 +76,13 @@ btn.disabled = true;
   try {
     const res = await fetch('https://divdown.net/api/facebook?url=' + encodeURIComponent(url));
     const data = await res.json();
-    
     if (data.success) {
-      // Pindah ke Rumah 2 dengan membawa URL di alamat browser
-      window.location.href = `rumah_index2/index.html?url=${encodeURIComponent(url)}`;
-    } else {
+  /* === SIMPAN DATA UNTUK RUMAH 2 === */
+  sessionStorage.setItem('fbData', JSON.stringify(data));
+  // Tetap kirim URL sebagai cadangan
+  window.location.href = `rumah_index2/index.html?url=${encodeURIComponent(url)}`;
+}
+    else {
       throw new Error('Gagal ambil data');
     }
 } catch (err) {
