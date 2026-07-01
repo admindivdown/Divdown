@@ -2,6 +2,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const browserLang = (navigator.language || '').toLowerCase();
 const isID = browserLang.includes('id');
+const serverInfo=document.getElementById('serverInfo');
+/* === SERVER INFO (AUTO LANGUAGE) === */
+if(serverInfo){
+serverInfo.innerHTML=browserLang.includes('id')
+?'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">Kenapa video gagal diproses?</div><div class="faq-answer">Terkadang server membutuhkan waktu lebih lama untuk mengambil data video dari Facebook. Jika proses gagal, cukup refresh halaman satu kali, tunggu beberapa detik hingga data muncul, lalu unduh kembali.</div></div>'
+:browserLang.includes('pt')||browserLang.includes('br')
+?'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">Por que meu vídeo não foi processado?</div><div class="faq-answer">Às vezes, o servidor precisa de mais tempo para obter os dados do Facebook. Se o processo falhar, atualize a página uma vez, aguarde alguns segundos e faça o download novamente.</div></div>'
+:browserLang.includes('hi')||browserLang.includes('in')
+?'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">मेरा वीडियो प्रोसेस क्यों नहीं हुआ?</div><div class="faq-answer">कभी-कभी Facebook से वीडियो डेटा प्राप्त करने में सर्वर को अधिक समय लगता है। यदि प्रक्रिया विफल हो जाए, तो पेज को एक बार रिफ्रेश करें, कुछ सेकंड प्रतीक्षा करें और फिर दोबारा डाउनलोड करें।</div></div>'
+:'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">Why did my video fail to process?</div><div class="faq-answer">Sometimes our server needs more time to retrieve video data from Facebook. If the process fails, simply refresh the page once, wait a few seconds for the data to load, then download again.</div></div>';
+}
+/* === END SERVER INFO === */
+
   loadFAQ();
   loadFooter();
   const thumb = document.getElementById('videoThumb');
@@ -55,15 +68,6 @@ if (btnHD) {
     }
   };
 }
-
-if (btnHQ) {
-  btnHQ.onclick = () => {
-    alert(isID
-?"Facebook tidak menyediakan kualitas Full HD.\n\nSilakan gunakan 720p."
-:"Facebook does not provide Full HD quality.\n\nPlease use 720p.");
-  };
-}
-
 } else {
   alert(isID?"Video tidak ditemukan. Silakan coba link lain.":"Video not found. Please try another link.");
   window.location.href = '../index.html';
@@ -74,46 +78,6 @@ if (btnHQ) {
 }
 });
 
-/* === BAGIAN 2: KOMPONEN === */
-// Fungsi Unduh: Langsung simpan, tidak nonton di browser
-async function unduhVideo(url, namaFile, btn, teksAsli) {
-  if (!url) { alert("Link tidak tersedia!"); return; }
-
-  btn.textContent = "Downloading...";
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(url, { credentials: 'omit', mode: 'cors' });
-    if (!res.ok) throw new Error("Gagal ambil file");
-
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = namaFile;
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-
-    setTimeout(() => {
-      URL.revokeObjectURL(blobUrl);
-      document.body.removeChild(a);
-    }, 300);
-
-  } catch (err) {
-    // Cara cadangan jika gagal
-    const a = document.createElement('a');
-    a.href = url + "?dl=1";
-    a.download = namaFile;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.click();
-  } finally {
-    btn.textContent = teksAsli;
-    btn.disabled = false;
-  }
-}
 /* === BAGIAN 3: LOAD FAQ === */
 async function loadFAQ() {
   try {
