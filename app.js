@@ -73,30 +73,34 @@ let p=0;const i=setInterval(()=>{if(p<30)p+=3;else if(p<70)p+=2;else if(p<90)p+=
 btn.innerHTML = 'Memproses...';
 btn.disabled = true;
 
-  try {
-    const res = await fetch('https://divdown.net/api/facebook?url=' + encodeURIComponent(url));
-    const data = await res.json();
-    if (data.success) {
-  /* === SIMPAN DATA UNTUK RUMAH 2 === */
-  sessionStorage.setItem('fbData', JSON.stringify(data));
-  // Tetap kirim URL sebagai cadangan
-  window.location.href = `rumah_index2/index.html?url=${encodeURIComponent(url)}`;
+  try{
+let data=null;
+try{
+const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));
+data=await res.json();
+if(!data.success)throw new Error();
+}catch(e){
+await new Promise(r=>setTimeout(r,500));
+const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));
+data=await res.json();
+if(!data.success)throw new Error();
 }
-    else {
-      throw new Error('Gagal ambil data');
-    }
-} catch (err) {
-  const isID = (localStorage.getItem('userLanguage') || '').toLowerCase() === 'indonesia';
-  alert(
-    isID
-      ? 'Gagal memproses video.\n\nSilakan klik tombol Download sekali lagi.'
-      : 'Failed to process the video.\n\nPlease click the Download button one more time.'
-  );
-  btn.classList.remove('loading');
-  btn.innerHTML = 'Download';
-  btn.disabled = false;
+/* === SIMPAN DATA UNTUK RUMAH 2 === */
+sessionStorage.setItem('fbData',JSON.stringify(data));
+/* === MASUK RUMAH 2 === */
+window.location.href=`rumah_index2/index.html?url=${encodeURIComponent(url)}`;
+
+}catch(err){
+const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';
+alert(isID
+?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.'
+:'Failed to process the video.\n\nPlease try again in a moment.');
+btn.classList.remove('loading');
+btn.innerHTML='Download';
+btn.disabled=false;
 }
 }
+  
 /* ---------- 4. RESET TOMBOL KEMBALI ---------- */
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) {
