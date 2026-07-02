@@ -132,22 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-// ===== SOCIAL BAR ADSTERRA MENU =====
-document.addEventListener('DOMContentLoaded',()=>{
-const menuBtn=document.getElementById('menuBtn');
-const KUNCI='socialbarTerakhir';
-const JEDA=60601000;
-menuBtn.addEventListener('click',()=>{
-const terakhir=+localStorage.getItem(KUNCI)||0;
-const sekarang=Date.now();
-if(sekarang-terakhir<JEDA)return;
-localStorage.setItem(KUNCI,sekarang);
+// ===== SOCIAL BAR ADSTERRA =====
+window.addEventListener('pageshow',()=>{
 const s=document.createElement('script');
 s.src='https://pl29906335.effectivecpmnetwork.com/a2/08/20/a208209753529aeee294bb011e03c014.js';
 document.body.appendChild(s);
 });
-});
-// ===== END IKLAN SOCIAL BAR =====
+// ===== END SOCIAL BAR =====
 
 // ===== PRELOAD BANNER MENU 320x50 =====
 document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const b=document.getElementById('menuBanner320');if(!b)return;const o=document.createElement('script');o.innerHTML="atOptions={'key':'a9e26a5898162babbd39410bf67794d2','format':'iframe','height':50,'width':320,'params':{}};";b.appendChild(o);const s=document.createElement('script');s.src='https://www.highperformanceformat.com/a9e26a5898162babbd39410bf67794d2/invoke.js';b.appendChild(s);},1500);});

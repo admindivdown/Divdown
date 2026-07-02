@@ -1,7 +1,6 @@
 // ======================================
 // BAHASA.JS RUMAH 1 - FINAL CLEAN ENGINE
 // ======================================
-
 const cacheBahasa = {};
 let bahasaAktif = 'english';
 
@@ -17,9 +16,7 @@ function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=
 /* ---------- 3. PROSES PENEMPELAN TEKS KE ELEMEN HTML ---------- */
 function applyBahasa(data) {
   if (!data || Object.keys(data).length === 0) return;
-
   if (data.title) document.title = data.title;
-
   const input = document.getElementById('urlInput');
   if (input && data.placeholder) {
     input.placeholder = data.placeholder;
@@ -83,27 +80,14 @@ function applyBahasa(data) {
 /* ---------- 4. FUNGSI PEMICU GANTI BAHASA ---------- */
 async function gantiBahasa(namaBahasa, isManual = false) {
   if (!namaBahasa) return;
-
-  // Hanya tampilkan spinner jika user melakukan interaksi (isManual = true)
-  if (isManual) {
-    tampilkanLoading();
-  }
-
-  let namaMurni = namaBahasa.replace('bahasa_', '').toLowerCase().trim();
-  bahasaAktif = namaMurni;
-  localStorage.setItem('userLanguage', namaMurni);
-
-  const data = await Promise.all([
-    loadFileBahasa(namaMurni),
-    isManual ? new Promise(resolve => setTimeout(resolve, 800)) : Promise.resolve()
-  ]).then(results => results[0]);
-
-  applyBahasa(data);
-
-  const btn = document.getElementById('bahasaBtn');
-  if (btn && data.bendera) {
-    btn.innerHTML = `${data.bendera} ${data.nama || 'Language'}`;
-  }
-
-  sembunyikanLoading();
+// Hanya tampilkan spinner jika user melakukan interaksi (isManual = true)
+if(isManual)tampilkanLoading();
+let namaMurni=namaBahasa.replace('bahasa_','').toLowerCase().trim();
+bahasaAktif=namaMurni;
+localStorage.setItem('userLanguage',namaMurni);
+const data=await Promise.all([loadFileBahasa(namaMurni),isManual?new Promise(resolve=>setTimeout(resolve,800)):Promise.resolve()]).then(results=>results[0]);
+applyBahasa(data);
+const btn=document.getElementById('bahasaBtn');
+if(btn&&data.bendera)btn.innerHTML=`${data.bendera} ${data.nama||'Language'}`;
+sembunyikanLoading();
 }

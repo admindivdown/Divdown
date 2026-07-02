@@ -5,29 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Divdown - Download Video</title>
 <link rel="stylesheet" href="style_index2.css">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ9GRBFQW6"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-BQ9GRBFQW6');
-</script>
-</head>
-<body>
-
-<div class="wrap">
-<div class="brand-top">
-<img
-src="logo2.webp"
-alt="Divdown"
-class="brand-logo2"
-onerror="this.style.display='none';">
-
-<div class="brand-text2">
-  Divdown
-</div>
-</div>
+<!-- Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ9GRBFQW6"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BQ9GRBFQW6');</script></head><body><div class="wrap"><div class="brand-top"><img src="logo2.webp" alt="Divdown" class="brand-logo2" onerror="this.style.display='none';"><div class="brand-text2">Divdown</div></div>
 
 <!-- ===== SLOT IKLAN RUMAH 2 (PRELOAD BANNER 300x250) ===== -->
 <div class="banner-slot" id="bannerSlot">
@@ -39,35 +17,7 @@ scrolling="no">
 </div>
 <!-- ===== END IKLAN RUMAH 2 ===== -->
 
-<div class="video-box">
-  <div class="download-card">
-    <div class="thumb-wrap">
-     <div class="thumb-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-  <div id="thumbLoading" class="thumb-loading">
-    Loading...
-  </div>
-
-  <img id="videoThumb"
-       class="video-thumb"
-       alt="Thumbnail Video"
-       style="display:none;">
-</div>
-    </div>
-
-    <div class="download-wrap" id="downloadWrap">
-      <button class="download-btn" id="dlStandard">
-        Standard Quality
-      </button>
-      <button class="download-btn active-btn" id="dl720">
-  <span class="active-dot"></span>
-  <span>720p Download HD</span>
-</button>
-      <button class="download-btn" id="dl1080">
-        1080p High Quality
-      </button>
-    </div>
-  </div>
-</div>
+<div class="video-box"><div class="download-card"><div class="thumb-wrap"><div class="thumb-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;"><div id="thumbLoading" class="thumb-loading">Loading...</div><img id="videoThumb" class="video-thumb" alt="Thumbnail Video" style="display:none;"></div></div><div class="download-wrap" id="downloadWrap"><button class="download-btn" id="dlStandard">Standard Quality</button><button class="download-btn active-btn" id="dl720"><span class="active-dot"></span><span>720p Download HD</span></button><button class="download-btn" id="dl1080">1080p High Quality</button></div></div></div>
 
 <!-- ===== SERVER INFO ===== -->
 <div id="serverInfo"></div>
@@ -87,7 +37,6 @@ const btnHQ=document.getElementById('dl1080');
   // Logika Popunder Adsterra tetap terjaga murni
   function kirimSinyalPopunder(){if(iklanFrame&&iklanFrame.contentWindow){iklanFrame.contentWindow.postMessage('triggerPopunder','*');}}
   function handleKlik(){kirimSinyalPopunder();}
-  
   if(btnStandard)btnStandard.addEventListener('click',handleKlik);
 if(btnHD)btnHD.addEventListener('click',handleKlik);
 });
