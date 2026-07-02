@@ -2,19 +2,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const browserLang = (navigator.language || '').toLowerCase();
 const isID = browserLang.includes('id');
-const serverInfo=document.getElementById('serverInfo');
-/* === SERVER INFO (AUTO LANGUAGE) === */
-if(serverInfo){
-serverInfo.innerHTML=browserLang.includes('id')
-?'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">Kenapa video gagal diproses?</div><div class="faq-answer">Terkadang server membutuhkan waktu lebih lama untuk mengambil data video dari Facebook. Jika proses gagal, cukup refresh halaman satu kali, tunggu beberapa detik hingga data muncul, lalu unduh kembali.</div></div>'
-:browserLang.includes('pt')||browserLang.includes('br')
-?'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">Por que meu vídeo não foi processado?</div><div class="faq-answer">Às vezes, o servidor precisa de mais tempo para obter os dados do Facebook. Se o processo falhar, atualize a página uma vez, aguarde alguns segundos e faça o download novamente.</div></div>'
-:browserLang.includes('hi')||browserLang.includes('in')
-?'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">मेरा वीडियो प्रोसेस क्यों नहीं हुआ?</div><div class="faq-answer">कभी-कभी Facebook से वीडियो डेटा प्राप्त करने में सर्वर को अधिक समय लगता है। यदि प्रक्रिया विफल हो जाए, तो पेज को एक बार रिफ्रेश करें, कुछ सेकंड प्रतीक्षा करें और फिर दोबारा डाउनलोड करें।</div></div>'
-:'<div class="faq-item" style="margin-bottom:12px"><div class="faq-question">Why did my video fail to process?</div><div class="faq-answer">Sometimes our server needs more time to retrieve video data from Facebook. If the process fails, simply refresh the page once, wait a few seconds for the data to load, then download again.</div></div>';
-}
-/* === END SERVER INFO === */
-
   loadFAQ();
   loadFooter();
   const thumb = document.getElementById('videoThumb');
@@ -22,7 +9,6 @@ serverInfo.innerHTML=browserLang.includes('id')
   const btnWrap = document.getElementById('downloadWrap');
   const btnStandard = document.getElementById('dlStandard');
 const btnHD = document.getElementById('dl720');
-const btnHQ = document.getElementById('dl1080');
 
   // Ambil URL langsung
   const params = new URLSearchParams(window.location.search);

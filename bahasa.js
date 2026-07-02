@@ -3,7 +3,6 @@
 // ======================================
 const cacheBahasa = {};
 let bahasaAktif = 'english';
-
 /* --- FUNGSI TAMBAHAN: SPINNER ELEGAN --- */
 function tampilkanLoading(){let e=document.getElementById("loadingSpinner");if(!e){(e=document.createElement("div")).id="loadingSpinner",e.style.cssText="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #587f30; border-radius:50%; animation: spin 1s linear infinite; z-index:99999; display:none;";let n=document.createElement("style");n.innerHTML="@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }",document.head.appendChild(n),document.body.appendChild(e)}e.style.display="block"}function sembunyikanLoading(){let e=document.getElementById("loadingSpinner");e&&(e.style.display="none")}
 
@@ -21,11 +20,6 @@ function applyBahasa(data) {
   if (input && data.placeholder) {
     input.placeholder = data.placeholder;
   }
-
-  /* KOTAK KEUNGGULAN */
-  setText('freeText', data.free);
-  setText('fastText', data.fast);
-  setText('loginText', data.noLogin);
 
   /* KOMPONEN FAQ */
   setText('faqTitle', data.faqTitle);

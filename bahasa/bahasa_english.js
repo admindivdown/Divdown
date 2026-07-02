@@ -3,9 +3,6 @@ window.english = {
   /* ===== MAIN DATA ===== */
   title: "Divdown.net - Fast Video Downloader | Free & No Login",
   placeholder: "Paste video URL here...",
-  free: "✓ 100% Free",
-  fast: "✓ Fast",
-  noLogin: "✓ No Login",
   bendera: "🇺🇸",
   nama: "English",
 

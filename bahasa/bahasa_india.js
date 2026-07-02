@@ -3,9 +3,6 @@ window.india = {
   /* ===== DATA UTAMA ===== */
   title: "Divdown.net - तेज़ वीडियो डाउनलोडर | मुफ्त और बिना लॉगिन",
   placeholder: "वीडियो का URL यहाँ पेस्ट करें...",
-  free: "✓ 100% मुफ्त",
-  fast: "✓ तेज़",
-  noLogin: "✓ बिना लॉगिन",
   bendera: "🇮🇳",
   nama: "हिन्दी",
 

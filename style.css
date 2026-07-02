@@ -34,8 +34,6 @@
 
 /* === LOADING & TRUST === */
 .loading { opacity: .82; pointer-events: none }
-.trust { display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; margin-top: 12px; font-size: 12.5px; color: #616a75; letter-spacing: -0.01em }
-
 /* === SECTION & FAQ (TANPA GARIS ATAS) === */
 .faq-title,.section-subtitle,.section-title{font-weight:650;text-align:center}.section-title{font-size:24px;margin:10px 0 6px;color:#222527;letter-spacing:-.02em}.section-subtitle{font-size:18px;margin:18px 0 10px;color:#222527;letter-spacing:-.015em}.section-text{font-size:15.5px;color:#3d4246;line-height:1.75;margin-bottom:5px;letter-spacing:-.005em}.section-footer{margin-top:8px;font-size:13.5px;color:#6c757d;margin-bottom:5px;text-align:center}.faq-title{font-size:24px;margin:10px 0 12px;color:#222527;letter-spacing:-.02em}.faq-item{background:#f8f9fa;border:1.5px solid #a4b98f;padding:14px 12px;margin-bottom:7px}.faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
@@ -53,7 +51,7 @@
 /* ===== END SECURITY BOX ===== */
 
 /* === UI RESET === */
-.box,.faq-item{transition:border-color .15s}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#dfe5eb}html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}img{display:block;max-width:100%}button,input{font-family:inherit;appearance:none;-webkit-appearance:none;border-radius:0;outline:0}.admin-mode .ad-box,.trust{display:none!important}
+.box,.faq-item{transition:border-color .15s}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#dfe5eb}html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}img{display:block;max-width:100%}button,input{font-family:inherit;appearance:none;-webkit-appearance:none;border-radius:0;outline:0}
 
 /* === PROGRESS CLEAN === */
 .progress-box{width:100%;margin-top:0px;display:block}

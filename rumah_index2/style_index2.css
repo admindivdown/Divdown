@@ -64,6 +64,3 @@ button{border:none;outline:none;font-family:inherit;}
 .download-btn{font-size:13px;}
 .faq-title{font-size:20px;}
 }
-
-/* === ADMIN MODE === */
-.admin-mode .banner-slot{display:none!important;}

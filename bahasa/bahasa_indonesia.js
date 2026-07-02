@@ -3,9 +3,6 @@ window.indonesia = {
   /* ===== DATA UTAMA ===== */
   title: "Divdown.net - Pengunduh Video Cepat | Gratis & Tanpa Login",
   placeholder: "Tempel URL video di sini...",
-  free: "✓ 100% Gratis",
-  fast: "✓ Aman",
-  noLogin: "✓ Tanpa Login",
   bendera: "🇮🇩",
   nama: "Indonesia",
 

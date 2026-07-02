@@ -3,9 +3,6 @@ window.brazil = {
   /* ===== DATA UTAMA ===== */
   title: "Divdown.net - Baixador de Vídeos Rápido | Grátis e Sem Login",
   placeholder: "Cole o link do vídeo aqui...",
-  free: "✓ 100% Grátis",
-  fast: "✓ Rápido",
-  noLogin: "✓ Sem Login",
   bendera: "🇧🇷",
   nama: "Português",
 
