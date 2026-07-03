@@ -70,7 +70,6 @@ function applyBahasa(data) {
   setText('termsSub5', data.termsSub5); 
   setText('termsText5', data.termsText5);
 }
-
 /* ---------- 4. FUNGSI PEMICU GANTI BAHASA ---------- */
 async function gantiBahasa(namaBahasa, isManual = false) {
   if (!namaBahasa) return;
