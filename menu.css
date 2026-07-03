@@ -16,7 +16,6 @@
 /* === IKON & TEKS LEBIH RINGKAS === */
 .menu-box div{font-size:22px;margin-bottom:2px;line-height:1}
 .menu-box strong{font-size:11.5px;display:block}
-
 /* === TEMPAT IKLAN (DISABLED SEMENTARA) === */
 .iklan-menu{width:100%;min-height:50px;background:#f9f9f9;border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:10px}.iklan-menu iframe{display:none}
 
