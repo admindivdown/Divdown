@@ -67,7 +67,6 @@ if (btnHD) {
   alert(isID?"Gagal mengambil file.\nSilakan refresh halaman 1 kali lalu tunggu sampai video muncul.":"Failed to load file.\nPlease refresh the page once and wait until the video appears.");
 }
 });
-
 /* === BAGIAN 3: LOAD FAQ === */
 async function loadFAQ() {
   try {
