@@ -24,6 +24,7 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://divdown.net/">
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -116,6 +117,12 @@ Download FB Videos & Reels Free
   </div>
 </div>
 <!-- ===== END BANNER ===== -->
+
+<!-- ===== INSTALL APP ===== -->
+<div id="installAppWrap" class="install-wrap"><div class="install-bar"><img src="assets/install-logo.webp" alt="Divdown" class="install-logo">
+<span class="install-title">Divdown App <small>• 3 MB</small></span>
+<button id="installAppBtn" class="install-btn">Install</button></div></div>
+<!-- ===== END INSTALL APP ===== -->
   
 <div class="security-box">
  <div class="security-top" id="menuInfo">
@@ -153,6 +160,9 @@ btn.classList.add('active');
 });
 });
 </script>
+<!-- ===== INSTALL APP ===== -->
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").then(()=>console.log("SW Ready")).catch(e=>console.log(e));});}</script>
+<!-- ===== END INSTALL APP ===== -->
 
 </body>
 </html>

@@ -132,6 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// ===== INSTALL DIVDOWN =====
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
+document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
+// ===== END INSTALL DIVDOWN =====
+
 // ===== SOCIAL BAR ADSTERRA =====
 window.addEventListener('pageshow',()=>{
 const s=document.createElement('script');
