@@ -140,17 +140,17 @@ document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(
 
 // ===== SOCIAL BAR ADSTERRA =====
 window.addEventListener('pageshow',()=>{
+const k='adsterra_social_last',n=Date.now(),l=+localStorage.getItem(k)||0;
+if(n-l<300000)return;
+setTimeout(()=>{
 const s=document.createElement('script');
 s.src='https://pl29906335.effectivecpmnetwork.com/a2/08/20/a208209753529aeee294bb011e03c014.js';
 document.body.appendChild(s);
+localStorage.setItem(k,Date.now());
+},3000);
 });
 // ===== END SOCIAL BAR =====
 
-// ===== LOAD BANNER PROMO =====
-document.addEventListener('DOMContentLoaded',()=>{
-setTimeout(()=>{
-const banner=document.querySelector('.promo-banner');
-if(banner)banner.style.display='block';
-},2000);
-});
-// ===== END LOAD BANNER =====
+// ===== ADSTERRA BANNER 300x250 =====
+window.addEventListener('load',()=>{const b=document.getElementById('banner300');if(!b)return;const s1=document.createElement('script'),s2=document.createElement('script');s1.text="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";s2.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';b.append(s1,s2);});
+// ===== END ADSTERRA BANNER =====

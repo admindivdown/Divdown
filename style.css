@@ -41,8 +41,6 @@
 /* ===== BANNER HALAMAN UTAMA ===== */
 .ad-box{margin:0;padding:8px;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
 .ad-slot{width:100%;max-width:336px;min-height:290px;margin:auto;display:flex;align-items:center;justify-content:center}
-.promo-banner{display:none;width:100%;height:auto}
-/* ===== END BANNER ===== */
 
 /* ===== INSTALL APP ===== */
 .install-wrap{padding:8px 4px;background:#f1f3f5}
