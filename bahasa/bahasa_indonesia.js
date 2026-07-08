@@ -18,11 +18,10 @@ window.indonesia = {
   faqA4: "Tidak perlu login. Cukup tempel tautan video atau Reels publik, lalu simpan langsung ke perangkat Anda. Kami tidak pernah meminta kata sandi atau informasi akun.",
   faqQ5: "Mengapa video saya gagal diproses?",
   faqA5: "Pastikan tautan sudah benar, video bersifat publik, dan koneksi internet Anda stabil. Divdown hanya dapat memproses video yang tersedia untuk diakses publik.",
-
-  /* ===== TENTANG (ABOUT) ===== */
-  aboutTitle: "Tentang Divdown",
-  aboutText1: "Divdown adalah platform daring yang aman dan membantu Anda menyimpan video dalam kualitas HD untuk ditonton secara luring. Layanan kami 100% gratis, cepat, dan tidak memerlukan masuk akun atau pemasangan perangkat lunak apa pun.",
-  aboutText2: "Dibangun dengan tampilan yang ringan, bersih, dan nyaman digunakan di ponsel, Divdown menjamin pengalaman yang lancar dan menjaga privasi Anda. Kami tidak mengumpulkan data pribadi apa pun dan semua proses unduhan dikerjakan dengan aman melalui peramban Anda.",
+/* ===== TENTANG (ABOUT) ===== */
+aboutTitle: "Tentang Divdown",
+aboutText1: "Divdown merupakan platform untuk mengunduh Video Facebook dan Reels yang memudahkan Anda menyimpan video Facebook secara gratis, cepat, aman, dan tanpa login. Tersedia pilihan kualitas hingga HD, Full HD (1080p), bahkan 4K apabila tersedia di sumber asli.",
+aboutText2: "Dirancang tetap ringan dan nyaman digunakan di berbagai perangkat. <strong>Network:</strong> Instagram, TikTok, YouTube, dan X (Twitter) Downloader tersedia melalui <strong>Menu</strong>.",
 
   /* ===== HUBUNGI KAMI (CONTACT) ===== */
   contactTitle: "Hubungi Kami",

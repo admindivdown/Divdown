@@ -18,11 +18,10 @@ window.english = {
   faqA4: "No login needed. Just paste a public video or Reels link and save it directly to your device. We never ask for passwords or account information.",
   faqQ5: "Why did my video fail to process?",
   faqA5: "Make sure the link is correct, the video is public, and your internet connection is stable. Divdown can only process publicly accessible videos.",
-
-  /* ===== ABOUT ===== */
-  aboutTitle: "About Divdown",
-  aboutText1: "Divdown is a secure online platform that helps you save videos in HD quality for offline viewing. Our service is 100% free, fast, and requires no account login or software installation.",
-  aboutText2: "Built with a lightweight, clean, and mobile-friendly interface, Divdown ensures a smooth and private experience. We respect your privacy: no personal data is collected and all downloads are processed securely through your browser.",
+/* ===== ABOUT ===== */
+aboutTitle: "About Divdown",
+aboutText1: "Divdown is a platform for downloading Facebook Video and Reels, making it easy to save Facebook Video for free, quickly, securely, and without login. Video quality is available up to HD, Full HD (1080p), and even 4K when supported by the original source.",
+aboutText2: "Designed to stay lightweight and comfortable across various devices. <strong>Network:</strong> Instagram, TikTok, YouTube, and X (Twitter) Downloader are available through the <strong>Menu</strong>.",
 
   /* ===== CONTACT ===== */
   contactTitle: "Contact Us",
