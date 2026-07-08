@@ -9,7 +9,6 @@ function tutupSemuaMenu() {
   const bahasaDropdown = document.querySelector('.bahasa-dropdown');
   if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
 }
-
 /* ---------- 1. MUAT KOMPONEN HTML ---------- */
 function loadFile(e,t,n){let r=`${t}?v=${Date.now()}`;return fetch(r).then(e=>{if(!e.ok)throw Error(n);return e.text()}).then(t=>{let n=document.getElementById(e);n&&(n.innerHTML=t)}).catch(e=>console.error(n,e))}
 
