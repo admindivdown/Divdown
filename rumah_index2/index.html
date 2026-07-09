@@ -27,19 +27,6 @@ scrolling="no">
 
 <!-- ===== UPDATE CACHE JS ===== -->
 <script src="app_index2.js?v=3"></script>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  const btnStandard=document.getElementById('dlStandard');
-const btnHD=document.getElementById('dl720');
-const btnHQ=document.getElementById('dl1080');
-  const iklanFrame=document.getElementById('iklanFrame');
-  
-  // Logika Popunder Adsterra tetap terjaga murni
-  function kirimSinyalPopunder(){if(iklanFrame&&iklanFrame.contentWindow){iklanFrame.contentWindow.postMessage('triggerPopunder','*');}}
-  function handleKlik(){kirimSinyalPopunder();}
-  if(btnStandard)btnStandard.addEventListener('click',handleKlik);
-if(btnHD)btnHD.addEventListener('click',handleKlik);
-});
-</script>
+
 </body>
 </html>
