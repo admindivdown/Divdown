@@ -137,5 +137,6 @@ let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
-// IKLAN VIDEO EXOCLICK RUMAH 1 - PERBAIKAN
-document.addEventListener('DOMContentLoaded',()=>{window.addEventListener('load',()=>{setTimeout(()=>{const s=document.getElementById('banner300');if(s){const i=document.createElement('ins');i.className='eas6a97888e37';i.setAttribute('data-zoneid','5970808');i.setAttribute('data-block-ad-types','0');s.appendChild(i);const c=document.createElement('script');c.text='(AdProvider=window.AdProvider||[]).push({"serve":{}});';s.appendChild(c);}},500);});});
+
+// IKLAN VIDEO EXOCLICK RUMAH 1 - AMAN (CUKUP TRIGGER ANTREAN SAJA)
+document.addEventListener('DOMContentLoaded',()=>{window.addEventListener('load',()=>{setTimeout(()=>{try{(window.AdProvider=window.AdProvider||[]).push({"serve":{}})}catch(e){}},500);});});
