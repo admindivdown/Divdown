@@ -137,6 +137,3 @@ let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
-
-// IKLAN VIDEO EXOCLICK RUMAH 1 - AMAN (CUKUP TRIGGER ANTREAN SAJA)
-document.addEventListener('DOMContentLoaded',()=>{window.addEventListener('load',()=>{setTimeout(()=>{try{(window.AdProvider=window.AdProvider||[]).push({"serve":{}})}catch(e){}},500);});});
