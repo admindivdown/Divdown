@@ -75,7 +75,6 @@ async function loadFAQ() {
     }
   } catch (e) { console.log('FAQ tidak dimuat'); }
 }
-
 // Fungsi Load Footer OK
 async function loadFooter() {
   try {
