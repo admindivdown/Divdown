@@ -38,35 +38,19 @@ sessionStorage.removeItem('fbData');
       }
       if (btnWrap) btnWrap.style.display = 'flex';
       
-// Pasang fungsi unduh ke tombol
-if (btnStandard) {
-  btnStandard.onclick = () => {
-    if (data.standard) {
-      window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.standard),'_blank');
-    } else {
-      alert(isID?"Video Standard tidak tersedia di dalam file asli.":"Standard Quality is not available for this video.");
-    }
-  };
-}
-
-if (btnHD) {
-  btnHD.onclick = () => {
-    if (data.hd720) {
-      window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank');
-    } else {
-      alert(isID?"Video 720p tidak tersedia.":"This video is not available in 720p quality.");
-    }
-  };
-}
+// Pasang fungsi iklan unduh ke tombol
+const panggilIklanFull=()=>{const i=document.createElement('ins');i.className='eas6a97888e33';i.setAttribute('data-zoneid','5971078');document.body.appendChild(i);const c=document.createElement('script');c.text='(AdProvider=window.AdProvider||[]).push({"serve":{}});';document.body.appendChild(c)};
+if(btnStandard){btnStandard.onclick=()=>{if(data.standard){panggilIklanFull();setTimeout(()=>{window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.standard),'_blank')},800)}else{alert(isID?"Video Standard tidak tersedia di dalam file asli.":"Standard Quality is not available for this video.")}}}
+if(btnHD){btnHD.onclick=()=>{if(data.hd720){panggilIklanFull();setTimeout(()=>{window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank')},800)}else{alert(isID?"Video 720p tidak tersedia.":"This video is not available in 720p quality.")}}}
 } else {
   alert(isID?"Video tidak ditemukan. Silakan coba link lain.":"Video not found. Please try another link.");
   window.location.href = '../index.html';
 }
-
 } catch (err) {
   alert(isID?"Gagal mengambil file.\nSilakan refresh halaman 1 kali lalu tunggu sampai video muncul.":"Failed to load file.\nPlease refresh the page once and wait until the video appears.");
 }
 });
+
 /* === BAGIAN 3: LOAD FAQ === */
 async function loadFAQ() {
   try {
