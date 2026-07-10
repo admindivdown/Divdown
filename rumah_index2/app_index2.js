@@ -39,7 +39,7 @@ sessionStorage.removeItem('fbData');
       if (btnWrap) btnWrap.style.display = 'flex';
       
 // Pasang fungsi iklan unduh ke tombol
-const panggilIklanFull=()=>{try{(window.AdProvider=window.AdProvider||[]).push({"serve":{}})}catch(e){}};
+const panggilIklanFull=()=>{try{(window.AdProvider=window.AdProvider||[]).push({"serve":{"id":"5971078"}})}catch(e){}};
 if(btnStandard){btnStandard.onclick=()=>{if(data.standard){panggilIklanFull();setTimeout(()=>{window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.standard),'_blank')},800)}else{alert(isID?"Video Standard tidak tersedia di dalam file asli.":"Standard Quality is not available for this video.")}}}
 if(btnHD){btnHD.onclick=()=>{if(data.hd720){panggilIklanFull();setTimeout(()=>{window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank')},800)}else{alert(isID?"Video 720p tidak tersedia.":"This video is not available in 720p quality.")}}}
 } else {
