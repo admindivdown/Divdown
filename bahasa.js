@@ -9,10 +9,10 @@ function tampilkanLoading(){let e=document.getElementById("loadingSpinner");if(!
 /* ---------- 1. FUNGSI MEMUAT FILE SCRIPT BAHASA EXTERNAL ---------- */
 function loadFileBahasa(a){return new Promise(e=>{if(!a){e({});return}let r=a.replace("bahasa_","").toLowerCase().trim();if(cacheBahasa[r]){e(cacheBahasa[r]);return}let t=document.createElement("script");t.src=`bahasa/bahasa_${r}.js`,t.onload=()=>{let a=window[r]||window[r.charAt(0).toUpperCase()+r.slice(1)]||"undefined"!=typeof Window&&Window[r]||window[`bahasa_${r}`];cacheBahasa[r]=a||{},e(cacheBahasa[r])},t.onerror=()=>{console.error(`File bahasa/bahasa_${r}.js gagal dimuat!`),e({})},document.head.appendChild(t)})}
 
-/* ---------- 2. FUNGSI SUNTIK TEKS AMAN ---------- */
+/* --- 2. FUNGSI SUNTIK TEKS AMAN --- */
 function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=n)}
 
-/* ---------- 3. PROSES PENEMPELAN TEKS KE ELEMEN HTML ---------- */
+/* --- 3. PROSES TEKS KE ELEMEN HTML --- */
 function applyBahasa(data) {
   if (!data || Object.keys(data).length === 0) return;
   if (data.title) document.title = data.title;

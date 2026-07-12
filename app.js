@@ -1,5 +1,5 @@
 // ======================================
-// APP.JS RUMAH 1 - FINAL STABIL & CACHE AMAN
+// APP.JS RUMAH 1 - FINAL STABIL & CACHE
 // ======================================
 
 /* --- FUNGSI KOORDINATOR MENU --- */
@@ -9,10 +9,10 @@ function tutupSemuaMenu() {
   const bahasaDropdown = document.querySelector('.bahasa-dropdown');
   if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
 }
-/* ---------- 1. MUAT KOMPONEN HTML ---------- */
+/* --- 1. MUAT KOMPONEN HTML --- */
 function loadFile(e,t,n){let r=`${t}?v=${Date.now()}`;return fetch(r).then(e=>{if(!e.ok)throw Error(n);return e.text()}).then(t=>{let n=document.getElementById(e);n&&(n.innerHTML=t)}).catch(e=>console.error(n,e))}
 
-/* ---------- 2. INISIALISASI HALAMAN ---------- */
+/* --- 2. INISIALISASI HALAMAN --- */
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
     loadFile('about', './about.html', 'Gagal muat Tentang'),
@@ -36,20 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 // 🔥 WAJIB ADA INI BIAR FAQ KEISI
-if (typeof gantiBahasa === 'function') {
-  gantiBahasa(savedLang, false);
-}
-  });
+if(typeof gantiBahasa==='function'){gantiBahasa(savedLang,false);}});const input=document.getElementById('urlInput');if(input){input.addEventListener('keypress',function(e){if(e.key==='Enter')downloadVideo();});}});
 
-  const input = document.getElementById('urlInput');
-  if (input) {
-    input.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') downloadVideo();
-    });
-  }
-});
-
-/* ---------- 3. FUNGSI UTAMA UNDUH (DENGAN URL PARAMETER) ---------- */
+/* --- 3. FUNGSI UTAMA UNDUH --- */
 async function downloadVideo() {
   const btn = document.getElementById('downloadBtn');
   if (btn && btn.disabled) return;
@@ -84,56 +73,29 @@ const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent
 data=await res.json();
 if(!data.success)throw new Error();
 }
+
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
 /* === MASUK RUMAH 2 === */
 window.location.href=`rumah_index2/index.html?url=${encodeURIComponent(url)}`;
+}catch(err){const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';alert(isID?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.':'Failed to process the video.\n\nPlease try again in a moment.');btn.classList.remove('loading');btn.innerHTML='Download';btn.disabled=false;}}
 
-}catch(err){
-const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';
-alert(isID
-?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.'
-:'Failed to process the video.\n\nPlease try again in a moment.');
-btn.classList.remove('loading');
-btn.innerHTML='Download';
-btn.disabled=false;
-}
-}
-  
-/* ---------- 4. RESET TOMBOL KEMBALI ---------- */
-window.addEventListener('pageshow', function(e) {
-  if (e.persisted) {
-    const btn = document.getElementById('downloadBtn');
-    if (btn) {
-      btn.classList.remove('loading');
-      btn.innerHTML = 'Download';
-      btn.disabled = false;
-    }
-  }
-});
+/* --- 4. RESET TOMBOL KEMBALI --- */
+window.addEventListener('pageshow',function(e){if(e.persisted){const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.innerHTML='Download';btn.disabled=false;}}});
 
-// --- KENDALI MENU TERPADU (AMAN & TIDAK TERTUKAR) ---
-document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.querySelector('#menuBtn.menu-btn'); // satu penanda saja
-  const menuDropdown = document.getElementById('menuDropdown');
-  if (!menuBtn || !menuDropdown) return;
-
-  menuBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    const isOpen = menuDropdown.classList.toggle('show-menu');
-    menuBtn.classList.toggle('open', isOpen); // ikon selalu ikut kondisi menu
-  });
-
-  document.addEventListener('click', e => {
-    if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
-      menuDropdown.classList.remove('show-menu');
-      menuBtn.classList.remove('open'); // pas tutup otomatis balikin ke garis
-    }
-  });
-});
+// --- KENDALI MENU TERPADU (AMAN) ---
+document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;menuBtn.addEventListener('click',e=>{e.stopPropagation();const isOpen=menuDropdown.classList.toggle('show-menu');menuBtn.classList.toggle('open',isOpen);});document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!menuDropdown.contains(e.target)){menuDropdown.classList.remove('show-menu');menuBtn.classList.remove('open');}});});
 
 // ===== INSTALL DIVDOWN =====
 let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
+
+// === NATIVE BANNER ADSTERRA ===
+window.addEventListener('load',()=>{setTimeout(()=>{const n=document.getElementById('nativeBanner');if(!n)return;const d=document.createElement('div');d.id='container-f3e0951873d8921ff12f5956a622f11c';const s=document.createElement('script');s.async=true;s.setAttribute('data-cfasync','false');s.src='https://pl29906332.effectivecpmnetwork.com/f3e0951873d8921ff12f5956a622f11c/invoke.js';n.appendChild(d);n.appendChild(s)},200)});
+// === END NATIVE BANNER ADSTERRA ===
+
+// === EXOCLICK MESSAGE ===
+window.addEventListener('load',()=>{setTimeout(()=>{if(document.querySelector('ins.eas6a97888e14'))return;const s=document.createElement('script');s.async=true;s.type='application/javascript';s.src='https://a.magsrv.com/ad-provider.js';document.body.appendChild(s);s.onload=()=>{const i=document.createElement('ins');i.className='eas6a97888e14';i.setAttribute('data-zoneid','5972152');document.body.appendChild(i);(window.AdProvider=window.AdProvider||[]).push({serve:{}});};},500);});
+// === END EXOCLICK ===

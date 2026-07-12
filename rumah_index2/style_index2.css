@@ -12,10 +12,10 @@ button{border:none;outline:none;font-family:inherit;}
 ::-webkit-scrollbar-thumb{background:#dfe5eb;}
 
 /* === WRAP === */
-.wrap{width:100%;max-width:420px;margin:auto;padding:0 6px;}
-
+.wrap{width:100%;max-width:420px;margin:auto;padding:5px 6px 0;}
 /* === BRAND === */
-.brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:17px 0 6px;}
+.brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:5px 0 6px;}
+
 .brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
 
 /* === BANNER === */

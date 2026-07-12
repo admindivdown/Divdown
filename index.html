@@ -30,10 +30,9 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <!-- ===== UPDATE CACHE CSS ===== -->
-<link rel="stylesheet" href="style.css?v=4">
-<link rel="stylesheet" href="tampilan_bahasa.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="tampilan_bahasa.css?v=5">
 <link rel="stylesheet" href="menu.css?v=3">
-<script async src="https://a.magsrv.com/ad-provider.js"></script>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ9GRBFQW6"></script>
@@ -108,14 +107,10 @@ Download FB Videos & Reels Free
 
 <div class="download-row"><input id="urlInput" type="text" class="input" placeholder="Paste Facebook link here..." aria-label="Paste Facebook video URL here"><button id="downloadBtn" class="download-btn" onclick="downloadVideo()">Download</button></div><div class="progress-box" id="progressBox"><div class="progress-bar"><div class="progress-fill" id="progressFill"><span class="progress-text" id="progressText">0%</span></div></div></div></div>
 
-<!-- ===== VIDEO AD SLOT ===== -->
-<div class="ad-box">
-    <div class="ad-slot" id="banner300">
-        <ins class="eas6a97888e37" data-zoneid="5970808" data-block-ad-types="0"></ins>
-        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-    </div>
-</div>
-<!-- ===== END VIDEO AD SLOT ===== -->
+<!-- === NATIVE BANNER ADSTERRA === -->
+<div class="ad-box"><div class="ad-slot" id="nativeBanner"></div></div>
+<!-- === END NATIVE BANNER === -->
+
 </div>
 <!-- ===== INSTALL APP ===== -->
 <div id="installAppWrap" class="install-wrap"><div class="install-bar"><img src="assets/install-logo.webp" alt="Divdown" class="install-logo">
@@ -142,8 +137,8 @@ Download FB Videos & Reels Free
   <div id="footer"></div>
 </div>
 <!-- ===== UPDATE CACHE JS ===== -->
-<script src="bahasa.js?v=4"></script>
-<script src="app.js?v=7"></script>
+<script src="bahasa.js?v=5"></script>
+<script src="app.js?v=8"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded',()=>{const m=document.getElementById('menuInfo');if(m&&!(navigator.language||'').toLowerCase().includes('id'))m.innerHTML=' Download IG, TikTok & YouTube Videos <br>Click the ☰ Menu button';});

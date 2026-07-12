@@ -38,9 +38,10 @@
 .faq-item{background:#fff;border:1px solid #d9e6cf;border-radius:14px;padding:14px 12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
-/* ===== BANNER HALAMAN UTAMA ===== */
-.ad-box{margin:0;padding:8px;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
-.ad-slot{width:100%;max-width:336px;min-height:290px;margin:auto;display:flex;align-items:center;justify-content:center}
+/* ===== NATIVE BANNER ADSTERRA ===== */
+.ad-box{margin-top:-10px;padding:0;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
+.ad-slot{width:100%;min-height:340px;display:block;overflow:hidden}
+/* ===== END NATIVE ===== */
 
 /* ===== INSTALL APP ===== */
 .install-wrap{padding:8px 4px;background:#f1f3f5}
