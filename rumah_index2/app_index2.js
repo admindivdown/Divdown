@@ -31,11 +31,10 @@ sessionStorage.removeItem('fbData');
         thumb.style.display='block';
       }
       if (btnWrap) btnWrap.style.display = 'flex';
-      
-// Pasang fungsi iklan unduh ke tombol
-if(btnStandard){btnStandard.onclick=()=>{if(data.standard){window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.standard),'_blank')}else{alert(isID?"Video Standard tidak tersedia di dalam file asli.":"Standard Quality is not available for this video.")}}}
 
-if(btnHD){btnHD.onclick=()=>{if(data.hd720){window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank')}else{alert(isID?"Video 720p tidak tersedia.":"This video is not available in 720p quality.")}}}
+// Sistem Popunder ExoClick    
+if(btnStandard){btnStandard.onclick=(e)=>{if(data.standard){if(typeof popMagic!=='undefined'&&popMagic.shouldShow&&popMagic.shouldShow()){popMagic.methods.popup(e);btnStandard.innerHTML=isID?"👉 KLIK SEKALI LAGI UNTUK DOWNLOAD":"👉 CLICK AGAIN TO DOWNLOAD";btnStandard.style.backgroundColor="#28a745"}else{window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.standard),'_blank');btnStandard.innerHTML=isID?"Download Standard Quality":"Download Standard Quality";btnStandard.style.backgroundColor=""}}else{alert(isID?"Video Standard tidak tersedia di dalam file asli.":"Standard Quality is not available for this video.")}}}
+if(btnHD){btnHD.onclick=(e)=>{if(data.hd720){if(typeof popMagic!=='undefined'&&popMagic.shouldShow&&popMagic.shouldShow()){popMagic.methods.popup(e);btnHD.innerHTML=isID?"👉 KLIK SEKALI LAGI UNTUK DOWNLOAD":"👉 CLICK AGAIN TO DOWNLOAD";btnHD.style.backgroundColor="#28a745"}else{window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank');btnHD.innerHTML=isID?"Download HD 720p":"Download HD 720p";btnHD.style.backgroundColor=""}}else{alert(isID?"Video 720p tidak tersedia.":"This video is not available in 720p quality.")}}}
 
 } else {
   alert(isID?"Video tidak ditemukan. Silakan coba link lain.":"Video not found. Please try another link.");
