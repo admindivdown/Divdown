@@ -1,5 +1,5 @@
 /* ===== UPDATE CACHE VERSION ===== */
-const CACHE="divdown-v6";
+const CACHE="divdown-v7";
 
 /* ===== END UPDATE CACHE VERSION ===== */
 const FILES=["/","/index.html","/style.css","/menu.css","/tampilan_bahasa.css","/bahasa.js","/app.js"];

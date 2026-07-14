@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 // 🔥 WAJIB ADA INI BIAR FAQ KEISI
-if(typeof gantiBahasa==='function'){gantiBahasa(savedLang,false);}});const input=document.getElementById('urlInput');if(input){input.addEventListener('keypress',function(e){if(e.key==='Enter')downloadVideo();});}});
+if(typeof gantiBahasa==='function'){gantiBahasa(savedLang,false);}});const input=document.getElementById('urlInput');if(input){input.addEventListener('keypress',e=>{if(e.key==='Enter')downloadVideo()});}});
 
 /* --- 3. FUNGSI UTAMA UNDUH --- */
 async function downloadVideo() {
@@ -47,20 +47,19 @@ async function downloadVideo() {
   const url=input.value.trim();const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
   
 /* === PROGRESS RUMAH 1 === */
-const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
-if(pb&&pf&&pt){
-pb.style.display='block';pf.style.width='0%';pt.textContent='0%';
-let p=0;const i=setInterval(()=>{if(p<30)p+=3;else if(p<70)p+=2;else if(p<90)p+=1;else p+=0.5;if(p>100)p=100;pf.style.width=p+'%';pt.textContent=Math.floor(p)+'%';if(p>=100)clearInterval(i)},150);
-}
-/* === END === */
-  
   const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
   const isValid = validDomains.some(d => url.includes(d));
   if(!isValid){alert(isID?'Silakan gunakan tautan Facebook yang valid.':'Please use a valid Facebook link.');return;}
-  btn.classList.add('loading');
-btn.innerHTML = 'Memproses...';
-btn.disabled = true;
 
+  const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
+  if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';let p=0;const i=setInterval(()=>{if(p<40)p+=4;else if(p<60)p+=3;else if(p<80)p+=1;else if(p<90)p+=0.5;else if(p<98)p+=0.2;else p=98;pf.style.width=p+'%';pt.textContent=Math.floor(p)+'%';if(p>=98)clearInterval(i)},150)}
+/* === END === */
+
+/* === TOMBOL PROCESSING === */
+btn.classList.add('loading');
+btn.querySelector('.btn-text').textContent='Processing...';
+btn.disabled=true;
+/* === END TOMBOL PROCESSING === */
   try{
 let data=null;
 try{
@@ -78,10 +77,16 @@ if(!data.success)throw new Error();
 sessionStorage.setItem('fbData',JSON.stringify(data));
 /* === MASUK RUMAH 2 === */
 window.location.href=`rumah_index2/index.html?url=${encodeURIComponent(url)}`;
-}catch(err){const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';alert(isID?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.':'Failed to process the video.\n\nPlease try again in a moment.');btn.classList.remove('loading');btn.innerHTML='Download';btn.disabled=false;}}
+}catch(err){const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';alert(isID?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.':'Failed to process the video.\n\nPlease try again in a moment.');
+/* === RESET TOMBOL === */
+btn.classList.remove('loading');
+btn.querySelector('.btn-text').textContent='Download';
+btn.disabled=false;
+}}
+/* === END RESET TOMBOL === */
 
 /* --- 4. RESET TOMBOL KEMBALI --- */
-window.addEventListener('pageshow',function(e){if(e.persisted){const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.innerHTML='Download';btn.disabled=false;}}});
+window.addEventListener('pageshow',function(e){if(e.persisted){const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}});
 
 // --- KENDALI MENU TERPADU (AMAN) ---
 document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;menuBtn.addEventListener('click',e=>{e.stopPropagation();const isOpen=menuDropdown.classList.toggle('show-menu');menuBtn.classList.toggle('open',isOpen);});document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!menuDropdown.contains(e.target)){menuDropdown.classList.remove('show-menu');menuBtn.classList.remove('open');}});});

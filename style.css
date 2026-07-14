@@ -23,8 +23,14 @@
 .download-row{display:flex;align-items:stretch;justify-content:center;gap:0;margin:6px 0}
 .download-row .input { width: 100%; flex: 1; margin-bottom: 0; border-right: none }
 
-.download-btn{width:138px;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#155d 0%,#6b8f 50%,#155d78 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:0 8px 8px 0}
+.download-btn{display:flex;align-items:center;justify-content:center;width:138px;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#155d 0%,#6b8f 50%,#155d78 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:0 8px 8px 0}
 .download-btn:active { transform: translateY(1px)}
+/* ===== SPINNER DOWNLOAD ===== */
+.btn-spinner{width:18px;height:18px;margin-right:8px;border:2.8px solid rgba(255,255,255,.35);border-top:2.8px solid #fff;border-radius:50%;display:none;flex-shrink:0;animation:btnSpin .75s linear infinite}
+.btn-text{display:inline-block}
+.download-btn.loading .btn-spinner{display:inline-block}
+@keyframes btnSpin{to{transform:rotate(360deg)}}
+/* ===== END SPINNER DOWNLOAD ===== */
 
 .subtitle { text-align: center; font-size: 22px; font-weight: 600; color: #eef1f5; line-height: 1.34; margin-bottom: 2px; letter-spacing: -0.02em }
 .subtitle-mini { text-align: center; font-size: 14px; color: #eef1f5; letter-spacing: 0.01em; margin-bottom: 25px }
@@ -68,5 +74,5 @@
 .progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f30);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;transition:width .3s ease}
 .progress-text{font-size:10px;color:#fff;font-weight:600}
 /* ===== CONTENT BOX ===== */
-#faq,#about,#kontak,#privacy,#terms,#footer{padding:16px 16px;margin:9px;background:#fff;border:2px solid #6b8f4b;border-radius:18px;box-shadow:0 2px 8px rgba(107,143,75,.18)
+#faq,#about,#kontak,#privacy,#terms,#footer{padding:16px 16px;margin:9px;background:#fff;border:2px solid #6b8f4b;border-radius:18px;box-shadow:0 2px 8px rgba(107,143,75,.18)}
 
