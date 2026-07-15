@@ -1,6 +1,5 @@
 /* === RESET & BASE === */
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}html{scroll-behavior:smooth;}
 
 /* === BODY === */
 body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#eef1f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
@@ -56,6 +55,10 @@ button{border:none;outline:none;font-family:inherit;}
 /*===THUMB LOADING===*/
 .thumb-loading{position:absolute;font-size:15px;font-weight:600;color:#6b7280;user-select:none;animation:processingBlink 1s ease-in-out infinite;z-index:2}
 @keyframes processingBlink{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
+/* === DOWNLOAD SPINNER === */
+.download-spinner{height:18px;display:flex;justify-content:center;align-items:center;margin:0 0 8px}
+.spinner-mini{width:14px;height:14px;border:2px solid #d8d8d8;border-top:2px solid #1a7;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* === RESPONSIVE === */
 @media (max-width:320px){

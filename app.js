@@ -104,4 +104,3 @@ window.addEventListener('load',()=>{setTimeout(()=>{const n=document.getElementB
 // === EXOCLICK MESSAGE ===
 window.addEventListener('load',()=>{setTimeout(()=>{if(document.querySelector('ins.eas6a97888e14'))return;const s=document.createElement('script');s.async=true;s.type='application/javascript';s.src='https://a.magsrv.com/ad-provider.js';document.body.appendChild(s);s.onload=()=>{const i=document.createElement('ins');i.className='eas6a97888e14';i.setAttribute('data-zoneid','5972152');document.body.appendChild(i);(window.AdProvider=window.AdProvider||[]).push({serve:{}});};},500);});
 // === END EXOCLICK ===
-/*=====EXOCLICK LINK TRIGGER=====*/document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.menu-box').forEach(a=>{a.addEventListener('click',()=>{try{(window.AdProvider=window.AdProvider||[]).push({"serve":{"id":"5971078"}});}catch(e){}});});});/*=====END EXOCLICK LINK TRIGGER=====*/
