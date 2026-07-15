@@ -18,13 +18,13 @@ try { let data = JSON.parse(sessionStorage.getItem('fbData') || 'null'); if (!da
       // Tampilkan UI
       if (thumb) { const loader = document.getElementById('thumbLoading'); thumb.onload = () => { if (loader) loader.style.display = 'none'; }; thumb.src = data.thumbnail; thumb.style.display = 'block'; }
       if (btnWrap) btnWrap.style.display = 'flex';
-/*===SPINNER DOWNLOAD===*/const spin=document.getElementById('downloadSpinner'),showSpin=()=>spin&&(spin.style.display='flex'),hideSpin=()=>spin&&(spin.style.display='none');
 
-/* === DOWNLOAD VIDEO BARU === */
-const startDownload = async (url) => { showSpin(); try { const response = await fetch('https://divdown.net/api/download?url=' + encodeURIComponent(url)); const blob = await response.blob(); const link = document.createElement('a'); link.href = window.URL.createObjectURL(blob); link.download = 'video_divdown.mp4'; link.click(); hideSpin(); } catch (err) { hideSpin(); alert(isID ? "Gagal mengunduh." : "Failed to download."); } };
+/* === DOWNLOAD VIDEO === */
+if(btnStandard){btnStandard.onclick=()=>{if(data.standard){window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.standard),'_blank')}else{alert(isID?"Video Standard tidak tersedia.":"Standard Quality is not available.")}}}
 
-if(btnStandard) btnStandard.onclick = () => data.standard ? startDownload(data.standard) : alert(isID ? "Video tidak tersedia." : "Not available.");
-if(btnHD) btnHD.onclick = () => data.hd720 ? startDownload(data.hd720) : alert(isID ? "Video tidak tersedia." : "Not available.");
+if(btnHD){btnHD.onclick=()=>{if(data.hd720){window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank')}else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.")}}}
+
+
 } else {
   alert(isID?"Video tidak ditemukan. Silakan coba link lain.":"Video not found. Please try another link.");
   window.location.href = '../index.html';
@@ -43,6 +43,3 @@ document.querySelectorAll('[data-en]').forEach(el=>{el.textContent=el.getAttribu
 
 // Fungsi Load Footer OK
 async function loadFooter(){try{const res=await fetch('footer_rumah2.html');if(res.ok)document.getElementById('footer').innerHTML=await res.text();}catch(e){console.log('Footer tidak dimuat');}}
-/*===RESET SPINNER===*/
-window.addEventListener('pageshow',()=>{const s=document.getElementById('downloadSpinner');if(s)s.style.display='none';});
-window.addEventListener('focus',()=>{const s=document.getElementById('downloadSpinner');if(s)s.style.display='none';});
