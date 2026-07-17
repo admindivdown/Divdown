@@ -97,10 +97,6 @@ window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPro
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
 
-// === NATIVE BANNER ADSTERRA ===
-window.addEventListener('load',()=>{setTimeout(()=>{const n=document.getElementById('nativeBanner');if(!n)return;const d=document.createElement('div');d.id='container-f3e0951873d8921ff12f5956a622f11c';const s=document.createElement('script');s.async=true;s.setAttribute('data-cfasync','false');s.src='https://pl29906332.effectivecpmnetwork.com/f3e0951873d8921ff12f5956a622f11c/invoke.js';n.appendChild(d);n.appendChild(s)},200)});
-// === END NATIVE BANNER ADSTERRA ===
-
-// === EXOCLICK MESSAGE ===
-window.addEventListener('load',()=>{setTimeout(()=>{if(document.querySelector('ins.eas6a97888e14'))return;const s=document.createElement('script');s.async=true;s.type='application/javascript';s.src='https://a.magsrv.com/ad-provider.js';document.body.appendChild(s);s.onload=()=>{const i=document.createElement('ins');i.className='eas6a97888e14';i.setAttribute('data-zoneid','5972152');document.body.appendChild(i);(window.AdProvider=window.AdProvider||[]).push({serve:{}});};},500);});
-// === END EXOCLICK ===
+// ===== LOAD BANNER ADSTERRA 320x50 =====
+document.addEventListener('DOMContentLoaded',()=>{const box=document.getElementById('banner320Box');if(!box)return;const s1=document.createElement('script');s1.text="atOptions={key:'a9e26a5898162babbd39410bf67794d2',format:'iframe',height:50,width:320,params:{}};";const s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/a9e26a5898162babbd39410bf67794d2/invoke.js';s2.async=true;box.appendChild(s1);box.appendChild(s2);});
+// ===== END BANNER ADSTERRA =====

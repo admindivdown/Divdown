@@ -9,13 +9,13 @@
 /* === EFEK X SAAT MENU TERBUKA === */
 .menu-btn.open span:first-child{transform:translateY(6.5px) rotate(45deg)}.menu-btn.open span:nth-child(2){opacity:0}.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.menu-btn:active{transform:scale(.96)}
 
-/* === DOWNLOAD BOX RUMAH 1 === */
-.download-box{padding:2px 12px 12px;margin:0;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%)!important;}
 /* ===== HOME BOX ===== */
-.home-box{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%)!important;padding:0;
-}
+.home-box{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f25 100%)!important;padding:0 0 2px}
+/* --- DOWNLOAD BOX --- */
+.download-box{padding:2px 12px 0;margin:0;background:transparent!important}
+
 /* --- LOGO & BRAND --- */
-.brand-row {display:flex;align-items:center;justify-content:center;gap:4px;margin-top:15px;margin-bottom:10px;flex-wrap:nowrap;min-height:72px;}
+.brand-row {display:flex;align-items:center;justify-content:center;gap:4px;margin-top:17px;margin-bottom:10px;flex-wrap:nowrap;min-height:72px;}
 .brand-logo {width:65px;height:65px;object-fit:contain;flex-shrink:0;}
 .brand-name {font-size:45px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:0;color:#eef1f5;transform:scaleY(1.5);line-height:1;display:flex;align-items:baseline;}
 .brand-net {font-size:10px;font-weight:700;margin-left:2px;opacity:.9;}
@@ -32,8 +32,8 @@
 @keyframes btnSpin{to{transform:rotate(360deg)}}
 /* ===== END SPINNER DOWNLOAD ===== */
 
-.subtitle { text-align: center; font-size: 22px; font-weight: 600; color: #eef1f5; line-height: 1.34; margin-bottom: 2px; letter-spacing: -0.02em }
-.subtitle-mini { text-align: center; font-size: 14px; color: #eef1f5; letter-spacing: 0.01em; margin-bottom: 25px }
+.subtitle{text-align:center;font-size:26px;font-weight:700;color:#eef1f5;line-height:1.15;margin-bottom:2px;letter-spacing:-.02em}
+.subtitle-mini { text-align: center; font-size: 17px; color: #eef1f5; letter-spacing: 0.01em; margin-bottom: 25px }
 
 .input{width:100%;height:58px;font-size:16.5px;background:#eef2f4;border:1px solid #6b8f4b;border-radius:8px 0 0 8px;padding:0 14px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em;outline:none;box-shadow:none}
 
@@ -44,14 +44,18 @@
 .faq-item{background:#fff;border:1px solid #d9e6cf;border-radius:14px;padding:14px 12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
-/* ===== NATIVE BANNER ADSTERRA ===== */
-.ad-box{margin-top:-10px;padding:0;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);border:none}
-.ad-slot{width:100%;min-height:340px;display:block;overflow:hidden}
-/* ===== END NATIVE ===== */
+/* ===== EXOCLICK OUTSTREAM VIDEO ===== */
+.ad-box{margin:20px 2px 8px;padding:0;background:transparent!important;border:none}
+.ad-slot{width:100%;max-width:100%;min-height:245px;height:auto;display:block;overflow:hidden;border-radius:0;background:transparent}
+/* ===== END EXOCLICK OUTSTREAM VIDEO ===== */
+
+/* === ADSTERRA 320x50 === */
+.banner320-box{width:100%;height:75px;margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden}
+/* === END ADSTERRA === */
 
 /* ===== INSTALL APP ===== */
 .install-wrap{padding:8px 4px;background:#f1f3f5}
-.install-bar{display:flex;align-items:center;width:100%;height:56px;padding:0 18px;background:linear-gradient(90deg,#155d78,#2f8a74,#587f30);border-radius:999px;box-shadow:0 2px 5px rgba(0,0,0,.12)}
+.install-bar{display:flex;align-items:center;width:100%;height:56px;padding:0 18px;background:linear-gradient(90deg,#155d78,#2f8a74,#587f25);border-radius:999px;box-shadow:0 2px 5px rgba(0,0,0,.12)}
 .install-logo{width:28px;height:28px;object-fit:contain;flex-shrink:0}
 .install-title{flex:1;margin-left:8px;font:700 20px Arial;color:#fff}
 .install-title small{font-size:11px;font-weight:400;color:#d6d6d6}
@@ -70,8 +74,8 @@
 
 /* === PROGRESS CLEAN === */
 .progress-box{width:100%;margin-top:0px;display:block}
-.progress-bar{width:100%;height:7px;background:#dfe5eb;border-radius:999px;overflow:hidden}
-.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f30);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;transition:width .3s ease}
+.progress-bar{width:100%;height:7px;background:#dfe5eb;border-radius:999px;overflow:hidden;box-shadow:none}
+.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f25);display:flex;align-items:center;justify-content:flex-end;padding-right:1px;transition:width .3s ease}
 .progress-text{font-size:10px;color:#fff;font-weight:600}
 /* ===== CONTENT BOX ===== */
 #faq,#about,#kontak,#privacy,#terms,#footer{padding:16px 16px;margin:9px;background:#fff;border:2px solid #6b8f4b;border-radius:18px;box-shadow:0 2px 8px rgba(107,143,75,.18)}
