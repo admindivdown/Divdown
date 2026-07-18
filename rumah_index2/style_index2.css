@@ -2,7 +2,7 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}html{scroll-behavior:smooth;}
 
 /* === BODY === */
-body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#587f30 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#eef1f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#eef1f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
 
 /* === GLOBAL === */
 img,iframe{max-width:100%;display:block;}
