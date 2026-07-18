@@ -97,10 +97,6 @@ window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPro
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
 
-// ===== SOCIAL BAR ADSTERRA =====
-window.addEventListener('load',()=>{const s=document.createElement('script');s.src='https://pl29906335.effectivecpmnetwork.com/a2/08/20/a208209753529aeee294bb011e03c014.js';s.async=true;document.body.appendChild(s);});
-// ===== END SOCIAL BAR ADSTERRA =====
-
 // ===== LOAD BANNER ADSTERRA 320x50 =====
 document.addEventListener('DOMContentLoaded',()=>{const box=document.getElementById('banner320Box');if(!box)return;const s1=document.createElement('script');s1.text="atOptions={key:'a9e26a5898162babbd39410bf67794d2',format:'iframe',height:50,width:320,params:{}};";const s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/a9e26a5898162babbd39410bf67794d2/invoke.js';s2.async=true;box.appendChild(s1);box.appendChild(s2);});
 // ===== END BANNER ADSTERRA =====
