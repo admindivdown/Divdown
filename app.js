@@ -45,12 +45,11 @@ async function downloadVideo() {
   const input = document.getElementById('urlInput');
   if (!input) return;
   const url=input.value.trim();const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
-  
+
 /* === PROGRESS RUMAH 1 === */
   const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
   const isValid = validDomains.some(d => url.includes(d));
   if(!isValid){alert(isID?'Silakan gunakan tautan Facebook yang valid.':'Please use a valid Facebook link.');return;}
-
   const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
   if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';let p=0;const i=setInterval(()=>{if(p<40)p+=4;else if(p<60)p+=3;else if(p<80)p+=1;else if(p<90)p+=0.5;else if(p<98)p+=0.2;else p=98;pf.style.width=p+'%';pt.textContent=Math.floor(p)+'%';if(p>=98)clearInterval(i)},150)}
 /* === END === */
