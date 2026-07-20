@@ -10,20 +10,20 @@
 .menu-btn.open span:first-child{transform:translateY(6.5px) rotate(45deg)}.menu-btn.open span:nth-child(2){opacity:0}.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.menu-btn:active{transform:scale(.96)}
 
 /* ===== HOME BOX ===== */
-.home-box{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%)!important;padding:0 0 2px}
+.home-box{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%)!important;padding:5px 0 12px;border-radius:0}
 /* --- DOWNLOAD BOX --- */
-.download-box{padding:2px 11px 0;margin:0;background:transparent!important}
+.download-box{padding:2px 17px 0;margin:0;background:transparent!important}
 
 /* --- LOGO & BRAND --- */
-.brand-row {display:flex;align-items:center;justify-content:center;gap:4px;margin-top:17px;margin-bottom:10px;flex-wrap:nowrap;min-height:72px;}
+.brand-row {display:flex;align-items:center;justify-content:center;gap:4px;margin-top:4px;margin-bottom:10px;flex-wrap:nowrap;min-height:72px;}
 .brand-logo {width:65px;height:65px;object-fit:contain;flex-shrink:0;}
 .brand-name {font-size:47px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:0;color:#eef1f5;transform:scaleY(1.5);line-height:1;display:flex;align-items:baseline;}
 .brand-net {font-size:10px;font-weight:700;margin-left:2px;opacity:.9;}
 
-.download-row{display:flex;align-items:stretch;justify-content:center;gap:0;margin:6px 0}
-.download-row .input { width: 100%; flex: 1; margin-bottom: 0; border-right: none }
+.download-row{display:block;margin:6px 0}
+.download-row .input{width:100%;margin-bottom:4px;border-radius:8px;border:1px solid #6b8f4b}
 
-.download-btn{display:flex;align-items:center;justify-content:center;width:138px;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#155d 0%,#6b8f 50%,#155d78 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:0 8px 8px 0}
+.download-btn{display:flex;align-items:center;justify-content:center;width:100%;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#155d 0%,#6b8f 50%,#155d78 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:8px;}
 .download-btn:active { transform: translateY(1px)}
 /* ===== SPINNER DOWNLOAD ===== */
 .btn-spinner{width:18px;height:18px;margin-right:8px;border:2.8px solid rgba(255,255,255,.35);border-top:2.8px solid #fff;border-radius:50%;display:none;flex-shrink:0;animation:btnSpin .75s linear infinite}
@@ -35,7 +35,8 @@
 .subtitle{text-align:center;font-size:26px;font-weight:700;color:#eef1f5;line-height:1.15;margin-bottom:2px;letter-spacing:-.02em}
 .subtitle-mini { text-align: center; font-size: 17px; color: #eef1f5; letter-spacing: 0.01em; margin-bottom: 25px }
 
-.input{width:100%;height:58px;font-size:16.5px;background:#eef2f4;border:1px solid #6b8f4b;border-radius:8px 0 0 8px;padding:0 14px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em;outline:none;box-shadow:none}
+.input{width:100%;height:58px;font-size:16.5px;background:#eef2f4;border:1px solid #6b8f4b;border-radius:8px;
+padding:0 14px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em;outline:none;box-shadow:none}
 
 /* === LOADING & TRUST === */
 .loading { opacity: .82; pointer-events: none }
@@ -45,12 +46,8 @@
 .faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
 /* ===== SLOT IKLAN RUMAH 1 ===== */
-.ad-box{margin:20px 2px 8px;padding:0;background:transparent!important;border:none}
-.ad-slot{width:100%;min-height:245px;
-display:flex;justify-content:center;
-align-items:center;overflow:hidden;
-background:transparent;
-}
+.ad-box{margin:1px 2px 8px;padding:0;background:transparent!important;border:none}
+.ad-slot{width:100%;min-height:245px;display:block;overflow:visible;background:transparent}
 
 /* === ADSTERRA 320x50 === */
 .banner320-box{width:100%;height:75px;margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden}
@@ -76,7 +73,7 @@ background:transparent;
 .faq-item{transition:border-color .15s}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#dfe5eb}html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}img{display:block;max-width:100%}button,input{font-family:inherit;appearance:none;-webkit-appearance:none;outline:0}
 
 /* === PROGRESS CLEAN === */
-.progress-box{width:100%;margin-top:0px;display:block}
+.progress-box{width:100%;margin-top:6px;display:block}
 .progress-bar{width:100%;height:7px;background:#dfe5eb;border-radius:999px;overflow:hidden;box-shadow:none}
 .progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f25);display:flex;align-items:center;justify-content:flex-end;padding-right:1px;transition:width .3s ease}
 .progress-text{font-size:10px;color:#fff;font-weight:600}

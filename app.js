@@ -1,7 +1,4 @@
-// ======================================
 // APP.JS RUMAH 1 - FINAL STABIL & CACHE
-// ======================================
-
 /* --- FUNGSI KOORDINATOR MENU --- */
 function tutupSemuaMenu() {
   const menuDropdown = document.getElementById('menuDropdown');
@@ -53,8 +50,11 @@ async function downloadVideo() {
   const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
   if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';let p=0;const i=setInterval(()=>{if(p<40)p+=4;else if(p<60)p+=3;else if(p<80)p+=1;else if(p<90)p+=0.5;else if(p<98)p+=0.2;else p=98;pf.style.width=p+'%';pt.textContent=Math.floor(p)+'%';if(p>=98)clearInterval(i)},150)}
 /* === END === */
+
 /* === TOMBOL PROCESSING === */
-btn.classList.add('loading');btn.querySelector('.btn-text').textContent='Processing...';btn.disabled=true;
+btn.classList.add('loading');
+btn.querySelector('.btn-text').textContent='Processing...';
+btn.disabled=true;
 /* === END TOMBOL PROCESSING === */
   try{
 let data=null;
@@ -85,14 +85,18 @@ btn.disabled=false;
 window.addEventListener('pageshow',function(e){if(e.persisted){const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}});
 
 // --- KENDALI MENU TERPADU (AMAN) ---
-document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;menuBtn.addEventListener('click',e=>{e.stopPropagation();const isOpen=menuDropdown.classList.toggle('show-menu');menuBtn.classList.toggle('open',isOpen);});document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!menuDropdown.contains(e.target)){menuDropdown.classList.remove('show-menu');menuBtn.classList.remove('open');}});});
+document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;
+menuBtn.addEventListener('click',e=>{
+e.stopPropagation();
+const isOpen=menuDropdown.classList.toggle('show-menu');
+menuBtn.classList.toggle('open',isOpen);
+});
+document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!menuDropdown.contains(e.target)){menuDropdown.classList.remove('show-menu');menuBtn.classList.remove('open');}});});
 
 // ===== INSTALL DIVDOWN =====
 let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
-
-// === IKLAN ADSTERRA 300X250 ===
-window.addEventListener('load',()=>{setTimeout(()=>{const a=document.getElementById('banner300');if(!a)return;let s1=document.createElement('script');s1.textContent="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";let s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';a.appendChild(s1);a.appendChild(s2)},300)});
-// === END IKLAN ADSTERRA ===
+// === IKLAN ADSTERRA NATIV BANNER ===
+document.addEventListener('DOMContentLoaded',()=>{const a=document.getElementById('banner300');if(a){let s=document.createElement('script');s.async=true;s.setAttribute('data-cfasync','false');s.src='https://pl29906332.effectivecpmnetwork.com/f3e0951873d8921ff12f5956a622f11c/invoke.js';a.appendChild(s);let d=document.createElement('div');d.id='container-f3e0951873d8921ff12f5956a622f11c';a.appendChild(d);}});
