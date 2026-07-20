@@ -53,11 +53,8 @@ async function downloadVideo() {
   const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
   if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';let p=0;const i=setInterval(()=>{if(p<40)p+=4;else if(p<60)p+=3;else if(p<80)p+=1;else if(p<90)p+=0.5;else if(p<98)p+=0.2;else p=98;pf.style.width=p+'%';pt.textContent=Math.floor(p)+'%';if(p>=98)clearInterval(i)},150)}
 /* === END === */
-
 /* === TOMBOL PROCESSING === */
-btn.classList.add('loading');
-btn.querySelector('.btn-text').textContent='Processing...';
-btn.disabled=true;
+btn.classList.add('loading');btn.querySelector('.btn-text').textContent='Processing...';btn.disabled=true;
 /* === END TOMBOL PROCESSING === */
   try{
 let data=null;
@@ -96,6 +93,9 @@ window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPro
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
 
-// ===== LOAD =====
+// ===== LOAD HILLTOPADS 300x250 =====
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const a=document.getElementById('hilltop-anchor');if(!a)return;const s=document.createElement('script');s.async=true;s.src='https://untimely-hello.com/b.XtVCswd/GLlX0iY/W-c_/yejmW9yuLZkUsl/kGPmTzcdyZMgzuk/3zOZDmEUtpNXzdIwzWOHTzcj4eNpQl';s.referrerPolicy='no-referrer-when-downgrade';a.parentNode.insertBefore(s,a);},200);});
+// ===== END HILLTOPADS =====
+// ===== BANNER ADSTERRA 320X50 =====
 document.addEventListener('DOMContentLoaded',()=>{const box=document.getElementById('banner320Box');if(!box)return;const s1=document.createElement('script');s1.text="atOptions={key:'a9e26a5898162babbd39410bf67794d2',format:'iframe',height:50,width:320,params:{}};";const s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/a9e26a5898162babbd39410bf67794d2/invoke.js';s2.async=true;box.appendChild(s1);box.appendChild(s2);});
 // ===== END BANNER =====

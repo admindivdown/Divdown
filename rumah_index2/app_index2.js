@@ -24,7 +24,6 @@ if(btnStandard){btnStandard.onclick=()=>{if(data.standard){window.open('https://
 
 if(btnHD){btnHD.onclick=()=>{if(data.hd720){window.open('https://divdown.net/api/download?url='+encodeURIComponent(data.hd720),'_blank')}else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.")}}}
 
-
 } else {
   alert(isID?"Video tidak ditemukan. Silakan coba link lain.":"Video not found. Please try another link.");
   window.location.href = '../index.html';
