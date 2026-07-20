@@ -93,9 +93,6 @@ window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPro
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 // ===== END INSTALL DIVDOWN =====
 
-// ===== LOAD HILLTOPADS 300x250 =====
-document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const a=document.getElementById('hilltop-anchor');if(!a)return;const s=document.createElement('script');s.async=true;s.src='https://untimely-hello.com/b.XtVCswd/GLlX0iY/W-c_/yejmW9yuLZkUsl/kGPmTzcdyZMgzuk/3zOZDmEUtpNXzdIwzWOHTzcj4eNpQl';s.referrerPolicy='no-referrer-when-downgrade';a.parentNode.insertBefore(s,a);},200);});
-// ===== END HILLTOPADS =====
-// ===== BANNER ADSTERRA 320X50 =====
-document.addEventListener('DOMContentLoaded',()=>{const box=document.getElementById('banner320Box');if(!box)return;const s1=document.createElement('script');s1.text="atOptions={key:'a9e26a5898162babbd39410bf67794d2',format:'iframe',height:50,width:320,params:{}};";const s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/a9e26a5898162babbd39410bf67794d2/invoke.js';s2.async=true;box.appendChild(s1);box.appendChild(s2);});
-// ===== END BANNER =====
+// === IKLAN ADSTERRA 300X250 ===
+window.addEventListener('load',()=>{setTimeout(()=>{const a=document.getElementById('banner300');if(!a)return;let s1=document.createElement('script');s1.textContent="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";let s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';a.appendChild(s1);a.appendChild(s2)},300)});
+// === END IKLAN ADSTERRA ===
