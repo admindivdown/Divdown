@@ -41,7 +41,8 @@ async function downloadVideo() {
   if (btn && btn.disabled) return;
   const input = document.getElementById('urlInput');
   if (!input) return;
-  const url=input.value.trim();const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
+  const url=input.value.trim();
+  const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
 
 /* === PROGRESS RUMAH 1 === */
   const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];

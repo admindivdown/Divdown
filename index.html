@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Language" content="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
-
 <title>Facebook Video Downloader - Download FB Video & Reels | Divdown</title>
 <meta name="description" content="Download Facebook videos and Reels for free in high quality. Fast unlimited downloads with quick access to Instagram TikTok YouTube and X (Twitter) download tools.">
 
@@ -31,7 +30,7 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <!-- ===== UPDATE CACHE CSS ===== -->
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <link rel="stylesheet" href="tampilan_bahasa.css?v=5">
 <link rel="stylesheet" href="menu.css?v=5">
 
@@ -39,15 +38,15 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ9GRBFQW6"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
+function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
 gtag('config','G-BQ9GRBFQW6');
 </script>
+<!-- ===== ADMAVEN PUSH NOTIFICATION ===== -->
+<script data-cfasync="false" src="/sw.js"></script>
 </head>
 <body>
   
 <div class="wrap"><div class="topbar"><div class="menu-wrapper"><button class="menu-btn" id="menuBtn" aria-label="Buka Menu"><span></span><span></span><span></span></button><div class="menu-dropdown" id="menuDropdown">
-
 <!-- === AWAL MENU INI JARINGAN === -->
 <div class="menu-grid">
 <a href="https://fastdl.app/id" target="_blank" rel="noopener noreferrer" class="menu-box">
@@ -142,9 +141,10 @@ Download FB Videos & Reels Free
   <div id="terms"></div>
   <div id="footer"></div>
 </div>
+
 <!-- ===== UPDATE CACHE JS ===== -->
 <script src="bahasa.js?v=5"></script>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded',()=>{const m=document.getElementById('menuInfo');if(m&&!(navigator.language||'').toLowerCase().includes('id'))m.innerHTML=' Download IG, TikTok & YouTube Videos <br>Click the ☰ Menu button';});
@@ -162,7 +162,9 @@ btn.classList.add('active');
 });
 </script>
 <!-- ===== INSTALL APP ===== -->
-<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").then(()=>console.log("SW Ready")).catch(e=>console.log(e));});}</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>{
+  navigator.serviceWorker.register("/sw-divdown.js")
+.then(()=>console.log("SW Ready")).catch(e=>console.log(e));});}</script>
 <!-- ===== END INSTALL APP ===== -->
 
 </body>
