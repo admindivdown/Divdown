@@ -77,11 +77,7 @@ window.location.href=`rumah_index2/index.html?url=${encodeURIComponent(url)}`;
 }catch(err){const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';alert(isID?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.':'Failed to process the video.\n\nPlease try again in a moment.');
 /* === RESET TOMBOL === */
 btn.classList.remove('loading');
-btn.querySelector('.btn-text').textContent='Download';
-btn.disabled=false;
-}}
-/* === END RESET TOMBOL === */
-
+btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}
 /* --- 4. RESET TOMBOL KEMBALI --- */
 window.addEventListener('pageshow',function(e){if(e.persisted){const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}});
 
@@ -98,6 +94,11 @@ document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!menuDropd
 let deferredPrompt;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
-// ===== END INSTALL DIVDOWN =====
-// === IKLAN ADSTERRA NATIV BANNER ===
-document.addEventListener('DOMContentLoaded',()=>{const a=document.getElementById('banner300');if(a){let s=document.createElement('script');s.async=true;s.setAttribute('data-cfasync','false');s.src='https://pl29906332.effectivecpmnetwork.com/f3e0951873d8921ff12f5956a622f11c/invoke.js';a.appendChild(s);let d=document.createElement('div');d.id='container-f3e0951873d8921ff12f5956a622f11c';a.appendChild(d);}});
+
+// ===== ADMAVEN POP 1X / 6 JAM =====
+document.addEventListener('DOMContentLoaded',()=>{const k='admavenPop24';const n=Date.now();const l=parseInt(localStorage.getItem(k)||0);if(n-l>21600000){localStorage.setItem(k,n);const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1453384';document.body.appendChild(s);}});
+// ===== END ADMAVEN POP =====
+/* ===== FAQ TOGGLE + LAZY LOAD ===== */document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("faqHeader"),c=document.getElementById("faqContent"),a=document.getElementById("faqArrow");if(!t||!c)return;t.addEventListener("click",()=>{if(!window.faqLoaded)loadFaq();const o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
+/* ===== FAQ LAZY (MUAT SEKALI) ===== */
+function loadFaq(){if(window.faqLoaded)return;window.faqLoaded=true;if(typeof cacheBahasa==="undefined")return;const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}
+/* ===== END FAQ LAZY LOAD ===== */

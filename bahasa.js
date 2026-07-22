@@ -20,20 +20,8 @@ function applyBahasa(data) {
   if (input && data.placeholder) {
     input.placeholder = data.placeholder;
   }
-
-  /* KOMPONEN FAQ */
-  setText('faqTitle', data.faqTitle);
-  setText('faqQ1', data.faqQ1);
-  setText('faqA1', data.faqA1);
-  setText('faqQ2', data.faqQ2);
-  setText('faqA2', data.faqA2);
-  setText('faqQ3', data.faqQ3);
-  setText('faqA3', data.faqA3);
-  setText('faqQ4', data.faqQ4);
-  setText('faqA4', data.faqA4);
-  setText('faqQ5', data.faqQ5);
-  setText('faqA5', data.faqA5);
-
+/* ===== FAQ HEADER SAJA (LAZY) ===== */
+setText('faqTitle',data.faqTitle);
   /* KOMPONEN ABOUT */
   setText('aboutTitle', data.aboutTitle);
   setText('aboutText1', data.aboutText1);

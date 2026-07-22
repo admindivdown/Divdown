@@ -1,5 +1,7 @@
 /* === RESET & BASE === */
-*,.wrap{margin:0}*{padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}body{background:#fff;color:#313639;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}.wrap{max-width:100%;padding-bottom:20px}
+*,.wrap{margin:0}*{padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);color:#313639;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:100%;padding-bottom:20px}
 .topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 6px 8px 5px;position:relative;z-index:99999;background:rgba(255,255,255,.45);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 4px 18px rgba(0,0,0,.08);border-radius:0;}
 /* MENU BUTTON SAJA */
 .menu-wrapper{position:relative;margin-left:10px}
@@ -10,14 +12,14 @@
 .menu-btn.open span:first-child{transform:translateY(6.5px) rotate(45deg)}.menu-btn.open span:nth-child(2){opacity:0}.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.menu-btn:active{transform:scale(.96)}
 
 /* ===== HOME BOX ===== */
-.home-box{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%)!important;padding:5px 0 12px;border-radius:0}
+.home-box{background:transparent!important;padding:5px 0 12px;border-radius:0}
 /* --- DOWNLOAD BOX --- */
 .download-box{padding:2px 17px 0;margin:0;background:transparent!important}
 
 /* --- LOGO & BRAND --- */
 .brand-row {display:flex;align-items:center;justify-content:center;gap:4px;margin-top:4px;margin-bottom:10px;flex-wrap:nowrap;min-height:72px;}
 .brand-logo {width:65px;height:65px;object-fit:contain;flex-shrink:0;}
-.brand-name {font-size:47px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:0;color:#eef1f5;transform:scaleY(1.5);line-height:1;display:flex;align-items:baseline;}
+.brand-name {font-size:45px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:0;color:#eef1f5;transform:scaleY(1.5);line-height:1;display:flex;align-items:baseline;}
 .brand-net {font-size:10px;font-weight:700;margin-left:2px;opacity:.9;}
 
 .download-row{display:block;margin:6px 0}
@@ -46,12 +48,8 @@ padding:0 14px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em
 .faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
 /* ===== SLOT IKLAN RUMAH 1 ===== */
-.ad-box{margin:1px 2px 8px;padding:0;background:transparent!important;border:none}
-.ad-slot{width:100%;min-height:245px;display:block;overflow:visible;background:transparent}
-
-/* === ADSTERRA 320x50 === */
-.banner320-box{width:100%;height:75px;margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden}
-/* === END ADSTERRA === */
+.ad-box{margin:1px 2px 8px;padding:0;border:none}
+.ad-slot{width:100%;min-height:245px;display:block;overflow:visible}
 
 /* ===== INSTALL APP ===== */
 .install-wrap{padding:8px 4px;background:#f1f3f5}
@@ -78,5 +76,6 @@ padding:0 14px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em
 .progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f25);display:flex;align-items:center;justify-content:flex-end;padding-right:1px;transition:width .3s ease}
 .progress-text{font-size:10px;color:#fff;font-weight:600}
 /* ===== CONTENT BOX ===== */
-#faq,#about,#kontak,#privacy,#terms,#footer{padding:16px 16px;margin:9px;background:#fff;border:3px solid #6b8f4b;border-radius:18px;box-shadow:0 2px 8px rgba(107,143,75,.18)}
-
+#faq,#about,#kontak,#privacy,#terms,#footer{padding:20px 16px;margin:4px;background:#ffffff;box-shadow:0 2px 8px rgba(107,143,75,.18)}
+/* ===== FAQ HEADER ===== */
+.faq-header{position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;padding-bottom:12px}.faq-arrow{position:absolute;right:0;width:33px;height:33px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #d9d9d9;background:#fff;color:#222;font-size:13px;font-weight:700}.faq-title{margin:0;text-align:center;padding:0 38px;line-height:1.3}#faqContent{display:none}
