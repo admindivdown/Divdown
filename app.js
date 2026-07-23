@@ -7,7 +7,7 @@ function tutupSemuaMenu() {
   if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
 }
 /* --- 1. MUAT KOMPONEN HTML --- */
-function loadFile(e,t,n){let r=`${t}?v=${Date.now()}`;return fetch(r).then(e=>{if(!e.ok)throw Error(n);return e.text()}).then(t=>{let n=document.getElementById(e);n&&(n.innerHTML=t)}).catch(e=>console.error(n,e))}
+function loadFile(e,t,n){let k='cache_'+t,h=sessionStorage.getItem(k);if(h){let x=document.getElementById(e);x&&(x.innerHTML=h);return Promise.resolve()}return fetch(t).then(r=>{if(!r.ok)throw Error(n);return r.text()}).then(d=>{sessionStorage.setItem(k,d);let x=document.getElementById(e);x&&(x.innerHTML=d)}).catch(err=>console.error(n,err))}
 
 /* --- 2. INISIALISASI HALAMAN --- */
 document.addEventListener('DOMContentLoaded', () => {
@@ -100,5 +100,5 @@ document.addEventListener('DOMContentLoaded',()=>{const k='admavenPop24';const n
 // ===== END ADMAVEN POP =====
 /* ===== FAQ TOGGLE + LAZY LOAD ===== */document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("faqHeader"),c=document.getElementById("faqContent"),a=document.getElementById("faqArrow");if(!t||!c)return;t.addEventListener("click",()=>{if(!window.faqLoaded)loadFaq();const o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
 /* ===== FAQ LAZY (MUAT SEKALI) ===== */
-function loadFaq(){if(window.faqLoaded)return;window.faqLoaded=true;if(typeof cacheBahasa==="undefined")return;const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}
+function loadFaq(){window.faqLoaded=true;if(typeof cacheBahasa==="undefined")return;const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}
 /* ===== END FAQ LAZY LOAD ===== */

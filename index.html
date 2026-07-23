@@ -28,7 +28,12 @@ content="Download Video FB HD, Facebook Reels, and Facebook Watch videos free. F
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-
+<!-- ===== PRELOAD HTML ===== -->
+<link rel="preload" href="about.html" as="fetch" crossorigin>
+<link rel="preload" href="kontak.html" as="fetch" crossorigin>
+<link rel="preload" href="privacy.html" as="fetch" crossorigin>
+<link rel="preload" href="terms.html" as="fetch" crossorigin>
+<link rel="preload" href="footer.html" as="fetch" crossorigin>
 <!-- ===== UPDATE CACHE CSS ===== -->
 <link rel="stylesheet" href="style.css?v=15">
 <link rel="stylesheet" href="tampilan_bahasa.css?v=6">
@@ -83,12 +88,8 @@ gtag('config','G-BQ9GRBFQW6');
 </div>
 <div class="home-box">
 <div class="download-box">
-    <div class="brand-row">
-      <img
-        src="assets/logo.webp"
-        alt="Divdown"
-        class="brand-logo"
-        onerror="this.style.display='none';"> 
+<div class="brand-row">
+      <img src="assets/logo.webp" alt="Divdown" class="brand-logo" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none';">
       <div class="brand-name">
         Divdown<span class="brand-net">.net</span>
       </div>
@@ -137,7 +138,7 @@ Download FB Videos & Reels Free
 </div>
 
 <!-- ===== UPDATE CACHE JS ===== -->
-<script src="bahasa.js?v=6"></script>
+<script src="bahasa.js?v=8"></script>
 <script src="app.js?v=17"></script>
 
 <script>

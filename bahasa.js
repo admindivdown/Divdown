@@ -1,14 +1,11 @@
-// ======================================
 // BAHASA.JS RUMAH 1 - FINAL CLEAN ENGINE
-// ======================================
 const cacheBahasa = {};
 let bahasaAktif = 'english';
 /* --- FUNGSI TAMBAHAN: SPINNER ELEGAN --- */
 function tampilkanLoading(){let e=document.getElementById("loadingSpinner");if(!e){(e=document.createElement("div")).id="loadingSpinner",e.style.cssText="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #587f30; border-radius:50%; animation: spin 1s linear infinite; z-index:99999; display:none;";let n=document.createElement("style");n.innerHTML="@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }",document.head.appendChild(n),document.body.appendChild(e)}e.style.display="block"}function sembunyikanLoading(){let e=document.getElementById("loadingSpinner");e&&(e.style.display="none")}
 
-/* ---------- 1. FUNGSI MEMUAT FILE SCRIPT BAHASA EXTERNAL ---------- */
-function loadFileBahasa(a){return new Promise(e=>{if(!a){e({});return}let r=a.replace("bahasa_","").toLowerCase().trim();if(cacheBahasa[r]){e(cacheBahasa[r]);return}let t=document.createElement("script");t.src=`bahasa/bahasa_${r}.js`,t.onload=()=>{let a=window[r]||window[r.charAt(0).toUpperCase()+r.slice(1)]||"undefined"!=typeof Window&&Window[r]||window[`bahasa_${r}`];cacheBahasa[r]=a||{},e(cacheBahasa[r])},t.onerror=()=>{console.error(`File bahasa/bahasa_${r}.js gagal dimuat!`),e({})},document.head.appendChild(t)})}
-
+/* --- 1. FUNGSI SCRIPT BAHASA EXTERNL --- */
+function loadFileBahasa(a){return new Promise(e=>{if(!a){e({});return}let r=a.replace("bahasa_","").toLowerCase().trim(),k='lang_'+r,s=sessionStorage.getItem(k);if(cacheBahasa[r]){e(cacheBahasa[r]);return}if(s){cacheBahasa[r]=JSON.parse(s);e(cacheBahasa[r]);return}let t=document.createElement("script");t.src=`bahasa/bahasa_${r}.js`;t.onload=()=>{let d=window[r]||window[r.charAt(0).toUpperCase()+r.slice(1)]||window[`bahasa_${r}`]||{};cacheBahasa[r]=d;sessionStorage.setItem(k,JSON.stringify(d));e(d)};t.onerror=()=>{console.error(`File bahasa/bahasa_${r}.js gagal dimuat!`);e({})};document.head.appendChild(t)})}
 /* --- 2. FUNGSI SUNTIK TEKS AMAN --- */
 function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=n)}
 
@@ -57,8 +54,9 @@ setText('faqTitle',data.faqTitle);
   setText('termsSub4', data.termsSub4);
   setText('termsSub5', data.termsSub5); 
   setText('termsText5', data.termsText5);
+  /* ===== UPDATE FAQ JIKA SUDAH PERNAH DIBUKA ===== */if(window.faqLoaded){setText('faqQ1',data.faqQ1);setText('faqA1',data.faqA1);setText('faqQ2',data.faqQ2);setText('faqA2',data.faqA2);setText('faqQ3',data.faqQ3);setText('faqA3',data.faqA3);setText('faqQ4',data.faqQ4);setText('faqA4',data.faqA4);setText('faqQ5',data.faqQ5);setText('faqA5',data.faqA5);}
 }
-/* ---------- 4. FUNGSI PEMICU GANTI BAHASA ---------- */
+/* ---- 4. FUNGSI PEMICU GANTI BAHASA --- */
 async function gantiBahasa(namaBahasa, isManual = false) {
   if (!namaBahasa) return;
 // Hanya tampilkan spinner jika user melakukan interaksi (isManual = true)
