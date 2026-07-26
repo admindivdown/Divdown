@@ -18,6 +18,9 @@ window.indonesia = {
   faqA4: "Tidak perlu login. Cukup tempel tautan video atau Reels publik, lalu simpan langsung ke perangkat Anda. Kami tidak pernah meminta kata sandi atau informasi akun.",
   faqQ5: "Mengapa video saya gagal diproses?",
   faqA5: "Pastikan tautan sudah benar, video bersifat publik, dan koneksi internet Anda stabil. Divdown hanya dapat memproses video yang tersedia untuk diakses publik.",
+/* ===== WHY CHOOSE DIVDOWN ===== */
+whyTitle:"Mengapa Memilih Divdown?",
+whyText:"Divdown adalah Facebook Video Downloader terpercaya untuk mengunduh Video Facebook, Facebook Reels, dan Facebook Watch dengan cepat. Dibangun dengan fokus pada performa, privasi, dan kompatibilitas di berbagai perangkat modern.",
 /* ===== TENTANG (ABOUT) ===== */
 aboutTitle: "Tentang Divdown",
 aboutText1: "Divdown merupakan platform untuk mengunduh Video Facebook dan Reels yang memudahkan Anda menyimpan video Facebook secara gratis, cepat, aman, dan tanpa login. Tersedia pilihan kualitas hingga HD, Full HD (1080p), bahkan 4K apabila tersedia di sumber asli.",

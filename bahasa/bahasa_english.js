@@ -5,7 +5,6 @@ window.english = {
   placeholder: "Paste video URL here...",
   bendera: "🇺🇸",
   nama: "English",
-
   /* ===== FAQ ===== */
   faqTitle: "Frequently Asked Questions",
   faqQ1: "Is Divdown safe and private?",
@@ -18,15 +17,16 @@ window.english = {
   faqA4: "No login needed. Just paste a public video or Reels link and save it directly to your device. We never ask for passwords or account information.",
   faqQ5: "Why did my video fail to process?",
   faqA5: "Make sure the link is correct, the video is public, and your internet connection is stable. Divdown can only process publicly accessible videos.",
+/* ===== WHY CHOOSE DIVDOWN ===== */
+whyTitle:"Why Choose Divdown?",
+whyText:"Divdown is a trusted Facebook Video Downloader designed to download Facebook Videos, Facebook Reels, and Facebook Watch quickly. Built with a focus on performance, privacy, and compatibility across all modern devices.",
 /* ===== ABOUT ===== */
 aboutTitle: "About Divdown",
 aboutText1: "Divdown is a platform for downloading Facebook Video and Reels, making it easy to save Facebook Video for free, quickly, securely, and without login. Video quality is available up to HD, Full HD (1080p), and even 4K when supported by the original source.",
 aboutText2: "Designed to stay lightweight and comfortable across various devices. <strong>Network:</strong> Instagram, TikTok, YouTube, and X (Twitter) Downloader are available through the <strong>Menu</strong>.",
-
   /* ===== CONTACT ===== */
   contactTitle: "Contact Us",
   contactText1: "If you have any questions, error reports, or business inquiries, please reach out to us at:",
-
   /* ===== PRIVACY POLICY ===== */
   privacyTitle: "Privacy Policy",
   privacyText1: "At Divdown, we are committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our service to save publicly available videos for personal, offline viewing.",
@@ -40,7 +40,6 @@ aboutText2: "Designed to stay lightweight and comfortable across various devices
   privacyText5: "To keep Divdown free and continuously improving, we display ads from trusted partners. These ads help cover server costs so you can download without limits. We do not show intrusive ads.",
   privacySub5: "Policy Updates",
   privacyText6: "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page with a revised date. We encourage you to review this page periodically.",
-
   /* ===== TERMS OF SERVICE ===== */
   termsTitle: "Terms of Service",
   termsText1: "Welcome to Divdown. By accessing or using this website, you agree to use our service responsibly for personal and lawful purposes only.",

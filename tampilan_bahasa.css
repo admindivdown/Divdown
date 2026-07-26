@@ -2,5 +2,4 @@
 .bahasa-wrapper{display:flex;align-items:center;gap:4px;margin-left:auto}
 .lang-btn{height:34px;padding:0 10px;border:none;border-radius:8px;background:#f1f3f5;font-size:12px;font-weight:600;color:#2c3136;cursor:pointer;white-space:nowrap;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .lang-btn:active{transform:scale(.97)}
-
 .lang-btn.active{background:#dbeafe;color:#c9d1d9}

@@ -18,15 +18,16 @@ window.brazil = {
   faqA4: "Não é necessário login. Basta colar o link de um vídeo ou Reels público e salvá-lo diretamente no seu dispositivo. Nunca pedimos senhas ou dados da conta.",
   faqQ5: "Por que meu vídeo não foi processado?",
   faqA5: "Verifique se o link está correto, se o vídeo é público e se sua conexão com a internet está estável. O Divdown só pode processar vídeos que estejam acessíveis publicamente.",
+/* ===== WHY CHOOSE DIVDOWN ===== */
+whyTitle:"Por que escolher o Divdown?",
+whyText:"O Divdown é um Facebook Video Downloader confiável, criado para baixar Facebook Video, Facebook Reels e Facebook Watch de forma rápida. Desenvolvido com foco em desempenho, privacidade e compatibilidade com todos os dispositivos modernos.",
 /* ===== SOBRE O DIVDOWN ===== */
 aboutTitle: "Sobre o Divdown",
 aboutText1: "O Divdown é uma plataforma para baixar Facebook Video e Reels, facilitando o download de vídeos do Facebook de forma gratuita, rápida, segura e sem login. A qualidade está disponível em HD, Full HD (1080p) e até 4K, quando suportada pela fonte original.",
 aboutText2: "Projetado para ser leve e confortável em diversos dispositivos. <strong>Network:</strong> Instagram, TikTok, YouTube e X (Twitter) Downloader estão disponíveis através do <strong>Menu</strong>.",
-
   /* ===== FALE CONOSCO ===== */
   contactTitle: "Fale Conosco",
   contactText1: "Se tiver dúvidas, relatar erros ou enviar propostas comerciais, entre em contato conosco por:",
-
   /* ===== POLÍTICA DE PRIVACIDADE ===== */
   privacyTitle: "Política de Privacidade",
   privacyText1: "No Divdown, temos o compromisso de proteger sua privacidade. Esta política explica como tratamos as informações quando você usa nosso serviço para salvar vídeos públicos para uso pessoal e visualização offline.",
@@ -40,7 +41,6 @@ aboutText2: "Projetado para ser leve e confortável em diversos dispositivos. <s
   privacyText5: "Para manter o Divdown gratuito e em constante melhoria, exibimos anúncios de parceiros confiáveis. Esses anúncios ajudam a cobrir os custos dos servidores, permitindo que você baixe sem limites. Não mostramos anúncios invasivos ou que atrapalhem o uso.",
   privacySub5: "Atualizações da Política",
   privacyText6: "Podemos atualizar esta política de tempos em tempos, conforme mudanças em nossos serviços ou por exigências legais. Qualquer alteração será publicada nesta página com a data de revisão. Recomendamos que você consulte esta página periodicamente.",
-
   /* ===== TERMOS DE SERVIÇO ===== */
   termsTitle: "Termos de Serviço",
   termsText1: "Seja bem-vindo ao Divdown. Ao acessar ou usar este site, você concorda em utilizar nosso serviço de forma responsável e apenas para fins pessoais e legais.",
@@ -53,5 +53,4 @@ aboutText2: "Projetado para ser leve e confortável em diversos dispositivos. <s
   termsSub4: "Isenção de Responsabilidade",
   termsSub5: "Isenção de Responsabilidade",
   termsText5: "Estamos sempre aprimorando o Divdown para mantê-lo rápido, seguro e fácil de usar. Ao usar este serviço, você concorda em utilizá-lo de forma responsável e apenas para fins pessoais. Não permitimos o uso do Divdown para atividades que violem direitos autorais ou leis vigentes."
-
 };

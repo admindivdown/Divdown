@@ -2,79 +2,75 @@
 *,.wrap{margin:0}*{padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
 body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);color:#313639;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}
 .wrap{max-width:100%;padding-bottom:20px}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 6px 8px 5px;position:relative;z-index:99999;background:rgba(255,255,255,.45);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 4px 18px rgba(0,0,0,.08);border-radius:0;}
-/* MENU BUTTON SAJA */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 6px 8px 5px;position:relative;z-index:99999;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.08);border-radius:0;}
+/* === MENU BUTTON SAJA === */
 .menu-wrapper{position:relative;margin-left:10px}
 .menu-btn{width:38px;height:32px;padding:0;margin:0;border:none;background:transparent;display:flex;flex-direction:column;justify-content:center;gap:3px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .25s ease}
 .menu-btn span{display:block;width:34px;height:3.5px;background:#3d4246;border-radius:3px;transition:all .25s ease;transform-origin:center}
-
 /* === EFEK X SAAT MENU TERBUKA === */
 .menu-btn.open span:first-child{transform:translateY(6.5px) rotate(45deg)}.menu-btn.open span:nth-child(2){opacity:0}.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.menu-btn:active{transform:scale(.96)}
-
-/* ===== HOME BOX ===== */
+/* ==== HOME BOX ==== */
 .home-box{background:transparent!important;padding:5px 0 12px;border-radius:0}
-/* --- DOWNLOAD BOX --- */
 .download-box{padding:2px 17px 0;margin:0;background:transparent!important}
-
 /* --- LOGO & BRAND --- */
 .brand-row {display:flex;align-items:center;justify-content:center;gap:4px;margin-top:4px;margin-bottom:10px;flex-wrap:nowrap;min-height:72px;}
 .brand-logo {width:65px;height:65px;object-fit:contain;flex-shrink:0;}
 .brand-name {font-size:45px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;letter-spacing:0;color:#eef1f5;transform:scaleY(1.5);line-height:1;display:flex;align-items:baseline;}
 .brand-net {font-size:10px;font-weight:700;margin-left:2px;opacity:.9;}
-
 .download-row{display:block;margin:6px 0}
 .download-row .input{width:100%;margin-bottom:4px;border-radius:8px;border:1px solid #6b8f4b}
-
 .download-btn{display:flex;align-items:center;justify-content:center;width:100%;height:58px;padding:10px 0;border:1px solid #cfd6de;background:linear-gradient(90deg,#155d 0%,#6b8f 50%,#155d78 100%);font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01em;border-radius:8px;}
 .download-btn:active { transform: translateY(1px)}
 /* ===== SPINNER DOWNLOAD ===== */
-.btn-spinner{width:18px;height:18px;margin-right:8px;border:2.8px solid rgba(255,255,255,.35);border-top:2.8px solid #fff;border-radius:50%;display:none;flex-shrink:0;animation:btnSpin .75s linear infinite}
-.btn-text{display:inline-block}
+.btn-spinner{width:18px;height:18px;margin-right:8px;border:2.8px solid rgba(255,255,255,.35);border-top:2.8px solid #fff;border-radius:50%;display:none;flex-shrink:0;animation:btnSpin .75s linear infinite}.btn-text{display:inline-block}
 .download-btn.loading .btn-spinner{display:inline-block}
 @keyframes btnSpin{to{transform:rotate(360deg)}}
 /* ===== END SPINNER DOWNLOAD ===== */
-
 .subtitle{text-align:center;font-size:26px;font-weight:700;color:#eef1f5;line-height:1.15;margin-bottom:2px;letter-spacing:-.02em}
 .subtitle-mini { text-align: center; font-size: 17px; color: #eef1f5; letter-spacing: 0.01em; margin-bottom: 25px }
 .input{width:100%;height:58px;font-size:16.5px;background:#eef2f4;border:1px solid #6b8f4b;border-radius:8px;
 padding:0 14px;margin-top:0;margin-bottom:0;color:#313639;letter-spacing:-0.01em;outline:none;box-shadow:none}
-
 /* === LOADING & TRUST === */
 .loading { opacity: .82; pointer-events: none }
-/* === SECTION & FAQ (TANPA GARIS ATAS) === */
+/* === SECTION & FAQ === */
 .faq-title,.section-subtitle,.section-title{font-weight:650;text-align:center}.section-title{font-size:24px;margin:10px 0 6px;color:#222527;letter-spacing:-.02em}.section-subtitle{font-size:18px;margin:18px 0 10px;color:#222527;letter-spacing:-.015em}.section-text{font-size:15.5px;color:#3d4246;line-height:1.75;margin-bottom:5px;letter-spacing:-.005em}.section-footer{margin-top:8px;font-size:13.5px;color:#6c757d;margin-bottom:5px;text-align:center}.faq-title{font-size:24px;margin:10px 0 12px;color:#222527;letter-spacing:-.02em}
 .faq-item{background:#fff;border:1px solid #d9e6cf;border-radius:14px;padding:14px 12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .faq-question{font-weight:600;font-size:16px;color:#222527;margin-bottom:6px;letter-spacing:-.01em;line-height:1.4}.faq-answer{font-size:14px;line-height:1.65;color:#4e545a;letter-spacing:-.005em}
 
 /* ===== SLOT IKLAN RUMAH 1 ===== */
-.ad-box{margin:1px 2px 8px;padding:0;border:none}
-.ad-slot{width:100%;min-height:245px;display:block;overflow:visible}
+.ad-box{margin:20px auto 8px;padding:0;border:none;text-align:center;}
+.ad-slot{width:300px;height:250px;display:inline-block;overflow:visible;}
 
 /* ===== INSTALL APP ===== */
-.install-wrap{padding:8px 4px;background:#f1f3f5}
+.install-wrap{padding:8px 10px 0;background:#ffffff}
 .install-bar{display:flex;align-items:center;width:100%;height:56px;padding:0 18px;background:linear-gradient(90deg,#155d78,#2f8a74,#3F7D20);border-radius:999px;box-shadow:0 2px 5px rgba(0,0,0,.12)}
 .install-logo{width:28px;height:28px;object-fit:contain;flex-shrink:0}
 .install-title{flex:1;margin-left:8px;font:700 20px Arial;color:#fff}
 .install-title small{font-size:11px;font-weight:400;color:#d6d6d6}
-.install-btn{height:36px;padding:0 18px;border:0;border-radius:999px;background:linear-gradient(180deg,#ffb347,#ff8a00);color:#fff;font:700 14px Arial;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 5px rgba(0,0,0,.18);animation:p 2.2s ease-in-out infinite}
+.install-btn{height:36px;padding:0 18px;border:0;border-radius:999px;background:linear-gradient(180deg,#ffb347,#ff8a00);color:#fff;font:700 14px Arial;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 5px rgba(0,0,0,.18)}
 @keyframes p{50%{transform:scale(1.04)}}
-/* ===== END INSTALL APP ===== */
-
-/* ===== SECURITY BOX ===== */
-.security-box{background:#f1f3f5;padding:8px 12px;margin:1px 0;text-align:center}
-.security-top{font-size:12.5px;font-weight:600;color:#57626d;letter-spacing:.3px}
-.security-bottom{margin-top:3px;font-size:11px;font-style:italic;color:#868e96;letter-spacing:.8px}
-/* ===== END SECURITY BOX ===== */
-
+.install-banner{display:block;width:calc(100% + 16px);margin:10px -8px 0;padding:0;border:0;border-radius:0;overflow:hidden;line-height:0}
 /* === UI RESET === */
 .faq-item{transition:border-color .15s}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#dfe5eb}html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}img{display:block;max-width:100%}button,input{font-family:inherit;appearance:none;-webkit-appearance:none;outline:0}
-
 /* === PROGRESS CLEAN === */
 .progress-box{width:100%;margin-top:6px;display:block}
 .progress-bar{width:100%;height:7px;background:#dfe5eb;border-radius:999px;overflow:hidden;box-shadow:none}
 .progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f25);display:flex;align-items:center;justify-content:flex-end;padding-right:1px;transition:width .3s ease;will-change:width}
 .progress-text{font-size:10px;color:#fff;font-weight:600}
 /* ===== CONTENT BOX ===== */
-#faq,#about,#kontak,#privacy,#terms,#footer{padding:20px 16px;margin:4px;background:#fff;box-shadow:0 2px 8px rgba(107,143,75,.18);content-visibility:auto;contain-intrinsic-size:500px}
+.content-body{background:#e9ecef;padding-top:8px;padding-bottom:12px}
+#faq{padding:20px 16px;margin:3px 0;background:#fff;content-visibility:auto;contain-intrinsic-size:500px}
+#about,#kontak,#privacy{padding:20px 16px;margin:3px;background:#fff;content-visibility:auto;contain-intrinsic-size:500px}
+#terms,#footer{padding:20px 16px;margin:3px 0;background:#fff;content-visibility:auto;contain-intrinsic-size:500px}
 /* ===== FAQ HEADER ===== */
 .faq-header{position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;padding-bottom:12px}.faq-arrow{position:absolute;right:0;width:33px;height:33px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #d9d9d9;background:#fff;color:#222;font-size:13px;font-weight:700}.faq-title{margin:0;text-align:center;padding:0 38px;line-height:1.3}#faqContent{display:none}
+/* ===== WHY CHOOSE DIVDOWN ===== */
+#whyChoose{padding:22px 18px;margin:18px 18px;background:#fff;border-radius:20px;border:1px solid #1b4f9c;box-shadow:0 2px 6px rgba(110,168,255,.22);text-align:center}
+.why-title{font-size:32px;font-weight:650;color:#000;letter-spacing:-.02em;margin-bottom:12px}
+.why-text{background:transparent;border:none;border-radius:0;padding:0;font-size:20px;line-height:1.9;color:#4e545a;letter-spacing:-.005em;margin:0 0 16px;box-shadow:none}
+.why-rating{display:flex;flex-direction:column;align-items:center;justify-content:center}.stars{display:flex;gap:3px;margin-bottom:6px}
+.rating-text{font-size:15px;color:#6c757d}
+/* ===== WHY CHOOSE DIVDOWN : RATING ===== */.rating-score{display:flex;align-items:center;justify-content:center;gap:3px;font-size:26px;font-weight:700;color:#000;margin-top:8px}.score{color:#000;font-weight:700}.star{color:#1b4f9c;font-size:25px;margin:0 2px}.reviews{color:#000;font-size:24px;font-weight:700}
+/* ===== PANDUAN DOWNLOAD ===== */
+.panduan-img{display:block;width:98%;
+max-width:480px;height:auto;margin:8px auto 10px;border-radius:8px;}
