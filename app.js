@@ -61,9 +61,6 @@ document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(
 /* ===== FAQ LAZY (MUAT SEKALI) ===== */
 function loadFaq(){window.faqLoaded=true;if(typeof cacheBahasa==="undefined")return;const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}
 /* ===== END FAQ LAZY LOAD ===== */
-// === IKLAN ADSTERRA 300X250 ===
-window.addEventListener('load',()=>{const a=document.getElementById('banner300');if(!a)return;let s1=document.createElement('script');s1.textContent="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";let s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';a.appendChild(s1);a.appendChild(s2);});
-// === END IKLAN ADSTERRA ===
 /* ===== TERMS LAZY LOAD ===== */
 function loadTerms(){if(window.termsLoaded)return;window.termsLoaded=true;fetch('./terms.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('termsContent').innerHTML=h;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('termsTitle',d.termsTitle);setText('termsText1',d.termsText1);setText('termsSub1',d.termsSub1);setText('termsText2',d.termsText2);setText('termsSub2',d.termsSub2);setText('termsText3',d.termsText3);setText('termsSub3',d.termsSub3);setText('termsText4',d.termsText4);setText('termsSub4',d.termsSub4);setText('termsText5',d.termsText5);}}).catch(()=>console.error("Gagal muat Syarat"));}
 

@@ -12,7 +12,7 @@ button{border:none;outline:none;font-family:inherit;}
 /* === BRAND === */
 .brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:5px 0 6px;}
 .brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
-/* === BANNER === */
+/* === SLOT UNTUK IKLAN === */
 .banner-slot{width:100%;min-height:260px;margin:20px 0 6px;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 /* === VIDEO BOX === */
 .video-box{padding:6px 0 40px;text-align:center;}

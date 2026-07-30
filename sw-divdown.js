@@ -1,5 +1,5 @@
 /* ===== UPDATE CACHE VERSION ===== */
-const CACHE_VERSION = "9";
+const CACHE_VERSION = "12";
 const CACHE = `divdown-v${CACHE_VERSION}`;
 
 /* ===== END UPDATE CACHE VERSION ===== */ 

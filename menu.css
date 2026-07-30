@@ -19,7 +19,6 @@
 .icon-ig::before{content:"";position:absolute;top:8px;left:8px;width:5px;height:5px;background:#fff;border-radius:50%}
 .icon-tt{display:block;width:24px;height:24px;margin:0 auto 3px;position:relative;background:#000;border-radius:4px;color:#fff;font:bold 16px/24px sans-serif;text-align:center}
 .icon-tt::after{content:"T"}
-.icon-yt{display:block;width:24px;height:24px;margin:0 auto 3px;position:relative;background:#f00;border-radius:4px}
-.icon-yt::after{content:"";position:absolute;top:5px;left:8px;width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid #fff}
+.icon-pin{display:block;width:24px;height:24px;margin:0 auto 3px;position:relative;background:#e60023;border-radius:50%;color:#fff;font:bold 18px/24px serif;text-align:center}.icon-pin::after{content:"P"}
 .icon-x{display:block;width:24px;height:24px;margin:0 auto 3px;position:relative;background:#000;border-radius:4px;color:#fff;font:bold 15px/24px sans-serif;text-align:center}
 .icon-x::after{content:"𝕏"}
