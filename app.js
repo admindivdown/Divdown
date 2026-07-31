@@ -35,7 +35,8 @@ btn.classList.add('loading');
 btn.querySelector('.btn-text').textContent='Processing...';
 btn.disabled=true;
 /* === END TOMBOL PROCESSING === */
-try{let data=null;try{const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}
+try{let data=null;
+try{const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
 /* === MASUK RUMAH 2 === */
@@ -65,3 +66,6 @@ function loadFaq(){window.faqLoaded=true;if(typeof cacheBahasa==="undefined")ret
 function loadTerms(){if(window.termsLoaded)return;window.termsLoaded=true;fetch('./terms.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('termsContent').innerHTML=h;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('termsTitle',d.termsTitle);setText('termsText1',d.termsText1);setText('termsSub1',d.termsSub1);setText('termsText2',d.termsText2);setText('termsSub2',d.termsSub2);setText('termsText3',d.termsText3);setText('termsSub3',d.termsSub3);setText('termsText4',d.termsText4);setText('termsSub4',d.termsSub4);setText('termsText5',d.termsText5);}}).catch(()=>console.error("Gagal muat Syarat"));}
 
 document.addEventListener("DOMContentLoaded",()=>{const h=document.getElementById("termsHeader"),c=document.getElementById("termsContent"),a=document.getElementById("termsArrow");if(!h||!c)return;h.addEventListener("click",()=>{if(!window.termsLoaded)loadTerms();const o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
+// === IKLAN ADSTERRA 300X250 ===
+document.addEventListener('DOMContentLoaded',()=>{ const a=document.getElementById('banner300');if(!a)return;let s1=document.createElement('script');s1.textContent="atOptions={'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";let s2=document.createElement('script');s2.src='https://www.highperformanceformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';a.appendChild(s1);a.appendChild(s2);});
+// === END IKLAN ADSTERRA ===

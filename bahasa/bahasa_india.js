@@ -23,7 +23,7 @@ whyText:"Divdown एक विश्वसनीय Facebook Video Downloader �
 /* ===== हमारे बारे में (ABOUT) ===== */
 aboutTitle: "Divdown के बारे में",
 aboutText1: "Divdown Facebook Video और Reels डाउनलोड करने का एक प्लेटफ़ॉर्म है, जो आपको Facebook Video को मुफ्त, तेज़, सुरक्षित और बिना लॉगिन के डाउनलोड करने में मदद करता है। यदि मूल स्रोत में उपलब्ध हो, तो HD, Full HD (1080p) और यहाँ तक कि 4K गुणवत्ता भी समर्थित है।",
-aboutText2: "हल्का और आरामदायक अनुभव देने के लिए डिज़ाइन किया गया, ताकि यह विभिन्न उपकरणों पर आसानी से उपयोग किया जा सके। <strong>Network:</strong> Instagram, TikTok, YouTube और X (Twitter) Downloader <strong>Menu</strong> के माध्यम से उपलब्ध हैं।",
+aboutText2: "हल्का और आरामदायक अनुभव देने के लिए डिज़ाइन किया गया, ताकि यह विभिन्न उपकरणों पर आसानी से उपयोग किया जा सके। <strong>Network:</strong> Instagram, TikTok, Pinterest और X (Twitter) Downloader <strong>Menu</strong> के माध्यम से उपलब्ध हैं।",
   /* ===== संपर्क करें (CONTACT) ===== */
   contactTitle: "हमसे संपर्क करें",
   contactText1: "यदि आपके कोई प्रश्न, त्रुटि की रिपोर्ट या व्यावसायिक प्रस्ताव हैं, तो कृपया हमसे यहां संपर्क करें:",

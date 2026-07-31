@@ -24,7 +24,7 @@ whyText:"Divdown adalah Facebook Video Downloader terpercaya untuk mengunduh Vid
 /* ===== TENTANG (ABOUT) ===== */
 aboutTitle: "Tentang Divdown",
 aboutText1: "Divdown merupakan platform untuk mengunduh Video Facebook dan Reels yang memudahkan Anda menyimpan video Facebook secara gratis, cepat, aman, dan tanpa login. Tersedia pilihan kualitas hingga HD, Full HD (1080p), bahkan 4K apabila tersedia di sumber asli.",
-aboutText2: "Dirancang tetap ringan dan nyaman digunakan di berbagai perangkat. <strong>Network:</strong> Instagram, TikTok, YouTube, dan X (Twitter) Downloader tersedia melalui <strong>Menu</strong>.",
+aboutText2: "Dirancang tetap ringan dan nyaman digunakan di berbagai perangkat. <strong>Network:</strong> Instagram, TikTok, Pinterest, dan X (Twitter) Downloader tersedia melalui <strong>Menu</strong>.",
 
   /* ===== HUBUNGI KAMI (CONTACT) ===== */
   contactTitle: "Hubungi Kami",
