@@ -50,7 +50,6 @@ aboutText2: "Designed to stay lightweight and comfortable across various devices
   termsSub3: "Service Modifications",
   termsText4: "We reserve the right to modify, suspend, or discontinue any part of the service at any time to maintain quality, security, and user experience. Features may be updated without prior notice.",
   termsSub4: "Disclaimer",
-  termsSub5: "Disclaimer",
   termsText5: "We continuously develop Divdown to keep it fast, secure, and easy to use. By using this service, you agree to use it responsibly for personal purposes only. We do not permit the use of Divdown for activities that violate copyright laws."
 
 };

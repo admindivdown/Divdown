@@ -1,11 +1,4 @@
 // APP.JS RUMAH 1 - FINAL STABIL & CACHE
-/* --- FUNGSI KOORDINATOR MENU --- */
-function tutupSemuaMenu() {
-  const menuDropdown = document.getElementById('menuDropdown');
-  if (menuDropdown) menuDropdown.classList.remove('show-menu');
-  const bahasaDropdown = document.querySelector('.bahasa-dropdown');
-  if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
-}
 /* --- 1. MUAT KOMPONEN HTML --- */
 function loadFile(e,t,n){let k='cache_'+t,h=sessionStorage.getItem(k);if(h){let x=document.getElementById(e);x&&(x.innerHTML=h);return Promise.resolve()}return fetch(t).then(r=>{if(!r.ok)throw Error(n);return r.text()}).then(d=>{sessionStorage.setItem(k,d);let x=document.getElementById(e);x&&(x.innerHTML=d)}).catch(err=>console.error(n,err))}
 /* --- 2. INISIALISASI HALAMAN --- */
@@ -60,7 +53,7 @@ let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDe
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
 /* ===== FAQ TOGGLE + LAZY LOAD ===== */document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("faqHeader"),c=document.getElementById("faqContent"),a=document.getElementById("faqArrow");if(!t||!c)return;t.addEventListener("click",()=>{if(!window.faqLoaded)loadFaq();const o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
 /* ===== FAQ LAZY (MUAT SEKALI) ===== */
-function loadFaq(){window.faqLoaded=true;if(typeof cacheBahasa==="undefined")return;const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}
+function loadFaq(){if(window.faqLoaded)return;window.faqLoaded=true;fetch('./faq.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('faqContent').innerHTML=h;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}}).catch(()=>console.error("Gagal muat FAQ"));}
 /* ===== END FAQ LAZY LOAD ===== */
 /* ===== TERMS LAZY LOAD ===== */
 function loadTerms(){if(window.termsLoaded)return;window.termsLoaded=true;fetch('./terms.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('termsContent').innerHTML=h;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('termsTitle',d.termsTitle);setText('termsText1',d.termsText1);setText('termsSub1',d.termsSub1);setText('termsText2',d.termsText2);setText('termsSub2',d.termsSub2);setText('termsText3',d.termsText3);setText('termsSub3',d.termsSub3);setText('termsText4',d.termsText4);setText('termsSub4',d.termsSub4);setText('termsText5',d.termsText5);}}).catch(()=>console.error("Gagal muat Syarat"));}

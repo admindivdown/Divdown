@@ -54,7 +54,6 @@ aboutText2: "Dirancang tetap ringan dan nyaman digunakan di berbagai perangkat. 
   termsSub3: "Perubahan Layanan",
   termsText4: "Kami berhak mengubah, menunda, atau menghentikan sebagian layanan kapan saja untuk menjaga kualitas, keamanan, dan kenyamanan pengguna. Pembaruan fitur dapat dilakukan tanpa pemberitahuan terlebih dahulu.",
   termsSub4: "Penyangkalan",
-  termsSub5: "Penyangkalan",
   termsText5: "Divdown terus kami kembangkan agar tetap cepat, ringan, dan nyaman digunakan. Dengan menggunakan layanan ini, Anda setuju untuk menggunakannya secara bertanggung jawab dan hanya untuk keperluan pribadi. Kami tidak mengizinkan penggunaan untuk aktivitas yang melanggar hak cipta atau peraturan yang berlaku."
 
 };

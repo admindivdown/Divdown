@@ -25,6 +25,18 @@ function applyBahasa(data) {
   });
 /* ===== FAQ HEADER SAJA (LAZY) ===== */
 setText('faqTitle',data.faqTitle);
+if(window.faqLoaded){
+setText('faqQ1',data.faqQ1);
+setText('faqA1',data.faqA1);
+setText('faqQ2',data.faqQ2);
+setText('faqA2',data.faqA2);
+setText('faqQ3',data.faqQ3);
+setText('faqA3',data.faqA3);
+setText('faqQ4',data.faqQ4);
+setText('faqA4',data.faqA4);
+setText('faqQ5',data.faqQ5);
+setText('faqA5',data.faqA5);
+}
 /* ===== WHY CHOOSE DIVDOWN ===== */setText('whyTitle',data.whyTitle);setText('whyText',data.whyText);
   /* KOMPONEN ABOUT */
   setText('aboutTitle', data.aboutTitle);
@@ -48,7 +60,6 @@ setText('faqTitle',data.faqTitle);
   setText('privacyText6', data.privacyText6);
 setText('termsTitle',data.termsTitle);
 /* ===== UPDATE TERMS JIKA SUDAH PERNAH DIBUKA ===== */if(window.termsLoaded){setText('termsTitle',data.termsTitle);setText('termsText1',data.termsText1);setText('termsSub1',data.termsSub1);setText('termsText2',data.termsText2);setText('termsSub2',data.termsSub2);setText('termsText3',data.termsText3);setText('termsSub3',data.termsSub3);setText('termsText4',data.termsText4);setText('termsSub4',data.termsSub4);setText('termsText5',data.termsText5);}
-  /* ===== UPDATE FAQ JIKA SUDAH PERNAH DIBUKA ===== */if(window.faqLoaded){setText('faqQ1',data.faqQ1);setText('faqA1',data.faqA1);setText('faqQ2',data.faqQ2);setText('faqA2',data.faqA2);setText('faqQ3',data.faqQ3);setText('faqA3',data.faqA3);setText('faqQ4',data.faqQ4);setText('faqA4',data.faqA4);setText('faqQ5',data.faqQ5);setText('faqA5',data.faqA5);}
 }
 async function gantiBahasa(namaBahasa, isManual = false) {
   if (!namaBahasa) return;
