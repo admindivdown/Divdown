@@ -1,6 +1,9 @@
 /* ===== GLOBAL RESET & PAGE LAYOUT (ORISINIL + PENGAMAN STABIL) ===== */
 html,body{margin:0;padding:0;background:#ffffff;color:#000000;overflow-x:hidden;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
-.alat-page{width:100%;max-width:640px;margin:0 auto;padding:85px 16px 24px;box-sizing:border-box;transform:translateZ(0)}
+.alat-page{width:100%;max-width:640px;margin:0 auto;padding:75px 16px 24px;box-sizing:border-box;transform:translateZ(0)}
+
+.alat-tools-section{width:100%;margin-bottom:15px;box-sizing:border-box}
+.alat-tools-section:first-child{margin-top:75px}
 
 /* ===== NAVBAR ATAS & SWITCHER BAHASA (FIXED & CLEAN) ===== */
 .alat-navbar{position:fixed;top:0;left:0;width:100%;background:#ffffff;border-bottom:1px solid #eaeaea;z-index:1000;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,.03)}
