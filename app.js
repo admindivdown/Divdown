@@ -36,7 +36,9 @@ btn.querySelector('.btn-text').textContent='Processing...';
 btn.disabled=true;
 /* === END TOMBOL PROCESSING === */
 try{let data=null;
-try{const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch('https://divdown.net/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}
+    
+try{const res=await fetch('https://divdown-production.up.railway.app/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch('https://divdown-production.up.railway.app/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}
+    
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
 /* === MASUK RUMAH 2 === */

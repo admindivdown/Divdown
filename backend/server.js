@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { exec } = require('child_process');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..')));
 
 /* === LIMIT USER === */
 const rl=new Map();
@@ -23,7 +25,7 @@ d.c++;next();
 }
 /* === END === */
 app.get('/', (req, res) => {
-  res.send('Backend Divdown aktif ✅');
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 app.get('/api/facebook',limitRequest,(req,res)=>{
