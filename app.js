@@ -2,10 +2,8 @@
 /* --- FUNGSI KOORDINATOR MENU --- */
 function tutupSemuaMenu() {
   const menuDropdown = document.getElementById('menuDropdown');
-  if (menuDropdown) menuDropdown.classList.remove('show-menu');
-  const bahasaDropdown = document.querySelector('.bahasa-dropdown');
-  if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');
-}
+if (menuDropdown) menuDropdown.classList.remove('show-menu');const bahasaDropdown = document.querySelector('.bahasa-dropdown');
+if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');}
 /* --- 1. MUAT KOMPONEN HTML --- */
 function loadFile(e,t,n){return fetch(t).then(r=>{if(!r.ok)throw Error(n);return r.text()}).then(d=>{let x=document.getElementById(e);x&&(x.innerHTML=d)}).catch(err=>console.error(n,err))}
 
@@ -21,7 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   ]).then(() => { let savedLang = localStorage.getItem('userLanguage');
 
  if (!savedLang) { const browserLang = (navigator.language || '').toLowerCase(); if (browserLang.includes('id')) savedLang = 'indonesia'; else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil'; else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india'; else savedLang = 'english'; } else { savedLang = savedLang.toLowerCase().trim(); }
-if(typeof gantiBahasa==='function'){gantiBahasa(savedLang,false).then(()=>{const d=cacheBahasa[bahasaAktif]||{};setText('termsTitle',d.termsTitle);});}});const input=document.getElementById('urlInput');if(input){input.addEventListener('keypress',e=>{if(e.key==='Enter')downloadVideo()});}});
+if(typeof gantiBahasa==='function'){
+gantiBahasa(savedLang,false).then(()=>{
+  const d=cacheBahasa[bahasaAktif]||{};
+  setText('termsTitle',d.termsTitle);
+});}});const input=document.getElementById('urlInput');if(input){input.addEventListener('keypress',e=>{if(e.key==='Enter')downloadVideo()});}});
 /* --- 3. FUNGSI UTAMA UNDUH --- */
 async function downloadVideo(){const btn=document.getElementById('downloadBtn');if(btn&&btn.disabled)return;const input=document.getElementById('urlInput');if(!input)return;const url=input.value.trim();const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
 /* === PROGRESS RUMAH 1 === */
@@ -48,7 +50,7 @@ window.location.href=`rumah_index2/index.html?url=${encodeURIComponent(url)}`;
 btn.classList.remove('loading');
 btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}
 /* --- 4. RESET TOMBOL & BAHASA KEMBALI --- */
-window.addEventListener('pageshow',function(e){const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}let l=localStorage.getItem('userLanguage');l&&typeof gantiBahasa==='function'&&gantiBahasa(l.toLowerCase().trim(),false);});
+window.addEventListener('pageshow',function(e){if(!e.persisted)return;const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}let l=localStorage.getItem('userLanguage');l&&typeof gantiBahasa==='function'&&gantiBahasa(l.toLowerCase().trim(),false);});
 
 // --- KENDALI MENU TERPADU (AMAN) ---
 document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;
@@ -61,10 +63,10 @@ document.addEventListener('click',e=>{if(!menuBtn.contains(e.target)&&!menuDropd
 // ===== INSTALL DIVDOWN =====
 let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});
 document.getElementById("installAppBtn")?.addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;});
-/* ===== FAQ TOGGLE + LAZY LOAD ===== */document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("faqHeader"),c=document.getElementById("faqContent"),a=document.getElementById("faqArrow");if(!t||!c)return;t.addEventListener("click",()=>{if(!window.faqLoaded)loadFaq();const o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
+/* ===== FAQ TOGGLE + LAZY LOAD ===== */document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("faqHeader"),c=document.getElementById("faqContent"),a=document.getElementById("faqArrow");if(!t||!c)return;t.addEventListener("click",async()=>{const o=c.style.display==="block";if(!o&&!window.faqLoaded)await loadFaq();c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
 
 /* ===== FAQ LAZY (MUAT SEKALI) ===== */
-function loadFaq(){if(window.faqLoaded)return;fetch('./faq.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('faqContent').innerHTML=h;window.faqLoaded=true;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5);}}).catch(()=>console.error("Gagal muat FAQ"));}
+async function loadFaq(){if(window.faqLoaded)return;if(typeof cacheBahasa!=="undefined"&&!cacheBahasa[bahasaAktif])await loadFileBahasa(bahasaAktif);return fetch('./faq.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{const c=document.getElementById('faqContent');if(!c)return;c.innerHTML=h;window.faqLoaded=true;const d=cacheBahasa[bahasaAktif]||{};setText('faqQ1',d.faqQ1);setText('faqA1',d.faqA1);setText('faqQ2',d.faqQ2);setText('faqA2',d.faqA2);setText('faqQ3',d.faqQ3);setText('faqA3',d.faqA3);setText('faqQ4',d.faqQ4);setText('faqA4',d.faqA4);setText('faqQ5',d.faqQ5);setText('faqA5',d.faqA5)}).catch(()=>console.error("Gagal muat FAQ"))}
 /* ===== END FAQ LAZY LOAD ===== */
 
 /* ===== TERMS LAZY LOAD ===== */

@@ -12,9 +12,8 @@ window.open('https://divdown-production.up.railway.app/api/download?url='+encode
                            }}else{btnStandard.disabled=true;btnStandard.style.pointerEvents="none";btnStandard.style.opacity=".55";btnStandard.style.cursor="not-allowed";btnStandard.style.background="#8b8b8b";btnStandard.style.color="#e5e5e5";btnStandard.onclick=null;}}
 
 if(btnHD){btnHD.onclick=()=>{if(data.hd720){
-
 window.open('https://divdown-production.up.railway.app/api/download?url='+encodeURIComponent(data.hd720),'_blank')
-                                           }else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.")}}}}else{alert(isID?"Video tidak ditemukan.":"Video not found.");window.location.href='../index.html';}}catch(err){alert(isID?"Gagal mengambil file.":"Failed to load file.");}});
+                                         }else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.")}}}}else{alert(isID?"Video tidak ditemukan.":"Video not found.");window.location.href='../index.html';}}catch(err){alert(isID?"Gagal mengambil file.":"Failed to load file.");}});
 /* === BAGIAN 3: LOAD FAQ === */ async function loadFAQ(){try{const res=await fetch('faq_rumah2.html');if(!res.ok)return;const html=await res.text();const target=document.getElementById('faq');if(target){target.innerHTML=html;
 /* === LOGIKA BAHASA === */ let savedLangRumah2=localStorage.getItem('kunciBahasaRumah2')||'indonesia';let langCode='id';if(savedLangRumah2==='english')langCode='en';else if(savedLangRumah2==='brazil')langCode='br';else if(savedLangRumah2==='india')langCode='in';document.querySelectorAll('[data-en]').forEach(el=>{el.textContent=el.getAttribute(`data-${langCode}`)||el.getAttribute('data-en');});}}catch(e){console.log('FAQ tidak dimuat');}}
 /* === FUNGSI LOAD FOOTER === */ async function loadFooter(){try{const res=await fetch('footer_rumah2.html');if(res.ok)document.getElementById('footer').innerHTML=await res.text();}catch(e){console.log('Footer tidak dimuat');}}
