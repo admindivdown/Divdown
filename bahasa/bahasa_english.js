@@ -35,19 +35,19 @@ aboutText2: "Designed to stay lightweight and comfortable across various devices
   privacySub2: "Video Links & Processing",
   privacyText3: "Video URLs submitted by users are used only to process your download request. All processing happens securely in your browser. We do not store, cache, or keep copies of any videos or links on our servers.",
   privacySub4: "Ads That Support Our Service",
-  privacyText5: "To keep Divdown free and continuously improving, we display ads from trusted partners. These ads help cover server costs so you can download without limits. We do not show intrusive ads.",
+  privacyText5: "To keep Divdown free, we display advertisements from trusted partners to support our operational costs, so you can continue downloading without limits. Thank you for your understanding.",
   privacySub5: "Policy Updates",
-  privacyText6: "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page with a revised date. We encourage you to review this page periodically.",
-  /* ===== TERMS OF SERVICE ===== */
+  privacyText6: "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page with a revised date. ",
+/* ===== TERMS OF SERVICE ===== */
   termsTitle: "Terms of Service",
-  termsText1: "Welcome to Divdown. By accessing or using this website, you agree to use our service responsibly for personal and lawful purposes only.",
+  termsText1: "By using Divdown, you agree to use this service only for personal and lawful purposes.",
   termsSub1: "Service Description",
-  termsText2: "Divdown is an online tool that helps users save publicly available videos for personal, offline viewing. The service is free, fast, lightweight, and works well on all devices.",
+  termsText2: "Divdown is a web tool that helps users save publicly available videos for personal offline viewing across all devices.",
   termsSub2: "Acceptable Use",
-  termsText3: "You agree to use Divdown only for personal, non-commercial purposes. You are responsible for ensuring you have the right to save and view the content you process. Divdown does not host any video content and only processes public links provided by users.",
-  termsSub3: "Service Modifications",
-  termsText4: "We reserve the right to modify, suspend, or discontinue any part of the service at any time to maintain quality, security, and user experience. Features may be updated without prior notice.",
+  termsText3: "You may use Divdown for personal, non-commercial use only. You are solely responsible for ensuring you have the legal right to access and save any content. Divdown does not host, store, or distribute content and only processes public URLs provided by users.",
+  termsSub3: "Service Availability",
+  termsText4: "Divdown may update or improve its service at any time without prior notice.",
   termsSub4: "Disclaimer",
-  termsText5: "We continuously develop Divdown to keep it fast, secure, and easy to use. By using this service, you agree to use it responsibly for personal purposes only. We do not permit the use of Divdown for activities that violate copyright laws."
+  termsText5: "This service is provided as an independent tool and is not affiliated with any social media platform. Users are responsible for using downloaded content legally. Copyright infringement and illegal activity are prohibited."
 
 };

@@ -36,10 +36,10 @@ aboutText2: "Projetado para ser leve e confortável em diversos dispositivos. <s
   privacySub2: "Links de Vídeo e Processamento",
   privacyText3: "Os links enviados por você são usados apenas para realizar o download solicitado. Todo o processamento ocorre de forma segura no seu navegador. Não guardamos, armazenamos ou mantemos cópias de nenhum vídeo ou endereço em nossos servidores.",
   privacySub4: "Anúncios que Ajudam a Manter o Serviço",
-  privacyText5: "Para manter o Divdown gratuito e em constante melhoria, exibimos anúncios de parceiros confiáveis. Esses anúncios ajudam a cobrir os custos dos servidores, permitindo que você baixe sem limites. Não mostramos anúncios invasivos ou que atrapalhem o uso.",
+  privacyText5: "Para manter o Divdown gratuito, exibimos anúncios de parceiros confiáveis para apoiar nossos custos operacionais, permitindo que você continue baixando sem limites. Agradecemos sua compreensão.",
   privacySub5: "Atualizações da Política",
-  privacyText6: "Podemos atualizar esta política de tempos em tempos, conforme mudanças em nossos serviços ou por exigências legais. Qualquer alteração será publicada nesta página com a data de revisão. Recomendamos que você consulte esta página periodicamente.",
-  /* ===== TERMOS DE SERVIÇO ===== */
+  privacyText6: "Podemos atualizar esta política de tempos em tempos, conforme mudanças em nossos serviços ou por exigências legais. Qualquer alteração será publicada nesta página com a data de revisão.",
+/* ===== TERMOS DE SERVIÇO ===== */
   termsTitle: "Termos de Serviço",
   termsText1: "Seja bem-vindo ao Divdown. Ao acessar ou usar este site, você concorda em utilizar nosso serviço de forma responsável e apenas para fins pessoais e legais.",
   termsSub1: "Sobre o Serviço",
@@ -50,4 +50,5 @@ aboutText2: "Projetado para ser leve e confortável em diversos dispositivos. <s
   termsText4: "Reservamos o direito de alterar, interromper ou encerrar qualquer parte do serviço a qualquer momento, para manter a qualidade, segurança e boa experiência de uso. As funcionalidades podem ser atualizadas sem aviso prévio.",
   termsSub4: "Isenção de Responsabilidade",
   termsText5: "Estamos sempre aprimorando o Divdown para mantê-lo rápido, seguro e fácil de usar. Ao usar este serviço, você concorda em utilizá-lo de forma responsável e apenas para fins pessoais. Não permitimos o uso do Divdown para atividades que violem direitos autorais ou leis vigentes."
+
 };

@@ -38,20 +38,20 @@ aboutText2: "Dirancang tetap ringan dan nyaman digunakan di berbagai perangkat. 
   privacySub2: "Tautan Video dan Proses Pengolahan",
   privacyText3: "Tautan video yang dimasukkan hanya digunakan untuk memproses permintaan unduhan. Semua proses berlangsung secara aman di peramban Anda. Kami tidak menyimpan, menyimpan sementara, atau merekam salinan tautan maupun berkas video apa pun di server kami.",
   privacySub4: "Iklan Pendukung Layanan",
-  privacyText5: "Agar Divdown tetap gratis dan terus berkembang, kami menampilkan iklan dari mitra yang dapat dipercaya. Iklan ini membantu menutupi biaya operasional server sehingga Anda dapat terus mengunduh tanpa batas. Kami hanya menayangkan iklan yang tidak mengganggu kenyamanan Anda.",
+  privacyText5: "Agar Divdown tetap gratis, kami menampilkan iklan dari mitra terpercaya untuk mendukung biaya operasional, sehingga Anda dapat terus mengunduh tanpa batas. Terima kasih atas pengertiannya.",
   privacySub5: "Pembaruan Kebijakan",
-  privacyText6: "Kami dapat memperbarui kebijakan ini sewaktu-waktu seiring dengan perubahan layanan atau ketentuan hukum. Setiap perubahan akan ditampilkan di halaman ini beserta tanggal revisinya. Kami menyarankan Anda untuk meninjau halaman ini secara berkala.",
+  privacyText6: "Kami dapat memperbarui kebijakan ini sewaktu-waktu seiring dengan perubahan layanan atau ketentuan hukum. Setiap perubahan akan ditampilkan di halaman ini beserta tanggal revisinya.",
 
   /* ===== KETENTUAN LAYANAN (TERMS OF SERVICE) ===== */
   termsTitle: "Ketentuan Layanan",
-  termsText1: "Selamat datang di Divdown. Dengan mengakses dan menggunakan situs ini, Anda menyetujui untuk memanfaatkan layanan kami secara bertanggung jawab hanya untuk keperluan pribadi dan sesuai aturan hukum.",
+  termsText1: "Dengan menggunakan Divdown, Anda menyetujui untuk menggunakan layanan ini hanya untuk keperluan pribadi dan sesuai hukum.",
   termsSub1: "Tentang Layanan",
-  termsText2: "Divdown adalah alat daring yang membantu pengguna menyimpan video yang dapat diakses publik untuk ditonton secara luring dan pribadi. Layanan ini tersedia secara gratis dengan tampilan yang cepat, ringan, dan nyaman di perangkat apa pun.",
+  termsText2: "Divdown adalah alat daring yang membantu pengguna menyimpan video yang dapat diakses publik untuk ditonton secara luring dan pribadi di berbagai perangkat.",
   termsSub2: "Penggunaan yang Diperbolehkan",
-  termsText3: "Anda hanya boleh menggunakan Divdown untuk keperluan pribadi dan non-komersial. Anda bertanggung jawab memastikan memiliki hak untuk menyimpan dan melihat konten yang diproses. Divdown tidak menyimpan konten video apa pun dan hanya mengolah tautan yang disediakan oleh pengguna.",
-  termsSub3: "Perubahan Layanan",
-  termsText4: "Kami berhak mengubah, menunda, atau menghentikan sebagian layanan kapan saja untuk menjaga kualitas, keamanan, dan kenyamanan pengguna. Pembaruan fitur dapat dilakukan tanpa pemberitahuan terlebih dahulu.",
+  termsText3: "Anda hanya boleh menggunakan Divdown untuk keperluan pribadi dan non-komersial. Anda bertanggung jawab memastikan memiliki hak untuk mengakses dan menyimpan konten. Divdown tidak menyimpan atau mendistribusikan konten dan hanya memproses URL publik yang diberikan oleh pengguna.",
+  termsSub3: "Ketersediaan Layanan",
+  termsText4: "Divdown dapat memperbarui atau meningkatkan layanannya kapan saja tanpa pemberitahuan sebelumnya.",
   termsSub4: "Penyangkalan",
-  termsText5: "Divdown terus kami kembangkan agar tetap cepat, ringan, dan nyaman digunakan. Dengan menggunakan layanan ini, Anda setuju untuk menggunakannya secara bertanggung jawab dan hanya untuk keperluan pribadi. Kami tidak mengizinkan penggunaan untuk aktivitas yang melanggar hak cipta atau peraturan yang berlaku."
+  termsText5: "Layanan ini disediakan sebagai alat independen dan tidak berafiliasi dengan platform media sosial mana pun. Pengguna bertanggung jawab menggunakan konten yang diunduh secara legal. Pelanggaran hak cipta dan aktivitas ilegal dilarang."
 
 };
