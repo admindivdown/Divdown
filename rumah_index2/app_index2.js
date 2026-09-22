@@ -2,14 +2,14 @@
 document.addEventListener('DOMContentLoaded',async()=>{const browserLang=(navigator.language||'').toLowerCase();const isID=browserLang.includes('id');loadFAQ();loadFooter();const thumb=document.getElementById('videoThumb');const btnWrap=document.getElementById('downloadWrap');const btnStandard=document.getElementById('dlStandard');const btnHD=document.getElementById('dl720');
 const params=new URLSearchParams(window.location.search);const fbUrl=params.get('url');if(!fbUrl){window.location.href='../index.html';return;}
 /* === AMBIL DARI SESSION / SERVER === */ try{let data=JSON.parse(sessionStorage.getItem('fbData')||'null');
-if(!data){const res=await fetch('https://divdown-production-141d.up.railway.app?url='+encodeURIComponent(fbUrl));data=await res.json();}
+if(!data){const res=await fetch('https://divdown-production-45b7.up.railway.app?url='+encodeURIComponent(fbUrl));data=await res.json();}
 if(data.success){
   
 /* === TAMPILKAN UI INSTAN === */ const loader=document.getElementById('thumbLoading');if(loader)loader.style.display='none';if(thumb){thumb.src=data.thumbnail;thumb.style.display='block';}if(btnWrap)btnWrap.style.display='flex';
 /* === DOWNLOAD VIDEO === */
 if(btnStandard){if(data.standard&&data.standard.trim()){btnStandard.onclick=()=>{
 
-window.open('https://divdown-production-141d.up.railway.app?url='+encodeURIComponent(data.standard),'_blank') }}else{btnStandard.disabled=true;btnStandard.style.pointerEvents="none";btnStandard.style.opacity=".55";btnStandard.style.cursor="not-allowed";btnStandard.style.background="#8b8b8b";btnStandard.style.color="#e5e5e5";btnStandard.onclick=null;}}
+window.open('https://divdown-production-45b7.up.railway.app?url='+encodeURIComponent(data.standard),'_blank') }}else{btnStandard.disabled=true;btnStandard.style.pointerEvents="none";btnStandard.style.opacity=".55";btnStandard.style.cursor="not-allowed";btnStandard.style.background="#8b8b8b";btnStandard.style.color="#e5e5e5";btnStandard.onclick=null;}}
 
 if(btnHD){btnHD.onclick=()=>{if(data.hd720){
 window.open('https://divdown-production.up.railway.app/api/download?url='+encodeURIComponent(data.hd720),'_blank')
