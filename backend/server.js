@@ -1,13 +1,39 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const crypto = require('crypto');
+const fs = require('fs');
 const { exec } = require('child_process');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({verify:(req,res,buf)=>{req.rawBody=buf;}}));
 app.use(express.static(path.join(__dirname, '..')));
+
+/* === GITHUB WEBHOOK === */
+const webhookSecret=fs.readFileSync('/root/.divdown_webhook_secret','utf8').trim();
+function verifyWebhook(req){
+const signature=req.headers['x-hub-signature-256'];
+if(!signature||!signature.startsWith('sha256='))return false;
+const expected=crypto.createHmac('sha256',webhookSecret).update(req.rawBody).digest('hex');
+const received=signature.slice(7);
+if(received.length!==expected.length)return false;
+return crypto.timingSafeEqual(Buffer.from(received),Buffer.from(expected));
+}
+app.post('/webhook',(req,res)=>{
+  if(req.headers['x-github-event']!=='push')return res.status(200).send('Ignored');
+if(!verifyWebhook(req))return res.status(401).send('Unauthorized');
+if(req.body.ref!=='refs/heads/main')return res.status(200).send('Ignored');
+res.status(200).send('Webhook received');
+exec('cd /var/www/Divdown && git pull origin main && pm2 restart divdown',(error,stdout,stderr)=>{
+if(error){console.error('Auto-deploy error:',error.message);return;}
+console.log('Auto-deploy berhasil:');
+console.log(stdout);
+if(stderr)console.error(stderr);
+});
+});
+
+/* === END WEBHOOK === */
 
 /* === LIMIT USER === */
 const rl=new Map();
