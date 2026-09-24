@@ -38,9 +38,11 @@ if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';
 btn.classList.add('loading');
 btn.querySelector('.btn-text').textContent='Processing...';
 btn.disabled=true;
-
+const API_BASE=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'https://divdown.net':'';
 try{let data=null;
-    try{const res=await fetch('/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch('/api/facebook?url='+encodeURIComponent(url));data=await res.json();if(!data.success)throw new Error();}
+    try{const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
+      ;data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
+      ;data=await res.json();if(!data.success)throw new Error();}
     
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
