@@ -109,8 +109,9 @@ app.get('/api/download', limitRequest, async (req, res) => {
 
   try {
     const response = await fetch(fileUrl);
-
-    res.setHeader('Content-Disposition', 'attachment; filename="video.mp4"');
+const fileName = `Divdown_Video_${Math.floor(100000 + Math.random() * 900000)}.mp4`;
+    
+    res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
     res.setHeader('Content-Type', 'video/mp4');
 
     response.body.pipe(res);
@@ -121,7 +122,8 @@ app.get('/api/download', limitRequest, async (req, res) => {
 });
 
 /* === DOWNLOAD 1080P === */
-app.get('/api/download1080',limitRequest,async(req,res)=>{const videoUrl=req.query.url;if(!videoUrl)return res.status(400).send('URL tidak ada');const tempDir='/tmp/divdown1080';const jobId=`${Date.now()}-${Math.random().toString(36).slice(2)}`;const outputFile=path.join(tempDir,`video-${jobId}.mp4`);try{fs.mkdirSync(tempDir,{recursive:true});const cmd=`yt-dlp -f "bestvideo[height>=1080]+bestaudio/bestvideo[height<=1080]+bestaudio/best" --merge-output-format mp4 --no-warnings --no-check-certificate --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36" -o "${outputFile}" "${videoUrl}"`;exec(cmd,{maxBuffer:1024*5000},(error)=>{if(error||!fs.existsSync(outputFile)){console.error('1080P yt-dlp error:',error?.message||'File tidak dibuat');return res.status(500).send('Gagal memproses video 1080P');}res.setHeader('Content-Disposition','attachment; filename="video-1080p.mp4"');res.setHeader('Content-Type','video/mp4');const stream=fs.createReadStream(outputFile);const cleanup=()=>{if(fs.existsSync(outputFile))fs.unlink(outputFile,()=>{});};stream.on('error',()=>{cleanup();if(!res.headersSent)res.status(500).send('Download gagal');});stream.on('close',cleanup);req.on('close',()=>{if(!res.writableFinished)cleanup();});stream.pipe(res);});}catch(err){console.error('1080P error:',err.message);if(fs.existsSync(outputFile))fs.unlink(outputFile,()=>{});return res.status(500).send('Gagal memproses video 1080P');}});
+app.get('/api/download1080',limitRequest,async(req,res)=>{const videoUrl=req.query.url;if(!videoUrl)return res.status(400).send('URL tidak ada');const tempDir='/tmp/divdown1080';const jobId=`${Date.now()}-${Math.random().toString(36).slice(2)}`;const outputFile=path.join(tempDir,`video-${jobId}.mp4`);try{fs.mkdirSync(tempDir,{recursive:true});const cmd=`yt-dlp -f "bestvideo[height>=1080]+bestaudio/bestvideo[height<=1080]+bestaudio/best" --merge-output-format mp4 --no-warnings --no-check-certificate --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36" -o "${outputFile}" "${videoUrl}"`;exec(cmd,{maxBuffer:1024*5000},(error)=>{if(error||!fs.existsSync(outputFile)){console.error('1080P yt-dlp error:',error?.message||'File tidak dibuat');return res.status(500).send('Gagal memproses video 1080P');}const fileName = `Divdown_Video_${Math.floor(100000 + Math.random() * 900000)}.mp4`;res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+res.setHeader('Content-Type','video/mp4');const stream=fs.createReadStream(outputFile);const cleanup=()=>{if(fs.existsSync(outputFile))fs.unlink(outputFile,()=>{});};stream.on('error',()=>{cleanup();if(!res.headersSent)res.status(500).send('Download gagal');});stream.on('close',cleanup);req.on('close',()=>{if(!res.writableFinished)cleanup();});stream.pipe(res);});}catch(err){console.error('1080P error:',err.message);if(fs.existsSync(outputFile))fs.unlink(outputFile,()=>{});return res.status(500).send('Gagal memproses video 1080P');}});
 /* === END DOWNLOAD 1080P === */
 
 const PORT = process.env.PORT || 3000;
