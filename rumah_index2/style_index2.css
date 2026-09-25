@@ -12,10 +12,11 @@ button{border:none;outline:none;font-family:inherit;}
 /* === BRAND === */
 .brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:5px 0 6px;}
 .brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
-/* === SLOT UNTUK IKLAN === */
-.banner-slot{width:100%;min-height:260px;margin:20px 0 6px;background:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+
 /* === VIDEO BOX === */
-.video-box{padding:6px 0 40px;text-align:center;}
+.video-box{padding:150px 0 150px;text-align:center;}
+
+
 /* === THUMB === */
 .thumb-wrap{display:flex;justify-content:center;margin-bottom:10px;}
 .thumb-box{width:100%;max-width:230px;height:85px;border-radius:8px;overflow:hidden;background:#f3f6f9;display:flex;align-items:center;justify-content:center;position:relative;}
@@ -31,8 +32,7 @@ button{border:none;outline:none;font-family:inherit;}
 
 .active-dot{width:8px;height:8px;border-radius:50%;background:#25d366;flex:none;margin-left:-4px;animation:blink 1.8s infinite}
 @keyframes blink{50%{opacity:.35}}
-/* === DISABLE 1080P BUTTON === */
-#dl1080{opacity:.45;pointer-events:none;cursor:default}
+
 /* === FAQ RUMAH 2 === */
 .box{background:#fff;padding:16px 4px;margin:12px -6px;}
 .faq-title{color:#313639;font-size:24px;font-weight:700;text-align:center;margin-bottom:12px;letter-spacing:-.02em;}

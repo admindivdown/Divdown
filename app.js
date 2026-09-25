@@ -1,7 +1,7 @@
 // APP.JS RUMAH 1 - FINAL STABIL & CACHE
 /* --- FUNGSI KOORDINATOR MENU --- */
 function tutupSemuaMenu() {
-  const menuDropdown = document.getElementById('menuDropdown');
+const menuDropdown = document.getElementById('menuDropdown');
 if (menuDropdown) menuDropdown.classList.remove('show-menu');const bahasaDropdown = document.querySelector('.bahasa-dropdown');
 if (bahasaDropdown) bahasaDropdown.classList.remove('show-bahasa');}
 /* --- 1. MUAT KOMPONEN HTML --- */
@@ -21,18 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
  if (!savedLang) { const browserLang = (navigator.language || '').toLowerCase(); if (browserLang.includes('id')) savedLang = 'indonesia'; else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil'; else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india'; else savedLang = 'english'; } else { savedLang = savedLang.toLowerCase().trim(); }
 if(typeof gantiBahasa==='function'){
 gantiBahasa(savedLang,false).then(()=>{
-  loadFaq();
-  const d=cacheBahasa[bahasaAktif]||{};
-  setText('termsTitle',d.termsTitle);
+loadFaq();
+const d=cacheBahasa[bahasaAktif]||{};
+setText('termsTitle',d.termsTitle);
 });
 }});const input=document.getElementById('urlInput');if(input){input.addEventListener('keypress',e=>{if(e.key==='Enter')downloadVideo()});}});
 /* --- 3. FUNGSI UTAMA UNDUH --- */
 async function downloadVideo(){const btn=document.getElementById('downloadBtn');if(btn&&btn.disabled)return;const input=document.getElementById('urlInput');if(!input)return;const url=input.value.trim();const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';if(!url){alert(isID?'Silakan masukkan tautan Facebook.':'Please enter a Facebook link.');return;}
 /* === PROGRESS RUMAH 1 === */
-  const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
-  const isValid = validDomains.some(d => url.includes(d));
-  if(!isValid){alert(isID?'Silakan gunakan tautan Facebook yang valid.':'Please use a valid Facebook link.');return;}
-  const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
+const validDomains = ['facebook.com', 'www.facebook.com', 'm.facebook.com', 'fb.watch'];
+const isValid = validDomains.some(d => url.includes(d));
+if(!isValid){alert(isID?'Silakan gunakan tautan Facebook yang valid.':'Please use a valid Facebook link.');return;}
+const pb=document.getElementById('progressBox'),pf=document.getElementById('progressFill'),pt=document.getElementById('progressText');
 if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';let p=0;const i=setInterval(()=>{if(p<80)p+=3.5;else if(p<94)p+=0.30;else if(p<97)p+=0.085;else p=97;pf.style.width=p+'%';pt.textContent=Math.floor(p)+'%';if(p>=97)clearInterval(i)},85)}
 /* === TOMBOL PROCESSING === */
 btn.classList.add('loading');
@@ -77,7 +77,7 @@ document.addEventListener("click",e=>{const q=e.target.closest(".faq-question");
 function loadTerms(){if(window.termsLoaded)return;window.termsLoaded=true;fetch('./terms.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('termsContent').innerHTML=h;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('termsTitle',d.termsTitle);setText('termsText1',d.termsText1);setText('termsSub1',d.termsSub1);setText('termsText2',d.termsText2);setText('termsSub2',d.termsSub2);setText('termsText3',d.termsText3);setText('termsSub3',d.termsSub3);setText('termsText4',d.termsText4);setText('termsSub4',d.termsSub4);setText('termsText5',d.termsText5);}}).catch(()=>console.error("Gagal muat Syarat"));}
 
 document.addEventListener("DOMContentLoaded",()=>{const h=document.getElementById("termsHeader"),c=document.getElementById("termsContent"),a=document.getElementById("termsArrow");if(!h||!c)return;h.addEventListener("click",()=>{if(!window.termsLoaded)loadTerms();const
-  o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
+o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
 
 /* === ADMAVEN POP : TRIGGER NON-DOWNLOAD === */
 (function(){const targets=['.menu-btn','.alat-btn','.lang-btn','#faqHeader','#termsHeader'];function load(){const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1453384';document.head.appendChild(s)}targets.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.addEventListener('click',load)))})();/* === END ADMAVEN POP === */
