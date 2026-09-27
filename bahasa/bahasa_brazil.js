@@ -12,7 +12,7 @@ window.brazil = {
   faqA1: "Sim. O Divdown é seguro e privado. Usamos criptografia SSL, não é necessário fazer login e nunca armazenamos seus dados ou arquivos em nossos servidores. Todo o processamento é feito diretamente no seu navegador.",
   faqQ2: "O Divdown é gratuito para usar?",
   faqA2: "Sim. O Divdown é 100% gratuito, sem custos ocultos, sem assinaturas e com downloads ilimitados.",
-  faqQ3: "Posso baixar em qualidade HD?",
+  faqQ3: "Posso baixar em Alta Qualidade?",
   faqA3: "Sim. O Divdown suporta qualidade HD de até 1080p, 2K e 4K quando disponível no arquivo original. Funciona em celular, tablet e computador.",
   faqQ4: "Preciso fazer login para usar?",
   faqA4: "Não é necessário login. Basta colar o link de um vídeo ou Reels público e salvá-lo diretamente no seu dispositivo. Nunca pedimos senhas ou dados da conta.",

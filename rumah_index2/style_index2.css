@@ -1,7 +1,9 @@
 /* === RESET & BASE === */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}html{scroll-behavior:smooth;}
 /* === BODY === */
-body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#eef1f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);
+
+font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#eef1f5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
 /* === GLOBAL === */
 img,iframe{max-width:100%;display:block;}
 button{border:none;outline:none;font-family:inherit;}
@@ -13,10 +15,7 @@ button{border:none;outline:none;font-family:inherit;}
 .brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:5px 0 6px;}
 .brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
 
-/* === VIDEO BOX === */
-.video-box{padding:150px 0 150px;text-align:center;}
-
-
+.video-box{padding:150px 0 150px;text-align:center;} 
 /* === THUMB === */
 .thumb-wrap{display:flex;justify-content:center;margin-bottom:10px;}
 .thumb-box{width:100%;max-width:230px;height:85px;border-radius:8px;overflow:hidden;background:#f3f6f9;display:flex;align-items:center;justify-content:center;position:relative;}
@@ -29,7 +28,6 @@ button{border:none;outline:none;font-family:inherit;}
 .download-btn:active{background:#000;transform:translateY(1px);}
 /* === ACTIVE DOWNLOAD BUTTON === */
 .active-btn{display:flex;align-items:center;justify-content:center;gap:10px}.active-dot{transform:translateX(-6px)}#dl720 span:last-child{transform:translateX(-8px)}
-
 .active-dot{width:8px;height:8px;border-radius:50%;background:#25d366;flex:none;margin-left:-4px;animation:blink 1.8s infinite}
 @keyframes blink{50%{opacity:.35}}
 

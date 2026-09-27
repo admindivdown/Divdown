@@ -2,7 +2,7 @@ window.indonesia = {
 
   /* ===== DATA UTAMA ===== */
   title: "Divdown.net - Pengunduh Video Cepat | Gratis & Tanpa Login",
-  placeholder: "Tempel URL video di sini...",
+  placeholder: "Tempel tautan video di sini...",
   bendera: "🇮🇩",
   nama: "Indonesia",
 
@@ -12,7 +12,7 @@ window.indonesia = {
   faqA1: "Ya. Divdown aman dan privat. Kami menggunakan SSL, tanpa perlu login, dan tidak pernah menyimpan data atau berkas Anda di server kami. Semua proses dilakukan langsung melalui browser Anda.",
   faqQ2: "Apakah Divdown gratis digunakan?",
   faqA2: "Ya. Divdown 100% gratis tanpa biaya tersembunyi, tanpa langganan, dan unduh tanpa batas.",
-  faqQ3: "Bisakah saya mengunduh dalam kualitas HD?",
+  faqQ3: "Bisakah saya mengunduh dalam kualitas Tinggi?",
   faqA3: "Bisa. Divdown mendukung kualitas HD hingga 1080p, 2K, dan 4K jika tersedia pada berkas asli. Berfungsi di ponsel, tablet, dan komputer.",
   faqQ4: "Apakah perlu login akun?",
   faqA4: "Tidak perlu login. Cukup tempel tautan video atau Reels publik, lalu simpan langsung ke perangkat Anda. Kami tidak pernah meminta kata sandi atau informasi akun.",

@@ -10,15 +10,15 @@ function loadFile(e,t,n){return fetch(t).then(r=>{if(!r.ok)throw Error(n);return
 /* --- 2. INISIALISASI HALAMAN --- */
 document.addEventListener('DOMContentLoaded', () => {
   
-  Promise.all([
-    loadFile('about', './about.html', 'Gagal muat Tentang'),
-    loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
-    loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
-    loadFile('footer', './footer.html', 'Gagal muat Footer'),
-    loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),
-  ]).then(() => { let savedLang = localStorage.getItem('userLanguage');
+Promise.all([
+loadFile('about', './about.html', 'Gagal muat Tentang'),
+loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
+loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
+loadFile('footer', './footer.html', 'Gagal muat Footer'),
+loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),  
+]).then(() => {loadDivdownBanner();let savedLang = localStorage.getItem('userLanguage');
 
- if (!savedLang) { const browserLang = (navigator.language || '').toLowerCase(); if (browserLang.includes('id')) savedLang = 'indonesia'; else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil'; else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india'; else savedLang = 'english'; } else { savedLang = savedLang.toLowerCase().trim(); }
+if (!savedLang) { const browserLang = (navigator.language || '').toLowerCase(); if (browserLang.includes('id')) savedLang = 'indonesia'; else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil'; else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india'; else savedLang = 'english'; } else { savedLang = savedLang.toLowerCase().trim(); }
 if(typeof gantiBahasa==='function'){
 gantiBahasa(savedLang,false).then(()=>{
 loadFaq();
@@ -40,9 +40,9 @@ btn.querySelector('.btn-text').textContent='Processing...';
 btn.disabled=true;
 const API_BASE=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'https://divdown.net':'';
 try{let data=null;
-    try{const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
-      ;data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
-      ;data=await res.json();if(!data.success)throw new Error();}
+try{const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
+;data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
+;data=await res.json();if(!data.success)throw new Error();}
     
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
@@ -80,4 +80,9 @@ document.addEventListener("DOMContentLoaded",()=>{const h=document.getElementByI
 o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
 
 /* === ADMAVEN POP : TRIGGER NON-DOWNLOAD === */
-(function(){const targets=['.menu-btn','.alat-btn','.lang-btn','#faqHeader','#termsHeader'];function load(){const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1453384';document.head.appendChild(s)}targets.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.addEventListener('click',load)))})();/* === END ADMAVEN POP === */
+(function(){const targets=['.menu-btn','.alat-btn','.lang-btn','#faqHeader','#termsHeader'];function load(){const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1453384';document.head.appendChild(s)}targets.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.addEventListener('click',load)))})();
+/* === END ADMAVEN POP === */
+
+/* ===== LOAD BANNER DIVDOWN SETELAH KOMPONEN SELESAI ===== */
+function loadDivdownBanner(){const box=document.getElementById('divdownBanner');if(!box)return;const img=document.createElement('img');img.src='assets/divdown-bubbles-transparent-lossless.webp';img.alt='Divdown';img.className='divdown-banner';box.appendChild(img);box.style.display='block'}
+/* ===== END LOAD BANNER DIVDOWN ===== */
