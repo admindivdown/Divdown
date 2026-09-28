@@ -15,8 +15,9 @@ loadFile('about', './about.html', 'Gagal muat Tentang'),
 loadFile('kontak', './kontak.html', 'Gagal muat Kontak'),
 loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
 loadFile('footer', './footer.html', 'Gagal muat Footer'),
-loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),  
-]).then(() => {loadDivdownBanner();let savedLang = localStorage.getItem('userLanguage');
+loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),
+]).then(() => {
+    let savedLang = localStorage.getItem('userLanguage');
 
 if (!savedLang) { const browserLang = (navigator.language || '').toLowerCase(); if (browserLang.includes('id')) savedLang = 'indonesia'; else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil'; else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india'; else savedLang = 'english'; } else { savedLang = savedLang.toLowerCase().trim(); }
 if(typeof gantiBahasa==='function'){
@@ -82,7 +83,3 @@ o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transfo
 /* === ADMAVEN POP : TRIGGER NON-DOWNLOAD === */
 (function(){const targets=['.menu-btn','.alat-btn','.lang-btn','#faqHeader','#termsHeader'];function load(){const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1453384';document.head.appendChild(s)}targets.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.addEventListener('click',load)))})();
 /* === END ADMAVEN POP === */
-
-/* ===== LOAD BANNER DIVDOWN SETELAH KOMPONEN SELESAI ===== */
-function loadDivdownBanner(){const box=document.getElementById('divdownBanner');if(!box)return;const img=document.createElement('img');img.src='assets/divdown-bubbles-transparent-lossless.webp';img.alt='Divdown';img.className='divdown-banner';box.appendChild(img);box.style.display='block'}
-/* ===== END LOAD BANNER DIVDOWN ===== */
