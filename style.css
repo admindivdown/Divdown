@@ -108,3 +108,17 @@ body{margin:0;padding-left:env(safe-area-inset-left);padding-right:env(safe-area
 .wrap{width:100%;max-width:100%;min-width:0;overflow-x:hidden}
 img,video,iframe{max-width:100%;height:auto}
 button,input,textarea,select{max-width:100%;box-sizing:border-box}
+
+/* === SPLASH DIVDOWN === */
+#appSplash{position:fixed;inset:0;z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);transition:opacity .35s ease}
+.splash-title{font-size:38px;font-weight:900;font-family:Impact,'Arial Black',sans-serif;color:#eef1f5;letter-spacing:.5px;margin-bottom:18px}
+.splash-logo{width:105px;height:105px;object-fit:contain}
+.splash-dots{display:flex;gap:7px;margin-top:22px}
+.splash-dots span{width:9px;height:9px;border-radius:50%;background:#eef1f5;animation:splashDot 1s infinite ease-in-out}
+.splash-dots span:nth-child(2){animation-delay:.15s}.splash-dots span:nth-child(3){animation-delay:.3s}
+@keyframes splashDot{0%,80%,100%{transform:scale(.55);opacity:.45}40%{transform:scale(1);opacity:1}}
+/* === END SPLASH DIVDOWN === */
+/* === SPLASH DIVDOWN APP ONLY === */
+#appSplash{display:none}
+@media (display-mode:standalone){#appSplash{display:flex}}
+/* === END SPLASH DIVDOWN APP ONLY === */
