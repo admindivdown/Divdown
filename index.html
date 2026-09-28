@@ -38,11 +38,6 @@ content="Download FB Videos, Reels & Watch up to 4K, 2K, 1080p HD. Super fast, u
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apakah Divdown aman dan privat?","acceptedAnswer":{"@type":"Answer","text":"Ya. Divdown aman dan privat. Kami menggunakan SSL, tanpa perlu login, dan tidak pernah menyimpan data atau berkas Anda di server kami."}},{"@type":"Question","name":"Apakah Divdown gratis digunakan?","acceptedAnswer":{"@type":"Answer","text":"Ya. Divdown 100% gratis tanpa biaya tersembunyi, tanpa langganan, dan unduh tanpa batas."}},{"@type":"Question","name":"Bisakah saya mengunduh dalam kualitas Tinggi?","acceptedAnswer":{"@type":"Answer","text":"Bisa. Divdown mendukung kualitas HD hingga 1080p, 2K, dan 4K jika tersedia pada berkas asli."}}]}</script>
 </head>
 <body>
-
-<!-- === SPLASH DIVDOWN APP ONLY === -->
-<div id="appSplash"><div class="splash-title">Divdown</div><img src="assets/logo.webp" class="splash-logo" alt="Divdown"><div class="splash-dots"><span></span><span></span><span></span></div></div>
-<script>(function(){if(!window.matchMedia('(display-mode: standalone)').matches&&navigator.standalone!==true){document.getElementById('appSplash').style.display='none'}})();</script>
-<!-- === END SPLASH DIVDOWN APP ONLY === -->
   
 <div class="wrap"><div class="topbar"><div class="menu-wrapper"><button class="menu-btn" id="menuBtn" aria-label="Buka Menu"><span></span><span></span><span></span></button><div class="menu-dropdown" id="menuDropdown">
 <!-- === AWAL MENU INI JARINGAN === -->
@@ -75,6 +70,4 @@ content="Download FB Videos, Reels & Watch up to 4K, 2K, 1080p HD. Super fast, u
 <!-- ===== JS ===== -->
 <script src="bahasa.js"></script><script src="app.js"></script>
   
-<script>if(window.matchMedia('(display-mode: standalone)').matches){window.addEventListener('load',()=>setTimeout(()=>{const s=document.getElementById('appSplash');if(s){s.style.opacity='0';setTimeout(()=>s.remove(),400)}},700))}</script>
-
 <script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./divdown-pwa.js').catch(e=>console.log('PWA:',e)))}</script><script>document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{const lang=btn.dataset.lang;if(typeof gantiBahasa==='function'){gantiBahasa(lang,true)}document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')})})</script></body></html>

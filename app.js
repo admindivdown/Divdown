@@ -83,7 +83,3 @@ o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transfo
 /* === ADMAVEN POP : TRIGGER NON-DOWNLOAD === */
 (function(){const targets=['.menu-btn','.alat-btn','.lang-btn','#faqHeader','#termsHeader'];function load(){const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1453384';document.head.appendChild(s)}targets.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.addEventListener('click',load)))})();
 /* === END ADMAVEN POP === */
-
-/* === SPLASH KHUSUS PWA === */
-if(window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true){window.addEventListener('load',()=>{const s=document.getElementById('appSplash');if(s){setTimeout(()=>{s.style.opacity='0';setTimeout(()=>s.remove(),350)},500)}})}
-/* === END SPLASH PWA === */
