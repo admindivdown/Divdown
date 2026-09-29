@@ -1,6 +1,8 @@
 // APP_INDEX2.JS - RUMAH 2
 document.addEventListener('DOMContentLoaded',async()=>{
 const API_BASE=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'https://divdown.net':'';
+/* === ADMAVEN LIGHTBOX TEST === */const loadLightbox=()=>{const s=document.createElement('script');s.setAttribute('data-cfasync','false');s.src='//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1414832';document.body.appendChild(s)};loadLightbox();
+  
 const savedLang=localStorage.getItem('divdown_rumah2_lang');const browserLang=(navigator.language||'en').toLowerCase();const rumah2Lang=savedLang||((browserLang.startsWith('id'))?'id':(browserLang.startsWith('hi'))?'hi':(browserLang.startsWith('th'))?'th':(browserLang.startsWith('ru'))?'ru':'en');if(!savedLang)localStorage.setItem('divdown_rumah2_lang',rumah2Lang);const isID=rumah2Lang==='id';
 
 const infoKualitas=document.querySelector('.info-kualitas');if(infoKualitas){const infoText={id:'Kualitas Tinggi 1080–4K butuh waktu memproses. Tunggu 3–4 detik, unduhan akan muncul otomatis',en:'1080–4K High Quality needs processing time. Please wait 3–4 seconds, the download will appear automatically',hi:'1080–4K उच्च गुणवत्ता को प्रोसेस होने में समय लगता है। 3–4 सेकंड प्रतीक्षा करें, डाउनलोड अपने आप दिखाई देगा',th:'คุณภาพสูง 1080–4K ต้องใช้เวลาในการประมวลผล โปรดรอ 3–4 วินาที แล้วการดาวน์โหลดจะปรากฏโดยอัตโนมัติ',ru:'Высокое качество 1080–4K требует времени на обработку. Подождите 3–4 секунды, и загрузка появится автоматически'};infoKualitas.firstChild.textContent=infoText[rumah2Lang]+' ';} 
