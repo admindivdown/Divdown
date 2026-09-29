@@ -59,7 +59,6 @@ align-items:center;justify-content:space-between;min-height:64px;font-size:16px;
 .ad-box{width:100%;max-width:400px;height:270px;margin:33px auto 0px;padding:0;text-align:center;overflow:visible}
 /* == UKURAN BANNER GAMBAR DIVDOWN == */
 .divdown-banner{display:block;width:80%;max-width:350px;height:auto;margin:0 auto}
-
 /* ===== INSTALL APP ===== */
 .install-wrap{padding:7px 10px 7px;
 background:#fff;border-radius:32px 32px 0 0;}
@@ -86,7 +85,6 @@ button,input{font-family:inherit;appearance:none;-webkit-appearance:none;outline
 #faq{padding:20px 16px;margin:3px 0;
 background:#fff;border-radius:0 0 35px 35px;content-visibility:auto;
 contain-intrinsic-size:500px;}
-
 #about,#kontak,#privacy{padding:20px 16px;margin:3px 0;background:#fff;content-visibility:auto;contain-intrinsic-size:500px}
 #terms,#footer{padding:20px 16px;margin:3px 0;background:#fff;content-visibility:auto;contain-intrinsic-size:500px}
 /* ===== FAQ HEADER ===== */
