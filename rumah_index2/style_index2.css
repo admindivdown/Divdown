@@ -37,6 +37,7 @@ button{border:none;outline:none;font-family:inherit;}
 @media (max-width:320px){.thumb-box{max-width:190px;}.download-wrap{max-width:220px;}.download-btn{font-size:13px;}}
 /* === INFO KUALITAS TINGGI === */
 .info-kualitas{flex-basis:100%;width:100%;margin:4px 0 0;padding:12px 16px 4px;background:transparent;border-top:1px solid rgba(255,255,255,.22);border-radius:0;color:#eef1f5;font-size:14px;line-height:1.4;text-align:center;max-width:none;}
-
 .icon-selesai{display:inline-block;width:18px;height:18px;margin-left:6px;border-radius:50%;background:#25d366;position:relative;vertical-align:middle;}
 .icon-selesai::after{content:'';position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+/* === PENGAMAN IPHONE / SAFARI === */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}body{width:100%;min-width:0;overflow-x:hidden;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}.wrap,.download-card,.download-wrap,.thumb-wrap,.thumb-box{min-width:0;max-width:100%}button,img{max-width:100%}button{touch-action:manipulation;-webkit-appearance:none;appearance:none}
