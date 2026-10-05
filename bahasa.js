@@ -65,7 +65,9 @@ async function gantiBahasa(namaBahasa, isManual = false) {
 if(isManual)tampilkanLoading();
 let namaMurni=namaBahasa.replace('bahasa_','').toLowerCase().trim();
 bahasaAktif=namaMurni;
-localStorage.setItem('userLanguage',namaMurni);const data=await Promise.all([loadFileBahasa(namaMurni),isManual?new Promise(resolve=>setTimeout(resolve,800)):Promise.resolve()]).then(results=>results[0]);applyBahasa(data);
+localStorage.setItem('userLanguage',namaMurni);const data=await Promise.all([loadFileBahasa(namaMurni),isManual?new 
+
+  Promise(resolve=>setTimeout(resolve,400)):Promise.resolve()]).then(results=>results[0]);applyBahasa(data);
 const btn=document.getElementById('bahasaBtn');
 if(btn&&data.bendera)btn.innerHTML=`${data.bendera} ${data.nama||'Language'}`;
 sembunyikanLoading();

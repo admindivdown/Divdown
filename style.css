@@ -11,9 +11,6 @@ body{background:linear-gradient(90deg,#155d78 0%,#155d 30%,#3F7D20 100%);color:#
 
 /* === EFEK X SAAT MENU TERBUKA === */
 .menu-btn.open span:first-child{transform:translateY(6.5px) rotate(45deg)}.menu-btn.open span:nth-child(2){opacity:0}.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.menu-btn:active{transform:scale(.96)}
-/* === TOMBOL ALAT / IKON GRID === */
-.alat-btn{width:38px;height:38px;margin:0 5px 0 0;display:flex;align-items:center;justify-content:center;text-decoration:none;background:#fff;border:1px solid #d9d9d9;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.08);-webkit-tap-highlight-color:transparent}.alat-btn span{width:22px;height:22px;display:block;background:linear-gradient(#3d4246 0 0) 0 0/8px 8px no-repeat,linear-gradient(#3d4246 0 0) 14px 0/8px 8px no-repeat,linear-gradient(#3d4246 0 0) 0 14px/8px 8px no-repeat,linear-gradient(#3d4246 0 0) 14px 14px/8px 8px no-repeat}.alat-btn:active{transform:scale(.92)}
-
 /* ==== HOME BOX ==== */
 .home-box{background:transparent!important;padding:5px 0 12px;border-radius:0}
 .download-box{padding:2px 17px 0;margin:0;background:transparent!important}
@@ -45,7 +42,6 @@ font-weight:600;font-size:15.5px;cursor:pointer;color:#fff;letter-spacing:-0.01e
 .loading { opacity: .82; pointer-events: none }
 /* === SECTION & FAQ === */
 .faq-title,.section-subtitle,.section-title{font-weight:650;text-align:center}.section-title{font-size:24px;margin:10px 0 6px;color:#222527;letter-spacing:-.02em}.section-subtitle{font-size:18px;margin:18px 0 10px;color:#222527;letter-spacing:-.015em}.section-text{font-size:15.5px;color:#3d4246;line-height:1.75;margin-bottom:5px;letter-spacing:-.005em}.section-footer{margin-top:8px;font-size:13.5px;color:#6c757d;margin-bottom:5px;text-align:center}.faq-title{font-size:24px;margin:10px 0 12px;color:#222527;letter-spacing:-.02em}
-
 .faq-item{background:#fff;border:1px solid #f0f0f0;border-radius:30px;
 padding:0 18px;margin-bottom:14px;box-shadow:0 3px 12px rgba(0,0,0,.05)}.faq-question{display:flex;
 align-items:center;justify-content:space-between;min-height:64px;font-size:16px;font-weight:650;color:#111}.faq-no{width:42px;color:#111;font-weight:500}
@@ -62,7 +58,6 @@ align-items:center;justify-content:space-between;min-height:64px;font-size:16px;
 /* ===== INSTALL APP ===== */
 .install-wrap{padding:7px 10px 7px;
 background:#fff;border-radius:32px 32px 0 0;}
-
 .install-bar{display:flex;align-items:center;width:100%;height:56px;padding:0 18px;background:linear-gradient(90deg,#155d78,#2f8a74,#3F7D20);border-radius:999px;box-shadow:0 2px 5px rgba(0,0,0,.12)}
 .install-logo{width:28px;height:28px;object-fit:contain;flex-shrink:0}
 .install-title{flex:1;margin-left:8px;font:700 20px Arial;color:#fff}
@@ -73,8 +68,6 @@ background:#fff;border-radius:32px 32px 0 0;}
 /* === UI RESET === */
 .faq-item{transition:border-color .15s}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#dfe5eb}html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}img{display:block;max-width:100%;height:auto}
 button,input{font-family:inherit;appearance:none;-webkit-appearance:none;outline:0}
-
-/* === PROGRESS CLEAN === */
 .progress-box{width:83%;margin:3px auto;display:block}
 .progress-bar{width:100%;height:7px;background:#dfe5eb;border-radius:999px;overflow:hidden;box-shadow:none}
 .progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#ffffff,#587f25);display:flex;align-items:center;justify-content:flex-end;padding-right:1px;transition:width .3s ease;will-change:width}
@@ -90,7 +83,6 @@ contain-intrinsic-size:500px;}
 /* ===== FAQ HEADER ===== */
 .faq-header{display:flex;align-items:center;justify-content:center;padding-bottom:16px;position:relative}.faq-header #termsArrow{position:absolute;right:8px;width:34px;height:34px;border:1px solid #ddd;border-radius:50%;display:grid;place-items:center;color:#000}
 .faq-title{margin:0;font-size:24px;font-weight:650;color:#1f2937;text-align:center;letter-spacing:-.02em;line-height:1.3;padding:0}#faqContent{display:block}
-
 /* ===== WHY CHOOSE DIVDOWN ===== */
 #whyChoose{padding:22px 18px;margin:18px 18px;background:#fff;border-radius:20px;border:1px solid #1b4f9c;box-shadow:0 2px 6px rgba(110,168,255,.22);text-align:center}
 .why-title{font-size:32px;font-weight:650;color:#000;letter-spacing:-.02em;margin-bottom:12px}

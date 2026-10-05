@@ -1,10 +1,10 @@
 window.indonesia = {
 
-  /* ===== DATA UTAMA ===== */
-  title: "Divdown.net - Pengunduh Video Cepat | Gratis & Tanpa Login",
-  placeholder: "Tempel tautan video di sini...",
-  bendera: "🇮🇩",
-  nama: "Indonesia",
+/* ===== DATA UTAMA ===== */
+title: "Divdown.net - Pengunduh Video Cepat | Gratis & Tanpa Login",
+placeholder: "Tempel tautan video di sini...",
+bendera: "🇮🇩",
+nama: "Indonesia",
 
   /* ===== PERTANYAAN UMUM (FAQ) ===== */
   faqTitle: "Pertanyaan Umum",

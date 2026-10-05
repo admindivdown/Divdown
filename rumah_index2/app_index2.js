@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded',async()=>{
 const API_BASE=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'https://divdown.net':'';
 const savedLang=localStorage.getItem('divdown_rumah2_lang');const browserLang=(navigator.language||'en').toLowerCase();const rumah2Lang=savedLang||((browserLang.startsWith('id'))?'id':(browserLang.startsWith('hi'))?'hi':(browserLang.startsWith('th'))?'th':(browserLang.startsWith('ru'))?'ru':'en');if(!savedLang)localStorage.setItem('divdown_rumah2_lang',rumah2Lang);const isID=rumah2Lang==='id';
-
 const infoKualitas=document.querySelector('.info-kualitas');if(infoKualitas){const infoText={id:'Kualitas Tinggi 1080–4K butuh waktu memproses. Tunggu 3–4 detik, unduhan akan muncul otomatis',en:'1080–4K High Quality needs processing time. Please wait 3–4 seconds, the download will appear automatically',hi:'1080–4K उच्च गुणवत्ता को प्रोसेस होने में समय लगता है। 3–4 सेकंड प्रतीक्षा करें, डाउनलोड अपने आप दिखाई देगा',th:'คุณภาพสูง 1080–4K ต้องใช้เวลาในการประมวลผล โปรดรอ 3–4 วินาที แล้วการดาวน์โหลดจะปรากฏโดยอัตโนมัติ',ru:'Высокое качество 1080–4K требует времени на обработку. Подождите 3–4 секунды, и загрузка появится автоматически'};infoKualitas.firstChild.textContent=infoText[rumah2Lang]+' ';} 
 const thumb=document.getElementById('videoThumb');const btnWrap=document.getElementById('downloadWrap');const btnStandard=document.getElementById('dlStandard');const btnHD=document.getElementById('dl720');const btn1080=document.getElementById('dl1080');
   
@@ -11,7 +10,6 @@ const params=new URLSearchParams(window.location.search);const fbUrl=params.get(
 if(data.success){
 /* === TAMPILKAN UI INSTAN === */ const loader=document.getElementById('thumbLoading');if(loader)loader.style.display='none';
 if(thumb){thumb.src=data.thumbnail;thumb.style.display='block';}
-
 /* === IKLAN EXOCLICK INSTERTITAL === */
 const scriptAd=document.createElement('script');
 scriptAd.src='https://a.pemsrv.com/ad-provider.js';
