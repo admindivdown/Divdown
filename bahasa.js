@@ -9,20 +9,17 @@ function loadFileBahasa(a){return new Promise(e=>{if(!a){e({});return}let r=a.re
 function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=n)}
 /* --- 3. PROSES TEKS ELEMEN HTML --- */
 function applyBahasa(data) {
-  if (!data || Object.keys(data).length === 0) return;
-  if (data.title) document.title = data.title;
-  const input = document.getElementById('urlInput');
-  if (input && data.placeholder) {
-    input.placeholder = data.placeholder;
-  }
-  /* ===== KONTROL GANTI BAHASA BLOK PANDUAN ===== */
-  document.querySelectorAll('.lang-block').forEach(block => {
-    if (block.getAttribute('data-lang') === bahasaAktif) {
-      block.style.display = 'block';
-    } else {
-      block.style.display = 'none';
-    }
-  });
+if (!data || Object.keys(data).length === 0) return;
+if (data.title) document.title = data.title;
+const input = document.getElementById('urlInput');
+if (input && data.placeholder) {
+input.placeholder = data.placeholder;
+}
+/* ===== KONTROL GANTI BAHASA BLOK PANDUAN ===== */
+document.querySelectorAll('.lang-block').forEach(block => {
+if (block.getAttribute('data-lang') === bahasaAktif) {block.style.display = 'block';
+} else {block.style.display = 'none';}
+});
 /* ===== FAQ HEADER SAJA (LAZY) ===== */
 setText('faqTitle',data.faqTitle);
 if(window.faqLoaded){
@@ -38,36 +35,35 @@ setText('faqQ5',data.faqQ5);
 setText('faqA5',data.faqA5);
 }
 /* ===== WHY CHOOSE DIVDOWN ===== */setText('whyTitle',data.whyTitle);setText('whyText',data.whyText);
-  /* KOMPONEN ABOUT */
-  setText('aboutTitle', data.aboutTitle);
-  setText('aboutText1', data.aboutText1);
-  setText('aboutText2', data.aboutText2);
-  /* KOMPONEN CONTACT */
-  setText('contactTitle', data.contactTitle);
-  setText('contactText1', data.contactText1);
-  /* KOMPONEN PRIVACY POLICY */
-  setText('privacyTitle', data.privacyTitle);
-  setText('privacyText1', data.privacyText1);
-  setText('privacySub1', data.privacySub1);
-  setText('privacyText2', data.privacyText2);
-  setText('privacySub2', data.privacySub2);
-  setText('privacyText3', data.privacyText3);
-  setText('privacySub4', data.privacySub4);
-  setText('privacyText5', data.privacyText5);
-  setText('privacySub5', data.privacySub5);
-  setText('privacyText6', data.privacyText6);
+/* KOMPONEN ABOUT */
+setText('aboutTitle', data.aboutTitle);
+setText('aboutText1', data.aboutText1);
+setText('aboutText2', data.aboutText2);
+/* KOMPONEN CONTACT */
+setText('contactTitle', data.contactTitle);
+setText('contactText1', data.contactText1);
+/* KOMPONEN PRIVACY POLICY */
+setText('privacyTitle', data.privacyTitle);
+setText('privacyText1', data.privacyText1);
+setText('privacySub1', data.privacySub1);
+setText('privacyText2', data.privacyText2);
+setText('privacySub2', data.privacySub2);
+setText('privacyText3', data.privacyText3);
+setText('privacySub4', data.privacySub4);
+setText('privacyText5', data.privacyText5);
+setText('privacySub5', data.privacySub5);
+setText('privacyText6', data.privacyText6);
 setText('termsTitle',data.termsTitle);
 /* ===== UPDATE TERMS JIKA SUDAH PERNAH DIBUKA ===== */if(window.termsLoaded){setText('termsTitle',data.termsTitle);setText('termsText1',data.termsText1);setText('termsSub1',data.termsSub1);setText('termsText2',data.termsText2);setText('termsSub2',data.termsSub2);setText('termsText3',data.termsText3);setText('termsSub3',data.termsSub3);setText('termsText4',data.termsText4);setText('termsSub4',data.termsSub4);setText('termsText5',data.termsText5);}
 }
 async function gantiBahasa(namaBahasa, isManual = false) {
-  if (!namaBahasa) return;
+if (!namaBahasa) return;
 // Hanya tampilkan spinner jika user melakukan interaksi (isManual = true)
 if(isManual)tampilkanLoading();
 let namaMurni=namaBahasa.replace('bahasa_','').toLowerCase().trim();
 bahasaAktif=namaMurni;
 localStorage.setItem('userLanguage',namaMurni);const data=await Promise.all([loadFileBahasa(namaMurni),isManual?new 
-
-  Promise(resolve=>setTimeout(resolve,400)):Promise.resolve()]).then(results=>results[0]);applyBahasa(data);
+Promise(resolve=>setTimeout(resolve,400)):Promise.resolve()]).then(results=>results[0]);applyBahasa(data);
 const btn=document.getElementById('bahasaBtn');
 if(btn&&data.bendera)btn.innerHTML=`${data.bendera} ${data.nama||'Language'}`;
 sembunyikanLoading();

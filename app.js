@@ -39,12 +39,12 @@ if(pb&&pf&&pt){pb.style.display='block';pf.style.width='0%';pt.textContent='0%';
 btn.classList.add('loading');
 btn.querySelector('.btn-text').textContent='Processing...';
 btn.disabled=true;
-const API_BASE=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'https://divdown.net':'';
+const API_BASE=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'https://divdown.net':'';                          
 try{let data=null;
 try{const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
 ;data=await res.json();if(!data.success)throw new Error();}catch(e){await new Promise(r=>setTimeout(r,500));const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
 ;data=await res.json();if(!data.success)throw new Error();}
-    
+
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
 /* === MASUK RUMAH 2 === */
@@ -55,7 +55,6 @@ btn.classList.remove('loading');
 btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}
 /* --- 4. RESET TOMBOL & BAHASA KEMBALI --- */
 window.addEventListener('pageshow',function(e){if(!e.persisted)return;const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}let l=localStorage.getItem('userLanguage');if(l&&typeof gantiBahasa==='function'){gantiBahasa(l.toLowerCase().trim(),false).then(()=>{if(localStorage.getItem('newLanguage')&&typeof window.nbPulihkan==='function')window.nbPulihkan()})}});
-
 // --- KENDALI MENU TERPADU (AMAN) ---
 document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;
 menuBtn.addEventListener('click',e=>{
@@ -73,6 +72,8 @@ async function loadFaq(){if(window.faqLoaded)return;if(typeof cacheBahasa!=="und
 document.addEventListener("click",e=>{const q=e.target.closest(".faq-question");if(!q)return;const item=q.closest(".faq-item"),a=item?.querySelector(".faq-answer");if(!a)return;const o=item.classList.toggle("open");a.style.display=o?"block":"none"});
 /* ===== TERMS LAZY LOAD ===== */
 function loadTerms(){if(window.termsLoaded)return;window.termsLoaded=true;fetch('./terms.html').then(r=>{if(!r.ok)throw Error();return r.text()}).then(h=>{document.getElementById('termsContent').innerHTML=h;if(typeof cacheBahasa!=="undefined"){const d=cacheBahasa[bahasaAktif]||{};setText('termsTitle',d.termsTitle);setText('termsText1',d.termsText1);setText('termsSub1',d.termsSub1);setText('termsText2',d.termsText2);setText('termsSub2',d.termsSub2);setText('termsText3',d.termsText3);setText('termsSub3',d.termsSub3);setText('termsText4',d.termsText4);setText('termsSub4',d.termsSub4);setText('termsText5',d.termsText5);}}).catch(()=>console.error("Gagal muat Syarat"));}
-
 document.addEventListener("DOMContentLoaded",()=>{const h=document.getElementById("termsHeader"),c=document.getElementById("termsContent"),a=document.getElementById("termsArrow");if(!h||!c)return;h.addEventListener("click",()=>{if(!window.termsLoaded)loadTerms();const
 o=c.style.display==="block";c.style.display=o?"none":"block";a&&(a.style.transform=o?"rotate(0deg)":"rotate(180deg)");});});
+
+// ===== ADSTERRA BANNER 300x250 - LOAD SETELAH HALAMAN SIAP =====
+window.addEventListener('load',()=>{const box=document.getElementById('divdownBanner');if(!box||box.dataset.adsterraLoaded)return;box.dataset.adsterraLoaded='1';const wrap=document.createElement('div');wrap.style.cssText='width:300px;height:250px;margin:0 auto';box.appendChild(wrap);const config=document.createElement('script');config.text="atOptions = {'key':'6cfe10ae946bc6c10652a445d48e59dc','format':'iframe','height':250,'width':300,'params':{}};";wrap.appendChild(config);const ad=document.createElement('script');ad.src='https://www.highrevenueformat.com/6cfe10ae946bc6c10652a445d48e59dc/invoke.js';ad.async=true;wrap.appendChild(ad);});

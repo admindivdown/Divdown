@@ -12,20 +12,21 @@ button{border:none;outline:none;font-family:inherit;}
 /* === BRAND === */
 .brand-top{display:flex;align-items:flex-start;justify-content:center;gap:.5px;margin:5px 0 6px;}
 .brand-text2{font-size:38px;font-weight:900;font-family:'Arial Narrow',Impact,'Arial Black',sans-serif;color:#eef1f5;line-height:.8;letter-spacing:-1.5px;transform:scaleX(.94);display:inline-block;}
-.video-box{padding:250px 0 10px;text-align:center;}
+.video-box{padding:10px 0 10px;text-align:center;}
+
+/* === IKLAN BANNER ATAS === */
+.banner-ad-top{min-height:250px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;width:100%;}.banner-ad-top ins{display:inline-block;max-width:100%;}
 /* === THUMB === */
 .thumb-wrap{display:flex;justify-content:center;margin-bottom:10px;}
 .thumb-box{width:100%;max-width:230px;height:85px;border-radius:8px;overflow:hidden;background:#f3f6f9;display:flex;align-items:center;justify-content:center;position:relative;}
 .video-thumb{width:100%;height:100%;object-fit:cover;display:none;}
 /* === DOWNLOAD CARD === */
 .download-card{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:rgba(255,255,255,.12);border-radius:10px;padding:12px 16px;box-shadow:none}
-
 .download-card .thumb-wrap{flex:1;margin:0}.download-card .thumb-box{width:100%;height:220px}.download-card .download-wrap{flex:1;display:flex;flex-direction:column;gap:18px}.download-card .download-btn{font-size:13px;min-height:58px}
 /* === BUTTON === */
 .download-btn{width:100%;min-height:56px;background:linear-gradient(180deg,#24c9a5 0%,#0a8b76 45%,#07564c 70%,#022b27 100%);color:#fff;border:2px solid #fff;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:-.01em;transition:.18s;}
 .download-btn:hover{opacity:.92;}
 .download-btn:active{transform:translateY(1px);}
-
 /* === ACTIVE DOWNLOAD BUTTON === */
 .active-btn{display:flex;align-items:center;justify-content:center;gap:10px}.active-dot{transform:translateX(-6px)}#dl720 span:last-child{transform:translateX(-8px)}
 .active-dot{width:8px;height:8px;border-radius:50%;background:#25d366;flex:none;margin-left:-4px;animation:blink 1.8s infinite}
@@ -34,7 +35,7 @@ button{border:none;outline:none;font-family:inherit;}
 .thumb-loading{position:absolute;font-size:15px;font-weight:600;color:#6b7280;user-select:none;animation:processingBlink 1s ease-in-out infinite;z-index:2}
 @keyframes processingBlink{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
 /* === RESPONSIVE === */
-@media (max-width:320px){.thumb-box{max-width:190px;}.download-wrap{max-width:220px;}.download-btn{font-size:13px;}}
+@media (max-width:320px){.thumb-box{max-width:190px;}.download-wrap{max-width:220px;}}
 /* === INFO KUALITAS TINGGI === */
 .info-kualitas{flex-basis:100%;width:100%;margin:4px 0 0;padding:12px 16px 4px;background:transparent;border-top:1px solid rgba(255,255,255,.22);border-radius:0;color:#eef1f5;font-size:14px;line-height:1.4;text-align:center;max-width:none;}
 .icon-selesai{display:inline-block;width:18px;height:18px;margin-left:6px;border-radius:50%;background:#25d366;position:relative;vertical-align:middle;}
