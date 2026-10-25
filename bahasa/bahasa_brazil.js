@@ -23,8 +23,8 @@ whyTitle:"Por que escolher o Divdown?",
 whyText:"O Divdown é um Facebook Video Downloader confiável, criado para baixar Facebook Video, Facebook Reels e Facebook Watch de forma rápida. Desenvolvido com foco em desempenho, privacidade e compatibilidade com todos os dispositivos modernos.",
 /* ===== SOBRE O DIVDOWN ===== */
 aboutTitle: "Sobre o Divdown",
-aboutText1: "O Divdown é uma plataforma para baixar Facebook Video e Reels, facilitando o download de vídeos do Facebook de forma gratuita, rápida, segura e sem login. A qualidade está disponível em HD, Full HD (1080p) e até 4K, quando suportada pela fonte original.",
-aboutText2: "Projetado para ser leve e confortável em diversos dispositivos. <strong>Network:</strong> Instagram, TikTok, Pinterest e X (Twitter) Downloader estão disponíveis através do <strong>Menu</strong>.",
+aboutText1: "O Divdown é uma plataforma popular para baixar vídeos do Facebook e Reels, facilitando para usuários do mundo todo salvar vídeos do Facebook gratuitamente, com rapidez, segurança, confiabilidade e sem precisar fazer login. O Divdown oferece opções de resolução de vídeo de HD 720p e Full HD 1080p até 1440p/2K e 4K, proporcionando uma experiência de download de alta qualidade.",
+aboutText2: "O Divdown foi desenvolvido para funcionar de forma otimizada em diversos dispositivos, de celulares e tablets a PCs e notebooks, permitindo que os usuários baixem vídeos do Facebook com praticidade a qualquer momento.",  
   /* ===== FALE CONOSCO ===== */
   contactTitle: "Fale Conosco",
   contactText1: "Se tiver dúvidas, relatar erros ou enviar propostas comerciais, entre em contato conosco por:",
