@@ -1,7 +1,7 @@
 window.indonesia = {
 
 /* ===== DATA UTAMA ===== */
-title: "Divdown.net - Pengunduh Video Cepat | Gratis & Tanpa Login",
+title: "Pengunduh Video Facebook | Download Video Facebook | Divdown",
 placeholder: "Tempel tautan video di sini...",
 bendera: "🇮🇩",
 nama: "Indonesia",
@@ -23,7 +23,7 @@ whyTitle:"Mengapa Memilih Divdown?",
 whyText:"Divdown adalah Facebook Video Downloader terpercaya untuk mengunduh Video Facebook, Facebook Reels, dan Facebook Watch dengan cepat. Dibangun dengan fokus pada performa, privasi, dan kompatibilitas di berbagai perangkat modern.",
 /* ===== TENTANG (ABOUT) ===== */
 aboutTitle: "Tentang Divdown",
-aboutText1: "Divdown merupakan platform populer untuk mengunduh video Facebook dan Reels yang memudahkan pengguna di seluruh dunia untuk menyimpan video Facebook secara gratis, cepat, aman, terpercaya, dan tanpa login. Divdown menyediakan pilihan resolusi video mulai dari HD 720p, Full HD 1080p, 1440p/2K, hingga 4K untuk pengalaman mengunduh video berkualitas tinggi.",
+aboutText1: "Divdown merupakan platform populer yang mendukung resolusi Full HD 1080p, 1440p/2K, hingga 4K untuk mengunduh video Facebook dan Reels. Divdown memudahkan pengguna di seluruh dunia untuk menyimpan video Facebook secara gratis, cepat, aman, dan terpercaya, dengan pilihan kualitas mulai dari HD 720p hingga 4K untuk pengalaman mengunduh video berkualitas tinggi. Tanpa perlu login.",
 aboutText2: "Divdown dirancang untuk bekerja secara optimal di berbagai perangkat, mulai dari HP, tablet, hingga PC dan laptop, sehingga pengguna dapat mengunduh video Facebook dengan nyaman kapan saja.",
 
   /* ===== HUBUNGI KAMI (CONTACT) ===== */

@@ -10,7 +10,7 @@ function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=
 /* --- 3. PROSES TEKS ELEMEN HTML --- */
 function applyBahasa(data) {
 if (!data || Object.keys(data).length === 0) return;
-document.title = "Facebook Video Downloader | Divdown";
+document.title = data.title || "Facebook Video Downloader | Download Facebook Videos | Divdown";
 const input = document.getElementById('urlInput');
 if (input && data.placeholder) {
 input.placeholder = data.placeholder;

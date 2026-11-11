@@ -1,7 +1,7 @@
 window.english = {
 
   /* ===== MAIN DATA ===== */
-  title: "Divdown.net - Fast Video Downloader | Free & No Login",
+  title: "Facebook Video Downloader | Download Facebook Videos | Divdown",
   placeholder: "Paste video URL here...",
   bendera: "🇺🇸",
   nama: "English",
@@ -22,7 +22,7 @@ whyTitle:"Why Choose Divdown?",
 whyText:"Divdown is a trusted Facebook Video Downloader designed to download Facebook Videos, Facebook Reels, and Facebook Watch quickly. Built with a focus on performance, privacy, and compatibility across all modern devices.",
 /* ===== ABOUT ===== */
 aboutTitle: "About Divdown",
-aboutText1: "Divdown is a popular platform for downloading Facebook videos and Reels, helping users around the world save Facebook videos for free, quickly, securely, reliably, and without login. Divdown provides video resolutions ranging from HD 720p and Full HD 1080p to 1440p/2K and up to 4K for a high-quality downloading experience.",
+aboutText1: "Divdown is a popular platform supporting Full HD 1080p, 1440p/2K, and up to 4K resolution for downloading Facebook videos and Reels. It helps users around the world save Facebook videos for free, quickly, securely, reliably, and without login, with quality options ranging from HD 720p to 4K for a high-quality downloading experience.",
 aboutText2: "Divdown is designed to work optimally across a wide range of devices, from mobile phones and tablets to desktop PCs and laptops, allowing users to download Facebook videos conveniently anytime.",
   /* ===== CONTACT ===== */
   contactTitle: "Contact Us",
