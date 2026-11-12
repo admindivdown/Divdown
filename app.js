@@ -16,7 +16,11 @@ loadFile('footer', './footer.html', 'Gagal muat Footer'),
 loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),
 ]).then(() => {
 
-let routeCode=location.pathname.split('/').filter(Boolean)[0]||'';let routeLang={'id':'indonesia','pt-br':'brazil','hi':'india','es':'spanish','fil':'filipino','vi':'vietnamese','th':'thai','bn':'bengali','ru':'russian'};let isProduction=location.hostname==='divdown.net'||location.hostname==='www.divdown.net';let savedLang;if(isProduction){savedLang=routeLang[routeCode]||'english';if(['spanish','filipino','vietnamese','thai','bengali','russian'].includes(routeLang[routeCode])){localStorage.setItem('newLanguage',routeLang[routeCode]);savedLang='english';}else{localStorage.removeItem('newLanguage');}localStorage.setItem('userLanguage',savedLang);}else{savedLang=routeLang[routeCode]||localStorage.getItem('userLanguage')||'english';if(['spanish','filipino','vietnamese','thai','bengali','russian'].includes(routeLang[routeCode])){localStorage.setItem('newLanguage',routeLang[routeCode]);savedLang='english';}else if(routeLang[routeCode]){localStorage.removeItem('newLanguage');}else if(localStorage.getItem('newLanguage')){savedLang='english';}}
+let routeCode=location.pathname.split('/').filter(Boolean)[0]||'';let routeLang={'id':'indonesia','pt-br':'brazil','hi':'india','es':'spanish','fil':'filipino','vi':'vietnamese','th':'thai','bn':'bengali','ru':'russian'};let newLangs=['spanish','filipino','vietnamese','thai','bengali','russian'];let routeChoice=routeLang[routeCode]||'';let savedLang;
+if(routeChoice){savedLang=routeChoice;if(newLangs.includes(savedLang)){localStorage.setItem('newLanguage',savedLang);savedLang='english';}else{localStorage.setItem('userLanguage',savedLang);localStorage.removeItem('newLanguage');}}
+else{savedLang=localStorage.getItem('divdown_last_language')||localStorage.getItem('newLanguage')||localStorage.getItem('userLanguage')||'english';if(newLangs.includes(savedLang)){localStorage.setItem('newLanguage',savedLang);savedLang='english';}else{localStorage.setItem('userLanguage',savedLang);localStorage.removeItem('newLanguage');}}
+
+  
 if(typeof gantiBahasa==='function'){
 gantiBahasa(savedLang,false).then(()=>{
 loadFaq().then(()=>{
@@ -53,7 +57,7 @@ window.location.href=`/rumah_index2/index.html?url=${encodeURIComponent(url)}`;
 btn.classList.remove('loading');
 btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}}
 /* --- 4. RESET TOMBOL & BAHASA KEMBALI --- */
-window.addEventListener('pageshow',function(e){if(!e.persisted)return;const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}let l=localStorage.getItem('userLanguage');if(l&&typeof gantiBahasa==='function'){gantiBahasa(l.toLowerCase().trim(),false).then(()=>{if(localStorage.getItem('newLanguage')&&typeof window.nbPulihkan==='function')window.nbPulihkan()})}});
+window.addEventListener('pageshow',function(e){if(!e.persisted)return;const btn=document.getElementById('downloadBtn');if(btn){btn.classList.remove('loading');btn.querySelector('.btn-text').textContent='Download';btn.disabled=false;}if(location.pathname!=='/'&&location.pathname!=='/index.html')return;let l=localStorage.getItem('divdown_last_language')||localStorage.getItem('newLanguage')||localStorage.getItem('userLanguage')||'english';let n=['spanish','filipino','vietnamese','thai','bengali','russian'];if(typeof gantiBahasa==='function'){if(n.includes(l)){localStorage.setItem('newLanguage',l);gantiBahasa('english',false).then(()=>{if(typeof window.nbPulihkan==='function')window.nbPulihkan()});}else{localStorage.setItem('userLanguage',l);localStorage.removeItem('newLanguage');gantiBahasa(l,false);}}});
 // --- KENDALI MENU TERPADU (AMAN) ---
 document.addEventListener('DOMContentLoaded',()=>{const menuBtn=document.querySelector('#menuBtn.menu-btn');const menuDropdown=document.getElementById('menuDropdown');if(!menuBtn||!menuDropdown)return;
 menuBtn.addEventListener('click',e=>{

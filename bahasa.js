@@ -57,6 +57,7 @@ setText('termsTitle',data.termsTitle);
 async function gantiBahasa(namaBahasa, isManual = false) {
 if (!namaBahasa) return;
 let namaMurni=namaBahasa.replace('bahasa_','').toLowerCase().trim();
+if(!['english','indonesia','brazil','india'].includes(namaMurni))return;
 bahasaAktif=namaMurni;
 localStorage.setItem('userLanguage',namaMurni);const data=await loadFileBahasa(namaMurni);applyBahasa(data);
 const btn=document.getElementById('bahasaBtn');
