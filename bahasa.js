@@ -1,8 +1,6 @@
 // BAHASA.JS RUMAH 1 - FINAL CLEAN ENGINE
 const cacheBahasa = {};
 let bahasaAktif = 'english';
-/* --- FUNGSI TAMBAHAN: SPINNER --- */
-function tampilkanLoading(){let e=document.getElementById("loadingSpinner");if(!e){(e=document.createElement("div")).id="loadingSpinner",e.style.cssText="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #587f30; border-radius:50%; animation: spin 1s linear infinite; z-index:99999; display:none;";let n=document.createElement("style");n.innerHTML="@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }",document.head.appendChild(n),document.body.appendChild(e)}e.style.display="block"}function sembunyikanLoading(){let e=document.getElementById("loadingSpinner");e&&(e.style.display="none")}
 /* --- 1. FUNGSI BAHASA EXTERNL --- */
 function loadFileBahasa(a){return new Promise(e=>{if(!a){e({});return}let r=a.replace("bahasa_","").toLowerCase().trim(),k='lang_'+r,s=sessionStorage.getItem(k);if(cacheBahasa[r]){e(cacheBahasa[r]);return}if(s){cacheBahasa[r]=JSON.parse(s);e(cacheBahasa[r]);return}let t=document.createElement("script");t.src=`bahasa/bahasa_${r}.js`;t.onload=()=>{let d=window[r]||window[r.charAt(0).toUpperCase()+r.slice(1)]||window[`bahasa_${r}`]||{};cacheBahasa[r]=d;sessionStorage.setItem(k,JSON.stringify(d));e(d)};t.onerror=()=>{console.error(`File bahasa/bahasa_${r}.js gagal dimuat!`);e({})};document.head.appendChild(t)})}
 /* --- 2. FUNGSI SUNTIK TEKS AMAN --- */
@@ -58,13 +56,9 @@ setText('termsTitle',data.termsTitle);
 }
 async function gantiBahasa(namaBahasa, isManual = false) {
 if (!namaBahasa) return;
-// Hanya tampilkan spinner jika user melakukan interaksi (isManual = true)
-if(isManual)tampilkanLoading();
 let namaMurni=namaBahasa.replace('bahasa_','').toLowerCase().trim();
 bahasaAktif=namaMurni;
-localStorage.setItem('userLanguage',namaMurni);const data=await Promise.all([loadFileBahasa(namaMurni),isManual?new 
-Promise(resolve=>setTimeout(resolve,400)):Promise.resolve()]).then(results=>results[0]);applyBahasa(data);
+localStorage.setItem('userLanguage',namaMurni);const data=await loadFileBahasa(namaMurni);applyBahasa(data);
 const btn=document.getElementById('bahasaBtn');
 if(btn&&data.bendera)btn.innerHTML=`${data.bendera} ${data.nama||'Language'}`;
-sembunyikanLoading();
 }

@@ -17,7 +17,6 @@ loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),
 ]).then(() => {
 
 let routeCode=location.pathname.split('/').filter(Boolean)[0]||'';let routeLang={'id':'indonesia','pt-br':'brazil','hi':'india','es':'spanish','fil':'filipino','vi':'vietnamese','th':'thai','bn':'bengali','ru':'russian'};let isProduction=location.hostname==='divdown.net'||location.hostname==='www.divdown.net';let savedLang;if(isProduction){savedLang=routeLang[routeCode]||'english';if(['spanish','filipino','vietnamese','thai','bengali','russian'].includes(routeLang[routeCode])){localStorage.setItem('newLanguage',routeLang[routeCode]);savedLang='english';}else{localStorage.removeItem('newLanguage');}localStorage.setItem('userLanguage',savedLang);}else{savedLang=routeLang[routeCode]||localStorage.getItem('userLanguage')||'english';if(['spanish','filipino','vietnamese','thai','bengali','russian'].includes(routeLang[routeCode])){localStorage.setItem('newLanguage',routeLang[routeCode]);savedLang='english';}else if(routeLang[routeCode]){localStorage.removeItem('newLanguage');}else if(localStorage.getItem('newLanguage')){savedLang='english';}}
-
 if(typeof gantiBahasa==='function'){
 gantiBahasa(savedLang,false).then(()=>{
 loadFaq().then(()=>{
