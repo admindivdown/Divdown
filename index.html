@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Language" content="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<base href="/">
 <title>Facebook Video Downloader | Download Facebook Videos | Divdown</title>
 <meta name="description" content="Download Facebook videos and Reels in Full HD 1080p, 1440p/2K, and up to 4K with Divdown, a free Facebook Video Downloader. No login required.">
 <meta name="keywords" content="download video fb, download video facebook, save video facebook, facebook video downloader, fb video downloader, facebook reels downloader, download facebook reels, facebook watch downloader, fb downloader, facebook downloader, free facebook video downloader, online facebook video downloader, hd facebook video downloader, download fb video, save fb video, facebook reel downloader, divdown">
@@ -18,8 +19,21 @@
 <meta property="og:image:alt" content="Divdown">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://divdown.net/og-image.jpg">
+  
 <meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="en" href="https://divdown.net/">
+<link rel="alternate" hreflang="id" href="https://divdown.net/id/">
+<link rel="alternate" hreflang="pt-BR" href="https://divdown.net/pt-br/">
+<link rel="alternate" hreflang="hi" href="https://divdown.net/hi/">
+<link rel="alternate" hreflang="es" href="https://divdown.net/es/">
+<link rel="alternate" hreflang="tl" href="https://divdown.net/fil/">
+<link rel="alternate" hreflang="vi" href="https://divdown.net/vi/">
+<link rel="alternate" hreflang="th" href="https://divdown.net/th/">
+<link rel="alternate" hreflang="bn" href="https://divdown.net/bn/">
+<link rel="alternate" hreflang="ru" href="https://divdown.net/ru/">
+<link rel="alternate" hreflang="x-default" href="https://divdown.net/">
 <link rel="canonical" href="https://divdown.net/">
+  
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -37,7 +51,6 @@
  
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Facebook Video Downloader","alternateName":"Divdown"
 ,"url":"https://divdown.net/","description":"Download Facebook videos and Reels in high quality for free, with no login required.","publisher":{"@type":"Organization","name":"Divdown"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apakah Divdown aman dan privat?","acceptedAnswer":{"@type":"Answer","text":"Ya. Divdown aman dan privat. Kami menggunakan SSL, tanpa perlu login, dan tidak pernah menyimpan data atau berkas Anda di server kami."}},{"@type":"Question","name":"Apakah Divdown gratis digunakan?","acceptedAnswer":{"@type":"Answer","text":"Ya. Divdown 100% gratis tanpa biaya tersembunyi, tanpa langganan, dan unduh tanpa batas."}},{"@type":"Question","name":"Bisakah saya mengunduh dalam kualitas Tinggi?","acceptedAnswer":{"@type":"Answer","text":"Bisa. Divdown mendukung kualitas HD hingga 1080p, 2K, dan 4K yang tersedia pada berkas asli."}}]}</script>
 </head>
 <body>
 <div class="wrap"><div class="topbar"><div class="menu-wrapper"><button class="menu-btn" id="menuBtn" aria-label="Buka Menu"><span></span><span></span><span></span></button><div class="menu-dropdown" id="menuDropdown">
@@ -76,4 +89,7 @@
 </div><div id="terms"><div class="faq-header" id="termsHeader"><div id="termsTitle" class="faq-title">Terms of Service</div><div id="termsArrow" class="faq-arrow">▼</div></div><div id="termsContent" style="display:none"></div></div><div id="footer"></div>
 <!-- ===== JS ===== -->
 <script src="bahasa.js"></script><script src="app.js"></script>
-<script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./divdown-pwa.js').catch(e=>console.log('PWA:',e)))}</script><script>document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{const lang=btn.dataset.lang;if(typeof gantiBahasa==='function'){gantiBahasa(lang,true)}document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')})})</script></body></html>
+<script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./divdown-pwa.js').catch(e=>console.log('PWA:',e)))}</script>
+  
+<script>document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{const routes={'english':'/','indonesia':'/id/','brazil':'/pt-br/','india':'/hi/'};const lang=btn.dataset.lang;if(location.hostname==='divdown.net'||location.hostname==='www.divdown.net'){if(routes[lang])window.location.href=routes[lang]}else if(typeof gantiBahasa==='function'){gantiBahasa(lang,true);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}})})</script>
+</body></html>

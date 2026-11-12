@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
@@ -5,6 +6,42 @@
 <loc>https://divdown.net/</loc>
 <priority>1.0</priority>
 <changefreq>daily</changefreq>
+</url>
+
+<url>
+<loc>https://divdown.net/id/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/pt-br/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/hi/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/es/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/fil/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/vi/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/th/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/bn/</loc>
+</url>
+
+<url>
+<loc>https://divdown.net/ru/</loc>
 </url>
 
 <url>

@@ -1,8 +1,10 @@
 window.india = {
 
   /* ===== DATA UTAMA ===== */
-  title: "Facebook वीडियो डाउनलोडर | Facebook वीडियो डाउनलोड करें | Divdown",
-  placeholder: "वीडियो का URL यहाँ पेस्ट करें...",
+title: "Facebook वीडियो डाउनलोडर | Facebook वीडियो डाउनलोड करें | Divdown",
+description: "Divdown से Facebook वीडियो और Reels को HD, 1080p, 2K और 4K तक डाउनलोड करें। मुफ़्त, तेज़ और आसान। लॉगिन करने की ज़रूरत नहीं।",
+placeholder: "वीडियो का URL यहाँ पेस्ट करें...",
+  
   bendera: "🇮🇳",
   nama: "हिन्दी",
   /* ===== प्रश्न और उत्तर (FAQ) ===== */

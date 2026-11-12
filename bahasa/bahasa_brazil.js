@@ -1,8 +1,9 @@
 window.brazil = {
 
   /* ===== DATA UTAMA ===== */
-  title: "Baixador de Vídeos do Facebook | Baixar Vídeos do Facebook | Divdown",
-  placeholder: "Cole o link do vídeo aqui...",
+title: "Baixador de Vídeos do Facebook | Baixar Vídeos do Facebook | Divdown",
+description: "Baixe vídeos e Reels do Facebook em HD, 1080p, 2K e até 4K com o Divdown. Grátis, rápido e fácil de usar. Não é necessário fazer login.",
+placeholder: "Cole o link do vídeo aqui...",
   bendera: "🇧🇷",
   nama: "Português",
 

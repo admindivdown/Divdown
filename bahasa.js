@@ -10,16 +10,16 @@ function setText(e,n){let t=document.getElementById(e);t&&null!=n&&(t.innerHTML=
 /* --- 3. PROSES TEKS ELEMEN HTML --- */
 function applyBahasa(data) {
 if (!data || Object.keys(data).length === 0) return;
-document.title = data.title || "Facebook Video Downloader | Download Facebook Videos | Divdown";
+  
+document.title = data.title || "Facebook Video Downloader | Download Facebook Videos | Divdown";const metaDesc=document.querySelector('meta[name="description"]');if(metaDesc&&data.description)metaDesc.content=data.description;const ogTitle=document.querySelector('meta[property="og:title"]');if(ogTitle&&data.title)ogTitle.content=data.title;const ogDesc=document.querySelector('meta[property="og:description"]');if(ogDesc&&data.description)ogDesc.content=data.description;
+  
 const input = document.getElementById('urlInput');
 if (input && data.placeholder) {
 input.placeholder = data.placeholder;
 }
 /* ===== KONTROL GANTI BAHASA BLOK PANDUAN ===== */
 document.querySelectorAll('.lang-block').forEach(block => {
-if (block.getAttribute('data-lang') === bahasaAktif) {block.style.display = 'block';
-} else {block.style.display = 'none';}
-});
+if (block.getAttribute('data-lang') === bahasaAktif) {block.style.display = 'block';} else {block.style.display = 'none';}});
 /* ===== FAQ HEADER SAJA (LAZY) ===== */
 setText('faqTitle',data.faqTitle);
 if(window.faqLoaded){

@@ -2,6 +2,7 @@ window.indonesia = {
 
 /* ===== DATA UTAMA ===== */
 title: "Pengunduh Video Facebook | Download Video Facebook | Divdown",
+description: "Unduh video Facebook dan Reels dalam kualitas HD, 1080p, 2K, hingga 4K dengan Divdown. Gratis, cepat, dan mudah digunakan tanpa perlu login.",
 placeholder: "Tempel tautan video di sini...",
 bendera: "🇮🇩",
 nama: "Indonesia",

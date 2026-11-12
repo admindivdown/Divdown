@@ -15,9 +15,9 @@ loadFile('privacy', './privacy.html', 'Gagal muat Kebijakan'),
 loadFile('footer', './footer.html', 'Gagal muat Footer'),
 loadFile('panduan', './panduan.html', 'Gagal muat Panduan'),
 ]).then(() => {
-let savedLang = localStorage.getItem('userLanguage');
 
-if (!savedLang) { const browserLang = (navigator.language || '').toLowerCase(); if (browserLang.includes('id')) savedLang = 'indonesia'; else if (browserLang.includes('pt') || browserLang.includes('br')) savedLang = 'brazil'; else if (browserLang.includes('hi') || browserLang.includes('in')) savedLang = 'india'; else savedLang = 'english'; } else { savedLang = savedLang.toLowerCase().trim(); }
+let routeCode=location.pathname.split('/').filter(Boolean)[0]||'';let routeLang={'id':'indonesia','pt-br':'brazil','hi':'india','es':'spanish','fil':'filipino','vi':'vietnamese','th':'thai','bn':'bengali','ru':'russian'};let isProduction=location.hostname==='divdown.net'||location.hostname==='www.divdown.net';let savedLang;if(isProduction){savedLang=routeLang[routeCode]||'english';if(['spanish','filipino','vietnamese','thai','bengali','russian'].includes(routeLang[routeCode])){localStorage.setItem('newLanguage',routeLang[routeCode]);savedLang='english';}else{localStorage.removeItem('newLanguage');}localStorage.setItem('userLanguage',savedLang);}else{savedLang=routeLang[routeCode]||localStorage.getItem('userLanguage')||'english';if(['spanish','filipino','vietnamese','thai','bengali','russian'].includes(routeLang[routeCode])){localStorage.setItem('newLanguage',routeLang[routeCode]);savedLang='english';}else if(routeLang[routeCode]){localStorage.removeItem('newLanguage');}else if(localStorage.getItem('newLanguage')){savedLang='english';}}
+
 if(typeof gantiBahasa==='function'){
 gantiBahasa(savedLang,false).then(()=>{
 loadFaq().then(()=>{
@@ -48,7 +48,7 @@ try{const res=await fetch(API_BASE+'/api/facebook?url='+encodeURIComponent(url))
 /* === SIMPAN DATA UNTUK RUMAH 2 === */
 sessionStorage.setItem('fbData',JSON.stringify(data));
 /* === MASUK RUMAH 2 === */
-window.location.href=`rumah_index2/index.html?url=${encodeURIComponent(url)}`;
+window.location.href=`/rumah_index2/index.html?url=${encodeURIComponent(url)}`;
 }catch(err){const isID=(localStorage.getItem('userLanguage')||'').toLowerCase()==='indonesia';alert(isID?'Gagal memproses video.\n\nSilakan coba lagi beberapa saat.':'Failed to process the video.\n\nPlease try again in a moment.');
 /* === RESET TOMBOL === */
 btn.classList.remove('loading');

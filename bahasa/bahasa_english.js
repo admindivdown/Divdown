@@ -1,8 +1,9 @@
 window.english = {
 
   /* ===== MAIN DATA ===== */
-  title: "Facebook Video Downloader | Download Facebook Videos | Divdown",
-  placeholder: "Paste video URL here...",
+title: "Facebook Video Downloader | Download Facebook Videos | Divdown",
+description: "Download Facebook videos and Reels in HD, 1080p, 2K, and up to 4K with Divdown. Free, fast, and easy to use. No login required.",
+placeholder: "Paste video URL here...",
   bendera: "🇺🇸",
   nama: "English",
   /* ===== FAQ ===== */
