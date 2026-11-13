@@ -37,7 +37,7 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <!-- ===== PRELOAD HTML ===== -->
 <link rel="stylesheet" href="style.css">
@@ -87,6 +87,5 @@
 <!-- ===== JS ===== -->
 <script src="bahasa.js"></script><script src="app.js"></script>
 <script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./divdown-pwa.js').catch(e=>console.log('PWA:',e)))}</script>
-  
 <script>document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{const routes={'english':'/','indonesia':'/id/','brazil':'/pt-br/','india':'/hi/'};const lang=btn.dataset.lang;if(!routes[lang])return;localStorage.setItem('divdown_last_language',lang);localStorage.setItem('userLanguage',lang);localStorage.removeItem('newLanguage');if(location.hostname==='divdown.net'||location.hostname==='www.divdown.net'){window.location.href=routes[lang]}else if(typeof gantiBahasa==='function'){gantiBahasa(lang,true);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}})})</script>
 </body></html>
