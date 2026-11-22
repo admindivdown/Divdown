@@ -25,15 +25,23 @@ document.body.appendChild(pushAd);
 /* === AKHIR IKLAN === */
 if(btnWrap)btnWrap.style.display='flex';
 
-/* === DOWNLOAD VIDEO === */
+
+/* === DOWNLOAD VIDEO TANPA TAB BARU === */
+function triggerDownload(url){
+let frame=document.getElementById('divdownDownloadFrame');
+if(!frame){frame=document.createElement('iframe');frame.id='divdownDownloadFrame';frame.style.display='none';document.body.appendChild(frame);}
+frame.src='about:blank';
+setTimeout(()=>{frame.src=url;},100);
+}
 if(btnStandard){if(data.standard&&data.standard.trim()){
-btnStandard.onclick=()=>{window.open(API_BASE+'/api/download?url='+encodeURIComponent(data.standard),'_blank')
-}}else{btnStandard.disabled=true;btnStandard.style.pointerEvents="none";btnStandard.style.opacity=".55";btnStandard.style.cursor="not-allowed";btnStandard.style.background="#8b8b8b";btnStandard.style.color="#e5e5e5";btnStandard.onclick=null;}}
-if(btnHD){btnHD.onclick=()=>{if(data.hd720){
-window.open(API_BASE+'/api/download?url='+encodeURIComponent(data.hd720),'_blank')
-}else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.")}}}
-if(btn1080){btn1080.onclick=()=>{window.open(API_BASE+'/api/download1080?url='+encodeURIComponent(fbUrl),'_blank')}}
-}else{alert(isID?"Video tidak ditemukan.":"Video not found.");window.location.href='../index.html';}}catch(err){alert(isID?"Gagal mengambil file.":"Failed to load file.");}});
+btnStandard.onclick=()=>triggerDownload(API_BASE+'/api/download?url='+encodeURIComponent(data.standard));
+}else{btnStandard.disabled=true;btnStandard.style.pointerEvents="none";btnStandard.style.opacity=".55";btnStandard.style.cursor="not-allowed";btnStandard.style.background="#8b8b8b";btnStandard.style.color="#e5e5e5";btnStandard.onclick=null;}}
+if(btnHD){btnHD.onclick=()=>{if(data.hd720){triggerDownload(API_BASE+'/api/download?url='+encodeURIComponent(data.hd720));}else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.");}}}
+if(btn1080){btn1080.onclick=()=>triggerDownload(API_BASE+'/api/download1080?url='+encodeURIComponent(fbUrl));}
+/* === AKHIR DOWNLOAD VIDEO === */
+}else{alert(isID?"Video tidak ditemukan.":"Video not found.");window.location.href='../index.html';}
+
+}catch(err){alert(isID?"Gagal mengambil file.":"Failed to load file.");}});
 /* === BANNER EXOCLICK 300x250 - ATAS - MULAI === */
 /* const BANNER_TOP=document.getElementById("bannerAdTop");if(BANNER_TOP){const sB=document.createElement("script");sB.src="https://a.magsrv.com/ad-provider.js";sB.async=!0;document.head.appendChild(sB);const iB=document.createElement("ins");iB.className="eas6a97888e10";iB.setAttribute("data-zoneid","5980774");BANNER_TOP.appendChild(iB);const pB=document.createElement("script");pB.textContent='(AdProvider=window.AdProvider||[]).push({"serve":{}});';BANNER_TOP.appendChild(pB);} */
 /* === BANNER EXOCLICK === */
