@@ -84,6 +84,7 @@
 <div id="about"></div><div id="privacy"></div><div id="kontak"></div>
 </div><div id="terms"><div class="faq-header" id="termsHeader"><div id="termsTitle" class="faq-title">Terms of Service</div><div id="termsArrow" class="faq-arrow">▼</div></div><div id="termsContent" style="display:none"></div></div><div id="footer"></div>
 <!-- ===== JS ===== -->
+
 <script src="bahasa.js"></script><script src="app.js"></script>
 <script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./divdown-pwa.js').catch(e=>console.log('PWA:',e)))}</script>
 <script>document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{const routes={'english':'/','indonesia':'/id/','brazil':'/pt-br/','india':'/hi/'};const lang=btn.dataset.lang;if(!routes[lang])return;localStorage.setItem('divdown_last_language',lang);localStorage.setItem('userLanguage',lang);localStorage.removeItem('newLanguage');if(location.hostname==='divdown.net'||location.hostname==='www.divdown.net'){window.location.href=routes[lang]}else if(typeof gantiBahasa==='function'){gantiBahasa(lang,true);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}})})</script>
