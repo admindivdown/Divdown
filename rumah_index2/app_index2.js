@@ -37,7 +37,7 @@ if(btnStandard){if(data.standard&&data.standard.trim()){
 btnStandard.onclick=()=>triggerDownload(API_BASE+'/api/download?url='+encodeURIComponent(data.standard));
 }else{btnStandard.disabled=true;btnStandard.style.pointerEvents="none";btnStandard.style.opacity=".55";btnStandard.style.cursor="not-allowed";btnStandard.style.background="#8b8b8b";btnStandard.style.color="#e5e5e5";btnStandard.onclick=null;}}
 if(btnHD){btnHD.onclick=()=>{if(data.hd720){triggerDownload(API_BASE+'/api/download?url='+encodeURIComponent(data.hd720));}else{alert(isID?"Video 720p tidak tersedia.":"720p Quality is not available.");}}}
-if(btn1080){btn1080.onclick=()=>triggerDownload(API_BASE+'/api/download1080?url='+encodeURIComponent(fbUrl));}
+if(btn1080){btn1080.onclick=()=>{const spinner=document.getElementById('spinner1080');spinner.classList.add('show');triggerDownload(API_BASE+'/api/download1080?url='+encodeURIComponent(fbUrl));setTimeout(()=>spinner.classList.remove('show'),10000);}}
 /* === AKHIR DOWNLOAD VIDEO === */
 }else{alert(isID?"Video tidak ditemukan.":"Video not found.");window.location.href='../index.html';}
 
