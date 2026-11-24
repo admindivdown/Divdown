@@ -6,7 +6,7 @@ const fs = require('fs');
 const dns = require('dns').promises;
 const net = require('net');
 const https = require('https');
-const { exec, execFile } = require('child_process');
+const { execFile } = require('child_process');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const app = express();
 app.set('trust proxy', 'loopback');
@@ -91,7 +91,7 @@ app.get(/^\/(id|pt-br|hi|es|fil|vi|th|bn|ru)\/?$/,
 app.use(express.static(path.join(__dirname, '..')));
 
 /* === GITHUB WEBHOOK === */
-const webhookSecret=fs.readFileSync('/root/.divdown_webhook_secret','utf8').trim();
+const webhookSecret=fs.readFileSync('/etc/divdown/webhook.secret','utf8').trim();
 function verifyWebhook(req){
 const signature=req.headers['x-hub-signature-256'];
 if(!signature||!signature.startsWith('sha256='))return false;
@@ -105,7 +105,7 @@ if(req.headers['x-github-event']!=='push')return res.status(200).send('Ignored')
 if(!verifyWebhook(req))return res.status(401).send('Unauthorized');
 if(req.body.ref!=='refs/heads/main')return res.status(200).send('Ignored');
 res.status(200).send('Webhook received');
-exec('cd /var/www/Divdown && git pull origin main && pm2 restart divdown',(error,stdout,stderr)=>{
+execFile('/usr/bin/sudo',['-n','/usr/local/sbin/divdown-deploy'],(error,stdout,stderr)=>{
 if(error){console.error('Auto-deploy error:',error.message);return;}
 console.log('Auto-deploy berhasil:');
 console.log(stdout);
@@ -139,7 +139,7 @@ message: "Invalid Facebook URL"
 }
 
 // Sudah diperbaiki: hapus --impersonate, ganti pakai user-agent biasa
-execFile('yt-dlp', ['-f', 'bestvideo[height<=1080]+bestaudio/best[height<=1080]/best', '--merge-output-format', 'mp4', '--dump-single-json', '--no-warnings',  '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36', videoUrl], 
+execFile('/opt/divdown/venv/bin/yt-dlp', ['-f', 'bestvideo[height<=1080]+bestaudio/best[height<=1080]/best', '--merge-output-format', 'mp4', '--dump-single-json', '--no-warnings',  '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36', videoUrl], 
 { maxBuffer: 1024 * 5000, timeout: 120000, killSignal: 'SIGKILL' }
 , (error, stdout) => {
     if (error) {
@@ -179,7 +179,7 @@ formats.find(f => f.height < 720 && f.url) || data.url || null;
 app.get('/api/download',limitRequest,async(req,res)=>{const fileUrl=req.query.url;if(!fileUrl)return res.status(400).send('URL tidak ada');if(!isAllowedMediaUrl(fileUrl))return res.status(400).send('URL video tidak valid');const controller=new AbortController();req.on('aborted',()=>controller.abort());res.on('close',()=>{if(!res.writableFinished)controller.abort();});try{const response=await fetchMediaRedirect(fileUrl,0,controller.signal);if(!response.ok||!response.body){response.body?.destroy();return res.status(502).send('Video gagal diambil dari server Facebook');}const fileName=`Divdown_Video_${Math.floor(100000+Math.random()*900000)}.mp4`;res.setHeader('Content-Disposition',`attachment; filename="${fileName}"`);res.setHeader('Content-Type','video/mp4');response.body.on('error',()=>{if(!res.headersSent)res.status(502).send('Download gagal');else res.destroy();});response.body.pipe(res);}catch(err){if(controller.signal.aborted)return;console.error('Download error:',err.message);if(!res.headersSent)res.status(502).send('Download failed.\n\nGagal mengunduh video');else res.destroy();}});
 
 /* === DOWNLOAD 1080P === */
-app.get('/api/download1080',limitRequest,async(req,res)=>{const videoUrl=req.query.url;if(!videoUrl)return res.status(400).send('URL tidak ada');if(!isAllowedFacebookUrl(videoUrl))return res.status(400).send('URL Facebook tidak valid');const tempDir='/tmp/divdown1080';const jobId=`${Date.now()}-${Math.random().toString(36).slice(2)}`;const outputFile=path.join(tempDir,`video-${jobId}.mp4`);const cleanup=()=>{fs.unlink(outputFile,()=>{});};try{fs.mkdirSync(tempDir,{recursive:true});const child=execFile('yt-dlp',[
+app.get('/api/download1080',limitRequest,async(req,res)=>{const videoUrl=req.query.url;if(!videoUrl)return res.status(400).send('URL tidak ada');if(!isAllowedFacebookUrl(videoUrl))return res.status(400).send('URL Facebook tidak valid');const tempDir='/var/lib/divdown/tmp';const jobId=`${Date.now()}-${Math.random().toString(36).slice(2)}`;const outputFile=path.join(tempDir,`video-${jobId}.mp4`);const cleanup=()=>{fs.unlink(outputFile,()=>{});};try{fs.mkdirSync(tempDir,{recursive:true});const child=execFile('/opt/divdown/venv/bin/yt-dlp',[
 '-f','bestvideo*+bestaudio/best',
 '--merge-output-format','mp4','--no-warnings','--user-agent','Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0.0.0 Safari/537.36','-o',outputFile,videoUrl],{maxBuffer:1024*5000,timeout:600000,killSignal:'SIGKILL'},(error)=>{if(error||!fs.existsSync(outputFile)){console.error('1080P yt-dlp error:',error?.message||'File tidak dibuat');cleanup();if(!res.headersSent&&!res.destroyed)return res.status(500).send('Gagal memproses video 1080P');return;}if(res.destroyed){cleanup();return;}const fileName=`Divdown_Video_${Math.floor(100000+Math.random()*900000)}.mp4`;res.setHeader('Content-Disposition',`attachment; filename="${fileName}"`);res.setHeader('Content-Type','video/mp4');const stream=fs.createReadStream(outputFile);stream.on('error',()=>{cleanup();if(!res.headersSent)res.status(500).send('Download gagal');else res.destroy();});stream.on('close',cleanup);res.on('close',()=>{if(!res.writableFinished)cleanup();});stream.pipe(res);});res.on('close',()=>{if(!res.writableFinished){child.kill('SIGKILL');cleanup();}});}catch(err){console.error('1080P error:',err.message);cleanup();if(!res.headersSent&&!res.destroyed)return res.status(500).send('Gagal memproses video 1080P');}});
 /* === END DOWNLOAD 1080P === */
